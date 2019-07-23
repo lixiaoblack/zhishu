@@ -36,22 +36,22 @@ export default {
     data() {
         return {
             classArr:[
-                {imgUrl:"../../static/tu/r/f/a3r.png",title:"课程",link:"/course"},
+                {imgUrl:"../../static/tu/r/f/a3r.png",title:"课程",link:"/course/total"},
                 {imgUrl:"../../static/tu/r/f/a3y.png",title:"听书",link:"/listen"},
                 {imgUrl:"../../static/tu/r/f/a3p.png",title:"电子书",link:"/eBook"},
                 {imgUrl:"../../static/tu/r/f/a3v.png",title:"商城",link:"/shop"},
                 {imgUrl:"../../static/tu/r/f/a3t.png",title:"专题",link:"/special"}
             ],
             navArr:[
-                {imgUrl:"../../static/image/nav_01.png",title:"经济学",link:"/course"},
-                {imgUrl:"../../static/image/nav_02.png",title:"医学健康",link:"/course"},
-                {imgUrl:"../../static/image/nav_03.png",title:"社会学",link:"/course"},
-                {imgUrl:"../../static/image/nav_04.png",title:"心理学",link:"/course"},
-                {imgUrl:"../../static/image/nav_05.png",title:"免费专区",link:"/course"},
-                {imgUrl:"../../static/image/nav_06.png",title:"讲座",link:"/course"},
-                {imgUrl:"../../static/image/nav_07.png",title:"管理学",link:"/course"},
-                {imgUrl:"../../static/image/nav_08.png",title:"职场",link:"/course"},
-                {imgUrl:"../../static/image/nav_09.png",title:"得到大学",link:"/course"},
+                {imgUrl:"../../static/image/nav_01.png",title:"经济学",link:"/classify/economics/quanbu"},
+                {imgUrl:"../../static/image/nav_02.png",title:"医学健康",link:"/classify/medicalhealth/quanbu"},
+                {imgUrl:"../../static/image/nav_03.png",title:"社会学",link:"/classify/sociology/quanbu"},
+                {imgUrl:"../../static/image/nav_04.png",title:"心理学",link:"/classify/psychology/quanbu"},
+                {imgUrl:"../../static/image/nav_05.png",title:"家庭亲子",link:"/classify/family/quanbu"},
+                {imgUrl:"../../static/image/nav_06.png",title:"社会学",link:"/classify/sociology/quanbu"},
+                {imgUrl:"../../static/image/nav_07.png",title:"管理学",link:"/classify/management/quanbu"},
+                {imgUrl:"../../static/image/nav_08.png",title:"职场",link:"/classify/workplace/quanbu"},
+                {imgUrl:"../../static/image/nav_09.png",title:"历史",link:"/classify/history/quanbu"},
                 {imgUrl:"../../static/image/nav_10.png",title:"全部分类",link:"/classify/psychology/quanbu"},
             ],
             listenArr:[],
