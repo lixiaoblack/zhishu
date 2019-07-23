@@ -12,8 +12,8 @@
         <div v-for="(v, u) in audios" :key="u+111">
             <Audio :theUrl="v.url" :theControlList="v.controlList"/>
         </div>
-        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listen_subtitle" :courseFeatureIntroI="listenArr[0].listen_publisher_intro" :booksSprice="listenArr[0].listen_sprice" :time="listenArr[0].listen_audio_time" :imgUrl="listenArr[0].listen_"></Homelisten>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].subtitle" :courseFeatureIntroI="bookArr[0].book_intro" :booksSprice="bookArr[0].books_sprice" :imgUrl="bookArr[0].img_url"></Homebooks>
+        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl"></Homelisten>
+        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl"></Homebooks>
         <div class="allTop">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>

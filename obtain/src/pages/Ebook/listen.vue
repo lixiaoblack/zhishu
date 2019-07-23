@@ -96,18 +96,18 @@ export default {
     return {
       arr: [{}],
       nav: [
-        { title: "限时特价", icon: "el-icon-notebook-2" },
-        { title: "精选书单", icon: "el-icon-reading" },
-        { title: "品牌解读人", icon: "el-icon-notebook-1" },
-        { title: "分类", icon: "el-icon-document" }
+        { title: "限时特价", icon: "el-icon-notebook-2",path:"/goodlisten" },
+        { title: "精选书单", icon: "el-icon-reading",path:"/goodlisten" },
+        { title: "品牌解读人", icon: "el-icon-notebook-1",path:"/goodlisten" },
+        { title: "分类", icon: "el-icon-document",path:"/home" }
       ]
     };
   },
   methods: {
     skip(v) {
       this.$router.push({
-        path: "/goodbook",
-        query: { val: JSON.stringify(v), type: "listen" }
+        path: "/goodlisten",
+        query: { val: JSON.stringify(v) }
       });
     }
   },
@@ -129,7 +129,7 @@ export default {
     newBook() {
       let gb = [];
       this.arr.map(v => {
-        if (v.listen_class_id == 1) {
+        if (v.listenClassId == 1) {
           gb.push(v);
         }
       });
@@ -139,11 +139,10 @@ export default {
     likeBook() {
       let gb = [];
       this.arr.map(v => {
-        if (v.listen_class_id == 2) {
+        if (v.listenClassId == 2) {
           gb.push(v);
         }
       });
-      console.log('xxxx',gb,this.arr)
       return gb;
     }
   }

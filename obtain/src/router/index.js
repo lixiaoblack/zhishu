@@ -131,12 +131,16 @@ import ShopSearch from '../pages/shopSearch'
 import CommodityDetails from '../pages/commodityDetails'
 import ShopCart from '../pages/shopcart'
 import Order from '../pages/order'
+//电子书，听书
 import EBOOK from "../pages/Ebook/eBook";
 import BOOKDEL from "../pages/Ebook/EbookDetail";
 import Good from "../pages/Ebook/goodbook";
 import Listen from "../pages/Ebook/listen";
 import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
+import Goodlisten from "../pages/Ebook/goodlisten"
+import ReadBook from "../pages/Ebook/readbook";
+///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
@@ -393,6 +397,17 @@ export default new Router({
       path:'/EbookDetail',
       name:'BOOKDEL',
       component:BOOKDEL
+    },
+   
+    {
+      path:"/goodlisten",
+      name:"Goodlisten",
+      component:Goodlisten
+    },
+    {
+      path:"/readbook",
+      name:"ReadBook",
+      component:ReadBook
     },
     {
       path:'/goodbook',

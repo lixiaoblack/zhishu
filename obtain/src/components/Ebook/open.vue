@@ -18,7 +18,7 @@ export default {
   props: ["data"],
   methods: {
     skip(v){
-           this.$router.push({path:"/goodbook",query:{val:JSON.stringify(v)}})
+           this.$router.push({path:v.path,query:{val:JSON.stringify(v)}})
        }
   },
  

@@ -8,18 +8,18 @@
          
            
        </div>
-     {{type}}
-        <ul>
-            <Host v-for= "(v,i) in arr" :key= "i" :data= "v"></Host>
+    
+        <ul >
+             <ListenL v-for="(v,i) in arr" :key="i" :data="v" style="margin:0.1rem"></ListenL>
         </ul>
     </div>
 </template>
 <script>
-import Host from "../../components/Ebook/hotList"
+import ListenL from "../../components/Ebook/listen_like"
 
 export default {
     components:{
-        Host,
+        ListenL,
        
        
     },
@@ -32,10 +32,10 @@ export default {
   },
     created() {
      
-         this.axios.get("/jsondata/abc").then(ok=> {
+         this.axios.get("/listen").then(ok=> {
          
-              this.arr=ok.data.EBook
-          
+              this.arr=ok.data.listen
+         
            })
          
     
@@ -65,4 +65,5 @@ export default {
     font-size: .2rem;
     font-weight: 600;
 }
+
 </style>
