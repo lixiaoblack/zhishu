@@ -33,13 +33,20 @@
         <p @click="open()" class="open">收起 <i class="el-icon-caret-top"></i></p>
       </div>
     </div>
+     <div class="edit1">
+      <p class="cation">
+                <span>目录   </span>
+                <span @click="SkipPages()">查看全部 ></span>
+            </p>
+            
+    </div>
     <div class="edit1">
       <p class="cation">
                 <span>出版方   </span>
                 <span>查看全部 ></span>
             </p>
-            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.book_publisher}}</p>
-            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.book_publisher_intro}}</p>
+            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
+            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
     </div>
     <div class="like">
       <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
@@ -65,6 +72,9 @@ export default {
   methods: {
     open() {
       this.isShow = !this.isShow;
+    },
+    skipPages(){
+      this.$router.push("")
     }
   },
   computed: {
@@ -179,7 +189,7 @@ color: #ccc;
     display: flex;
     justify-content: space-between;
     margin: 0.1rem 0;
-   
+   border-left:deeppink 7px solid;
  
 }
 .cation span:first-child{

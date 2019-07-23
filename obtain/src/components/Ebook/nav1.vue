@@ -11,18 +11,18 @@ export default {
     return {
        
         list:[
-            {"title":"文学","path":"/home"},
-            {"title":"自然科学","path":"/weinxue"},
-              {"title":"哲学","path":"/weinxue"},
-                {"title":"职场","path":"/weinxue"},
-                  {"title":"心理学","path":"/weinxue"},
-                    {"title":"社会学","path":"/weinxue"},
-                      {"title":"政治学","path":"/weinxue"},
-                       {"title":"历史","path":"/weinxue"},
-                        {"title":"中国历史","path":"/weinxue"},
-                        {"title":"心理学","path":"/weinxue"},
-                            {"title":"社会学","path":"/weinxue"},
-                            {"title":"政治学","path":"/weinxue"},
+            {"title":"心理学","path":"/classify/psychology"},
+            {"title":"学院","path":"/classify/school"},
+              {"title":"经济学","path":"/classify/economics"},
+                {"title":"家庭亲子","path":"/classify/family"},
+                  {"title":"职场","path":"/classify/workplace"},
+                    {"title":"社会学","path":"/classify/sociology"},
+                      {"title":"金融","path":"/classify/finance"},
+                       {"title":"历史","path":"/classify/history"},
+                        {"title":"中国历史","path":"/classify/chinahistory"},
+                        {"title":"医学与健康","path":"/classify/medicalhealth"},
+                            {"title":"管理学","path":"/classify/management"},
+                            {"title":"艺术","path":"/classify/art"},
         ]
     };
   },

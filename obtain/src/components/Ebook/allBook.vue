@@ -7,7 +7,7 @@
                     <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.bookSubtitle}}</p>
                     <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.bookIntro}}</p>
                     <p style="float:right">
-                        <TryRead @click.stop="tryBook(data)"></TryRead>
+                        <span class="read" @click.stop="tryBook()">试读</span>
                     </p>
                 </div>
      </li>
@@ -25,11 +25,12 @@ export default {
    methods: {
        skip(val){
            this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
-       }
-   },
-   tryBook(val){
-      this.$router.push({name:ReadBook,query:{id:JSON.stringify(val.bookId)}})
+       },
+        tryBook(){
+      this.$router.push({name:"ReadBook"})
    }
+   },
+  
 };
 </script>
 <style scoped>
@@ -52,4 +53,14 @@ h4 {
   font-weight: 600;
   line-height: 0.4rem;
 }
+ .read{
+        width: 0.75rem;
+        line-height: .3rem;
+        background: #f4f3f1;
+        color:#e1793c;
+        border-radius: 0.15rem ;
+        font-size: .13rem;
+        text-align: center;
+        font-weight: 600; 
+    }
 </style>

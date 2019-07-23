@@ -9,24 +9,23 @@
       <div>
         <p style="margin-bottom:.18rem; display:flex;font-weight:600">
           <span>{{arr.listenSubtitle}}</span>|
-          <span>{{arr.listenAuthor}}</span>
+          <span>{{arr.listenAuthor}}解读</span>
         </p>
         <p v-if="isShow" style="color:#ed742f">{{arr.listenSprice}}得到贝</p>
-        <p v-else>会员有效期内免费听</p>
+        <p v-else style="color:#ffc794">会员有效期内免费听</p>
       </div>
     </div>
     <section>
-      <div @click="checkStatus">
+      <div @click="checkStatus" class="secIsShow">
         <p>听书福利:</p>
-        <!-- <p>
-          <mt-checklist
-            title="checkbox list"
-            v-model="value"
-            :options="['已选择', '未选择']"
-          ></mt-checklist>
-        </p> -->
+          <p v-if="isShow">未选择</p>
+          <p v-else>已选择</p>
       </div>
+      <p>
+        <img src="../../../static\ebookImg\logo2.jpg" alt="">
+      </p>
     </section>
+    <p style="font-size:.13rem,font-weight:600;">支付方式</p>
   </div>
 </template>
 <script>
@@ -68,7 +67,7 @@ export default {
       this.$router.go(-1);
     },
     checkStatus() {
-      this.check = !this.check;
+      this.isShow = !this.isShow;
     }
   }
 };
@@ -92,5 +91,21 @@ header {
   background: white;
   padding: 0.15rem 0.12rem;
   display: flex;
+}
+.secIsShow{
+  display: flex;
+  justify-content: space-between;
+  color: #7f5b39;
+}
+section{
+  margin: .1rem;
+  background: #f3e4bd;
+  padding: .15rem .1rem .1rem;
+  font-size: .14rem;
+}
+section img{
+  margin-top:.2rem;
+  width: 3.35rem;
+  height: .9rem;
 }
 </style>

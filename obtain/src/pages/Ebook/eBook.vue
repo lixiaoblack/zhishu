@@ -19,7 +19,7 @@
         <div class="bookType">
             <p class="cation">
                 <span>新书上架</span>
-                <span>查看全部 ></span>
+                <span @click="skipGb(nav[2])">查看全部 ></span>
             </p>
             <ul class="list">
                 <BOOK v-for= "(v,i) in newBook" :key= "i" :data= "v" style="margin:0.1rem"></BOOK>
@@ -29,7 +29,7 @@
         <div class="bookType">
             <p class="cation">
                 <span>精选书单</span>
-                <span>查看全部 ></span>
+                <span @click="skipGb(nav[1])">查看全部 ></span>
             </p>
             <ul class="list">
                 <BOOK v-for= "(v,i) in goodBook" :key= "i" :data= "v"></BOOK>
@@ -39,7 +39,7 @@
          <div class="bookType">
             <p class="cation">
                 <span>限时特价</span>
-                <span>查看全部 ></span>
+                <span @click="skipGb(nav[0])">查看全部 ></span>
             </p>
             <ul class="list">
                 <BOOK v-for= "(v,i) in Discount" :key= "i" :data= "v"></BOOK>
@@ -59,7 +59,7 @@
          <div class="bookType">
             <p class="cation">
                 <span>热门分类</span>
-                <span>查看全部 ></span>
+                <span @click="skipGb(nav[3])">查看全部 ></span>
             </p>
             <ul class="nav">
                <Nav></Nav>
@@ -68,9 +68,9 @@
         </div>
         <div class="bookType">
             <p class="cation">
-                <span @click="skipGb()">猜你喜欢</span>
+                <span >猜你喜欢</span>
               
-                <span>查看全部 ></span>
+                <span @click="skipGb()">查看全部 ></span>
             </p>
             <ul class="list">
                 <BOOK v-for= "(v,i) in Discount" :key= "i" :data= "v"></BOOK>
@@ -111,7 +111,7 @@ export default {
             {title:"限时特价",icon:"el-icon-notebook-2",path:"/goodbook"},
              {title:"精选好书",icon:"el-icon-reading",path:"/goodbook"},
               {title:"新书上架",icon:"el-icon-notebook-1",path:"/goodbook"},
-              {title:"分类",icon:"el-icon-document",path:"/home"},
+              {title:"分类",icon:"el-icon-document",path:"/classify/psychology"},
              
         ],
         recently:  {title:"最近阅读",icon:"el-icon-discover",path:"/goodbook"}
@@ -123,7 +123,7 @@ export default {
       skipTryread(v){
            this.$router.push({path:v.path,query:{val:JSON.stringify(v) }})
       },
-        skipGb(){
+        skipGb(v){
           this.$router.push({path:v.path,query:{val:JSON.stringify(v)}})
       }
    },

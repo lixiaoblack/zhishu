@@ -42,7 +42,7 @@
     <div class="bookType">
       <p class="cation">
         <span>精选书单</span>
-        <span>查看全部 ></span>
+        <span  @click="skipGoodListen(nav[1])">查看全部 ></span>
       </p>
       <ul class="list">
         <ListenL v-for="(v,i) in newBook" :key="i" :data="v" style="margin:0.1rem"></ListenL>
@@ -51,7 +51,7 @@
     <div class="bookType">
       <p class="cation">
         <span>新书上架</span>
-        <span>查看全部 ></span>
+        <span @click="skipGoodListen(nav[0])">查看全部 ></span>
       </p>
       <ul class="list">
         <ListenL v-for="(v,i) in newBook" :key="i" :data="v" style="margin:0.1rem"></ListenL>
@@ -60,7 +60,7 @@
     <div class="bookType">
       <p class="cation">
         <span>热门分类</span>
-        <span>查看全部 ></span>
+        <span @click="skipGoodListen(nav[3])">查看全部 ></span>
       </p>
 
       <ul class="nav">
@@ -96,7 +96,7 @@ export default {
     return {
       arr: [{}],
       nav: [
-        { title: "限时特价", icon: "el-icon-notebook-2",path:"/goodlisten" },
+        { title: "新书上架", icon: "el-icon-notebook-2",path:"/goodlisten" },
         { title: "精选书单", icon: "el-icon-reading",path:"/goodlisten" },
         { title: "品牌解读人", icon: "el-icon-notebook-1",path:"/goodlisten" },
         { title: "分类", icon: "el-icon-document",path:"/home" }
@@ -104,9 +104,15 @@ export default {
     };
   },
   methods: {
-    skip(v) {
-      this.$router.push({
-        path: "/goodlisten",
+    // skip(v) {
+    //   this.$router.push({
+    //     path: "/goodlisten",
+    //     query: { val: JSON.stringify(v) }
+    //   });
+    // },
+    skipGoodListen(v){
+        this.$router.push({
+        path: v.path,
         query: { val: JSON.stringify(v) }
       });
     }
