@@ -1,0 +1,141 @@
+<template>
+    <div>
+        <ul>
+            <router-link to="">
+                <li @click="funa()"><img :src="boola?'../../static/tu/r/f/ai_.png':'../../static/tu/r/f/aia.png'" alt=""><span :style="boola?'color:black':'color:orange'">发现</span></li>
+            </router-link>
+            <router-link to="">
+                <li @click="funb()"><img :src="boolb?'../../static/tu/r/f/aib.png':'../../static/tu/r/f/aic.png'" alt=""><span :style="boolb?'color:black':'color:orange'">学习计划</span></li>
+            </router-link>
+            <router-link to="/knowledge">
+                <li @click="func()"><img :src="boolc?'../../static/tu/r/f/aid.png':'../../static/tu/r/f/aie.png'" alt=""><span :style="boolc?'color:black':'color:orange'">知识城邦</span></li>
+            </router-link>
+            <router-link to="">
+                <li @click="fund()"><img :src="boold?'../../static/tu/r/f/aif.png':'../../static/tu/r/f/aig.png'" alt=""><span :style="boold?'color:black':'color:orange'">已购</span></li>
+            </router-link>
+            <router-link to="">
+                <li @click="fune()"><img :src="boole?'../../static/tu/r/f/aih.png':'../../static/tu/r/f/aii.png'" alt=""><span :style="boole?'color:black':'color:orange'">我的</span></li>
+            </router-link>
+        </ul>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            boola:false,
+            boolb:true,
+            boolc:true,
+            boold:true,
+            boole:true,
+        }
+    },
+    props:{
+        ona:String,
+        onb:String,
+        onc:String,
+        ond:String,
+        one:String
+    },
+    methods: {
+        funa(){
+            this.boola=false
+            this.boolb=true
+            this.boolc=true
+            this.boold=true
+            this.boole=true
+        },
+        funb(){
+            this.boola=true
+            this.boolb=false
+            this.boolc=true
+            this.boold=true
+            this.boole=true
+        },
+        func(){
+            this.boola=true
+            this.boolb=true
+            this.boolc=false
+            this.boold=true
+            this.boole=true
+        },
+        fund(){
+            this.boola=true
+            this.boolb=true
+            this.boolc=true
+            this.boold=false
+            this.boole=true
+        },
+        fune(){
+            this.boola=true
+            this.boolb=true
+            this.boolc=true
+            this.boold=true
+            this.boole=false
+        },
+    },
+    created() {
+        if(this.ona==""){
+            this.boola=false
+            this.boolb=true
+            this.boolc=true
+            this.boold=true
+            this.boole=true
+        }else if(this.onb==""){
+            this.boola=true
+            this.boolb=false
+            this.boolc=true
+            this.boold=true
+            this.boole=true
+        }else if(this.onc=="知识城邦"){
+            this.boola=true
+            this.boolb=true
+            this.boolc=false
+            this.boold=true
+            this.boole=true
+        }else if(this.ond==""){
+            this.boola=true
+            this.boolb=true
+            this.boolc=true
+            this.boold=false
+            this.boole=true
+        }else if(this.one==""){
+            this.boola=true
+            this.boolb=true
+            this.boolc=true
+            this.boold=true
+            this.boole=false
+        }
+    },
+}
+</script>
+
+<style scoped>
+ul span{
+    font-size: .1rem;
+    color: #9999;
+    line-height:.1rem;
+}
+ul li{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+ul li img{
+    width:.3rem;
+    height:.3rem;
+    margin: 0 auto;
+}
+ul a{
+    flex: 1;
+    padding: .05rem 0 0 0;
+}
+ul{
+    width: 100%;    
+    height:.5rem;
+    background: #ffffff;
+    display: flex;
+    border-top:1px solid #9999;
+}
+</style>

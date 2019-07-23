@@ -139,6 +139,8 @@ import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
+import Note from '../pages/note'
+import Catalogue from '../pages/catalogue'
 Vue.use(Router)
 
 export default new Router({
@@ -296,6 +298,16 @@ export default new Router({
       path: '/default',
       name: 'Default',
       component: Default
+    },
+    {
+      path: '/catalogue',
+      name: 'Catalogue',
+      component: Catalogue
+    },
+    {
+      path: '/note',
+      name: 'Note',
+      component: Note
     },
     {
       path: '/home',
