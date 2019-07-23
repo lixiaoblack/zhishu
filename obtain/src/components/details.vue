@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="top">
+            <img :src="details.books_details.author_img">
            <div class="position">
                 <h2 class="banner-title">{{details.books_details.banner_title}}</h2>
                  <p class="banner-summary">{{details.books_details.banner_summary}}</p>
@@ -52,15 +53,19 @@ export default {
 </script>
 <style scoped>
 .top{
-    background-image: url("../../static/img/details.jpg");
-    background-size: 100%  2.115rem;
     width: 100%-0.205rem;
     height: 2.115rem;
-    padding: 0 0 0 .205rem;
     position: relative;
+}
+.top img{
+    width: 100%;
+    height: 2.115rem;
 }
 .position{
     padding-top: 1.375rem;
+    position: absolute;
+    bottom: .18rem;
+    left: .21rem;
 }
 .classabout{
     box-sizing: border-box;

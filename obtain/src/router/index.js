@@ -109,6 +109,7 @@ import Special from '../pages/special'
 import Specialxq from '../pages/specialxq'
 import Knowledge from '../pages/knowledge'
 import Home from '../pages/home'
+// 课程
 import Course from '../pages/course'
 import Total from '../pages/total'
 import Nenglixueyuan from '../pages/nenglixueyuan'
@@ -124,6 +125,14 @@ import Details from '../pages/details'
 import Bottombar from '../pages/bottombar'
 import Givefriend from '../pages/givefriend'
 import Freelisten from '../pages/freelisten'
+import Youhuiquan from '../pages/youhuiquan'
+import Payfor from '../pages/payfor'
+import Zengsongyouhuiquan from '../pages/zengsongyouhuiquan'
+import Rechargemoney from '../pages/rechargemoney'
+
+
+
+
 import Nav from "../pages/nav"
 import Searchs from "../pages/searchs"
 import Shop from '../pages/shop'
@@ -438,6 +447,26 @@ export default new Router({
       path: '/searchitem',
       name: 'Searchitem',
       component: Searchitem
+    },
+    {
+      path: '/youhuiquan',
+      name: 'Youhuiquan',
+      component: Youhuiquan
+    },
+    {
+      path: '/payfor',
+      name: 'Payfor',
+      component:Payfor
+    },
+    {
+      path: '/zengsongyouhuiquan',
+      name: 'Zengsongyouhuiquan',
+      component:Zengsongyouhuiquan
+    },
+    {
+      path: '/rechargemoney',
+      name: 'Rechargemoney',
+      component:Rechargemoney
     },
     {
       path:'/*',
