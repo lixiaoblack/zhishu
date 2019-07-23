@@ -1,0 +1,86 @@
+{
+    "user":[
+        {
+            "zhanghu":[
+                {"title":"充值"},
+                {"number":"5"},
+                {"number":"20"},
+                {"number":"50"},
+                {"number":"100"},
+                {"number":"200"}  
+            ]
+        },
+        {
+            "dingdan":[
+                {"img":"../../../static/tu/user/t1.jpg","text":"《女士品茶》|马继伟解读","zhifu":"支付：￥49.00"},
+                {"img":"../../../static/tu/user/t2.jpg","text":"《空雨衣》|麻辣姐解读","zhifu":"支付：￥26.00"},
+                {"img":"../../../static/tu/user/t3.jpg","text":"《小说的艺术》|沐艺工作室解读","zhifu":"支付：￥36.00"},
+                {"img":"../../../static/tu/user/t4.jpg","text":"《不可能的物理》|李小刚解读","zhifu":"支付：￥29.00"},
+                {"img":"../../../static/tu/user/t5.jpg","text":"《经典的魅力》|张玥解读","zhifu":"支付：￥28.00"},
+                {"img":"../../../static/tu/user/t6.jpg","text":"《集装箱改变世界》|张凯解读","zhifu":"支付：￥55.00"},
+                {"img":"../../../static/tu/user/t7.jpg","text":"最强大脑·精选版","zhifu":"支付：￥19.00"},
+                {"img":"../../../static/tu/user/t8.jpg","text":"因果分析的方法","zhifu":"支付：￥29.00"}
+            ]
+        }
+    ],
+    "neirong":[
+        {
+            "lishi":[
+                {"riqi":"07月14日","shijian":"09:49","text":"头条速览|央行将推动数字货币研发"},
+                {"riqi":"07月14日","shijian":"16:29","text":"头条速览|央行将推动数字货币研发"},
+                {"riqi":"07月13日","shijian":"16:29","text":"罗胖精选|为什么说成长步步惊心？"},
+                {"riqi":"07月13日","shijian":"12:49","text":"罗胖精选|步步惊心的成长"},
+                {"riqi":"07月13日","shijian":"12:49","text":"罗胖精选|如何用两条曲线改变人生"},
+                {"riqi":"07月9日","shijian":"10:29","text":"罗胖精选|如何用两条曲线改变人生"},
+                {"riqi":"07月9日","shijian":"10:29","text":"罗胖精选|如何用两条曲线改变人生"},
+                {"riqi":"07月9日","shijian":"06:16","text":"罗胖精选|如何用两条曲线改变人生"},
+                {"riqi":"07月1日","shijian":"12:16","text":"罗胖精选|如何用两条曲线改变人生"},
+                {"riqi":"07月1日","shijian":"12:12","text":"第67期|谁能拿走功劳？"},
+                {"riqi":"07月1日","shijian":"09:12","text":"第67期|谁能拿走功劳？"},
+                {"riqi":"06月16日","shijian":"19:50","text":"第67期|谁能拿走功劳？"},
+                {"riqi":"06月16日","shijian":"19:50","text":"第67期|谁能拿走功劳？"},
+                {"riqi":"06月16日","shijian":"09:59","text":"第67期|谁能拿走功劳？"},
+                {"riqi":"06月16日","shijian":"09:59","text":"第56期|高手是怎样练成的？"},
+                {"riqi":"06月6日","shijian":"10:42","text":"第56期|高手是怎样练成的？"}
+            ]
+        }
+    ],
+    "xuexi":[
+        {
+            "id":"",
+            "title":"我的笔记",
+            "name":[
+                { "mybiji":"我的笔记数","number":"19条"},
+                { "mybiji":"我的听书数","number":"9本条"},
+                { "mybiji":"我的读书数","number":"6本"},
+                { "mybiji":"我的学习讲数","number":"666讲"},
+                { "mybiji":"连续学习","number":"1周"}
+            ]
+        },
+        {
+            
+            "id":"xunzhang",
+            "title":"我的勋章",
+            "name":[
+                {"img":"../../../static/tu/user/xz1.png","txt":"摄影达人"},
+                {"img":"../../../static/tu/user/xz2.png","txt":"旅游达人"},
+                {"img":"../../../static/tu/user/xz3.png","txt":"家常达人"},
+                {"img":"../../../static/tu/user/xz4.png","txt":"杂谈达人"},
+                {"img":"../../../static/tu/user/xz5.png","txt":"文学达人"},
+                {"img":"../../../static/tu/user/xz6.png","txt":"学习达人"},
+                {"img":"../../../static/tu/user/xz7.png","txt":"知书达人"},
+                {"img":"../../../static/tu/user/xz8.png","txt":"知书大神"}
+            ]
+        },
+        {
+            "id":"zhengshu",
+            "title":"我的证书",
+            "name":[
+                { "img":"../../../static/tu/user/zs1.jpg","txt":"最强大脑·精选版"},
+                { "img":"../../../static/tu/user/zs2.jpg","txt":"中国好歌声·精选版"},
+                { "img":"../../../static/tu/user/zs3.jpg","txt":"逻辑思维·精选版"}
+               
+            ]
+        }
+    ]
+}
