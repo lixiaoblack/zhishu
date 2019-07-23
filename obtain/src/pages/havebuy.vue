@@ -15,17 +15,17 @@
         </div>
       <Reservation></Reservation>
       <div class="botton">
-        <Shopfooter></Shopfooter>
+        <ShopFooter></ShopFooter>
       </div>
     </div>
 </template>
 
 <script>
-  import Shopfooter from "../components/store/allproduct/slidetitle/shopfooter"
+  import ShopFooter from "../componrnts/shop/shopFooter"
   import Reservation from "../components/store/allproduct/slidetitle/reservation"
     export default {
     components:{
-      Shopfooter,
+      ShopFooter,
       Reservation
     },
         data(){
