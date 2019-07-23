@@ -3,6 +3,21 @@ import Router from 'vue-router'
 
 import Classify from '../pages/classify';
 
+//商城
+import Allproduct from '../pages/allproduct'
+import Havebuy from '../pages/havebuy'
+import Reservation from '../components/store/allproduct/slidetitle/reservation'
+import Newproduct from '../components/store/allproduct/productshow/newproduct'
+import Gift from '../components/store/allproduct/productshow/gift'
+import Stores from '../components/store/allproduct/productshow/stores'
+import Book from '../components/store/allproduct/productshow/book'
+import Relations from '../components/store/allproduct/productshow/relations'
+import Business from '../components/store/allproduct/productshow/business'
+import Office from '../components/store/allproduct/productshow/office'
+import Tea from '../components/store/allproduct/productshow/tea'
+import Reader from '../components/store/allproduct/productshow/reader'
+import Japan from '../components/store/allproduct/productshow/japan'
+
 
 // 心理学
 import Psychology from '../pages/psychology';
@@ -467,6 +482,80 @@ export default new Router({
       path: '/rechargemoney',
       name: 'Rechargemoney',
       component:Rechargemoney
+    },
+    //订单路由
+    {
+      path: '/havebuy',
+      name: 'Havebuy',
+      component: Havebuy,
+      //订单二级路由
+      children:[
+
+        {
+          path: '/havebuy/reservation',
+          name: 'Reservation',
+          component: Reservation
+        }
+      ]
+    },
+    //全部商品路由
+    {
+      path: '/allproduct',
+      name: 'Allproduct',
+      component: Allproduct,
+      //全部商品二级路由
+      children:[
+        {
+          path: '/allproduct/newproduct',
+          name: 'Newproduct',
+          component: Newproduct
+        },
+        {
+          path: '/allproduct/gift',
+          name: 'Gift',
+          component: Gift
+        },
+        {
+          path: '/allproduct/stores',
+          name: 'Stores',
+          component: Stores
+        },
+        {
+          path: '/allproduct/book',
+          name: 'Book',
+          component: Book
+        },
+        {
+          path: '/allproduct/relations',
+          name: 'Relations',
+          component: Relations
+        },
+        {
+          path: '/allproduct/business',
+          name: 'Business',
+          component: Business
+        },
+        {
+          path: '/allproduct/office',
+          name: 'Office',
+          component: Office
+        },
+        {
+          path: '/allproduct/tea',
+          name: 'Tea',
+          component: Tea
+        },
+        {
+          path: '/allproduct/reader',
+          name: 'Reader',
+          component: Reader
+        },
+        {
+          path: '/allproduct/japan',
+          name: 'Japan',
+          component: Japan
+        }
+      ]
     },
     {
       path:'/*',
