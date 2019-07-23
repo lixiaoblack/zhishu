@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Classify from '../pages/classify'
+import Classify from '../pages/classify';
 
 
 // 心理学
-import Psychology from '../pages/psychology'
+import Psychology from '../pages/psychology';
 import Qingxu from '../pages/psy/qingxu'
-import Xinli from '../pages/psy/xinli'
+import Xinli from '../pages/psy/xinli';
 import Shehui from '../pages/psy/shehui'
 import Quanbu from '../pages/psy/quanbu'
 import Jiaolv from '../pages/psy/jiaolv'
