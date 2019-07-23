@@ -6,7 +6,7 @@
                 <p>商城</p>
             </div>
         </router-link>
-        <router-link to="/shop">
+        <router-link to="/allproduct/newproduct">
             <div class="item">
                 <span class="iconfont icon-all"></span>
                 <p>全部商品</p>
@@ -18,7 +18,7 @@
                 <p>购物车</p>
             </div>
         </router-link>
-        <router-link to="/shop">
+        <router-link to="/havebuy">
             <div class="item">
                 <span class="iconfont icon-dingdan"></span>
                 <p>订单</p>
@@ -51,5 +51,8 @@ export default {
     }
     a{
         color: #333333;
+    }
+    p{
+      font-size: .15rem;
     }
 </style>

@@ -2,20 +2,20 @@
     "total":[
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
-                " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "other_imgurl":"../../static/img/nengli.jpg",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"../../static/img/details.jpg",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -47,24 +47,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -85,7 +86,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -93,21 +94,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -131,7 +132,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -143,19 +144,19 @@
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"../../static/img/details.jpg",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -187,24 +188,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -225,7 +227,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -233,21 +235,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -271,7 +273,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -283,19 +285,19 @@
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -327,24 +329,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -365,7 +368,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -373,21 +376,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -411,7 +414,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -423,19 +426,19 @@
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -467,24 +470,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -505,7 +509,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -513,21 +517,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -551,7 +555,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -563,19 +567,19 @@
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -607,24 +611,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -645,7 +650,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -653,21 +658,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -691,7 +696,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -703,19 +708,19 @@
         {
             "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -747,24 +752,25 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
-                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -785,7 +791,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -793,21 +799,21 @@
           
         },
         {
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
                 " other_imgurl":"../../static/img/nengli.jpg",
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -831,7 +837,7 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]
@@ -840,22 +846,22 @@
         }
     ],
     "zhengzaigengxin":[
-         {   
-                "id":"Zhengzai1",
-                "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
-                "subtitle":"蔡玉*批判性思维15讲",
-                "books_summary":"思考的技术就在这里",
-                "author":"蔡玉*得到大学教研张",
+        {
+            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
+                " other_imgurl":"../../static/img/nengli.jpg",
+                "subtitle":"熊逸讲莎士比亚",
+                "books_summary":"只要两小时，搞懂莎士比亚",
+                "author":"熊逸▪思想隐士",
                 "class_num":"16",
                 "books_sprice":"39.6",
                 "study_peoples":"15179"
                 },
             "books_details":{
-                "banner_title":"刘晗讲辛普森案",
-                "banner_summary":"这堂课，比大片还刺激",
-                "author_img":"url",
+                "banner_title":"熊逸讲莎士比亚",
+                "banner_summary":"熊逸讲莎士比亚只要两小时，搞懂莎士比亚",
+                "author_img":"../../static/img/xiong.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"蔡玉，得到大学教研长。",
+                "teacher_info":"熊逸，学贯中西的思想隐士，著作等身的文史作家，得到《熊逸书院》《熊逸·佛学50讲》《熊逸·唐诗50讲》主理人。",
                 "course_feature":"课程亮点",
                 "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
                 "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
@@ -886,25 +892,26 @@
           }
           
         },
-        {   
-            "id":"Zhengzai2",
-            "interface":{"books_imgurl" :"../../static/img/tu.jpg" ,
-                "subtitle":"三国演义",
-                "books_summary":"三国演义三国演义三国演义三国演义",
-                "author":"三国演义",
-                "class_num":"16",
-                "books_sprice":"39.6",
-                "study_peoples":"15179"
+        {
+            "interface":{"books_imgurl" :"../../static/img/xuzhilin.jpg" ,
+                " other_imgurl":"../../static/img/nengli.jpg",
+                "subtitle":"许纪霖▪中国文化30讲",
+                "books_summary":"那些留在我们血脉里的东西",
+                "author":"许纪霖▪著名历史学家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"9497"
                 },
             "books_details":{
-                "banner_title":"三国演义三国演义",
-                "banner_summary":"三国演义三国演义",
-                "author_img":"url",
+                "banner_title":"许纪霖▪中国文化30讲",
+                "banner_summary":"那些留在我们血脉里的东西",
+                "author_img":"../../static/img/xujilinbannner.jpg",
                 "teacher_intro":"老师简介",
-                "teacher_info":"三国演义三国演义。",
+                "teacher_info":"许纪霖，著名学者，华东师范大学教授、博士生导师，代表作《家国天下》。",
                 "course_feature":"课程亮点",
-                "course_feature_intro_I":"三国演义三国演义",
-                "course_feature_intro_II":"三国演义三国演义三国演义三国演义一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_feature_intro_I":"1. 高屋建瓴：透过纷繁复杂表面现象，抓住中国传统文化的本质。",
+                "course_feature_intro_II":"2. 结构简明：用精神脉络和现象脉络双线结构，简洁有力地阐释中国何以成为中国。",
+                "course_feature_intro_III":"3.施展说：“许老师是我的启蒙老师之一，我读许老师作品的快感，你也可以体验了。",
                 "course_outline":"课程大纲",
                 "now_listening":[
                     {"listen_title":"发刊词|学学批判性思维，赶紧的",
@@ -925,7 +932,53 @@
             "check_course_table":"imgurl",
             "purchase_attention":"购买须知",
             "purchase_attention_item":[
-                "1.《蔡玉*批判性思维15讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
+                "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
+                "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
+            ]
+          }
+          
+        },
+        {
+            "interface":{"books_imgurl" :"../../static/img/xujinsmall.jpg" ,
+                " other_imgurl":"../../static/img/nengli.jpg",
+                "subtitle":"徐瑾*经济学大师30讲",
+                "books_summary":"彻底了解大师思想的当下意义",
+                "author":"徐瑾*资深财经观察家",
+                "class_num":"30",
+                "books_sprice":"99",
+                "study_peoples":"10950"
+                },
+            "books_details":{
+                "banner_title":"徐瑾*经济学大师30讲",
+                "banner_summary":"彻底了解大师思想的当下意义",
+                "author_img":"../../static/img/xujin.jpg",
+                "teacher_intro":"老师简介",
+                "teacher_info":"徐瑾，青年经济学者，资深财经观察家。英国《金融时报》（FT）中文网财经版主编，经济人读书会创始人，东京大学客座研究员。长期关注中国经济，出版《白银帝国》、《印钞者》、《凯恩斯的中国聚会》等7本著作，曾三年连续入选“最受金融人喜爱的十本财经书籍”等。其中，《白银帝国》即将由耶鲁大学出版社推出英文版。",
+                "course_feature":"课程亮点",
+                "course_feature_intro_I":"批判性思维是现代教育体系普遍推崇的底层思维能力。",
+                "course_feature_intro_II":"从思考自洽，到思考公正，再到思考破局，这样一套思考技术，在你终身学习的任何阶段里，都应该先掌握它。",
+                "course_outline":"课程大纲",
+                "now_listening":[
+                    {"listen_title":"发刊词|学学批判性思维，赶紧的",
+                    "listen_progresstime":"10分23秒",
+                    "listen_peoples":"33233人学过",
+                    "start_or_stop_button":"播放"
+                    }
+                ],
+            "books_listen_catalogue":[
+                "发刊词|学学批判性思维,赶紧的",
+                "01 总论：你有多大的思考自由度",
+                "02总论 : 批判性思维在批判什么",
+                    "03论题：你有没有走题",
+                    "04结论 ：你有没有偷换结论",
+                    "05论证：你的论证严密吗",
+                    "06概念：你怎么定义这件事"
+            ],
+            "check_course_table":"imgurl",
+            "purchase_attention":"购买须知",
+            "purchase_attention_item":[
+                "1.《许纪霖▪中国文化30讲》包含老师亲自录制的授课音频、完整讲义文稿、参考图片以及学院问答;",
                 "2.本产品为付费产品，共39.9得到贝，购买成功后，即可永久性使用该产品所有内容;",
                 "3.本产品为虚拟内容服务,一经购买成功,概不退款,请你理解。"
             ]

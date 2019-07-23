@@ -14,24 +14,24 @@
                   <div class="right">
                         <h2 class="booksname">刘晗讲辛普森案</h2>
                         <span class="validity">赠送有效期至：2020.07.17</span>
-                        <span class="price"><strong class="num">19.90</strong>得到贝/份</span>
+                        <span class="price"><strong class="num">{{price}}</strong>得到贝/份</span>
                   </div>
               </div>
                 <div class="add">
                     <div class="add-left"><span>份数</span></div>
                     <div class="add-right">
-                        <span @click="minus()">-</span>
+                        <span  @click="minus()">-</span>
                         <span>{{num}}</span>
                         <span @click="add()">+</span>
                     </div>
                 </div>
                 <div class="list">
-                    <p>2份</p>
-                    <p>5份</p>
-                    <p>10份</p>
-                    <p>50份</p>
+                    <p @click="two($event)">2份</p>
+                    <p @click="five($event)">5份</p>
+                    <p @click="ten($event)">10份</p>
+                    <p @click="fifty($event)">50份</p>
                 </div>
-                <div class="peoplecart">
+                <div class="peoplecart" @click="toyouhuiquan()"> 
                     <span class="cart">优惠券</span>
                     <span class="selectcard">选择优惠券&nbsp;></span>
                 </div>
@@ -44,15 +44,15 @@
                             <span class="unit"><strong>0.00</strong>得到贝</span>&nbsp;
                             <span class="nomoney">(不足支付)</span>
                         </div>
-                        <div class="right">
+                        <div class="right" @click="torechargemoney()">
                             <span>充值</span>
                         </div>
                     </div>
                 </div>
                 <div class="attention">
                     <ul>
-                        <li>购买后可在365天内赠送给任意好友，过期商品将无法再被领取</li>
-                        <li>你即将购买的商品为虚拟服务,购买后不支持退订、转让、退还、请酌情确认。</li>
+                        <li><strong>▪</strong>购买后可在365天内赠送给任意好友，过期商品将无法再被领取</li>
+                        <li><strong>▪</strong>你即将购买的商品为虚拟服务,购买后不支持退订、转让、退还、请酌情确认。</li>
                     </ul>
                 </div>
                
@@ -60,11 +60,10 @@
          </div>
           <div class="payfor">
                 <p class="spanlist">
-                    <span>应付：<strong>19.90得到贝</strong><i style="color:#939393;">^</i></span>
-                    
+                    <span>应付：<strong>{{singleprice}}得到贝</strong><i style="color:#939393;"></i></span>
                 </p>
-                <div class="makesure">
-                    <span>确认支付</span>
+                <div class="makesure" >
+                    <span @click="payfor()">确认支付</span>
                 </div>
           </div>
     </div>
@@ -74,14 +73,79 @@ export default {
     data() {
         return {
             num:1,
+            price:19.90,
+            singleprice:19.90,
+            minusprice:this.$route.query.numprice,
+            numprice:this.$route.query.numprice,
         }
     },
     methods: {
+         toyouhuiquan(){
+             this.$router.push({path:"zengsongyouhuiquan",query:{singleprice:this.singleprice}})
+        },
          tohome(){
             this.$router.push("/details")
         },
        add(){
-            this.num=num++;
+           if(this.num>49){
+                this.num=50;
+           }else{
+            this.num++;
+             this.singleprice=(Number(this.singleprice) + Number(this.price))/this.num;
+              this.singleprice=(this.singleprice * this.num).toFixed(2);
+           }
+           
+        },
+         minus(){
+             if(this.num<2){
+                 this.num=1;
+                 this.singleprice=19.90
+             }else{
+                 this.num--;
+                 this.singleprice=(Number(this.singleprice) - Number(this.price))/this.num;
+                this.singleprice=(this.singleprice * this.num).toFixed(2);
+             }
+            
+        },
+        two(e){
+            let text=e.target.innerHTML;
+            let splicetext= text.substring(0,text.length - 1);
+            this.num=Number(splicetext);
+            this.singleprice=Number(this.price);
+            this.singleprice=(this.singleprice * this.num)/2;
+            this.singleprice=(this.singleprice * this.num).toFixed(2);
+        },
+        five(e){
+            let text=e.target.innerHTML;
+            let splicetext= text.substring(0,text.length - 1);
+            this.num=Number(splicetext);
+            this.singleprice=Number(this.price);
+            this.singleprice=(this.singleprice * this.num)/5;
+            this.singleprice=(this.singleprice * this.num).toFixed(2);
+        },
+        ten(e){
+            let text=e.target.innerHTML;
+            let splicetext= text.substring(0,text.length - 1);
+            this.num=Number(splicetext);
+            this.singleprice=Number(this.price);
+            this.singleprice=(this.singleprice * this.num)/10;
+            this.singleprice=(this.singleprice * this.num).toFixed(2);
+        },
+        fifty(e){
+            let text=e.target.innerHTML;
+            let splicetext= text.substring(0,text.length - 1);
+              this.num=Number(splicetext);
+            this.singleprice=Number(this.price);
+            this.singleprice=(this.singleprice * this.num)/50;
+            this.singleprice=(this.singleprice * this.num).toFixed(2);
+            
+        },
+        torechargemoney(){
+               this.$router.push("/rechargemoney")
+        },
+        payfor(){
+             alert("支付成功");
+             this.$router.push("/home")
         }
     },
 }
@@ -94,7 +158,7 @@ export default {
 }
 .topback{
      padding: 0 .16rem;
-    height:.5rem; ;
+    height:.5rem; 
      line-height: .5rem;
     font-size: .2rem;
     position: relative;
@@ -106,16 +170,12 @@ export default {
 }
 .topback .arrow{
     color: #999999;
-    /* margin-right: .9rem; */
     position: absolute;
     left: .16rem;
 }
 .topback .total{
     color: #676767;
     font-weight: bolder;
-    /* position: absolute;
-    top:10px;
-    left: 1.8rem;    */
     text-align: center;
 }
 .right .booksname{
@@ -254,12 +314,15 @@ export default {
 }
 .payfor{
     display: flex;
+    width: 100%;
     height: .59rem;
     flex-direction: row;
+    justify-content: space-between;
     flex-shrink: 1;
     line-height: .59rem;
     background: #f7f7f7;
      position: relative;
+       flex-wrap: nowrap;
 
 }
 .payfor strong{
@@ -267,9 +330,6 @@ export default {
 }
 .payfor .spanlist{
       margin-left: 10px;
-      display: flex;
-      flex-shrink: 1;
-      flex-wrap: nowrap;
 }
 .payfor span{
      font-size: .16rem;
@@ -283,7 +343,7 @@ export default {
      height: .385rem;
     line-height: .385rem;
     color: #f5f5f5;
-    margin-left: .7rem;
+    margin-left: .1rem;
     background:   #ff6808;  
     text-align: center;
     vertical-align: middle;
