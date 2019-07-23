@@ -2,7 +2,7 @@
     <div class="audio">
         <div class="audioTop">
             <img src="../../../static/image/1.jpg"><span>罗辑思维</span><span class="audioAll" @click="music()">>播放全部</span>
-            <img :src="boll?'../../../static/image/nav_01.png':'../../../static/image/nav_02.png'"><p :class="boll?'pss':'ps'">踩刹车时踩刹车时踩刹车四川省</p>
+            <img :src="boll?'../../../static/tu/r/f/a0m.png':'../../../static/tu/r/f/a0l.png'"><p :class="boll?'pss':'ps'" style="float:left">踩刹车时踩刹车时踩刹车四川省</p>
         </div>
         <div class="di main-wrap" v-loading="audio.waiting" v-if="boll">
             <!-- 这里设置了ref属性后，在vue组件中，就可以用this.$refs.audio来访问该dom元素 -->
@@ -16,7 +16,8 @@
             @loadedmetadata="onLoadedmetadata"
             ></audio>
             <div>
-                <p @click="guanbi()">X</p>
+              <p @click="xiangqing()" style="color:white;font-size:12px;float:right;background:blue;border-radius:8px;padding:2px">详情</p>
+                <p @click="guanbi()" style="color:white;font-size:12px;float:right;background:red;border-radius:8px;padding:2px">关闭</p>
                 <el-button type="text" @click="startPlayOrPause">{{audio.playing | transPlayPause}}</el-button>
                 <!-- <el-button v-show="!controlList.noSpeed" type="text" @click="changeSpeed">{{audio.speed | transSpeed}}</el-button> -->
 
@@ -111,6 +112,9 @@ export default {
           }
         })
       },
+      xiangqing(){
+        this.$router.push({path:"/audioxq"})
+      },
       changeSpeed() {
         let index = this.speeds.indexOf(this.audio.speed) + 1
         this.audio.speed = this.speeds[index % this.speeds.length]
@@ -187,8 +191,8 @@ export default {
       // 当加载语音流元数据完成后，会触发该事件的回调函数
       // 语音元数据主要是语音的长度之类的数据
       onLoadedmetadata(res) {
-        console.log('loadedmetadata')
-        console.log(res)
+        // console.log('loadedmetadata')
+        // console.log(res)
         this.audio.waiting = false
         this.audio.maxTime = parseInt(res.target.duration)
       },
@@ -218,12 +222,13 @@ export default {
 
 <style scoped>
     .audio{
-        font-size: 12px;
         margin:0 .15rem;
         clear: both;
-        margin-top: 2.65rem;
+        margin-top: .25rem;
         background: #fff;
         padding: 10px;
+        float: left;
+        width: 86%;
     }
     .audioTop img:nth-of-type(1){
         width: .3rem;
@@ -237,6 +242,7 @@ export default {
         height: .24rem;
         border-radius: 50%;
         clear: both;
+        float: left;
     }
     .audioTop span{
         float: left;
@@ -254,10 +260,14 @@ export default {
         line-height: .24rem;
     }
     .audioTop .ps{
+      font-size: 12px;
         color: black;
+        margin-top:4px;
     }
     .audioTop .pss{
+      font-size: 12px;
         color: orange;
+        margin-top:4px;
     }
     .floatMusic{
         width: 3.55rem;
@@ -272,5 +282,12 @@ export default {
         width:.34rem;
         height:.34rem;
         border-radius: 6px;
+    }
+    .main-wrap{
+        width: 56px;
+        height: 50px;
+        overflow: hidden;
+        clear: both;
+        font-size: 12px;
     }
 </style>

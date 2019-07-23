@@ -28,6 +28,7 @@ export default {
         height: 36px;
         position: fixed;
         top: 0;
+        left: 0;
         font-size: 12px;
         z-index: 99;
         background: #f7f7f8;
@@ -51,6 +52,8 @@ export default {
     }
     .search i{
         font-size: .22rem;
-        margin-left: .17rem;
+        position: fixed;
+        top: 8px;
+        right: 20px;
     }
 </style>

@@ -137,6 +137,8 @@ import Good from "../pages/Ebook/goodbook";
 import Listen from "../pages/Ebook/listen";
 import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
+import Audioxq from "../pages/audioxq";
+import Searchitem from "../pages/searchitem";
 Vue.use(Router)
 
 export default new Router({
@@ -399,6 +401,16 @@ export default new Router({
       path:'/listenDetail',
       name:'ListenDetail',
       component:ListenDetail
+    },
+    {
+      path:'/audioxq',
+      name:'Audioxq',
+      component:Audioxq
+    },
+    {
+      path: '/searchitem',
+      name: 'Searchitem',
+      component: Searchitem
     },
     {
       path:'/*',

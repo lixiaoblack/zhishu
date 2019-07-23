@@ -1,12 +1,14 @@
 <template>
     <div class="search">
-        <input v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funa()">搜索</span><span @click="cancel()">取消</span>
+        <input v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funb()" style="display:inline-block">搜索</span><span @click="cancel()" style="display:inline-block">取消</span>
         <div class="serch_result" v-show="serch_result_issue">
             <li v-for="item in searchData" :key="item.length">
             {{ item.name }}
             </li>
         </div>
         <img src="../../static/tu/r/a7/a1j.png" class="imgSearch">
+        <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 4px solid #ccc">热门搜索</p>
+    
     </div>
 </template>
 
@@ -45,7 +47,9 @@ export default {
             }else{
                 this.serch_result_issue = false
             }
-        
+        },
+        funb(){
+            this.$router.push({path:"/searchitem"})
         }
     },
     computed: {

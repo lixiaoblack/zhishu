@@ -3,12 +3,12 @@
         <div class="allTop">
             <p>每天听本书</p><router-link to="/listen"><span>全部</span></router-link>
         </div>
-        <div class="flot">
-            <img src="../../../static/image/lun_01.jpg">    
+        <div class="flot" @click="skip(data)">
+            <img :src="imgUrl">    
             <div>
-                <p>《{{subtitle}}》</p>
+                <p>{{subtitle}}</p>
                 <span>{{courseFeatureIntroI}}</span>
-                <span>21分44秒</span>
+                <span>{{time}}</span>
             </div>
             <span class="price">{{booksSprice}}得到贝</span>
         </div>
@@ -30,8 +30,16 @@ export default {
     props:{
         subtitle:String,
         courseFeatureIntroI:String,
-        booksSprice:String
-    }
+        booksSprice:Number,
+        time:String,
+        imgUrl:String,
+        data:Object
+    },
+    methods: {
+         skip(val){
+           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listen_id)}})
+       },
+    },
 }
 </script>
 

@@ -3,14 +3,14 @@
         <div class="allTop">
             <p>电子书独家首发</p><router-link to="/eBook"><span>全部</span></router-link>
         </div>
-        <div class="flot">
-            <img src="../../../static/image/lun_01.jpg">    
+        <div class="flot" @click="skip(sss)">
+            <img :src="imgUrl">    
             <div>
-                <p>《巴拉巴拉巴拉巴》</p>
-                <span>啊实打实的撒的撒打算打算三生三世三事实上所所所所所在现场</span>
+                <p>《{{subtitle}}》</p>
+                <span>{{courseFeatureIntroI}}</span>
                 <span>21分44秒</span>
             </div>
-            <span class="price">4.9得到贝</span>
+            <span class="price">{{booksSprice}}得到贝</span>
         </div>
         <div class="goodBook">
             <p class="goods">新书上架</p>
@@ -36,8 +36,15 @@ export default {
     props:{
         subtitle:String,
         courseFeatureIntroI:String,
-        booksSprice:String
-    }
+        booksSprice:String,
+        imgUrl:String,
+        sss:Object
+    },
+    methods: {
+        skip(val){
+           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.id)}})
+       }
+    },
 }
 </script>
 

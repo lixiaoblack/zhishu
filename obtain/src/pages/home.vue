@@ -9,11 +9,23 @@
                 <span>{{v.title}}</span>
             </router-link>
         </div>
-        <div v-for="(item, index) in audios" :key="index+111">
-            <Audio :theUrl="item.url" :theControlList="item.controlList"/>
+        <div v-for="(v, u) in audios" :key="u+111">
+            <Audio :theUrl="v.url" :theControlList="v.controlList"/>
         </div>
-        <Homelisten v-for="(v,i) in listenArr" :key="i+11111" :subtitle="listenArr[0].interface.subtitle" :courseFeatureIntroI="listenArr[0].booksDetails.courseFeatureIntroI" :booksSprice="listenArr[0].interface.booksSprice"></Homelisten>
-        <Homebooks></Homebooks>
+        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listen_subtitle" :courseFeatureIntroI="listenArr[0].listen_publisher_intro" :booksSprice="listenArr[0].listen_sprice" :time="listenArr[0].listen_audio_time" :imgUrl="listenArr[0].listen_"></Homelisten>
+        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].subtitle" :courseFeatureIntroI="bookArr[0].book_intro" :booksSprice="bookArr[0].books_sprice" :imgUrl="bookArr[0].img_url"></Homebooks>
+        <div class="allTop">
+            <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
+        </div>
+        <div class="course">
+        <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice"></Homecourse>
+        </div>
+        <div class="allTop" style="marginTop:3.82rem">
+            <p>实物商城</p><router-link to="/shop"><span>全部</span></router-link>
+        </div>
+        <div style="marginLeft:0.15rem">
+            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice"></Homeshop>
+        </div>
     </div>
 </template>
 
@@ -24,6 +36,8 @@ import Imgspan from '../components/home/imgSpan'
 import Homelisten from '../components/home/homelisten'
 import Homebooks from '../components/home/homebooks'
 import Audio from '../components/home/audio'
+import Homecourse from '../components/home/homecourse'
+import Homeshop from '../components/home/homeshop'
 export default {
     components:{
         Search,
@@ -31,7 +45,9 @@ export default {
         Imgspan,
         Homelisten,
         Homebooks,
-        Audio
+        Audio,
+        Homecourse,
+        Homeshop
     },
     data() {
         return {
@@ -47,7 +63,7 @@ export default {
                 {imgUrl:"../../static/image/nav_02.png",title:"医学健康",link:"/classify/medicalhealth/quanbu"},
                 {imgUrl:"../../static/image/nav_03.png",title:"社会学",link:"/classify/sociology/quanbu"},
                 {imgUrl:"../../static/image/nav_04.png",title:"心理学",link:"/classify/psychology/quanbu"},
-                {imgUrl:"../../static/image/nav_05.png",title:"家庭亲子",link:"/classify/family/quanbu"},
+                {imgUrl:"../../static/image/nav_05.png",title:"家庭亲自",link:"/classify/family/quanbu"},
                 {imgUrl:"../../static/image/nav_06.png",title:"社会学",link:"/classify/sociology/quanbu"},
                 {imgUrl:"../../static/image/nav_07.png",title:"管理学",link:"/classify/management/quanbu"},
                 {imgUrl:"../../static/image/nav_08.png",title:"职场",link:"/classify/workplace/quanbu"},
@@ -55,6 +71,9 @@ export default {
                 {imgUrl:"../../static/image/nav_10.png",title:"全部分类",link:"/classify/psychology/quanbu"},
             ],
             listenArr:[],
+            bookArr:[],
+            courseArr:[],
+            shopArr:[],
             audios: [
                 {
                 url: './static/falling-star.mp3',
@@ -65,10 +84,36 @@ export default {
     },
     created() {
         this.axios({
-            url:"/sss/csss",
+            url:"/listen",
             methods:"get"
         }).then((ok)=>{
-            this.listenArr = ok.data.listenBooks
+            for(var i=0; i<1; i++){
+                this.listenArr.push(ok.data.listen[i]) 
+            }
+        })
+        this.axios({
+            url:"/jsondata/abc",
+            methods:"get"
+        }).then((ok)=>{
+            for(var i=0; i<1; i++){
+                this.bookArr.push(ok.data.EBook[i]) 
+            }
+        })
+        this.axios({
+            url:"/link/data",
+            methods:"get"
+        }).then((ok)=>{
+            for(var i=0; i<4; i++){
+                this.courseArr.push(ok.data.total[i]) 
+            }
+        })
+        this.axios({
+            url:"user/shop",
+            methods:"get"
+        }).then((ok)=>{
+            for(var i=0; i<3; i++){
+                this.shopArr.push(ok.data.shop[i]) 
+            }
         })
     },
 }
@@ -92,5 +137,29 @@ export default {
     .nav span{
         font-size: .11rem;
         color: #333333;
+    }
+    .allTop{
+        clear: both;
+        line-height: .52rem;
+        font-size: 12px;
+        height: .52rem;
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: .15rem;
+        margin: 0 15px;
+        padding: 0 10px;
+        background: #fff;
+        margin-top: 8.22rem;
+    }
+    .allTop p{
+        float: left;
+        font-size: .17rem;
+    }
+    .allTop span{
+        float: right;
+        font-size: .14rem;
+        color: #ff6b00;
+    }
+    .course{
+        margin-left: .15rem;
     }
 </style>
