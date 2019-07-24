@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="body">
       <div class="header">
          
                 <p :class="val.icon"></p>
@@ -10,7 +10,7 @@
        </div>
     
         <ul >
-             <ListenL v-for="(v,i) in arr" :key="i" :data="v" style="margin:0.1rem"></ListenL>
+             <ListenL v-for="(v,i) in arr" :key="i" :data="v" ></ListenL>
         </ul>
     </div>
 </template>
@@ -65,5 +65,7 @@ export default {
     font-size: .2rem;
     font-weight: 600;
 }
-
+.body{
+  padding: 0 .12rem;
+}
 </style>

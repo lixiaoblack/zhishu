@@ -5,16 +5,29 @@
                 <img src="../../../static/tu/r/a/a2.jpg">
                 <span>返回</span>
             </div>
-            <p>专题</p>
+            <p v-if="bool">专题</p>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            bool:true
+        }
+    },
     methods: {
         funa(){
             this.$router.go(-1)
+        }
+    },
+    props:{
+        blank:String
+    },
+    created() {
+        if(this.blank=="目录"){
+            this.bool=false
         }
     },
 }

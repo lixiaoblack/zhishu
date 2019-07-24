@@ -4,6 +4,31 @@ import Router from 'vue-router'
 import Classify from '../pages/classify';
 
 
+//登录注册
+import User from '../pages/user'
+import Login from '../pages/login'
+import Register from '../pages/register'
+import Set from '../pages/set'
+import Mone from '../pages/moduleone'
+import Mtwo from '../pages/moduletwo'
+import Mthree from '../pages/modulethree'
+
+//商城
+import Allproduct from '../pages/allproduct'
+import Havebuy from '../pages/havebuy'
+import Reservation from '../components/store/allproduct/slidetitle/reservation'
+import Newproduct from '../components/store/allproduct/productshow/newproduct'
+import Gift from '../components/store/allproduct/productshow/gift'
+import Stores from '../components/store/allproduct/productshow/stores'
+import Book from '../components/store/allproduct/productshow/book'
+import Relations from '../components/store/allproduct/productshow/relations'
+import Business from '../components/store/allproduct/productshow/business'
+import Office from '../components/store/allproduct/productshow/office'
+import Tea from '../components/store/allproduct/productshow/tea'
+import Reader from '../components/store/allproduct/productshow/reader'
+import Japan from '../components/store/allproduct/productshow/japan'
+
+
 // 心理学
 import Psychology from '../pages/psychology';
 import Qingxu from '../pages/psy/qingxu'
@@ -149,11 +174,13 @@ import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
 import Goodlisten from "../pages/Ebook/goodlisten"
 import ReadBook from "../pages/Ebook/readbook";
+import Author from "../pages/Ebook/author";
 ///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
+import Read from '../pages/read'
 Vue.use(Router)
 
 export default new Router({
@@ -308,9 +335,49 @@ export default new Router({
       ]
     },
     {
+      path:'/user',
+      name:'User',
+      component:User
+    },
+    {
+      path:'/login',
+      name:'Login',
+      component:Login
+    },
+    {
+      path:'/register',
+      name:'Register',
+      component:Register
+    },
+    {
+      path:'/set',
+      name:'Set',
+      component:Set
+    },
+    {
+      path:'/moduleone/:id',
+      name:'Mone',
+      component:Mone
+    },
+    {
+      path:'/moduletwo/:id',
+      name:'Mtwo',
+      component:Mtwo
+    },
+    {
+      path:'/modulethree/:id',
+      name:'Mthree',
+      component:Mthree
+    },
+    {
       path: '/default',
       name: 'Default',
       component: Default
+    },
+    {
+      path: '/read',
+      name: 'Read',
+      component: Read
     },
     {
       path: '/catalogue',
@@ -321,11 +388,6 @@ export default new Router({
       path: '/note',
       name: 'Note',
       component: Note
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home
     },
     {
       path: '/details',
@@ -439,6 +501,11 @@ export default new Router({
       component:ListenDetail
     },
     {
+      path:'/author',
+      name:'Author',
+      component:Author
+    },
+    {
       path:'/audioxq',
       name:'Audioxq',
       component:Audioxq
@@ -467,6 +534,85 @@ export default new Router({
       path: '/rechargemoney',
       name: 'Rechargemoney',
       component:Rechargemoney
+    },
+    //订单路由
+    {
+      path: '/havebuy',
+      name: 'Havebuy',
+      component: Havebuy,
+      //订单二级路由
+      children:[
+
+        {
+          path: '/havebuy/reservation',
+          name: 'Reservation',
+          component: Reservation
+        }
+      ]
+    },
+    //全部商品路由
+    {
+      path: '/allproduct',
+      name: 'Allproduct',
+      component: Allproduct,
+      //全部商品二级路由
+      children:[
+        {
+          path: '/allproduct/newproduct',
+          name: 'Newproduct',
+          component: Newproduct
+        },
+        {
+          path: '/allproduct/gift',
+          name: 'Gift',
+          component: Gift
+        },
+        {
+          path: '/allproduct/stores',
+          name: 'Stores',
+          component: Stores
+        },
+        {
+          path: '/allproduct/book',
+          name: 'Book',
+          component: Book
+        },
+        {
+          path: '/allproduct/relations',
+          name: 'Relations',
+          component: Relations
+        },
+        {
+          path: '/allproduct/business',
+          name: 'Business',
+          component: Business
+        },
+        {
+          path: '/allproduct/office',
+          name: 'Office',
+          component: Office
+        },
+        {
+          path: '/allproduct/tea',
+          name: 'Tea',
+          component: Tea
+        },
+        {
+          path: '/allproduct/reader',
+          name: 'Reader',
+          component: Reader
+        },
+        {
+          path: '/allproduct/japan',
+          name: 'Japan',
+          component: Japan
+        }
+      ]
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path:'/*',

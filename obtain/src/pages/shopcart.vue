@@ -1,5 +1,6 @@
 <template>
     <div class="content">
+        <TopIcon title="确认订单"></TopIcon>
         <div class="header">
             <div class="top">
                 <span class="topLeft">
@@ -48,12 +49,13 @@
                     删除
                 </div>
             </div>
-            <ShopFooter class="foot"></ShopFooter>
+            <ShopFooter class="foot" title="购物车"></ShopFooter>
         </div>
     </div>
 </template>
 
 <script>
+import TopIcon from "../componrnts/top"
 import ShopFooter from "../componrnts/shop/shopFooter"
 export default {
     data() {
@@ -140,6 +142,7 @@ export default {
     },
     components:{
         ShopFooter,
+        TopIcon
     }
 }
 </script>
@@ -157,6 +160,7 @@ export default {
         padding: .15rem .1rem ;
         flex: 1;
         overflow: auto;
+        margin-top: .46rem;
     }
     .top{
         padding: 0rem .1rem;

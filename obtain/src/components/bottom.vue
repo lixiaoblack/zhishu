@@ -1,19 +1,16 @@
 <template>
     <div>
         <ul>
-            <router-link to="">
+            <router-link to="/home">
                 <li @click="funa()"><img :src="boola?'../../static/tu/r/f/ai_.png':'../../static/tu/r/f/aia.png'" alt=""><span :style="boola?'color:black':'color:orange'">发现</span></li>
-            </router-link>
-            <router-link to="">
-                <li @click="funb()"><img :src="boolb?'../../static/tu/r/f/aib.png':'../../static/tu/r/f/aic.png'" alt=""><span :style="boolb?'color:black':'color:orange'">学习计划</span></li>
             </router-link>
             <router-link to="/knowledge">
                 <li @click="func()"><img :src="boolc?'../../static/tu/r/f/aid.png':'../../static/tu/r/f/aie.png'" alt=""><span :style="boolc?'color:black':'color:orange'">知识城邦</span></li>
             </router-link>
-            <router-link to="">
+            <router-link to="/havebuy">
                 <li @click="fund()"><img :src="boold?'../../static/tu/r/f/aif.png':'../../static/tu/r/f/aig.png'" alt=""><span :style="boold?'color:black':'color:orange'">已购</span></li>
             </router-link>
-            <router-link to="">
+            <router-link to="/user">
                 <li @click="fune()"><img :src="boole?'../../static/tu/r/f/aih.png':'../../static/tu/r/f/aii.png'" alt=""><span :style="boole?'color:black':'color:orange'">我的</span></li>
             </router-link>
         </ul>
@@ -25,7 +22,6 @@ export default {
     data() {
         return {
             boola:false,
-            boolb:true,
             boolc:true,
             boold:true,
             boole:true,
@@ -33,9 +29,7 @@ export default {
     },
     props:{
         ona:String,
-        onb:String,
         onc:String,
-        ond:String,
         one:String
     },
     methods: {
@@ -76,7 +70,7 @@ export default {
         },
     },
     created() {
-        if(this.ona==""){
+        if(this.ona=="发现"){
             this.boola=false
             this.boolb=true
             this.boolc=true
@@ -100,7 +94,7 @@ export default {
             this.boolc=true
             this.boold=false
             this.boole=true
-        }else if(this.one==""){
+        }else if(this.one=="我的"){
             this.boola=true
             this.boolb=true
             this.boolc=true
@@ -113,8 +107,8 @@ export default {
 
 <style scoped>
 ul span{
-    font-size: .1rem;
-    color: #9999;
+    font-size: .12rem;
+    color: rgba(160, 148, 148, 0.6);
     line-height:.1rem;
 }
 ul li{

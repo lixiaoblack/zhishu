@@ -7,8 +7,40 @@
             </li>
         </div>
         <img src="../../static/tu/r/a7/a1j.png" class="imgSearch">
-        <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 4px solid #ccc">热门搜索</p>
-    
+        <div class="history">
+            <div class="left">
+                <img src="../../static/tu/r/f/a9l.png"><span>我</span>
+            </div>
+            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+        </div>
+        <div class="history">
+            <div class="left">
+                <img src="../../static/tu/r/f/a9l.png"><span>啥事</span>
+            </div>
+            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+        </div>
+        <div class="history">
+            <div class="left">
+                <img src="../../static/tu/r/f/a9l.png"><span>我的</span>
+            </div>
+            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+        </div>
+        <span class="end">清除搜索记录</span>
+        <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7">热门搜索</p>
+        <div class="hot">
+            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+        </div>
+        <div class="hot">
+            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+        </div>
+        <div class="hot">
+            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+        </div>
+        <span class="hotspan">阿斯顿撒旦撒大声</span>
+        <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
+        <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
+        <span class="hotspan">阿萨飒是大大大飒的</span>
+        <span class="hotspan">曹盛</span>
     </div>
 </template>
 
@@ -79,6 +111,7 @@ export default {
         font-size: 12px;
         z-index: 99;
         background: #f7f7f8;
+        padding-top: 10px;
     }
     .intSearch{
         width: 2.85rem;
@@ -94,10 +127,57 @@ export default {
         width: 0.16rem;
         height: 0.16rem;
         position:absolute;
-        top: 10px;
+        top: 20px;
         left: 0.25rem;
     }
     .search span{
-        margin-left: 6px;
+        margin-left: 5px;
+        margin-right: 8px;
+    }
+    .hot img{
+        width: .16rem;
+        height: .16rem;
+    }
+    .hot{
+        padding: 5px;
+        background: #dde1e7;
+        display: flex;
+        width: 27%;
+        float: left;
+        border-radius: 3px;
+        margin-right:8px;
+        margin-left: 5px;
+    }
+    .hotspan{
+        margin-top: 5px;
+        background: #dde1e7;
+        float: left;
+        padding: 5px;
+        border-radius: 3px;
+    }
+    .history{
+        display: flex;
+        align-items: center;
+        padding: .1rem .2rem;
+        justify-content: space-between;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .history span{
+        font-size: .12rem;
+    }
+    .left{
+        display: flex;
+        align-items: center;
+    }
+    .history img{
+        width: .12rem;
+        height: .12rem;
+    }
+    .end{
+        width: 100%;
+        text-align: center;
+        padding: .15rem 0 ;
+        font-size: .14rem;
+        color: #999999;
     }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div class="content">
         <div class="header">
+            <TopIcon title="商场首页"></TopIcon>
             <header>首页</header>
         </div>
         <div class="middle">
@@ -16,11 +17,12 @@
                 </div>
             </div>
         </div>
-        <ShopFooter class="footer"></ShopFooter>
+        <ShopFooter class="footer" title="商城"></ShopFooter>
     </div>
 </template>
 
 <script>
+import TopIcon from "../componrnts/topFlex"
 import Items from "../componrnts/shop/shopitems"
 import Banner from "../componrnts/banner/banner"
 import ShopFooter from "../componrnts/shop/shopFooter"
@@ -35,7 +37,8 @@ export default {
         Banner,
         Items,
         ShopFooter,
-        SwiperBanner
+        SwiperBanner,
+        TopIcon
     },
     methods: {
         skip(){

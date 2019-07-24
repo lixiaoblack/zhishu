@@ -76,9 +76,9 @@ export default {
         line-height: .18rem;
     }
     .txtTwo{
-        width:1.5rem;
+        width: 1.5rem;
         overflow: hidden;
-        text-overflow: ellipsis;
         white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>
