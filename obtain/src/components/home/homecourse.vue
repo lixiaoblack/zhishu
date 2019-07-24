@@ -3,7 +3,7 @@
         <img :src="imgUrl">
         <span>{{title}}</span>
         <span>{{txtOne}}</span>
-        <span>{{txtTwo}}</span>
+        <span class="txtTwo">{{txtTwo}}</span>
         <span>{{people}}</span>
         <span>{{num}}讲/{{price}}得到贝</span>
         <!-- <img src="../../../static/img/tu.jpg">
@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         todetails(val){
-            this.$router.push({path:"/details",query:{id:val}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val)}})
         }
     },
 }
@@ -74,5 +74,11 @@ export default {
     }
     .all span{
         line-height: .18rem;
+    }
+    .txtTwo{
+        width:1.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>
