@@ -13,10 +13,10 @@ export default {
     },
     methods: {
         onClickLeft() {
-            this.$router.go(-1);
+            this.$router.push("/home");
         },
         onClickRight(){
-            this.$router.push("/home");
+            this.$router.push("/shopCart");
         }
   }
 }
@@ -24,9 +24,7 @@ export default {
 
 <style scoped>
     .topIcon{
-        position: fixed;
-        top: 0px;
-        width: 100%;
+        height: .46rem;
     }
     .van-icon{
         color: #666666;

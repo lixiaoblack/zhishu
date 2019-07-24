@@ -2,8 +2,7 @@
     <div>
       <div class="top">
         <div class="stick">
-          <span class="arrow" @click="funa()"><</span>
-          <div class="arrowTitle">订单列表</div>
+          <TopIcon title="订单列表"></TopIcon>
         </div>
       </div>
       <div class="buytitleBox">
@@ -21,12 +20,14 @@
 </template>
 
 <script>
+  import TopIcon from "../componrnts/top"
   import ShopFooter from "../componrnts/shop/shopFooter"
   import Reservation from "../components/store/allproduct/slidetitle/reservation"
     export default {
     components:{
       ShopFooter,
-      Reservation
+      Reservation,
+      TopIcon
     },
         data(){
         return {
@@ -58,7 +59,7 @@
   }
   .stick{
     background-color: white;
-    font-size: .2rem;
+    font-size: .14rem;
     height:.5rem;
     line-height: .5rem;
     /*position: fixed;*/
@@ -76,7 +77,7 @@
   }
   .arrowTitle{
     text-align: center;
-    font-size: .22rem;
+    font-size: .14rem;
     font-weight: bolder;
   }
   .buytitleBox{
@@ -84,7 +85,7 @@
     background-color: white;
     height:.5rem;
     line-height: .5rem;
-    font-size: .17rem;
+    font-size: .14rem;
     display: flex;
     color: #0f0f0f;
     /*padding-top: .5rem;*/
