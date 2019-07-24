@@ -1,51 +1,42 @@
 <template>
     <div>
-      <div class="header">
+        <div class="header">
          
                 <p :class="val.icon"></p>
                 <p class="title">{{val.title}}</p>
           
-         
+         <Author :data="kundun"></Author>
            
        </div>
-    
-        <ul>
-            <Host v-for= "(v,i) in arr" :key= "i" :data= "v"></Host>
-        </ul>
     </div>
 </template>
 <script>
-import Host from "../../components/Ebook/hotList"
-
+import Author from "../../components/Ebook/author"
 export default {
-    components:{
-        Host,
-       
-       
-    },
+   components:{
+         Author
+       },
      data() {
+      
     return {
         arr:[{}],
         val:{},
       type:""
     };
   },
-    created() {
-     
-         this.axios.get("/jsondata/abc").then(ok=> {
-         
-              this.arr=ok.data.EBook
-          
-           })
-         
-    
-      
-  },
-  beforeRouteEnter(to, from, next) {
+    beforeRouteEnter(to, from, next) {
     next((d) => {
       d.val =JSON.parse (to.query.val);
      d.type=to.query.type
     });
+  },
+  created() {
+     
+         this.axios.get("/listen").then(ok=> {
+         
+              this.arr=ok.data.listen
+         
+           })
   }
 }
 </script>
@@ -60,9 +51,5 @@ export default {
  justify-content: center;
  padding-top: .2rem;
  
-}
-.title{
-    font-size: .2rem;
-    font-weight: 600;
 }
 </style>

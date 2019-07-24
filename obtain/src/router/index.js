@@ -164,6 +164,7 @@ import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
 import Goodlisten from "../pages/Ebook/goodlisten"
 import ReadBook from "../pages/Ebook/readbook";
+import Author from "../pages/Ebook/author";
 ///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
@@ -452,6 +453,11 @@ export default new Router({
       path:'/listenDetail',
       name:'ListenDetail',
       component:ListenDetail
+    },
+    {
+      path:'/author',
+      name:'Author',
+      component:Author
     },
     {
       path:'/audioxq',

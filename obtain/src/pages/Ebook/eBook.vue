@@ -6,7 +6,7 @@
       <p @click="skipTryread(recently)" style="display:flex"><span style="font-size:.12rem;">{{recently.title}}</span><i :class="recently.icon"></i></p>
       
     </header>
-     <p style="font-size:0.16rem">搜索框</p>
+    <Search></Search>
     <nav>
        
          <OPEN v-for= "(v,i) in nav" :key= "i" :data= "v"></OPEN>
@@ -49,7 +49,7 @@
          <div class="bookType">
             <p class="cation">
                 <span>最近试读</span>
-                <span>查看全部 ></span>
+                <span  @click="skipGb(recently)">查看全部 ></span>
             </p>
             <ul class="recently">
                 <BOOK v-for= "(v,i) in recent" :key= "i" :data= "v"></BOOK>
@@ -95,13 +95,15 @@ import BOOK from "../../components/Ebook/book";
 import  Nav from "../../components/Ebook/nav1";
 import  ALLBOOK from "../../components/Ebook/allBook";
 import  OPEN from "../../components/Ebook/open";
+import Search from "../../components/home/search"
 export default {
     components:{
         TryRead,
         BOOK,
         Nav,
         ALLBOOK,
-        OPEN
+        OPEN,
+        Search
 
     },
   data() {

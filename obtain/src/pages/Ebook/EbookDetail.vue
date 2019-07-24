@@ -52,13 +52,16 @@
       <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
       <ALLBOOK v-for="(v,i) in likes" :key=i :data="v"></ALLBOOK>
     </div>
+   <BottomBar></BottomBar>
   </div>
 </template>
 <script>
+import BottomBar from "../../components/bottombar"
 import  ALLBOOK from "../../components/Ebook/allBook";
 export default {
   components:{
      ALLBOOK,
+     BottomBar
   },
   data() {
     return {
@@ -73,8 +76,8 @@ export default {
     open() {
       this.isShow = !this.isShow;
     },
-    skipPages(){
-      this.$router.push("")
+    SkipPages(){
+      this.$router.push({path:"/home"})
     }
   },
   computed: {
@@ -207,5 +210,40 @@ color: #ccc;
 }
 .date span{
 display: inline;
+}
+.bottombar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #e7e7e7;
+    width: 3.75rem;
+    height: .58rem;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+}
+
+.givefriend{
+    font-size:.095rem;
+      color: #898989;   
+}
+.freelisten{
+      font-size:.16rem;
+       color: #5e5e5e;
+}
+.bottombar span{
+    font-size: .16rem;
+}
+.buy{
+    width: 1.51rem;
+    height: .395rem;
+    line-height: .395rem;
+    background: #ea752f;
+    border-radius: 15px;
+    color: #f5ffff;
+    text-align: center;
+}
+.verticalline{
+    color: #e6e6e6;
 }
 </style>

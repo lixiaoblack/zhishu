@@ -25,7 +25,24 @@
         <img src="../../../static\ebookImg\logo2.jpg" alt="">
       </p>
     </section>
-    <p style="font-size:.13rem,font-weight:600;">支付方式</p>
+    <p style="font-size:.15rem,font-weight:600;margin:.22rem .25rem 0 .11rem">支付方式</p>
+    <div class="pay">
+      <p style="line-height:.5rem;">
+        <span>余额</span>
+        <span style="color:#ed742f">0.00得到贝</span>
+        <span style="color:#ed742f">(不足支付)</span>
+      </p>
+      <p style="width:.65rem; height:.3rem; border-radios:5px; color:white; background:#ed742f;line-height:.3rem; text-align: center" @click="pay()">
+        充值
+      </p>
+    </div>
+   <ol style="padding:.2rem;color:#ccc;">
+     <li>您将购买的商品为虚拟内容服务，购买后不支持退订。转让请斟酌确认 </li>
+     <li>购买后可在已购区查看和使用</li>
+   </ol>
+   <footer>
+     {{arr.listenSprice}}得到贝/确认支付
+   </footer>
   </div>
 </template>
 <script>
@@ -68,8 +85,12 @@ export default {
     },
     checkStatus() {
       this.isShow = !this.isShow;
-    }
+    },
+     pay(){
+    this.$router.push({path:"/rechargemoney"})
   }
+  }
+ 
 };
 </script>
 <style scoped>
@@ -107,5 +128,28 @@ section img{
   margin-top:.2rem;
   width: 3.35rem;
   height: .9rem;
+ 
+}
+span{
+  display: inline;
+}
+.pay{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 .16rem;
+  background:white;
+  padding: 0 .2rem;
+  align-items: center;
+}
+footer{
+  height: 50px;
+  background: #f3b989;
+  color: white;
+  font-size: .15rem;
+  text-align: center;
+  line-height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>

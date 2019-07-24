@@ -35,8 +35,8 @@
         <span>主编力荐</span>
         <span>查看全部 ></span>
       </p>
-      <ul class="list">
-        <listenM :data="arr[0]" style="margin:0.1rem"></listenM>
+      <ul >
+        <listenM :data="arr[0]"></listenM>
       </ul>
     </div>
     <div class="bookType">
@@ -70,10 +70,10 @@
     <div class="bookType">
       <p class="cation">
         <span>猜你喜欢</span>
-        <span>查看全部 ></span>
+        
       </p>
       <ul class="list">
-        <listenM v-for="(v,i) in likeBook" :key="i" :data="v" style="margin:0.1rem"></listenM>
+        <listenM v-for="(v,i) in likeBook" :key="i" :data="v"></listenM>
       </ul>
     </div>
   </div>
@@ -98,8 +98,8 @@ export default {
       nav: [
         { title: "新书上架", icon: "el-icon-notebook-2",path:"/goodlisten" },
         { title: "精选书单", icon: "el-icon-reading",path:"/goodlisten" },
-        { title: "品牌解读人", icon: "el-icon-notebook-1",path:"/goodlisten" },
-        { title: "分类", icon: "el-icon-document",path:"/home" }
+        { title: "品牌解读人", icon: "el-icon-notebook-1",path:"/author" },
+        { title: "分类", icon: "el-icon-document",path:"/classify/psychology" }
       ]
     };
   },
