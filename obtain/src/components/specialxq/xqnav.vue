@@ -23,11 +23,11 @@
         <div class="bom" v-if="bom">
             <div class="bottom">
                 <ul>
-                    <li><img src="../../../static/tu/r/a7/a8j.png"><span>微信</span></li>
-                    <li><img src="../../../static/tu/r/a7/a8b.png"><span>朋友圈</span></li>
-                    <li><img src="../../../static/tu/r/a7/a8c.png"><span>QQ</span></li>
-                    <li><img src="../../../static/tu/r/a7/a8e.png"><span>新浪微博</span></li>
-                    <li><img src="../../../static/tu/r/a7/a85.png"><span>复制链接</span></li>
+                    <li><img src="../../../static/tu/r/f/a8j.png"><span>微信</span></li>
+                    <li><img src="../../../static/tu/r/f/a8b.png"><span>朋友圈</span></li>
+                    <li><img src="../../../static/tu/r/f/a8c.png"><span>QQ</span></li>
+                    <li><img src="../../../static/tu/r/f/a8e.png"><span>新浪微博</span></li>
+                    <li><img src="../../../static/tu/r/f/a85.png"><span>复制链接</span></li>
                 </ul>
             </div>
             <h5 @click="funb()">取消</h5>

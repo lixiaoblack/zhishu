@@ -1,5 +1,7 @@
 <template>
     <div>
+        <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        </van-pull-refresh> -->
         <Search></Search>
         <Banner></Banner>
         <Imgspan :newarr="classArr"></Imgspan>
@@ -79,7 +81,9 @@ export default {
                 url: './static/falling-star.mp3',
                 controlList: 'onlyOnePlaying'
                 }
-            ]
+            ],
+            // count: 0,
+            // isLoading: false
         }
     },
     created() {
@@ -116,6 +120,15 @@ export default {
             }
         })
     },
+    // methods:{
+    //     onRefresh() {
+    //         setTimeout(() => {
+    //             this.$toast('刷新成功');
+    //             this.isLoading = false;
+    //             this.count++;
+    //         }, 500);
+    //     }
+    // }
 }
 </script>
 
