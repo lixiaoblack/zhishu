@@ -5,12 +5,12 @@
                   <img :src="data.listenImgUrl" />
                 <div class="right">
                     <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.listenSubtitle}}</p>
-                    <p style="font-size:0.13rem; color:#828282; line-height:.18rem">{{data.listenAudioIntro}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioIntro}}</p>
                     <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioTime}}</p>
-                    <p style="float:right">
-                      <span  style="font-size:0.11rem; color:#ed742f; ">{{data.listenSprice}}得到贝</span>
-                      <span class="read" @click.stop="buy(data)">购买</span>
-                    </p>
+                    <div class="buy">
+                      <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenSprice}}得到贝</p>
+                      <p class="read" @click.stop="buy(data)">购买</p>
+                    </div>
                 </div>
      </li>
             
@@ -35,9 +35,7 @@ export default {
 };
 </script>
 <style scoped>
-span{
-  display: inline;
-}
+
 .box {
   padding: 0 0.16rem;
 }
@@ -57,15 +55,27 @@ h4 {
   font-weight: 600;
   line-height: 0.4rem;
 }
-.read{
+
+    .dis1{
+  font-size:0.11rem;
+   color: #ff8529;
+  /* float: right; */
+}
+.buy{
+  display: flex;
+ margin-left: 1.2rem;
+line-height: .3rem;
+
+}
+ .read{
         width: 0.75rem;
         line-height: .3rem;
-        background: #ed742f;
+        background: #e1793c;
         color:white;
         border-radius: 0.15rem ;
         font-size: .13rem;
         text-align: center;
         font-weight: 600; 
-        display:inline-block;
     }
+    
 </style>

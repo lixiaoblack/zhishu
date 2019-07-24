@@ -9,24 +9,40 @@
       <div>
         <p style="margin-bottom:.18rem; display:flex;font-weight:600">
           <span>{{arr.listenSubtitle}}</span>|
-          <span>{{arr.listenAuthor}}</span>
+          <span>{{arr.listenAuthor}}解读</span>
         </p>
         <p v-if="isShow" style="color:#ed742f">{{arr.listenSprice}}得到贝</p>
-        <p v-else>会员有效期内免费听</p>
+        <p v-else style="color:#ffc794">会员有效期内免费听</p>
       </div>
     </div>
     <section>
-      <div @click="checkStatus">
+      <div @click="checkStatus" class="secIsShow">
         <p>听书福利:</p>
-        <!-- <p>
-          <mt-checklist
-            title="checkbox list"
-            v-model="value"
-            :options="['已选择', '未选择']"
-          ></mt-checklist>
-        </p> -->
+          <p v-if="isShow">未选择</p>
+          <p v-else>已选择</p>
       </div>
+      <p>
+        <img src="../../../static\ebookImg\logo2.jpg" alt="">
+      </p>
     </section>
+    <p style="font-size:.15rem,font-weight:600;margin:.22rem .25rem 0 .11rem">支付方式</p>
+    <div class="pay">
+      <p style="line-height:.5rem;">
+        <span>余额</span>
+        <span style="color:#ed742f">0.00得到贝</span>
+        <span style="color:#ed742f">(不足支付)</span>
+      </p>
+      <p style="width:.65rem; height:.3rem; border-radios:5px; color:white; background:#ed742f;line-height:.3rem; text-align: center" @click="pay()">
+        充值
+      </p>
+    </div>
+   <ol style="padding:.2rem;color:#ccc;">
+     <li>您将购买的商品为虚拟内容服务，购买后不支持退订。转让请斟酌确认 </li>
+     <li>购买后可在已购区查看和使用</li>
+   </ol>
+   <footer>
+     {{arr.listenSprice}}得到贝/确认支付
+   </footer>
   </div>
 </template>
 <script>
@@ -68,9 +84,13 @@ export default {
       this.$router.go(-1);
     },
     checkStatus() {
-      this.check = !this.check;
-    }
+      this.isShow = !this.isShow;
+    },
+     pay(){
+    this.$router.push({path:"/rechargemoney"})
   }
+  }
+ 
 };
 </script>
 <style scoped>
@@ -92,5 +112,44 @@ header {
   background: white;
   padding: 0.15rem 0.12rem;
   display: flex;
+}
+.secIsShow{
+  display: flex;
+  justify-content: space-between;
+  color: #7f5b39;
+}
+section{
+  margin: .1rem;
+  background: #f3e4bd;
+  padding: .15rem .1rem .1rem;
+  font-size: .14rem;
+}
+section img{
+  margin-top:.2rem;
+  width: 3.35rem;
+  height: .9rem;
+ 
+}
+span{
+  display: inline;
+}
+.pay{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 .16rem;
+  background:white;
+  padding: 0 .2rem;
+  align-items: center;
+}
+footer{
+  height: 50px;
+  background: #f3b989;
+  color: white;
+  font-size: .15rem;
+  text-align: center;
+  line-height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>

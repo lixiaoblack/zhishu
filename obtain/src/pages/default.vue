@@ -1,7 +1,6 @@
 <template>
     <div>
-        <Course v-for="(v,i) in  kexuexueyuandata " :key="i" :data="v"></Course>
-        
+        <Course v-for="(v,i) in  totaldata " :key="i" :data="v"></Course>
     </div>
 </template>
 <script>
@@ -14,7 +13,7 @@ export default {
     },
      data(){
         return {
-            kexuexueyuandata:[]
+          totaldata:[]
         }
     },
     created(){
@@ -23,7 +22,7 @@ export default {
                 url:'/link/data',
                 method:'get'
             }).then((ok)=>{
-                this.kexuexueyuandata=ok.data.kexuexueyuan
+                this.totaldata=ok.data.total
             })
     },
 }

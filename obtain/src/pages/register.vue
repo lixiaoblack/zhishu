@@ -48,6 +48,9 @@ export default {
         }
     },
     methods:{
+        fun(){
+            this.$router.go(-1);
+        },
         fun2(){//判断用户名规则合法
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
             if(a.test(this.username)==true){
@@ -116,9 +119,10 @@ export default {
 .box{
     /* overflow: auto; */
     margin: 2px;
+    font-size: .16rem;
 }
 .close{
-    font-size: 40px;
+    font-size: .2rem;
     height: 0.3rem;
     margin: 0;
     padding: 0;
@@ -144,7 +148,7 @@ export default {
     margin-top: 4px;
     margin-left: 4px;
     padding: 0;
-    font-size: 28px;
+    font-size: .14rem;
     text-shadow:gray 2px 2px 6px;
 }
 .divcs{
@@ -158,50 +162,50 @@ export default {
     justify-content: space-around;
 }
 .usercs,.passcs{
-    text-shadow:gray 6px 6px 10px;
     /* box-shadow:4px 4px 10px gray;    */
     background-color:#f7f7f8;
-    border-radius: 16px;
+    border-radius: .08rem;
     border:0px;
     border-bottom:1px solid #000;   
     outline:0;
     height: 0.2rem;
     width: 80%;
-    margin:10px 20px;
+    margin:10px .1rem;
     padding:6px;
     text-align: center;
 /* -webkit-appearance:none;
   -moz-appearance: none; */
 }
 .usercs{
-    margin-top: 40px;
+    margin-top: .2rem;
 }
 .passcs{
-    margin-bottom:40px;
+    margin-bottom:.2rem;
 }
 .ins-i{
     width:100%;
     display: flex;
     justify-content: space-around;
     text-align: center;
-    margin: 20px 0;
+    margin: .1rem 0;
 }
 .ins-1{
-    margin-top: 16px;
+    margin-top: .08rem;
     width: 70%;
     outline:0;
     height: 0.4rem;
     background-color:sandybrown;
     color: rgb(255, 249, 249);
     border-radius: 12px;
-    font-size: 16px;
+    font-size: .08rem;
+    border: 0px;
 }
 .ins-2{
     background-color:#bcbcce;
 }
 .main{
-    margin-top: 30px;   
-    font-size: 16px;
+    margin-top: .15rem;   
+    font-size: .08rem;
     display: flex;
     justify-content: space-around;
 }

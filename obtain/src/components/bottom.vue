@@ -22,7 +22,6 @@ export default {
     data() {
         return {
             boola:false,
-            boolb:true,
             boolc:true,
             boold:true,
             boole:true,
@@ -30,9 +29,7 @@ export default {
     },
     props:{
         ona:String,
-        onb:String,
         onc:String,
-        ond:String,
         one:String
     },
     methods: {
@@ -97,7 +94,7 @@ export default {
             this.boolc=true
             this.boold=false
             this.boole=true
-        }else if(this.one==""){
+        }else if(this.one=="我的"){
             this.boola=true
             this.boolb=true
             this.boolc=true
@@ -110,8 +107,8 @@ export default {
 
 <style scoped>
 ul span{
-    font-size: .1rem;
-    color: #9999;
+    font-size: .12rem;
+    color: rgba(160, 148, 148, 0.6);
     line-height:.1rem;
 }
 ul li{

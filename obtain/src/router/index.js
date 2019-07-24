@@ -174,11 +174,13 @@ import Buy from "../pages/Ebook/buy";
 import ListenDetail from "../pages/Ebook/listenDetail";
 import Goodlisten from "../pages/Ebook/goodlisten"
 import ReadBook from "../pages/Ebook/readbook";
+import Author from "../pages/Ebook/author";
 ///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
+import Read from '../pages/read'
 Vue.use(Router)
 
 export default new Router({
@@ -373,6 +375,11 @@ export default new Router({
       component: Default
     },
     {
+      path: '/read',
+      name: 'Read',
+      component: Read
+    },
+    {
       path: '/catalogue',
       name: 'Catalogue',
       component: Catalogue
@@ -492,6 +499,11 @@ export default new Router({
       path:'/listenDetail',
       name:'ListenDetail',
       component:ListenDetail
+    },
+    {
+      path:'/author',
+      name:'Author',
+      component:Author
     },
     {
       path:'/audioxq',
