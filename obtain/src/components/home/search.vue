@@ -32,6 +32,7 @@ export default {
         font-size: 12px;
         z-index: 99;
         background: #f7f7f8;
+        padding-top: 10px;
     }
     .intSearch{
         width: 3.05rem;
@@ -47,13 +48,13 @@ export default {
         width: 0.16rem;
         height: 0.16rem;
         position:absolute;
-        top: 10px;
+        top: 20px;
         left: 0.25rem;
     }
     .search i{
         font-size: .22rem;
         position: fixed;
-        top: 8px;
+        top: 18px;
         right: 20px;
     }
 </style>

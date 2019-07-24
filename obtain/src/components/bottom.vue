@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <router-link to="">
+            <router-link to="/home">
                 <li @click="funa()"><img :src="boola?'../../static/tu/r/f/ai_.png':'../../static/tu/r/f/aia.png'" alt=""><span :style="boola?'color:black':'color:orange'">发现</span></li>
             </router-link>
             <router-link to="">
@@ -76,7 +76,7 @@ export default {
         },
     },
     created() {
-        if(this.ona==""){
+        if(this.ona=="发现"){
             this.boola=false
             this.boolb=true
             this.boolc=true

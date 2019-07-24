@@ -15,9 +15,9 @@
             @timeupdate="onTimeupdate" 
             @loadedmetadata="onLoadedmetadata"
             ></audio>
+                <p @click="xiangqing()" style="color:white;font-size:12px;float:right;background:orange;border-radius:8px;padding:2px">详情</p>
             <div>
-              <p @click="xiangqing()" style="color:white;font-size:12px;float:right;background:blue;border-radius:8px;padding:2px">详情</p>
-                <p @click="guanbi()" style="color:white;font-size:12px;float:right;background:red;border-radius:8px;padding:2px">关闭</p>
+                <p @click="guanbi()" style="color:white;font-size:12px;float:left;background:skyblue;border-radius:8px;padding:2px">关闭</p>
                 <el-button type="text" @click="startPlayOrPause">{{audio.playing | transPlayPause}}</el-button>
                 <!-- <el-button v-show="!controlList.noSpeed" type="text" @click="changeSpeed">{{audio.speed | transSpeed}}</el-button> -->
 
@@ -284,7 +284,7 @@ export default {
         border-radius: 6px;
     }
     .main-wrap{
-        width: 56px;
+        width: 85px;
         height: 50px;
         overflow: hidden;
         clear: both;

@@ -8,6 +8,9 @@ Vue.prototype.axios = axios
 import {store} from './store/store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import { PullRefresh } from 'vant';
+
+Vue.use(PullRefresh);
 
 
 import './assets/iconfont/iconfont.css'

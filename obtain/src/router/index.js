@@ -383,11 +383,6 @@ export default new Router({
       component: Note
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
       path: '/details',
       name: 'Details',
       component: Details  
@@ -603,8 +598,13 @@ export default new Router({
       ]
     },
     {
+      path: '/home',
+      name: 'Home',
+      component: Home
+    },
+    {
       path:'/*',
-      redirect:'/user',
+      redirect:'/home',
     },
 
   ]
