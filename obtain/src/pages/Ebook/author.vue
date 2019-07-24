@@ -5,7 +5,7 @@
                 <p :class="val.icon"></p>
                 <p class="title">{{val.title}}</p>
           
-         <Author :data="夏红"></Author>
+         <Author></Author>
            
        </div>
     </div>
