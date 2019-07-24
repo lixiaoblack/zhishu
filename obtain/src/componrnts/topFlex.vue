@@ -16,7 +16,7 @@ export default {
             this.$router.push("/home");
         },
         onClickRight(){
-            this.$router.push("/shopCart");
+            this.$router.push("/shopCart、4");
         }
   }
 }

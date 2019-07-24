@@ -26,7 +26,7 @@
     </div>
 <!--foot-->
     <div class="botton">
-      <ShopFooter></ShopFooter>
+      <ShopFooter title="全部商品"></ShopFooter>
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@
             <router-link to="/knowledge">
                 <li @click="func()"><img :src="boolc?'../../static/tu/r/f/aid.png':'../../static/tu/r/f/aie.png'" alt=""><span :style="boolc?'color:black':'color:orange'">知识城邦</span></li>
             </router-link>
-            <router-link to="">
+            <router-link to="/havebuy">
                 <li @click="fund()"><img :src="boold?'../../static/tu/r/f/aif.png':'../../static/tu/r/f/aig.png'" alt=""><span :style="boold?'color:black':'color:orange'">已购</span></li>
             </router-link>
             <router-link to="">
