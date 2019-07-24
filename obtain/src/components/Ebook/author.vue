@@ -41,7 +41,7 @@ export default {
     }
   },
   created(){
-      
+      this.axios.get("/listen").then
   }
 };
 </script>
