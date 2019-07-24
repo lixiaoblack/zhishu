@@ -26,7 +26,8 @@ export default {
     props:["data"],
     methods: {
         todetails(val){
-            this.$router.push({path:"/details",query:{id:val}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.interface.courseId)}})
+          
         }
     },
 }

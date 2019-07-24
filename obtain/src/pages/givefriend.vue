@@ -9,12 +9,12 @@
           <div class="section_I">
               <div class="top">
                   <div class="left">
-                      <img src="../../static/img/author.jpg">
+                      <img :src="data.interface.books_imgurl">
                   </div>
                   <div class="right">
-                        <h2 class="booksname">刘晗讲辛普森案</h2>
+                        <h2 class="booksname">{{data.interface.subtitle}}</h2>
                         <span class="validity">赠送有效期至：2020.07.17</span>
-                        <span class="price"><strong class="num">{{price}}</strong>得到贝/份</span>
+                        <span class="price"><strong class="num">{{data.interface.books_sprice}}</strong>得到贝/份</span>
                   </div>
               </div>
                 <div class="add">
@@ -77,6 +77,7 @@ export default {
             singleprice:19.90,
             minusprice:this.$route.query.numprice,
             numprice:this.$route.query.numprice,
+            data:this.$route.query.id,
         }
     },
     methods: {
@@ -84,7 +85,7 @@ export default {
              this.$router.push({path:"zengsongyouhuiquan",query:{singleprice:this.singleprice}})
         },
          tohome(){
-            this.$router.push("/details")
+            this.$router.go(-1)
         },
        add(){
            if(this.num>49){
@@ -145,7 +146,7 @@ export default {
         },
         payfor(){
              alert("支付成功");
-             this.$router.push("/home")
+             this.$router.push("/total")
         }
     },
 }

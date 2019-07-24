@@ -77,7 +77,7 @@ export default {
         },
         zhifu(){
             alert("支付成功"),
-            this.$router.push("/givefriend")
+            this.$router.push("/home")
         },
         buysix(){
            this.boola=false

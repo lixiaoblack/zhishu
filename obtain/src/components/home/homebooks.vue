@@ -14,17 +14,17 @@
         </div>
         <div class="goodBook">
             <p class="goods">新书上架</p>
-            <div>
-                <img src="../../../static/image/lun_01.jpg"> 
-                <span>巴拉巴拉巴拉巴</span>
+            <div @click="skip(sss)">
+                <img :src="imgUrl"> 
+                <span class="titleS">{{subtitle}}</span>
             </div>  
-            <div>
-                <img src="../../../static/image/lun_01.jpg"> 
-                <span>巴拉巴拉巴拉巴</span>
+            <div @click="skip(sss)">
+                <img :src="imgUrl"> 
+                <span class="titleS">{{subtitle}}</span>
             </div>
-            <div>
-                <img src="../../../static/image/lun_01.jpg"> 
-                <span>巴拉巴拉巴拉巴</span>
+            <div @click="skip(sss)">
+                <img :src="imgUrl"> 
+                <span class="titleS">{{subtitle}}</span>
             </div>  
         </div>
         
@@ -79,6 +79,7 @@ export default {
         padding-bottom: .15rem;
         margin-bottom: .15rem;
         border-bottom: 1px solid #e5e5e5;
+        width: 100%;
     }
     .flot p{
         font-size: .14rem;
@@ -116,5 +117,12 @@ export default {
     .goods{
         font-size: .13rem;
         margin-bottom: .17rem;
+    }
+    .titleS{
+        width: .88rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin: 8px 0;
     }
 </style>
