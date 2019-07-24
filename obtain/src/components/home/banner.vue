@@ -48,7 +48,7 @@ export default {
         width: 3.45rem;
         height:1.15rem;
         margin-left: 0.15rem;
-        margin-top: 0.48rem;
+        margin-top: 0.58rem;
     }
     
 </style>

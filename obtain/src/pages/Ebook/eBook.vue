@@ -3,7 +3,7 @@
     <header>
       <span>返回</span>
       <span>电子书</span>
-      <p @click="skip(recently)"><span style="font-size:.12rem">{{recently.title}}</span><i :class="recently.icon"></i></p>
+      <p @click="skipTryread(recently)" style="display:flex"><span style="font-size:.12rem;">{{recently.title}}</span><i :class="recently.icon"></i></p>
       
     </header>
      <p style="font-size:0.16rem">搜索框</p>
@@ -68,7 +68,8 @@
         </div>
         <div class="bookType">
             <p class="cation">
-                <span>热门分类</span>
+                <span @click="skipGb()">猜你喜欢</span>
+              
                 <span>查看全部 ></span>
             </p>
             <ul class="list">
@@ -107,26 +108,30 @@ export default {
     return {
         arr:[{}],
         nav:[
-            {title:"限时特价",icon:"el-icon-notebook-2"},
-             {title:"精选好书",icon:"el-icon-reading"},
-              {title:"新书上架",icon:"el-icon-notebook-1"},
-              {title:"分类",icon:"el-icon-document"},
+            {title:"限时特价",icon:"el-icon-notebook-2",path:"/goodbook"},
+             {title:"精选好书",icon:"el-icon-reading",path:"/goodbook"},
+              {title:"新书上架",icon:"el-icon-notebook-1",path:"/goodbook"},
+              {title:"分类",icon:"el-icon-document",path:"/home"},
              
         ],
-        recently:  {title:"最近阅读",icon:"el-icon-discover"}
+        recently:  {title:"最近阅读",icon:"el-icon-discover",path:"/goodbook"}
         
     };
   },
    methods: {
-        skip(v){
-           this.$router.push({path:"/goodbook",query:{val:JSON.stringify(v),type:"ebook"}})
-       }
+       
+      skipTryread(v){
+           this.$router.push({path:v.path,query:{val:JSON.stringify(v) }})
+      },
+        skipGb(){
+          this.$router.push({path:v.path,query:{val:JSON.stringify(v)}})
+      }
    },
   computed: {
       goodBook(){
           let gb=[];
           this.arr.map(v=>{
-              if(v.book_style=="精选好书"){
+              if(v.bookType=="精选书单"){
                  gb.push(v)
               }
                
@@ -138,7 +143,7 @@ export default {
        newBook(){
           let gb=[];
           this.arr.map(v=>{
-              if(v.book_style=="新书上架"){
+              if(v.bookType=="新书上架"){
                  gb.push(v)
               }
                
@@ -150,7 +155,7 @@ export default {
        Discount(){
           let gb=[];
           this.arr.map(v=>{
-              if(v.book_style=="限时特价"){
+              if(v.bookType=="限时特价"){
                  gb.push(v)
               }
                
@@ -162,7 +167,7 @@ export default {
       recent(){
            let gb=[];
           this.arr.map(v=>{
-              if(v.book_style=="最近试读"){
+              if(v.bookType=="最近试读"){
                  gb.push(v)
               }
                
@@ -174,7 +179,7 @@ export default {
       like(){
           let gb=[];
           this.arr.map(v=>{
-              if(v.book_style=="猜你喜欢"){
+              if(v.bookType=="猜你喜欢"){
                  gb.push(v)
               }
                
@@ -182,7 +187,9 @@ export default {
           })
           
            return gb.slice(0,3)
-      }
+      },
+      //查看全部跳转
+    
   },
   created() {
        this.axios.get("/jsondata/abc").then(ok=> {

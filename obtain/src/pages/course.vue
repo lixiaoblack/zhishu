@@ -54,7 +54,6 @@
        </div>
         <router-view></router-view>
     </section>
-     <!-- <Course v-for="(v,i) in totaldata " :key="i" :books_imgurl="v.imgurl" :subtitle="v.subtitle" :books_summary="v.books_summary" :author="v.author"  :class_num="v.class_num" :books_sprice="v.books_sprice" :study_peoples="v.study_peoples"></Course> -->
     </div>
 </template>
 <script>
@@ -63,32 +62,21 @@ export default {
     components:{
     //    Course
     },
-    data() {
+    data(){
         return {
             value1: true,
             value2: true,
-            //    totaldata:[] 
             text:''
         }
     },
-    methods: {
+    methods:{
         tohome(){
             this.$router.push("/home")
         },
-        // 改变选中内容
         changetext(e){
            this.text=e.target.innerHTML
         }
     },
-    //   created(){
-    //     // 请求对应字段的数据
-    //        this.axios({
-    //             url:'/link/data',
-    //             method:'get'
-    //         }).then((ok)=>{
-    //             this.totaldata=ok.data.total
-    //         })
-    // },
 }
 
 

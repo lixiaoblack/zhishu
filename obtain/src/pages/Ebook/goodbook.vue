@@ -5,9 +5,10 @@
                 <p :class="val.icon"></p>
                 <p class="title">{{val.title}}</p>
           
-          
+         
            
        </div>
+     {{type}}
         <ul>
             <Host v-for= "(v,i) in arr" :key= "i" :data= "v"></Host>
         </ul>
@@ -24,28 +25,26 @@ export default {
     },
      data() {
     return {
-        arr:[],
+        arr:[{}],
         val:{},
-        type:{}
+      type:""
     };
   },
     created() {
-      if(this.type=="ebook"){
+     
          this.axios.get("/jsondata/abc").then(ok=> {
-           this.arr=ok.data.EBook
-           
-       })
-      }else if(this.type=="listen"){
-          this.axios.get("/listen").then(ok=> {
-           this.arr=ok.data.listen
-          })
-      }
+         
+              this.arr=ok.data.EBook
+          
+           })
+         
+    
       
   },
   beforeRouteEnter(to, from, next) {
     next((d) => {
       d.val =JSON.parse (to.query.val);
-      d.type=to.query.type
+     d.type=to.query.type
     });
   }
 }

@@ -1,9 +1,11 @@
 <template>
     <div class="box">
         <nav id="navcs"  :class="dool ? 'navcs navcss' : 'navcs'" class="navcs">
-            <img src="../../static/tu/user/saoyisao.png">
-            <span></span>
-            <img src="../../static/tu/user/shezhi.png" class="set" @click="set()">
+            <div class="pw">
+                <img :src="dool?'../../static/tu/r/f/aet.png':'../../static/tu/r/f/aeu.png'">
+                <span :style="dool?'color:#666666':'color:white'">扫一扫</span>
+            </div>
+            <img :src="dool?'../../static/tu/r/f/aev.png':'../../static/tu/r/f/aew.png'" class="set" @click="set()">
         </nav>
         <div class="diva maincs" >
             <span @click="login()">注册/登录</span>
@@ -22,7 +24,7 @@
                 <span class="spancs">我的账户</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)">
+                <div class="flexcs" v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User  :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -33,7 +35,7 @@
                 <span class="spancs">我的内容</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)">
+                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -44,7 +46,7 @@
                 <span class="spancs">学习成就</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)">
+                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -62,17 +64,30 @@
                 <span>帮助中心</span>
                 <span>></span>
             </div>
-        </div>
+        </div> 
+        <Bot one="我的" class="fixed"></Bot>
     </div>
 </template>
 
 <script>
+import Bot from '../components/bottom'
 import User from '../components/user/useritem'
 export default {
     components:{
         User,
+        Bot
     },
     methods: {
+        anxia(){
+            let userarr=document.querySelectorAll(".flexcs")
+            console.log(userarr)
+            userarr[index].style.background="red"
+        },
+        tanqi(){
+            let userarr=document.querySelectorAll(".flexcs")
+            console.log(userarr)
+            userarr[index].style.background=""
+        },
         zhanghu(url){
             this.$router.push("/moduleone/"+url)
         },
@@ -154,6 +169,21 @@ export default {
 </script>
 
 <style scoped>
+.fixed{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width:100%; 
+}
+.navcs span{
+    color: white;
+    font-size: .16rem;
+    margin-top: 7px;
+}
+.pw{
+    display:flex;
+    align-items: center;
+}
 .box{
     height:10rem ;
     background: #f7f7f8;
@@ -166,13 +196,16 @@ export default {
     justify-content: space-between;
     font-size: 18px;
     background-color:rgba(255, 102, 0, 0.856);
+    padding-bottom: 10px;
+    
 }
 .navcss{
     background-color: #fff;
+    border-bottom: .5px solid #9999;
 }
 .navcs img{
-    width: 10%;
-    height: 20%;
+    margin: 10px 10px 0 10px;
+    width: .25rem;
 }
 .maincs{
     display: flex;
@@ -206,7 +239,7 @@ export default {
 .divb{
     color: #fff;
     border-top:1px solid #ccc;
-    font-size: 12px;
+    font-size: 14px;
     height: 0.6rem;
     line-height: 0.6rem;
     background-color:rgba(255, 102, 0, 0.856);
@@ -239,6 +272,7 @@ export default {
 }
 .spancs{
     font-size: 14px;
+    line-height: .35rem;
 }
 .gang{
     margin-right: 6px;
@@ -261,9 +295,5 @@ export default {
 }
 .help:first-child{
     border-top: 0;
-}
-.donghua:active{
-	transform: scale(1.2,1.2);
-	transition: 1s;
 }
 </style>

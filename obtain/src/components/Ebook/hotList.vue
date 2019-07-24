@@ -2,14 +2,14 @@
   <div>
     
      <li class="content" @click="skip(data)">
-                  <img :src="data.img_url" />
+                  <img :src="data.bookImgUrl" />
                 <div class="right">
-                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.subtitle}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.book_intro}}</p>
-                    <p style="float:right" v-if="data.book_style=='限时特价'">
+                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.bookSubtitle}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.bookIntro}}</p>
+                    <p style="float:right" v-if="data.bookType=='限时特价'">
                         
-                        <span class="dis">{{data.books_sprice}}得到贝</span>
-                                <span class="dis1">{{data.Discount}}得到贝</span>
+                        <span class="dis">{{data.bookSprice}}得到贝</span>
+                                <span class="dis1">{{data.bookSprice}}得到贝</span>
                         <TryRead></TryRead>
                     </p>
                 </div>
@@ -21,13 +21,14 @@
 <script>
 import TryRead from "../../components/Ebook/try-read";
 export default {
+  /////购买组件
   components: {
     TryRead
   },
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.id)}})
+           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
        }
    },
 };

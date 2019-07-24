@@ -3,7 +3,7 @@
         <img :src="imgUrl">
         <span>{{title}}</span>
         <span>{{txtOne}}</span>
-        <span>{{txtTwo}}</span>
+        <span class="txtTwo">{{txtTwo}}</span>
         <span>{{people}}</span>
         <span>{{num}}讲/{{price}}得到贝</span>
         <!-- <img src="../../../static/img/tu.jpg">
@@ -74,5 +74,11 @@ export default {
     }
     .all span{
         line-height: .18rem;
+    }
+    .txtTwo{
+        width: 1.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>
