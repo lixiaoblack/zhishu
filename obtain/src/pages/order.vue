@@ -1,8 +1,12 @@
 <template>
     <div class="orderContent">
+        <TopIcon title="确认订单"></TopIcon>
+        <div class="middle">
+
+        </div>
         <div class="top">
             <i class="el-icon-circle-plus-outline"></i>
-            <p>请填写收货地址</p>
+            <p @click="showPopup">请填写收货地址</p>
         </div>
         <div class="shop">
             <p>店铺名称：商城</p>
@@ -19,14 +23,71 @@
                 </div>
             </div>
         </div>
+        <div class="bill" @click="fun()">
+            <span>发票类型:</span>
+            <span>{{total}}  ></span>
+        </div>
+        <div class="footer">
+            <van-submit-bar
+            :price="totalPrice"
+            button-text="提交订单"
+            @submit="onSubmit"
+            />
+        </div>
+        <van-action-sheet
+        v-model="show"
+        :actions="actions"
+        @select="onSelect"
+        />
+        <van-popup v-model="bool" position="bottom" :style="{ height: '60%' }">
+            <van-address-list
+            v-model="chosenAddressId"
+            :list="list"
+            disabled-text="江浙沪包邮啊亲"
+            @add="onAdd"
+            @edit="onEdit"
+            />
+        </van-popup>
+        <van-popup v-model="submitBool" position="bottom" :style="{ height: '50%' }">
+            <PayFor :price="totalPrice" @son="fun"></PayFor>
+        </van-popup>
     </div>
 </template>
 
 <script>
+import TopIcon from "../componrnts/top"
+import PayFor from "../componrnts/shop/payForChart"
 export default {
+    components:{
+        PayFor,
+        TopIcon
+    },
     data() {
         return {
-            arr:[]
+            chosenAddressId: '1',
+            list: [
+                {
+                    id: '1',
+                    name: '张三',
+                    tel: '13000000000',
+                    address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室'
+                },
+                {
+                    id: '2',
+                    name: '李四',
+                    tel: '1310000000',
+                    address: '浙江省杭州市拱墅区莫干山路 50 号'
+                }
+            ],
+            arr:[],
+            show: false,
+            actions: [
+                { name: '不要发票' },
+                { name: '普通发票' },
+            ],
+            total:"不要发票",
+            bool:false,
+            submitBool:false
         }
     },
     created() {
@@ -40,10 +101,47 @@ export default {
             this.arr = ok.data.shopcat
         })
     },
+    methods: {
+        onSelect(item) {
+            // 点击选项时默认不会关闭菜单，可以手动关闭
+            this.show = false;
+            this.total = item.name;
+        },
+        fun(){
+            this.show = true;
+        },
+        showPopup() {
+            this.bool = true;
+        },
+         onAdd() {
+        },
+
+        onEdit(item, index) {
+
+        },
+        onSubmit(){
+            this.submitBool = true;
+        },
+        fun(val){
+            this.submitBool = val;
+        }
+    },
+    computed: {
+        totalPrice(){
+            let num = 0;
+            for(let i = 0;i<this.arr.length;i++){
+                num += this.arr[i].num * this.arr[i].price*100
+            }
+            return num;
+        }
+    },
 }
 </script>
 
 <style scoped>
+    .middle{
+        height: .46rem
+    }
     .orderContent{
         height: 100%;
         font-size: .225rem;
@@ -93,5 +191,14 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+    .bill{
+        display: flex;
+        justify-content: space-between;
+        font-size: .14rem;
+        padding: .08rem .08rem;
+        background: white;
+        border-bottom: 1px solid #F0F0F0;
+        margin-top: .1rem;
     }
 </style>
