@@ -13,7 +13,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/iconfont/iconfont.css'
 // mock引入
 require("./mock");
-
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 /* eslint-disable no-new */
