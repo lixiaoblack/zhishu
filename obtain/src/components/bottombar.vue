@@ -4,7 +4,7 @@
             <span class="givefriend" @click="togivefriend()">赠送好友</span>
             <span class="verticalline">|</span>
             <span class="freelisten" @click="tofreelisten()">免费试听</span>
-            <span class="buy">购买：19.90得到贝</span>
+            <span class="buy" @click="todetails()">购买：19.90得到贝</span>
         </div>
     </div>
 </template>
@@ -21,6 +21,9 @@ export default {
         },
         tofreelisten(){
             this.$router.push("/freelisten");
+        },
+        todetails(){
+             this.$router.push("/payfor");
         }
     },
 }

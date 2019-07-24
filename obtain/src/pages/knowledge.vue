@@ -4,7 +4,10 @@
             <Knownav></Knownav>
         </div>
         <div class="footer">
-            <Know v-for="(v,i) in arr" :key="i" :namea="v.namea" :time="v.time" :txt="v.txt" :nameb="v.nameb" :txta="v.txta" :title="v.title" :author="v.author" :transmit="v.transmit" :comment="v.comment" :good="v.good" :imga="v.imga" :imgb="v.imgb" :imgc="v.imgc"></Know>
+            <Know v-for="(v,i) in arr" :key="i" :id="v.id" :namea="v.namea" :time="v.time" :txt="v.txt" :nameb="v.nameb" :txta="v.txta" :title="v.title" :author="v.author" :transmit="v.transmit" :comment="v.comment" :good="v.good" :imga="v.imga" :imgb="v.imgb" :imgc="v.imgc"></Know>
+        </div>
+        <div>
+            <Bottom onc="知识城邦"></Bottom>
         </div>
     </div>
 </template>
@@ -12,10 +15,12 @@
 <script>
 import Knownav from '../components/knowledge/knownav'
 import Know from '../components/knowledge/know'
+import Bottom from '../components/bottom'
 export default {
     components:{
         Knownav,
-        Know
+        Know,
+        Bottom
     },
     data(){
         return {

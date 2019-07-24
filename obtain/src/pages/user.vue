@@ -22,7 +22,7 @@
                 <span class="spancs">我的账户</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)">
+                <div class="flexcs" v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User  :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <span class="spancs">我的内容</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)">
+                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <span class="spancs">学习成就</span>
             </div>
             <div class="flex">
-                <div v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)">
+                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)" @touchstart="anxia()" @touchend="tanqi()">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -73,6 +73,16 @@ export default {
         User,
     },
     methods: {
+        anxia(){
+            let userarr=document.querySelectorAll(".flexcs")
+            console.log(userarr)
+            userarr[index].style.background="red"
+        },
+        tanqi(){
+            let userarr=document.querySelectorAll(".flexcs")
+            console.log(userarr)
+            userarr[index].style.background=""
+        },
         zhanghu(url){
             this.$router.push("/moduleone/"+url)
         },
@@ -261,9 +271,5 @@ export default {
 }
 .help:first-child{
     border-top: 0;
-}
-.donghua:active{
-	transform: scale(1.2,1.2);
-	transition: 1s;
 }
 </style>

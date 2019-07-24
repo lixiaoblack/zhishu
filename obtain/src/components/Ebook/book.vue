@@ -2,21 +2,21 @@
   <div>
     <li class="box" @click="skip(data)">
       <p>
-        <img :src="data.img_url" />
+        <img :src="data.bookImgUrl" />
       </p>
-      <p class="title">{{data.subtitle}}</p>
+      <p class="title">{{data.bookSubtitle}}</p>
 
-      <p v-if="data.book_style=='新书上架'" style=" text-align: center; color: #636363;">24小时内</p>
-      <div v-else-if="data.book_style=='精选好书'">
-        <p style=" text-align: center;color:#636363;">{{data.books_sprice}}得到贝</p>
+      <p v-if="data.book_type=='新书上架'" style=" text-align: center; color: #636363;">24小时内</p>
+      <div v-else-if="data.book_type=='精选好书'">
+        <p style=" text-align: center;color:#636363;">{{data.bookSprice}}得到贝</p>
       </div>
-      <div v-else-if="data.book_style=='限时特价'">
-        <p class="dis">{{data.books_sprice}}得到贝</p>
-        <p class="dis1">{{data.Discount}}得到贝</p>
+      <div v-else-if="data.book_type=='限时特价'">
+        <p class="dis">{{data.bookSprice}}得到贝</p>
+        <p class="dis1">{{data.bookSprice}}得到贝</p>
       </div>
-      <div v-else-if="data.book_style=='最近试读'">
-        <p style="text-align: center; color: #636363;">{{data.time}}</p>
-        <p style="text-align: center; color: #636363;">已读{{data.books_sprice}}%</p>
+      <div v-else-if="data.book_type=='最近试读'">
+        <p style="text-align: center; color: #636363;">{{data.bookTime}}</p>
+        <p style="text-align: center; color: #636363;">已读{{data.bookSprice}}%</p>
       </div>
     </li>
   </div>
@@ -26,7 +26,7 @@ export default {
   props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.id)}})
+           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
        }
    },
 };

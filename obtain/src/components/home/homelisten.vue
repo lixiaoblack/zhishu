@@ -37,7 +37,7 @@ export default {
     },
     methods: {
          skip(val){
-           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listen_id)}})
+           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
        },
     },
 }

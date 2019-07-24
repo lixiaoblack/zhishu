@@ -2,14 +2,14 @@
   <div>
     <li class="box" @click="skip(data)">
       <p>
-        <img :src="data.listen_" />
+        <img :src="data.listenImgUrl" />
       </p>
-      <p class="title">{{data.listen_subtitle}}</p>
-      <p style=" text-align: center; color: #636363;">{{data.listen_author}}解读</p>
+      <p class="title">{{data.listenSubtitle}}</p>
+      <p style=" text-align: center; color: #636363;">{{data.listenAuthor}}解读</p>
 
       <div v-if="data.listen_class_id==1">
         <p style=" text-align: center; color: #636363;">24小时内</p>
-        <p style=" text-align: center;color:#ed742f;">{{data.listen_sprice}}得到贝</p>
+        <p style=" text-align: center;color:#ed742f;">{{data.listenSprice}}得到贝</p>
       </div>
     </li>
   </div>
@@ -21,14 +21,18 @@ export default {
     skip(val) {
       this.$router.push({
         name: "ListenDetail",
-       query:{id:JSON.stringify(val.listen_id)}
+       query:{id:JSON.stringify(val.listenId)}
       });
     }
   }
 };
 </script>
 <style scoped>
+li{
+  list-style: none;
+}
 .box img {
+  
   width: 0.85rem;
   height: 1.2rem;
 }

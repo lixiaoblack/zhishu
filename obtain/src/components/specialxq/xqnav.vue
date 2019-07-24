@@ -1,15 +1,18 @@
 <template>
     <div class="navbox">
         <div class="box">
-            <div class="nav" @click="func()">
-                <img src="../../../static/tu/r/a/a2.jpg">
-                <span>返回</span>
+            <div class="nav">
+                <img @click="func()" src="../../../static/tu/r/a/a2.jpg">
+                <span @click="func()">返回</span>
             </div>
             <p>{{title}}</p>
-            <div class="right">
+            <div class="right" v-if="note">
                 <img @click="funa()" v-if="bool" src="../../../static/tu/r/a/a4.jpg">
-                <img @click="funa()" v-else src="../../../static/tu/r/a/a5.jpg">
-                <img @click="funb()" src="../../../static/tu/r/a7/a_j.png">
+                <img @click="funa()" v-else  src="../../../static/tu/r/a/a5.jpg">
+                <img @click="funb()"  src="../../../static/tu/r/a7/a_j.png">
+            </div>
+            <div class="right" v-else>
+                <img  @click="zifun()" src="../../../static/tu/r/a7/a8g.png" alt="">
             </div>
         </div>
         <div class="fixed" v-if="fixeda">
@@ -27,7 +30,11 @@
                     <li><img src="../../../static/tu/r/f/a8b.png"><span>朋友圈</span></li>
                     <li><img src="../../../static/tu/r/f/a8c.png"><span>QQ</span></li>
                     <li><img src="../../../static/tu/r/f/a8e.png"><span>新浪微博</span></li>
+<<<<<<< HEAD
                     <li><img src="../../../static/tu/r/f/a85.png"><span>复制链接</span></li>
+=======
+                    <li><img src="../../../static/tu/r/a7/a85.png"><span>复制链接</span></li>
+>>>>>>> 3d5a4b9ead7292883cfb06fbb89b7bf549ae2320
                 </ul>
             </div>
             <h5 @click="funb()">取消</h5>
@@ -42,10 +49,13 @@ export default {
             bom:false,
             bool:true,
             fixeda:false,
-            fixedb:false
+            fixedb:false,
+            note:true,
+            fixedc:true
         }
     },
     props:{
+
         title:String
     },
     methods:{
@@ -70,8 +80,17 @@ export default {
         },
         func(){
             this.$router.go(-1)
+        },
+        zifun(){
+            this.$emit("zipao",this.fixedc);
         }
-    }
+
+    },
+    created() {
+        if(this.title=="笔记详情"){
+            this.note=false;
+        }
+    },
 }
 </script>
 

@@ -8,10 +8,10 @@
                     <span>{{time}}</span>
                 </div>
             </div>
-            <img class="imgb" src="../../../static/tu/r/a7/a8g.png" alt="">
+            <img class="imgb" @click="func()" src="../../../static/tu/r/a7/a8g.png" alt="">
         </div>
         <div class="footer">
-            <p class="footp">{{txt}}</p>
+            <p class="footp" @click="fund()">{{txt}}</p>
             <div class="bottom">
                 <div class="pinglun">
                     <img :src="imgb" alt="">
@@ -19,9 +19,8 @@
                 </div>
                 <p @click="funa()" v-if="bool">+ 关注</p>
             </div>
-            <h3>{{txta}}</h3>
+            <h3 @click="fund()">{{txta}}</h3>
             <div>
-                <img src="" alt="">
                 <div class="book">
                     <img :src="imgc" alt="">
                     <div>
@@ -31,15 +30,27 @@
                 </div>
             </div>
             <ul class="good">
-                <li><img class="img1" src="../../../static/tu/r/a7/a_l.png" alt=""><span>{{transmit}}</span></li>
+                <li @click="func()"><img class="img1" src="../../../static/tu/r/a7/a_l.png" alt=""><span>{{transmit}}</span></li>
                 <li><img class="img1" src="../../../static/tu/r/a7/a_i.png" alt=""><span>{{comment}}</span></li>
-                <li @click="funb()"><img id="imgc" :src="goods?'../../../static/tu/r/a7/aaa.png':'../../../static/tu/r/a7/aac.png'" alt=""><span>{{num}}</span></li>
+                <li @click="funb()"><img id="imgc" :src="goods?'../../../static/tu/r/f/aaa.png':'../../../static/tu/r/f/aac.png'" alt=""><span>{{num}}</span></li>
                 <!-- <img src="../../../static/tu/r/a7/aac.png" alt=""> -->
             </ul>
         </div>
         <div class="fixed" v-if="fixed">
             <img src="../../../static/tu/r/a/a6.jpg" alt="">
             已关注
+        </div>
+        <div v-if="fixeda">
+            <div  @click="func()" class="fixedb"></div>
+            <div class="boxb">
+                <ul>
+                    <li>
+                        <img src="../../../static/tu/r/a7/a_j.png" alt="">
+                        分享
+                    </li>
+                </ul>
+                <p @click="func()">取消</p>
+            </div>
         </div>
     </div>
 </template>
@@ -51,6 +62,7 @@ export default {
             bool:true,
             fixed:false,
             goods:true,
+            fixeda:false,
             num:this.good
         }
     },
@@ -69,9 +81,16 @@ export default {
             }else if(this.goods==false){
                 this.num++
             }
+        },
+        func(){
+            this.fixeda=!this.fixeda
+        },
+        fund(){
+            this.$router.push({path:'/note',query:{num:this.id,title:"笔记详情",shu:this.num,tai:this.goods,bol:this.bool}})
         }
     },
     props:{
+        id:String,
         namea:String,
         time:String,
         txt:String,
@@ -90,6 +109,47 @@ export default {
 </script>
 
 <style scoped>
+.boxb{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.fixedb{
+    height: 100%;
+    width: 100%;
+    background:black;
+    opacity: .5;
+    position: fixed;
+    bottom: 0;
+    left:0;
+}
+.boxb ul li{
+    width: 100%;
+    height:.5rem;
+    line-height: .5rem;
+    background:white;
+    font-size:.15rem;
+    display:flex;
+    padding-left:20px;
+    border-bottom: 1px solid #9999;
+}
+.boxb li img{
+    width: .2rem;
+    height: .25rem;
+    margin-right:25px;
+    margin-top: 10px;
+}
+.boxb p{
+    width: 100%;
+    height:.5rem;
+    background:white;
+    line-height: .5rem;
+    width: 100%;
+    color:orange;
+    font-size:.15rem;
+    text-align: center;
+}
 .fixed img{
     margin:10px auto;
     width:.26rem;

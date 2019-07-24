@@ -2,14 +2,14 @@
   <div>
     
      <li class="content" @click="skip(data)">
-                  <img :src="data.listen_" />
+                  <img :src="data.listenImgUrl" />
                 <div class="right">
-                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.listen_subtitle}}</p>
-                    <p style="font-size:0.13rem; color:#828282; line-height:.18rem">{{data.listen_audio_intro}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listen_audio_time}}</p>
+                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.listenSubtitle}}</p>
+                    <p style="font-size:0.13rem; color:#828282; line-height:.18rem">{{data.listenAudioIntro}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioTime}}</p>
                     <p style="float:right">
-                      <span  style="font-size:0.11rem; color:#ed742f; ">{{data.listen_sprice}}得到贝</span>
-                      <span class="read" @click.stop="buy()">购买</span>
+                      <span  style="font-size:0.11rem; color:#ed742f; ">{{data.listenSprice}}得到贝</span>
+                      <span class="read" @click.stop="buy(data)">购买</span>
                     </p>
                 </div>
      </li>
@@ -26,15 +26,18 @@ export default {
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.id)}})
+           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.listenId)}})
        },
-       buy(){
-         this.$router.push({name:"Buy"})
+       buy(val){
+         this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})
        }
    },
 };
 </script>
 <style scoped>
+span{
+  display: inline;
+}
 .box {
   padding: 0 0.16rem;
 }
@@ -47,7 +50,7 @@ export default {
 .content img {
   width: 80px;
   height: 105px;
-  margin-right: 0.14rem;
+  margin-right: 0.12rem;
 }
 h4 {
   font-size: 0.2rem;

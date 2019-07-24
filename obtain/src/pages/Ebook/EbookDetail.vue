@@ -2,24 +2,24 @@
   <div class="body">
    
     <div class="content">
-      <img :src="obj.img_url" />
+      <img :src="obj.bookImgUrl" />
       <div class="right">
-        <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.subtitle}}</p>
+        <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.bookSubtitle}}</p>
 
         <p class="author">
           <span>作者</span>
-          <span>{{obj.author}}</span>
+          <span>{{obj.bookAuthor}}</span>
           <span>></span>
         </p>
-        <p style="font-size:12px; color: #ccc;margin-top:0.2rem">
-          <span>{{obj.time}}</span>|
-          <span>{{obj.tTs}}</span>
+        <p style="font-size:12px; color: #ccc;margin-top:0.2rem" class="date">
+          <span>{{obj.bookTime}}</span>|
+          <span>{{obj.bookTts}}</span>
         </p>
       </div>
     </div>
     <div class="edit">
       <p>主编推荐语</p>
-      <p>{{obj.edit_recomend}}</p>
+      <p>{{obj.booKeditRecomend}}</p>
     </div>
     <div class="edit1">
       <p class="edit2">内容简介</p>
@@ -29,17 +29,17 @@
         <p class="open" @click="open()">查看详情<i class="el-icon-caret-bottom"></i></p>
       </div>
       <div v-else>
-        <p style="font-size:0.13rem;color:#8d8d8d">{{obj.contentValidity}}</p>
+        <p style="font-size:0.13rem;color:#">{{obj.bookContent}}</p>
         <p @click="open()" class="open">收起 <i class="el-icon-caret-top"></i></p>
       </div>
     </div>
     <div class="edit1">
       <p class="cation">
-                <span>出版方</span>
+                <span>出版方   </span>
                 <span>查看全部 ></span>
             </p>
-            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.publisher}}</p>
-            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.publisher_intro}}</p>
+            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.book_publisher}}</p>
+            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.book_publisher_intro}}</p>
     </div>
     <div class="like">
       <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     sub() {
-      return this.obj.contentValidity && this.obj.contentValidity.substr(0, 50);
+      return this.obj.bookContent && this.obj.bookContent.substr(0, 50);
     },
     likes(){
        return  this.like.slice(0,3)
@@ -80,15 +80,17 @@ export default {
            let val=ok.data.EBook;
           
           val.map(v=>{
-              if(v.book_style=="猜你喜欢"){
+              if(v.bookType=="猜你喜欢"){
                  this.like.push(v)
 
-              }else if(v.id==this.id){
+              }else if(v.bookId==this.id){
                 this.obj=v
               }
               return this.obj
           });
-          
+    
+      
+  
            
   })
   },
@@ -121,6 +123,7 @@ h4 {
   line-height: 0.4rem;
 }
 .author span:nth-child(1) {
+  display: inline;
   color: #ccc;
   background: #f2f2f2;
   padding: 0 5px;
@@ -128,11 +131,13 @@ h4 {
   margin-right: 0.2rem;
 }
 .author span:nth-child(2) {
+  display: inline;
   font-size: 0.12rem;
 color: #ccc;
   margin-right: 1.2rem;
 }
 .author span:nth-child(3) {
+  display: inline;
   color: #ccc;
   font-size: 0.15rem;
 }
@@ -189,5 +194,8 @@ color: #ccc;
 }
 .like{
   padding: 0 .16rem;
+}
+.date span{
+display: inline;
 }
 </style>

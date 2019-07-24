@@ -2,12 +2,12 @@
   <div>
     
      <li class="content" @click="skip(data)">
-                  <img :src="data.img_url" />
+                  <img :src="data.bookImgUrl" />
                 <div class="right">
-                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.subtitle}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.book_intro}}</p>
+                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.bookSubtitle}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.bookIntro}}</p>
                     <p style="float:right">
-                        <TryRead></TryRead>
+                        <TryRead @click.stop="tryBook(data)"></TryRead>
                     </p>
                 </div>
      </li>
@@ -24,9 +24,12 @@ export default {
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.id)}})
+           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
        }
    },
+   tryBook(val){
+      this.$router.push({name:ReadBook,query:{id:JSON.stringify(val.bookId)}})
+   }
 };
 </script>
 <style scoped>
@@ -42,7 +45,7 @@ export default {
 .content img {
   width: 80px;
   height: 105px;
-  margin-right: 0.14rem;
+  margin-right: 0.12rem;
 }
 h4 {
   font-size: 0.2rem;
