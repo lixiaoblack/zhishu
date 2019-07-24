@@ -1,6 +1,6 @@
 <template>
   <div class="aa">
-  <div class="showbox" @click="i" v-for="(v,i) in brr" :key="i">
+  <div class="showbox" @click="fun(v)" v-for="(v,i) in brr" :key="i">
     <img :src="v.shopImgurl"/>
     <div class="name">{{v.shoptitle}}</div>
     <div class="notice">{{v.shopSummary}}</div>
@@ -24,6 +24,11 @@
       data() {
         return {
           brr:''
+        }
+      },
+      methods: {
+        fun(title){
+          this.$router.push({name:'CommodityDetails',query:{content:title}});
         }
       },
       created() {

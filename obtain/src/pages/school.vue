@@ -1,22 +1,22 @@
 <template>
     <div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannera.jpg" alt=""></router-link>
+            <router-link to="/course/nenglixueyuan"><img src="../../static/tu/r/a/bannera.jpg" alt=""></router-link>
         </div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannerb.jpg" alt=""></router-link>
+            <router-link to="/course/shangxueyuan"><img src="../../static/tu/r/a/bannerb.jpg" alt=""></router-link>
         </div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannerc.jpg" alt=""></router-link>
+            <router-link to="/course/kexuexueyuan"><img src="../../static/tu/r/a/bannerc.jpg" alt=""></router-link>
         </div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannerd.jpg" alt=""></router-link>
+            <router-link to="/course/shiyexueyuan"><img src="../../static/tu/r/a/bannerd.jpg" alt=""></router-link>
         </div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannere.jpg" alt=""></router-link>
+            <router-link to="/course/renwensheke"><img src="../../static/tu/r/a/bannere.jpg" alt=""></router-link>
         </div>
         <div class="xueyuan">
-            <router-link to="/"><img src="../../static/tu/r/a/bannerf.jpg" alt=""></router-link>
+            <router-link to="/course/zhengzaigengxin"><img src="../../static/tu/r/a/bannerf.jpg" alt=""></router-link>
         </div>
     </div>
 </template>

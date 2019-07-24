@@ -7,20 +7,14 @@
                 <span class="total">{{text}}</span>
           </div>
             <div class="firstnav">
-                <router-link to="/course/total">
-                    <span>默认</span>
-                </router-link>
-                <router-link to="/course/morestudy">
-                    <span>最多学习</span>
-                </router-link>
-                 <router-link to="/course/latestnew">
-                    <span>最新上架</span>
-                </router-link>
+                    <span @click="fun1()" :style="bool1?'color:#ff6b00':'color:black'">默认</span>
+                    <span @click="fun2()" :style="bool2?'color:#ff6b00':'color:black'">最多学习</span>
+                    <span @click="fun3()" :style="bool3?'color:#ff6b00':'color:black'">最新上架</span>
                 <span style="color:#e5e5e5">|</span>
                 <span>隐藏购买
                     <el-switch
                         v-model="value2"
-                        active-color="#ff6b00"
+                        active-color="#ff6b00" 
                         inactive-color="#e5e5e5">
                         </el-switch>
                 </span>
@@ -29,10 +23,13 @@
     <section class="section">
         <div class="big">
             <div class="secondnav">
-                <router-link to="/course/total">
-                    <span class="top" @click="changetext($event)">全部</span>
-                </router-link>
-                <router-link to="/course/nenglixueyuan">
+                <div v-for="(v,i) in arr" :key="i">
+                    <!-- <router-link :to="v.url"> -->
+                        <span class="top" :style="v.color?'color:#ff6b00':'color:black'" @click="changetext(i)">{{v.content}}</span>
+                    <!-- </router-link>   -->
+                </div>
+                
+                <!-- <router-link to="/course/nenglixueyuan">
                      <span  class="top"  @click="changetext($event)">能力学院</span>
                 </router-link>
                 <router-link to="/course/shangxueyuan">
@@ -49,7 +46,7 @@
                 </router-link>
                 <router-link to="/course/zhengzaigengxin">
                       <span class="bottom"  @click="changetext($event)">正在更新</span>
-                </router-link>
+                </router-link> -->
         </div>
        </div>
         <router-view></router-view>
@@ -66,16 +63,62 @@ export default {
         return {
             value1: true,
             value2: true,
-            text:''
+            text:'全部',
+            bool1:true,
+            bool2:false,
+            bool3:false,
+            title:"101",
+            linkUrl:"/course/total",
+            linkName:"Total",
+            arr:[
+                {content:"全部",url:"/course/total",name:"Total",color:true},
+                {content:"能力学院",url:"/course/nenglixueyuan",name:"Nenglixueyuan",color:false},
+                {content:"商学院",url:"/course/shangxueyuan",name:"Shangxueyuan",color:false},
+                {content:"科学学院",url:"/course/kexuexueyuan",name:"Kexuexueyuan",color:false},
+                {content:"视野学院",url:"/course/shiyexueyuan",name:"Shiyexueyuan",color:false},
+                {content:"人文社科",url:"/course/renwensheke",name:"Renwensheke",color:false},
+                {content:"正在更新",url:"/course/zhengzaigengxin",name:"Zhengzaigengxin",color:false},
+            ]
         }
     },
     methods:{
         tohome(){
             this.$router.push("/home")
         },
-        changetext(e){
-           this.text=e.target.innerHTML
-        }
+        changetext(num){
+           this.text=this.arr[num].content;
+           this.$router.push({name:this.arr[num].name,query:{title:this.title}})
+           this.linkUrl = this.arr[num].url;
+           this.linkName = this.arr[num].name;
+           for(let i = 0;i<this.arr.length;i++){
+               if(i == num ){
+                   this.arr[i].color = true;
+               }else{
+                   this.arr[i].color = false;
+               }
+           }
+        },
+        fun1(){
+            this.bool1 = true;
+            this.bool2 = false;
+            this.bool3 = false;
+            this.title = "101";
+            this.$router.push({name:this.linkName,query:{title:this.title}})
+        },
+        fun2(){
+            this.bool1 = false;
+            this.bool2 = true;
+            this.bool3 = false;
+            this.title = "102";
+            this.$router.push({name:this.linkName,query:{title:this.title}})
+        },
+        fun3(){
+            this.bool1 = false;
+            this.bool2 = false;
+            this.bool3 = true;
+            this.title = "103";
+            this.$router.push({name:this.linkName,query:{title:this.title}})
+        },
     },
 }
 
