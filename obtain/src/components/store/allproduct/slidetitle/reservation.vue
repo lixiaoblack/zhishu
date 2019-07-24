@@ -23,7 +23,7 @@
     padding-top: 1rem;
   }
   .reservationTitle{
-    font-size: .15rem;
+    font-size: .14rem;
     text-align: center;
     padding-top: 20px;
   }

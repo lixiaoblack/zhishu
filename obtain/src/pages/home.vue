@@ -1,5 +1,7 @@
 <template>
     <div>
+        <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        </van-pull-refresh> -->
         <Search></Search>
         <Banner></Banner>
         <Imgspan :newarr="classArr"></Imgspan>
@@ -13,7 +15,7 @@
             <Audio :theUrl="v.url" :theControlList="v.controlList"/>
         </div>
         <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl"></Homelisten>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl"></Homebooks>
+        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl"></Homebooks>
         <div class="allTop">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>
@@ -24,8 +26,9 @@
             <p>实物商城</p><router-link to="/shop"><span>全部</span></router-link>
         </div>
         <div style="marginLeft:0.15rem">
-            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice"></Homeshop>
+            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice" style="margin-bottom:.6rem"></Homeshop>
         </div>
+        <Bot ona="发现" class="bot"></Bot>
     </div>
 </template>
 
@@ -38,6 +41,7 @@ import Homebooks from '../components/home/homebooks'
 import Audio from '../components/home/audio'
 import Homecourse from '../components/home/homecourse'
 import Homeshop from '../components/home/homeshop'
+import Bot from '../components/bottom'
 export default {
     components:{
         Search,
@@ -47,7 +51,8 @@ export default {
         Homebooks,
         Audio,
         Homecourse,
-        Homeshop
+        Homeshop,
+        Bot
     },
     data() {
         return {
@@ -79,7 +84,9 @@ export default {
                 url: './static/falling-star.mp3',
                 controlList: 'onlyOnePlaying'
                 }
-            ]
+            ],
+            // count: 0,
+            // isLoading: false
         }
     },
     created() {
@@ -116,6 +123,15 @@ export default {
             }
         })
     },
+    // methods:{
+    //     onRefresh() {
+    //         setTimeout(() => {
+    //             this.$toast('刷新成功');
+    //             this.isLoading = false;
+    //             this.count++;
+    //         }, 500);
+    //     }
+    // }
 }
 </script>
 
@@ -161,5 +177,10 @@ export default {
     }
     .course{
         margin-left: .15rem;
+    }
+    .bot{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
 </style>

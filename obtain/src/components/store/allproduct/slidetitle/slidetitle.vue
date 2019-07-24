@@ -104,18 +104,15 @@
     flex-direction: column;
     overflow-y: auto;
   }
-  .item{
-    /*overflow-y: auto;*/
-  }
   .box{
     width: 1rem;
     height: .75rem;
-    font-size: .17rem;
+    font-size: .14rem;
     line-height: .75rem;
     text-align: center;
     background-color: white;
     color: #0f0f0f;
-    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
   }
   span{
     color: #0f0f0f;
