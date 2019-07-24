@@ -27,20 +27,23 @@
         </div>
         <span class="end">清除搜索记录</span>
         <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7">热门搜索</p>
-        <div class="hot">
+        <div style="margin-left:.12rem">
+            <div class="hot">
             <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <div class="hot">
+                <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <div class="hot">
+                <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <span class="hotspan">阿斯顿撒旦撒大声</span>
+            <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
+            <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
+            <span class="hotspan">阿萨飒是大大大飒的</span>
+            <span class="hotspan">曹盛</span>
         </div>
-        <div class="hot">
-            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
-        </div>
-        <div class="hot">
-            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
-        </div>
-        <span class="hotspan">阿斯顿撒旦撒大声</span>
-        <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
-        <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
-        <span class="hotspan">阿萨飒是大大大飒的</span>
-        <span class="hotspan">曹盛</span>
+        
     </div>
 </template>
 
@@ -140,20 +143,25 @@ export default {
     }
     .hot{
         padding: 5px;
-        background: #dde1e7;
+        background: #ccc;
         display: flex;
-        width: 27%;
+        width: 26%;
         float: left;
-        border-radius: 3px;
+        border-radius: 8px;
         margin-right:8px;
         margin-left: 5px;
+        margin-top: .2rem;
+        font-size: 11px;
+        opacity: .8;
     }
     .hotspan{
-        margin-top: 5px;
-        background: #dde1e7;
+        margin-top: 12px;
+        background: #ccc;
         float: left;
-        padding: 5px;
-        border-radius: 3px;
+        padding: 6px;
+        border-radius: 8px;
+        font-size: 11px;
+        opacity: .8;
     }
     .history{
         display: flex;

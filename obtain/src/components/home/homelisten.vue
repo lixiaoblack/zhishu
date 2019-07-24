@@ -12,12 +12,12 @@
             </div>
             <span class="price">{{booksSprice}}得到贝</span>
         </div>
-        <div class="goodBook">
+        <div class="goodBook" @click="skip(data)">
             <p class="goods">精选书单</p>
-            <img src="../../../static/image/lun_01.jpg"> 
+            <img :src="imgUrl"> 
             <div>
-                <p>巴拉巴拉巴拉巴</p>
-                <span>啊实打实的撒的撒打算打算三生三世三所所所所所在现场</span>
+                <p>{{subtitle}}</p>
+                <span class="courseI">{{courseFeatureIntroI}}</span>
                 <div>共3本</div><div>1.2万人看过</div>
             </div>
         </div>
@@ -74,6 +74,7 @@ export default {
         padding-bottom: .15rem;
         margin-bottom: .15rem;
         border-bottom: 1px solid #e5e5e5;
+        width: 100%;
     }
     .flot p{
         font-size: .14rem;
@@ -121,5 +122,11 @@ export default {
         clear: both;
         font-size: .13rem;
         margin-bottom: .17rem;
+    }
+    .courseI{
+        width: 2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
     }
 </style>
