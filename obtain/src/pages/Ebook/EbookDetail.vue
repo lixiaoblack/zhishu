@@ -33,25 +33,35 @@
         <p @click="open()" class="open">收起 <i class="el-icon-caret-top"></i></p>
       </div>
     </div>
+     <div class="edit1">
+      <p class="cation">
+                <span>目录   </span>
+                <span @click="SkipPages()">查看全部 ></span>
+            </p>
+            
+    </div>
     <div class="edit1">
       <p class="cation">
                 <span>出版方   </span>
                 <span>查看全部 ></span>
             </p>
-            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.book_publisher}}</p>
-            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.book_publisher_intro}}</p>
+            <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
+            <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
     </div>
     <div class="like">
       <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
       <ALLBOOK v-for="(v,i) in likes" :key=i :data="v"></ALLBOOK>
     </div>
+   <BottomBar></BottomBar>
   </div>
 </template>
 <script>
+import BottomBar from "../../components/bottombar"
 import  ALLBOOK from "../../components/Ebook/allBook";
 export default {
   components:{
      ALLBOOK,
+     BottomBar
   },
   data() {
     return {
@@ -65,6 +75,9 @@ export default {
   methods: {
     open() {
       this.isShow = !this.isShow;
+    },
+    SkipPages(){
+      this.$router.push({path:"/catalogue"})
     }
   },
   computed: {
@@ -179,7 +192,7 @@ color: #ccc;
     display: flex;
     justify-content: space-between;
     margin: 0.1rem 0;
-   
+   border-left:deeppink 7px solid;
  
 }
 .cation span:first-child{
@@ -197,5 +210,40 @@ color: #ccc;
 }
 .date span{
 display: inline;
+}
+.bottombar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #e7e7e7;
+    width: 3.75rem;
+    height: .58rem;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+}
+
+.givefriend{
+    font-size:.095rem;
+      color: #898989;   
+}
+.freelisten{
+      font-size:.16rem;
+       color: #5e5e5e;
+}
+.bottombar span{
+    font-size: .16rem;
+}
+.buy{
+    width: 1.51rem;
+    height: .395rem;
+    line-height: .395rem;
+    background: #ea752f;
+    border-radius: 15px;
+    color: #f5ffff;
+    text-align: center;
+}
+.verticalline{
+    color: #e6e6e6;
 }
 </style>

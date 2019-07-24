@@ -12,7 +12,7 @@
                       <span>08分36秒</span>
                       <span>|</span>
                       <span>13484人学过</span>
-                     <div class="bottom_right">
+                     <div class="bottom_right" @click="toaudioxq()">
                         <span class="button"><i class="iconfont icon-bofang"></i></span>
                         <span class="start">播放</span>
                      </div>
@@ -33,6 +33,9 @@ export default {
           tohome(){
             this.$router.push("/details")
         },
+        toaudioxq(){
+            this.$router.push("/audioxq")
+        }
     },
 }
 </script>

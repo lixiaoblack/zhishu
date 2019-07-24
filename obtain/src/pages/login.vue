@@ -162,12 +162,14 @@ export default {
 }    
 </script>
 <style scoped>
+
 .box{
     /* overflow: auto; */
     margin: 2px;
-}
+    font-size: .16rem
+    }
 .close{
-    font-size: 40px;
+    font-size: .2rem;
     height: 0.3rem;
     margin: 0;
     padding: 0;
@@ -192,7 +194,7 @@ export default {
     margin: 0;
     margin-left: 4px;
     padding: 0;
-    font-size: 28px;
+    font-size: .14rem;
     text-shadow:gray 2px 2px 6px;
 }
 .divcs{
@@ -211,7 +213,6 @@ export default {
     margin: 4px;
 }
 .usercs,.passcs{
-    text-shadow:gray 6px 6px 10px;
     /* box-shadow:4px 4px 10px gray;    */
     background-color:#f7f7f8;
     border-radius: 16px;
@@ -220,20 +221,20 @@ export default {
     outline:0;
     height: 0.2rem;
     width: 80%;
-    margin:10px 20px;
+    margin:.05rem .1rem;
     padding:6px;
     text-align: center;
 /* -webkit-appearance:none;
   -moz-appearance: none; */
 }
 .usercs{
-    margin-top: 40px;
+    margin-top: .2rem;
 }
 .passcs{
-    margin-bottom:40px;
+    margin-bottom:.2rem;
 }
 .inios{
-    width: 70%;
+    width: 65%;
     border:0px;
     outline:0;
     border-bottom:1px solid #000;
@@ -242,18 +243,20 @@ export default {
     background-color: #f7f7f8;
 }
 .in{
-    width:30%;
+    width:35%;
     height: 0.3rem;
     background-color:sandybrown;
     color: #fff;
-    border-radius: 12px;
+    border-radius: .1rem;
+    border: 0px;
 }
 .ins{
-    width: 30%;
+    width: 35%;
     height: 0.4rem;
     background-color:sandybrown;
     color: #fff;
-    border-radius: 12px;
+    border-radius: .1rem;
+    border: 0px;
 }
 .inss{
     background-color:#bcbcce;
@@ -263,23 +266,23 @@ export default {
     display: flex;
     justify-content: space-around;
     text-align: center;
-    margin: 20px 0;
+    margin: .1rem 0;
 }
 .ins-1{
-    margin-top: 16px;
+    margin-top: .08rem;
     width: 70%;
     outline:0;
     height: 0.4rem;
     background-color:sandybrown;
     color: rgb(255, 249, 249);
     border-radius: 12px;
-    font-size: 16px;
+    font-size: .08rem;
 }
 .ins-2{
     background-color:#bcbcce;
 }
 .main{
-    margin-top: 40px;   
+    margin-top: .2rem;   
     font-size: 16px;
     display: flex;
     justify-content: space-around;

@@ -3,8 +3,7 @@
 <!--    header-->
     <div class="top">
       <div class="stick">
-        <span class="arrow" @click="fun()"><</span>
-        <div class="arrowTitle">全部商品</div>
+        <TopIcon title="全部商品"></TopIcon>
       </div>
     </div>
 <!--    nav-->
@@ -27,12 +26,13 @@
     </div>
 <!--foot-->
     <div class="botton">
-      <ShopFooter></ShopFooter>
+      <ShopFooter title="全部商品"></ShopFooter>
     </div>
   </div>
 </template>
 
 <script>
+  import TopIcon from "../componrnts/topDingdan"
   import Slidetitle from "../components/store/allproduct/slidetitle/slidetitle"
   import Sort from "../components/store/allproduct/slidetitle/sort"
   import ShopFooter from "../componrnts/shop/shopFooter"
@@ -40,7 +40,8 @@ export default {
     components:{
       Slidetitle,
       Sort,
-      ShopFooter
+      ShopFooter,
+      TopIcon
       // Productshow
     },
   data() {
@@ -78,7 +79,7 @@ export default {
   }
   .stick{
     background-color: white;
-    font-size: .2rem;
+    font-size: .14rem;
     height:.5rem;
     line-height: .5rem;
     position: fixed;
@@ -88,11 +89,11 @@ export default {
     float: left;
     margin-left: .14rem;
     font-weight: bolder;
-    font-size: .2rem
+    font-size: .14rem
   }
   .arrowTitle{
     text-align: center;
-    font-size: .22rem;
+    font-size: .14rem;
     font-weight: bolder;
   }
   .allproduct{
@@ -117,7 +118,7 @@ export default {
     width: 74%;
   }
   .middle{
-    -webkit-flex:1;
+    flex:1;
     overflow-y: auto;
     flex-shrink: 0;
     width: 100%;

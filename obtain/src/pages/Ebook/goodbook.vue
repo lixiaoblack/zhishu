@@ -8,7 +8,7 @@
          
            
        </div>
-     {{type}}
+    
         <ul>
             <Host v-for= "(v,i) in arr" :key= "i" :data= "v"></Host>
         </ul>

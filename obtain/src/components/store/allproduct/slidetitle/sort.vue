@@ -48,7 +48,7 @@
   }
   .spana{
     color: #0f0f0f;
-    font-size: .18rem;
+    font-size: .14rem;
     display: block;
   }
   .aa a span{

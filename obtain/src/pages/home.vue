@@ -17,7 +17,7 @@
         <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl"></Homelisten>
         <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl"></Homebooks>
         <div class="allTop">
-            <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
+            <p>每天听节课</p><router-link to="/course/total"><span>全部</span></router-link>
         </div>
         <div class="course">
         <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice"></Homecourse>
