@@ -180,6 +180,7 @@ import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
+import Read from '../pages/read'
 Vue.use(Router)
 
 export default new Router({
@@ -372,6 +373,11 @@ export default new Router({
       path: '/default',
       name: 'Default',
       component: Default
+    },
+    {
+      path: '/read',
+      name: 'Read',
+      component: Read
     },
     {
       path: '/catalogue',

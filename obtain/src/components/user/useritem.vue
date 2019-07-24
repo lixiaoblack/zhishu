@@ -39,7 +39,7 @@ export default {
 	transform: scale(1.2,1.2);
 }
 .pcs{
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     padding-top: 6px;
 }

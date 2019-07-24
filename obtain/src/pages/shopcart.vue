@@ -49,7 +49,7 @@
                     删除
                 </div>
             </div>
-            <ShopFooter class="foot"></ShopFooter>
+            <ShopFooter class="foot" title="购物车"></ShopFooter>
         </div>
     </div>
 </template>
