@@ -7,23 +7,23 @@
             <div class="icon iconOne">
                 <img src="../../static/tu/r/a7/v2.png" @click="funtime()">
                 <span>定时关闭</span>
-                <ul style="text-align:left" v-if="bolltime">
+                <!-- <ul style="text-align:left" v-if="bolltime">
                     <li>10秒</li>
                     <li>30秒</li>
                     <li>1分钟</li>
                     <li>5分钟</li>
                     <li>10分钟</li>
-                </ul>
+                </ul> -->
             </div>
             <div class="icon iconTwo"> 
                 <img src="../../static/tu/r/a7/v1.png" @click="funspeed()"> 
                 <span>倍速播放</span>
-                <ul style="text-align:left" v-if="bollspeed">
+                <!-- <ul style="text-align:left" v-if="bollspeed">
                     <li>1倍</li>
                     <li>2倍</li>
                     <li>3倍</li>
                     <li>4倍</li>
-                </ul>
+                </ul> -->
             </div>
             <div class="icon iconTwo">
                 <img :src="boll?'../../static/tu/r/f/uh.png':'../../static/tu/r/f/ui.png'">
@@ -52,7 +52,7 @@ export default {
         return {
            audios: [
                 {
-                url: './static/falling-star.mp3',
+                url: './static/201907222141120244326370.mp3',
                 controlList: 'onlyOnePlaying'
                 }
             ],

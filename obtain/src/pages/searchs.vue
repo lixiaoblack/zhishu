@@ -12,21 +12,21 @@
                 <div class="left">
                     <img src="../../static/tu/r/f/a9l.png"><span>我</span>
                 </div>
-                <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
             <div class="history">
                 <div class="left">
                     <img src="../../static/tu/r/f/a9l.png"><span>啥事</span>
                 </div>
-                <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
             <div class="history">
                 <div class="left">
                     <img src="../../static/tu/r/f/a9l.png"><span>我的</span>
                 </div>
-                <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
-            <span class="end">清除搜索记录</span>
+            <span class="end" @click="func($event)">清除搜索记录</span>
         </div>
         <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7;padding-top:12px">热门搜索</p>
         <div style="margin-left:.12rem">
@@ -72,7 +72,7 @@ export default {
                 {name:"暗示等暗示等暗示等阿萨啊"}
 
             ],
-            boll:true
+            boll:true,
         }
     },
     methods: {
@@ -83,12 +83,21 @@ export default {
             if(this.issue_content.length>0){
                 this.serch_result_issue = true;
             }else{
-                this.serch_result_issue = false
+                this.serch_result_issue = false;
             }
-            this.boll=fasle
+            this.boll=false
+            if(this.issue_content.length==0){
+                this.boll=true
+            }
         },
         funb(){
             this.$router.push({path:"/searchitem"})
+        },
+        func(e){
+            e.target.parentElement.remove()
+        },
+        delOne(e){
+            e.target.parentElement.remove()
         }
     },
     computed: {
