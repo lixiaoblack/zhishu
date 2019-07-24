@@ -27,7 +27,7 @@ export default {
            this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
        },
         tryBook(){
-      this.$router.push({name:"ReadBook"})
+      this.$router.push({path:"/read"})
    }
    },
   

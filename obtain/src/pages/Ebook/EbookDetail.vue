@@ -77,7 +77,7 @@ export default {
       this.isShow = !this.isShow;
     },
     SkipPages(){
-      this.$router.push({path:"/home"})
+      this.$router.push({path:"/catalogue"})
     }
   },
   computed: {
