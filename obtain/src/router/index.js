@@ -175,6 +175,8 @@ import ListenDetail from "../pages/Ebook/listenDetail";
 import Goodlisten from "../pages/Ebook/goodlisten"
 import ReadBook from "../pages/Ebook/readbook";
 import Author from "../pages/Ebook/author";
+import EbookBuy from "../pages/Ebook/ebookBuy";
+import GivePartner from "../pages/Ebook/givePartner";
 ///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
@@ -469,7 +471,7 @@ export default new Router({
       name:'BOOKDEL',
       component:BOOKDEL
     },
-   
+    
     {
       path:"/goodlisten",
       name:"Goodlisten",
@@ -486,9 +488,19 @@ export default new Router({
       component:Good
     },
     {
+      path:'/ebookBuy',
+      name:'EbookBuy',
+      component:EbookBuy
+    },
+    {
       path:'/listen',
       name:'Listen',
       component:Listen
+    },
+    {
+      path:'/givePartner',
+      name:'GivePartner',
+      component:GivePartner
     },
     {
       path:'/buy',

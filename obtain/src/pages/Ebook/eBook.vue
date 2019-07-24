@@ -1,12 +1,19 @@
 <template>
   <div>
     <header>
-      <span>返回</span>
+      <span @click="skipPrev()">返回</span>
       <span>电子书</span>
       <p @click="skipTryread(recently)" style="display:flex"><span style="font-size:.12rem;">{{recently.title}}</span><i :class="recently.icon"></i></p>
       
     </header>
-    <Search></Search>
+   <div class="search">
+        <input type="search" placeholder="搜索好书" class="intSearch" @focus="fun()">
+        <!-- <div>
+            <img src="">
+            <span>发现</span>
+        </div> -->
+       
+    </div>
     <nav>
        
          <OPEN v-for= "(v,i) in nav" :key= "i" :data= "v"></OPEN>
@@ -127,7 +134,14 @@ export default {
       },
         skipGb(v){
           this.$router.push({path:v.path,query:{val:JSON.stringify(v)}})
-      }
+      },
+      fun(){
+            //ajax
+            this.$router.push({path:"/searchs"})
+        },
+         skipPrev(){
+      this.$router.go(-1)
+    }
    },
   computed: {
       goodBook(){
@@ -207,6 +221,11 @@ header {
   justify-content: space-between;
   font-size: 0.16rem;
    padding: 0.12rem 0.12rem;
+   z-index: 999;
+   position: fixed;
+   top:0;
+   width: 100%;
+   background: white;
 }
 
 nav{
@@ -281,4 +300,26 @@ h4{
     color: #636363;
     text-align: center;
 }
+ .search{
+        width: 100%;
+        /* position: relative; */
+        height: 36px;
+       margin-top:.5rem;
+        top: 0;
+        left: 0;
+        font-size: 12px;
+        z-index: 99;
+        background: #f7f7f8;
+        padding-top: 10px;
+    }
+    .intSearch{
+        width: 3.05rem;
+        height: 0.36rem;
+        border-radius: 8px;
+        border:0px;
+        padding-left: 0.35rem;
+        background: #f0f0f0;
+        outline:none;
+        margin-left: 0.15rem;
+    }
 </style> 

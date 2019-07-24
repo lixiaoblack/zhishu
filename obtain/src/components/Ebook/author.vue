@@ -1,26 +1,27 @@
 <template>
   <div>
-    <div>
+    <div class="box"> 
       
-        <!-- <div>
-            <img :src="data.listenAuthorPhoto" alt="">
+        <div class="header">
+            <img :src="arr[0].listenAuthorPhoto" alt="" style="border-radius:50%; height:.45rem;width:.45rem;margin-right:.15rem">
             <div>
-                <p>
-                    {{data.listenAuthor}}123
+                <p style="font-size:.15rem; font-weight:600;line-height:.23rem">
+                 {{arr[0].listenAuthor}}
                 </p>
-                <p><span>{{arr.length}}</span>
-                <span>{{data.listenCount}}</span>
+                <p style="display:flex;"><span style="margin-right:.15rem">共{{arr.length}}本</span>
+                <span style="font-size:.12rem;color:#ccc">{{arr[0].listenCount}}人听过</span>
                 </p>
             </div>
         </div>
-      <ul>
-        <li class="box" @click="skip(v)" v-for="(v,i)in arr" :key="i">
+      <ul class="list">
+        <li class="box" @click="skip(v)" v-for= "(v,i) in sliceListen" :key="i">
           <p>
-            <img :src="data.listenImgUrl" />
+            <img :src="v.listenImgUrl" />
           </p>
-          <p class="title">{{data.listenSubtitle}}</p>
+          <p class="title">{{v.listenSubtitle}}</p>
+          <p>{{v.listenAuthor}}解读</p>
         </li>
-      </ul> -->
+      </ul>
     </div>
   </div>
 </template>
@@ -28,20 +29,30 @@
 export default {
     data(){
         return{
-            arr:[{}]
+            arr:[{}],
+           
+        }
+    },
+    computed: {
+        sliceListen(){
+         return this.arr.slice(0,3)
         }
     },
   props: ["data"],
   methods: {
     skip(val) {
-      this.$router.push({
-        name: "BOOKDEL",
-        query: { id: JSON.stringify(val.listenId) }
-      });
+         
+         this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
+    
     }
   },
   created(){
-      this.axios.get("/listen").then
+      this.axios.get("/listen").then(ok=>{
+        let val=ok.data.listen;
+        this.arr= val.filter(item=>{
+          return item.listenAuthor==this.data;
+        })
+      })
   }
 };
 </script>
@@ -49,8 +60,11 @@ export default {
 li {
   list-style: none;
 }
-
-.box img {
+.list{
+  display: flex;
+  justify-content: space-between;
+}
+.list li img {
   width: 0.85rem;
   height: 1.2rem;
 }
@@ -67,5 +81,11 @@ li {
 }
 .box {
   font-size: 0.12rem;
+  background: white;
+  padding: .14rem;
+  margin-bottom: .15rem;
+}
+.header{
+  display: flex;
 }
 </style>

@@ -10,6 +10,7 @@
                     <div class="buy">
                       <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenSprice}}得到贝</p>
                       <p class="read" @click.stop="buy(data)">购买</p>
+                     
                     </div>
                 </div>
      </li>
@@ -26,7 +27,7 @@ export default {
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.listenId)}})
+           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
        },
        buy(val){
          this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})

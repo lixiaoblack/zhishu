@@ -1,6 +1,9 @@
 <template>
   <div class="body">
-    <header>每天听本书</header>
+    <header>
+      <span style="margin-right:.8rem;color:#cccccc; font-size:.15rem; font-weight:100" @click="skipPrev">返回</span>
+      每天听本书
+      </header>
     <div class="vip">
       <div class="left">
         <p class="left_logo">
@@ -36,7 +39,7 @@
         <span>查看全部 ></span>
       </p>
       <ul >
-        <listenM :data="arr[0]"></listenM>
+        <listenM :data= "arr[0]"></listenM>
       </ul>
     </div>
     <div class="bookType">
@@ -115,6 +118,9 @@ export default {
         path: v.path,
         query: { val: JSON.stringify(v) }
       });
+    },
+    skipPrev(){
+      this.$router.go(-1)
     }
   },
   mounted() {
@@ -162,8 +168,9 @@ export default {
 header {
   font-size: 0.18rem;
   font-weight: 600;
-  text-align: center;
-  padding: 0.2rem;
+ 
+  padding: 0.16rem;
+  display: flex;
 }
 .left {
   display: flex;

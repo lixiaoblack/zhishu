@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <p class="header">
-      <span>返回</span>
+      <span @click="skipPrev">返回</span>
       <span class="el-icon-link"></span>
     </p>
     <div class="overflow">
@@ -78,6 +78,7 @@
         <ListenL v-for="(v,i) in listenLike" :key="i" :data="v"></ListenL>
       </div>
     </div>
+
     <footer>
       <p @click="buy(arr)">
         <span>购买</span>
@@ -95,7 +96,7 @@ export default {
   },
   data() {
     return {
-      id: null,
+      id: "",
       likes: [],
       arr: {},
       cut: true,
@@ -143,9 +144,15 @@ export default {
     content_Show() {
       this.contentShow = !this.contentShow;
     },
-     buy(val){
-         this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})
-       }
+    buy(val) {
+      this.$router.push({
+        name: "Buy",
+        query: { id: JSON.stringify(val.listenId) }
+      });
+    },
+    skipPrev() {
+      this.$router.go(-1);
+    }
   }
 };
 </script>
@@ -222,16 +229,14 @@ footer p:nth-child(1) {
 }
 footer p:nth-child(2) {
   background: #f17327;
-   text-align: center;
+  text-align: center;
   line-height: 50px;
   color: white;
 }
-.overflow{
- 
+.overflow {
   /* display: flex;
   flex-direction: column; */
   flex: 1;
   overflow-y: auto;
 }
-
 </style>
