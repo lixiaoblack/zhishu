@@ -18,7 +18,7 @@
             <div>
                 <p>{{subtitle}}</p>
                 <span class="courseI">{{courseFeatureIntroI}}</span>
-                <div>共3本</div><div>1.2万人看过</div>
+                <div style="margin-right:8px">共3本</div><div>1.2万人看过</div>
             </div>
         </div>
         
@@ -128,5 +128,8 @@ export default {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis
+    }
+    .goodBook{
+        padding-bottom: .36rem;
     }
 </style>

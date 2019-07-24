@@ -15,7 +15,7 @@
             <Audio :theUrl="v.url" :theControlList="v.controlList" style="border-radius:.1rem"/>
         </div>
         <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl" style="border-radius:.1rem"></Homelisten>
-        <Circulation style="margin-top:7.1rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:7.35rem;border-radius:.1rem"></Circulation>
         <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl" style="border-radius:.1rem"></Homebooks>
         <Circulation style="margin-top:4.3rem;border-radius:.1rem"></Circulation>
         <div class="allTop" style="border-radius:.1rem .1rem 0 0">
@@ -24,7 +24,7 @@
         <div class="course">
         <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
         </div>
-        <Circulation style="margin-top:3.9rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:4.05rem;border-radius:.1rem"></Circulation>
         <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
             <p>实物商城</p><router-link to="/shop"><span>全部</span></router-link>
         </div>

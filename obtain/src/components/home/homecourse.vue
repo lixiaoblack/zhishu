@@ -40,7 +40,7 @@ export default {
         float: left;
         font-size: 12px;
         background: #ffffff;
-        padding: 5px 11px 0;
+        padding: 5px 11px 10px;
     }
     .all img{
         height: .84rem;
@@ -79,6 +79,6 @@ export default {
         width: 1.5rem;
         overflow: hidden;
         white-space: nowrap;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis
     }
 </style>
