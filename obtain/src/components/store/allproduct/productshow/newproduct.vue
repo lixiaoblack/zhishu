@@ -28,13 +28,13 @@
       },
       created() {
         this.axios({
-          url:"/user/shop",
+          url:"user/shop",
           method:"get",
         }).then((ok)=>{
           this.brr=ok.data.shop;
           console.log(ok)
         });
-        this.$emit("order",0)
+        // this.$emit("order",0)
       }
     }
 </script>

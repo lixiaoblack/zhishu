@@ -6,6 +6,7 @@
                 <router-link :to="v.url">
                   <span>{{v.title}}</span>
                 </router-link>
+                <router-view @order="order"></router-view>
               </div>
 <!--      方式二：遍历data属性取值数据，往子组件正传-->
 <!--      <Slidetitleson v-for="(v,i) in arr" :key="i" :titles="v.title" :urls="v.url"  :class="{active : active == i}"-->
@@ -66,10 +67,10 @@
 </template>
 
 <script>
-  import Slidetitleson from "./slidetitleson"
+  // import Slidetitleson from "./slidetitleson"
     export default {
     components:{
-      Slidetitleson
+      // Slidetitleson
     },
       data(){
         return {
@@ -85,12 +86,15 @@
             {title:"亲子读物",url:"/allproduct/reader"},
             {title:"日本直采",url:"/allproduct/japan"}
           ],
-          active:''
+          active:'',
         }
       },
       methods:{
         fun(i){
           this.active = i;
+        },
+        order(num){
+          this.i=num;
         }
       }
     }
