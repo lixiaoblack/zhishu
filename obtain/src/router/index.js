@@ -3,6 +3,16 @@ import Router from 'vue-router'
 
 import Classify from '../pages/classify';
 
+
+//登录注册
+import User from '../pages/user'
+import Login from '../pages/login'
+import Register from '../pages/register'
+import Set from '../pages/set'
+import Mone from '../pages/moduleone'
+import Mtwo from '../pages/moduletwo'
+import Mthree from '../pages/modulethree'
+
 //商城
 import Allproduct from '../pages/allproduct'
 import Havebuy from '../pages/havebuy'
@@ -323,6 +333,41 @@ export default new Router({
       ]
     },
     {
+      path:'/user',
+      name:'User',
+      component:User
+    },
+    {
+      path:'/login',
+      name:'Login',
+      component:Login
+    },
+    {
+      path:'/register',
+      name:'Register',
+      component:Register
+    },
+    {
+      path:'/set',
+      name:'Set',
+      component:Set
+    },
+    {
+      path:'/moduleone/:id',
+      name:'Mone',
+      component:Mone
+    },
+    {
+      path:'/moduletwo/:id',
+      name:'Mtwo',
+      component:Mtwo
+    },
+    {
+      path:'/modulethree/:id',
+      name:'Mthree',
+      component:Mthree
+    },
+    {
       path: '/default',
       name: 'Default',
       component: Default
@@ -336,11 +381,6 @@ export default new Router({
       path: '/note',
       name: 'Note',
       component: Note
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home
     },
     {
       path: '/details',
@@ -556,6 +596,11 @@ export default new Router({
           component: Japan
         }
       ]
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path:'/*',

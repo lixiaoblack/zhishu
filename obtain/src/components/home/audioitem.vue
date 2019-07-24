@@ -238,10 +238,10 @@
   }
 
   .download {
-    color:#333333;
+    color:#999999;
     font-size: .11rem;
     position: fixed;
-    top: 2.315rem;
+    top: 3.31rem;
     right: 1.16rem;
   }
 
