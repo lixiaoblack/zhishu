@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <ShopFooter class="footer"></ShopFooter>
+        <ShopFooter class="footer" title="商城"></ShopFooter>
     </div>
 </template>
 

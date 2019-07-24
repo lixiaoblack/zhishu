@@ -14,7 +14,7 @@
         </div>
       <Reservation></Reservation>
       <div class="botton">
-        <ShopFooter></ShopFooter>
+        <ShopFooter title="订单"></ShopFooter>
       </div>
     </div>
 </template>
@@ -99,6 +99,9 @@
     align-items: center;
 
   }
+  .box a{
+    width: 100%;
+  }
   .active{
     border-bottom:3px solid #ff6800;
   }
@@ -112,9 +115,10 @@
     display:block;
     height: .17rem;
     line-height:.17rem;
-    width: 145%;
+    width: 100%;
     text-align: center;
     color: #0f0f0f;
+    text-indent: 3px;
   }
   .botton{
     position: fixed;
