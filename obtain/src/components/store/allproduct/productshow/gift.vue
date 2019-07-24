@@ -32,9 +32,9 @@
           method:"get",
         }).then((ok)=>{
           this.brr=ok.data.shop;
-          console.log(ok)
         });
-        this.$emit("order",0)
+        //往父组件传参
+        this.$emit("indexs",1)
       }
     }
 </script>
