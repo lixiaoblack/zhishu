@@ -2,7 +2,7 @@
   <div class="item">
     <div class="addbox">
 <!--      方式一：遍历data属性取值数据-->
-      <div @indexs="indexs" class="box" v-for="(v,i) in arr" @click="fun(i)" :key="i"  :class="{active : active ==i}">
+      <div class="box" v-for="(v,i) in arr" @click="fun(i)" :key="i"  :class="{active : active ==i}">
                 <router-link :to="v.url">
                   <span>{{v.title}}</span>
                 </router-link>
@@ -40,10 +40,11 @@
       methods:{
         fun(i){
           this.active = i;
+
         },
         //将子组件传递的参数赋值给active
-        indexs(num){
-          this.active=num;
+          indexs(num){
+            this.active=num;
         }
       }
     }

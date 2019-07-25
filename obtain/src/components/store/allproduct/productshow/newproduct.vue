@@ -1,40 +1,46 @@
 <template>
   <div class="aa">
-  <div class="showbox" @click="i" v-for="(v,i) in brr" :key="i">
-    <img :src="v.shopImgurl"/>
-    <div class="name">{{v.shoptitle}}</div>
-    <div class="notice">{{v.shopSummary}}</div>
-    <div class="priceAdd">
-      <div class="price">¥{{v.saleSprice}}</div>
-      <span class="shopSprice">¥{{v.shopSprice}}</span>
-    </div>
-    <div class="sale"></div>
-  </div>
+      <Load v-if="bool"></Load>
+      <div v-else class="showbox" @click="go(v)" v-for="(v,i) in brr" :key="i">
+        <img :src="v.shopImgurl"/>
+        <div class="name">{{v.shoptitle}}</div>
+        <div class="notice">{{v.shopSummary}}</div>
+        <div class="priceAdd">
+          <div class="price">¥{{v.saleSprice}}</div>
+          <span class="shopSprice">¥{{v.shopSprice}}</span>
+        </div>
+        <div class="sale"></div>
+      </div>
   </div>
 </template>
 
 <script>
+  import Load from '../slidetitle/loading'
     export default {
-      // props:{
-      //   imgurl:String,
-      //   content:String,
-      //   price:String,
-      //   shopSummary:String
-      // },
+      components: {
+        Load
+      },
       data() {
         return {
-          brr:''
+          brr: '',
+          bool: "true",
         }
       },
       created() {
         this.axios({
-          url:"user/shop",
-          method:"get",
-        }).then((ok)=>{
-          this.brr=ok.data.shop;
+          url: "user/shop",
+          method: "get",
+        }).then((ok) => {
+          this.brr = ok.data.shop;
+          this.bool = false;
           // console.log(ok)
         });
-        this.$emit("order",0)
+        // this.$emit("order",0)
+      },
+      methods: {
+        go(title) {
+          this.$router.push({name: 'CommodityDetails', query: {content: title}});
+        }
       }
     }
 </script>
@@ -56,6 +62,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
   }
   .aa:nth-child(2n){
     margin-left: 10px;
