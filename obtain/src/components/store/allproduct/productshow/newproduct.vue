@@ -2,12 +2,12 @@
   <div class="aa">
       <Load v-if="bool"></Load>
       <div v-else class="showbox" @click="go(v)" v-for="(v,i) in brr" :key="i">
-        <img :src="v.shopImgurl"/>
-        <div class="name">{{v.shoptitle}}</div>
-        <div class="notice">{{v.shopSummary}}</div>
+        <img v-lazy="v.courseImgurl"/>
+        <div class="name">{{v.courseSubtitle}}</div>
+        <div class="notice">{{v.courseSummary}}</div>
         <div class="priceAdd">
-          <div class="price">¥{{v.saleSprice}}</div>
-          <span class="shopSprice">¥{{v.shopSprice}}</span>
+          <div class="price">¥{{v.courseSprice}}</div>
+<!--          <span class="shopSprice">¥{{v.shopSprice}}</span>-->
         </div>
         <div class="sale"></div>
       </div>
@@ -28,14 +28,13 @@
       },
       created() {
         this.axios({
-          url: "user/shop",
+          url: "http://39.107.105.57:8084/Course/loadAll",
           method: "get",
         }).then((ok) => {
-          this.brr = ok.data.shop;
+          this.brr = ok.data.queryResult.list;
           this.bool = false;
-          // console.log(ok)
+          console.log(ok)
         });
-        // this.$emit("order",0)
       },
       methods: {
         go(title) {
