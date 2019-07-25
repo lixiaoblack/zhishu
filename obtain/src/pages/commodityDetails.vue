@@ -327,6 +327,7 @@ export default {
         background: white;
         z-index: 2;
         box-sizing: border-box;
+        width: 100%;
     }
     .bottomMidd{
         border-top: 1px solid #F3F3F3;
@@ -371,6 +372,12 @@ export default {
         background: #FFA125;
         height: .5rem;
         line-height: .5rem;
+    }
+    .bottomTopRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left:.1rem; 
     }
     .bottomTopRight span{
         color: #FFA125;
