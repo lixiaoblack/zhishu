@@ -4,35 +4,34 @@
             <div @click="fun()">×</div>
         </div>
         <div class="login">
-            <div id="denglu">
-                <span class="spancs">用户名登录</span>
-                <div  class="divcs">
-                    <span class="dscs1">
-                        <input id="userId" :class="dool ? 'usercs': 'usercs xiahuared'" type="text" name="username" placeholder="请输入用户名"  @blur="fun2()" v-model="username">
+            <span class="spancs">用户登录</span>
+            <div  class="divcs">
+                <span class="dscs top">
+                    <input id="userId" :class="dool ? 'usercss': 'usercss xiahuared'" type="text" name="username" placeholder="请输入用户名或邮箱"  @blur="fun2()" v-model="username">
+                </span>
+                <span class="dscs top">
+                    <input class="usercss" type="password"  name="userpass" placeholder="请输入密码" v-model="userpwd">
+                </span>
 
-                        <input class="passcs" type="password"  name="userpass" placeholder="请输入密码" v-model="userpwd">
-                    </span>
-
-                    <span class="ins-i">
-                        <input  :disabled="btnbooll" :class="btnbooll ? 'ins-1 ins-2' : 'ins-1'" type="button" value="登录" @click="onregister()">
-                    </span>
-                </div>
-
-                <div class="main">
-                    <span @click="fun4()">
-                        <!-- <a href="#zhuce"> -->
-                            注册账号
-                        <!-- </a> -->
-                    </span>
-                    <span><a href="##">忘记密码？</a></span>
-                </div>
+                <span class="ins">
+                    <input  :disabled="btnbooll" :class="btnbooll ? 'inios inss' : 'inios'" type="button" value="登录" @click="onregister()">
+                </span>
             </div>
-        </div>
-        <div class="footer">
-            <p>点击按钮即表示您同意并愿意遵守知书</p>
-            <p>
-                <a href="">《使用协议》</a>和<a href="">《隐私协议》</a>
-            </p>
+
+            <div class="main">
+                <span @click="fun4()">
+                    <!-- <a href="#zhuce"> -->
+                        注册账号
+                    <!-- </a> -->
+                </span>
+                <span @click="fun5()">忘记密码？</span>
+            </div>
+            <div class="footer">
+                <p>点击按钮即表示您同意并愿意遵守知书</p>
+                <p>
+                    <a href="">《使用协议》</a>和<a href="">《隐私协议》</a>
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -48,9 +47,13 @@ export default {
         }
     },
     methods:{
+        fun(){
+            this.$router.go(-1);
+        },
         fun2(){//判断用户名规则合法
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
-            if(a.test(this.username)==true){
+            var b=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
+            if(a.test(this.username)==true||b.test(this.username)==true&&this.loginname!=""){
                 this.namecode="1";
                 this.dool=true;
                 this.axios({
@@ -72,16 +75,23 @@ export default {
                 path: "/login",
             });
         },
+        fun5(){
+            this.$router.push({
+                path: "/forget",
+            });
+        },
         onregister(){//用户名登录
+            var a=/@/
             console.log(this.username)
             console.log(this.userpwd)
-            this.axios({
+            if(a.test(this.username)){
+                this.axios({
                 url:"http://39.107.105.57:8084/user/loginUser",
                 method:"post",
-                params:{    // post发送数据的时候使用data属性
-                    username:this.username,
+                params:{
+                    useremail:this.username,
                     password:this.userpwd
-                }
+                } 
             }).then((ok)=>{
                 console.log(ok);
                 if(ok.data.message == "操作成功！"){
@@ -92,6 +102,27 @@ export default {
                 }
 
             })
+             }else{
+                this.axios({
+                url:"http://39.107.105.57:8084/user/loginUser",
+                method:"post",
+                params:{
+                    username:this.username,
+                    password:this.userpwd
+                }
+                
+                }).then((ok)=>{
+                console.log(ok);
+                if(ok.data.message == "操作成功！"){
+                    alert("登录成功！");
+                    this.$router.push("/home");
+                }else{
+                    alert("登录失败！");
+                }
+
+                })
+            }
+            
         }
     },
     watch:{
@@ -116,77 +147,74 @@ export default {
 .box{
     /* overflow: auto; */
     margin: 2px;
-}
-.close{
-    font-size: 40px;
-    height: 0.3rem;
-    margin: 0;
-    padding: 0;
-}
-.close div{
-    padding-left: 10px;
-    line-height: 0.3rem;
-    width: 0.5rem;
-    height: 0.3rem;
+    font-size: 0.6rem;
+    display: flex;
+    flex-flow: wrap;
 }
 .login{
+    display: flex;
+    flex-flow: wrap;
     background: #f7f7f8;
-    height: 4.6rem;
     /* overflow: hidden; */
 }
-#zhuce,#denglu{
-    height: 4.6rem;
+.close{
+    font-size: 0.5rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    margin: 0;
+    padding: 0;
 }
 .spancs{
-    line-height: 1rem;
-    height: 1rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
     margin: 0;
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-left: 6px;
+    margin-top: 0.1rem;
     padding: 0;
-    font-size: 28px;
-    text-shadow:gray 2px 2px 6px;
+    font-size: 0.24rem;
 }
 .divcs{
     display: flex;
-    flex-flow: wrap;
+    flex-flow:wrap;
     justify-content: space-around;
 }
-.divcs .dscs1{
+.divcs .dscs{
     display: flex;
-    flex-flow: wrap;
     justify-content: space-around;
+    width: 100%; 
+    margin: 4px;
 }
-.usercs,.passcs{
-    text-shadow:gray 6px 6px 10px;
-    /* box-shadow:4px 4px 10px gray;    */
-    background-color:#f7f7f8;
-    border-radius: 16px;
-    border:0px;
-    border-bottom:1px solid #000;   
-    outline:0;
-    height: 0.2rem;
+.divcs .dscss{
+    display: flex;
+    justify-content: space-around;
     width: 80%;
-    margin:10px 20px;
-    padding:6px;
+    margin: 4px;
+}
+.divcs .top{
+    margin-top: 0.3rem;
+}
+.usercss{
+    display: flex;
+    width: 80%;
+    border:0px;
+    outline:0;
+    margin: 6px;
+    padding: 4px;
+    border-bottom:1px solid #000;
+    background-color: #f7f7f8;
     text-align: center;
-/* -webkit-appearance:none;
-  -moz-appearance: none; */
+    border-radius: 0.2rem;
+    font-size: 0.16rem;
+    text-shadow:gray 2px 2px 10px;
 }
-.usercs{
-    margin-top: 40px;
-}
-.passcs{
-    margin-bottom:40px;
-}
-.ins-i{
+.ins{
     width:100%;
     display: flex;
     justify-content: space-around;
     text-align: center;
-    margin: 20px 0;
+    margin: .1rem 0;
 }
-.ins-1{
+.inios{
     margin-top: 16px;
     width: 70%;
     outline:0;
@@ -194,16 +222,19 @@ export default {
     background-color:sandybrown;
     color: rgb(255, 249, 249);
     border-radius: 12px;
-    font-size: 16px;
+    font-size: .08rem;
+    border: 0px;
 }
-.ins-2{
+.inss{
     background-color:#bcbcce;
 }
 .main{
-    margin-top: 30px;   
-    font-size: 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
+    width: 100%;
+    margin-top: 0.4rem;  
+    margin-bottom: 0.4rem; 
+    font-size: 0.2rem;
 }
 /* .main span{ */
    /* text-shadow:gray 2px 4px 4px; */
@@ -211,9 +242,10 @@ export default {
 .footer{
     background: #f7f7f8;
     display: flex;
-    flex-flow: column;
+    flex-flow: wrap;
+    justify-content: space-around;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.15rem;
 }
 .footer p{
     margin-bottom:10px;
@@ -222,7 +254,8 @@ export default {
     border-bottom:3px solid green;
 }
 .xiahuared{
-    border-bottom: 5px solid red;
+    border-bottom: 3px solid red;
+    /* background-color:#f7f7f8; */
 }
 
 </style>

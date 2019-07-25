@@ -1,27 +1,29 @@
 <template>
     <div class="box">
-        <div class="close">
+        <div class="close"> 
             <div @click="fun()">×</div>
         </div>
-        <div class="login">
-            <div id="zhuce">
+        <div v-if="loading"><img src="../../static/tu/user/loading.gif" alt=""></div>
+        <div v-else>
+            <div class="login">
                 <span class="spancs">用户名注册</span>
                 <div class="divcs">
-                    <div class="dscs1">
-                        <input id="phoneId" :class="dool ? 'usercs': 'usercs xiahuared'" type="text" name="username" placeholder="用户名为6-16位，以字母开头" v-model="loginname" @blur="fun2()">
-
-                        <input class="passcs" type="password" name="password" placeholder="请输入密码" v-model="loginpwd">
+                    <div class="dscs top">
+                        <input id="phoneId" :class="dool ? 'usercss': 'usercss xiahuared'" type="text" name="username" placeholder="用户名为6-16位，以字母开头" v-model="loginname" @blur="fun2()">
+                    </div>
+                    <div class="dscs">
+                        <input class="usercss" type="password" name="password" placeholder="请输入密码" v-model="loginpwd">
                     </div>
 
-                    <span class="dscs">
-                        <input class="inios" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
-                        <input class="in" type="button" value="获取验证码" @click="fun3()">
+                    <span class="dscss top">
+                        <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
+                        <input class="inios" type="button" value="获取验证码" @click="fun3()">
                     </span>
 
-                    <span class="dscs">
-                        <input class="inios" type="number" placeholder="请输入验证码" v-model="logincode"> 
+                    <span class="dscss">
+                        <input class="usercs" type="number" placeholder="请输入验证码" v-model="logincode"> 
                         <!-- <input class="ins" type="submit" value="点击注册"> -->
-                        <button  :disabled="btnbooll" :class="btnbooll ? 'ins inss' : 'ins'"  @click="onlogin()" >点击注册</button>
+                        <input type="submit" :disabled="btnbooll" :class="btnbooll ? 'inios inss' : 'inios'"  @click="onlogin()" value="请点击注册">
                     </span>
                 </div>
 
@@ -31,15 +33,15 @@
                             账号登录
                         <!-- </a> -->
                     </span>
-                    <span><a href="##">忘记密码？</a></span>
+                    <span @click="fun5()">忘记密码？</span>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <p>点击按钮即表示您同意并愿意遵守知书</p>
-            <p>
-                <a href="">《使用协议》</a>和<a href="">《隐私协议》</a>
-            </p>
+            <div class="footer">
+                <p>点击按钮即表示您同意并愿意遵守知书</p>
+                <p>
+                    <a href="##">《使用协议》</a>和<a href="##">《隐私协议》</a>
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -55,7 +57,15 @@ export default {
 
             dool:true,//判断是否符合用户名规则的真假
             btnbooll:true,//判断输入框内是否有值的真假
+            loading:true,
+            y:''//异步判断注册的用户名是否已存在
         }
+    },
+    created(){
+        let that=this
+        setTimeout(function(){
+            that.loading=false
+        },500)
     },
     methods: {
         fun(){//编程式跳转
@@ -63,9 +73,9 @@ export default {
                 path: "/user",
             });
         },
-        fun2(){//判断用户名规则合法
+        fun2(){//判断用户名规则合法，，，同时异步检测用户名是否存在
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
-            if(a.test(this.loginname)==true){
+            if(a.test(this.loginname)==true&&this.loginname!=""){
                 this.namecode="1";
                 this.dool=true;
                 this.axios({
@@ -76,6 +86,14 @@ export default {
                     }
                 }).then((ok)=>{
                     // console.log(ok);
+                    if(username==loginname){
+                        console.log("此用户已存在，请重新输入")
+                        alert("账户已存在")
+                        // this.y="×"
+                    }else{
+                        console.log("此账户可用")
+                        // this.y="√"
+                    }
                 })
             }else{
                 this.namecode="0";
@@ -100,13 +118,18 @@ export default {
                 path: "/register",
             });
         },
+        fun5(){
+            this.$router.push({
+                path: "/forget",
+            });
+        },
         onlogin(){//用户注册
             this.axios({
                 url:"http://39.107.105.57:8084/user/checkCode",//post请求下地址为http:ip地址：端口号
                 method:"post",
                 params:{
                     code:this.logincode
-                } // post发送数据的时候使用data属性
+                } 
             }).then((ok)=>{
                 console.log(ok);
                 console.log(ok.data)
@@ -162,127 +185,102 @@ export default {
 }    
 </script>
 <style scoped>
+
 .box{
     /* overflow: auto; */
     margin: 2px;
-}
-.close{
-    font-size: 40px;
-    height: 0.3rem;
-    margin: 0;
-    padding: 0;
-}
-.close div{
-    padding-left: 10px;
-    line-height: 0.3rem;
-    width: 0.5rem;
-    height: 0.3rem;
+    font-size: 0.6rem;
+    display: flex;
+    flex-flow: wrap;
 }
 .login{
+    display: flex;
+    flex-flow: wrap;
     background: #f7f7f8;
-    height: 4.6rem;
     /* overflow: hidden; */
 }
-#zhuce,#denglu{
-    height: 4.6rem;
+.close{
+    font-size: 0.5rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    margin: 0;
+    padding: 0;
 }
 .spancs{
-    line-height: 1rem;
-    height: 1rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
     margin: 0;
-    margin-left: 4px;
+    margin-left: 6px;
+    margin-top: 0.1rem;
     padding: 0;
-    font-size: 28px;
-    text-shadow:gray 2px 2px 6px;
+    font-size: 0.24rem;
 }
 .divcs{
     display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
-}
-.divcs .dscs1{
-    display: flex;
-    flex-flow: wrap;
+    flex-flow:wrap;
     justify-content: space-around;
 }
 .divcs .dscs{
-    width: 80%;
     display: flex;
+    justify-content: space-around;
+    width: 100%; 
     margin: 4px;
 }
-.usercs,.passcs{
-    text-shadow:gray 6px 6px 10px;
-    /* box-shadow:4px 4px 10px gray;    */
-    background-color:#f7f7f8;
-    border-radius: 16px;
-    border:0px;
-    border-bottom:1px solid #000;   
-    outline:0;
-    height: 0.2rem;
+.divcs .dscss{
+    display: flex;
+    justify-content: space-around;
     width: 80%;
-    margin:10px 20px;
-    padding:6px;
-    text-align: center;
-/* -webkit-appearance:none;
-  -moz-appearance: none; */
+    margin: 4px;
+}
+.divcs .top{
+    margin-top: 0.3rem;
 }
 .usercs{
-    margin-top: 40px;
-}
-.passcs{
-    margin-bottom:40px;
-}
-.inios{
-    width: 70%;
+    display: flex;
+    width: 60%;
     border:0px;
     outline:0;
-    border-bottom:1px solid #000;
     margin: 6px;
     padding: 4px;
+    border-bottom:1px solid hsl(240, 72%, 69%);
     background-color: #f7f7f8;
+    text-align: left;
+    font-size: 0.16rem;
 }
-.in{
-    width:30%;
-    height: 0.3rem;
+.usercss{
+    display: flex;
+    width: 80%;
+    border:0px;
+    outline:0;
+    margin: 6px;
+    padding: 4px;
+    border-bottom:1px solid #000;
+    background-color: #f7f7f8;
+    text-align: center;
+    border-radius: 0.2rem;
+    font-size: 0.16rem;
+    text-shadow:gray 2px 2px 10px;
+}
+.inios{
+    width:40%;
+    padding: 0.1rem;
     background-color:sandybrown;
     color: #fff;
     border-radius: 12px;
-}
-.ins{
-    width: 30%;
-    height: 0.4rem;
-    background-color:sandybrown;
-    color: #fff;
-    border-radius: 12px;
+    font-size: 0.17rem;
+    outline:none;
+    border:0px;
 }
 .inss{
     background-color:#bcbcce;
 }
-.ins-i{
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin: 20px 0;
-}
-.ins-1{
-    margin-top: 16px;
-    width: 70%;
-    outline:0;
-    height: 0.4rem;
-    background-color:sandybrown;
-    color: rgb(255, 249, 249);
-    border-radius: 12px;
-    font-size: 16px;
-}
-.ins-2{
-    background-color:#bcbcce;
-}
 .main{
-    margin-top: 40px;   
-    font-size: 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
+    width: 100%;
+    margin-top: 0.4rem;  
+    margin-bottom: 0.4rem; 
+    font-size: 0.2rem;
 }
 /* .main span{ */
    /* text-shadow:gray 2px 4px 4px; */
@@ -290,9 +288,10 @@ export default {
 .footer{
     background: #f7f7f8;
     display: flex;
-    flex-flow: column;
+    flex-flow: wrap;
+    justify-content: space-around;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.15rem;
 }
 .footer p{
     margin-bottom:10px;
@@ -301,6 +300,7 @@ export default {
     border-bottom:3px solid green;
 }
 .xiahuared{
-    border-bottom: 5px solid red;
+    border-bottom: 3px solid red;
+    /* background-color:#f7f7f8; */
 }
 </style>

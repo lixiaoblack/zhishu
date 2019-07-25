@@ -24,8 +24,10 @@
                 <span class="spancs">我的账户</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)" @touchstart="anxia()" @touchend="tanqi()">
-                    <User  :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
+                <div class="flexcs" v-for="(v,i) in arra" :key="i">
+                    <router-link to="v.url">
+                        <User  :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -35,7 +37,7 @@
                 <span class="spancs">我的内容</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)" @touchstart="anxia()" @touchend="tanqi()">
+                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -46,7 +48,7 @@
                 <span class="spancs">学习成就</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)" @touchstart="anxia()" @touchend="tanqi()">
+                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -78,21 +80,8 @@ export default {
         Bot
     },
     methods: {
-        anxia(){
-            let userarr=document.querySelectorAll(".flexcs")
-            console.log(userarr)
-            userarr[index].style.background="red"
-        },
-        tanqi(){
-            let userarr=document.querySelectorAll(".flexcs")
-            console.log(userarr)
-            userarr[index].style.background=""
-        },
-        zhanghu(url){
-            this.$router.push("/moduleone/"+url)
-        },
         neirong(url){
-            this.$router.push("/moduletwo/"+url)
+            this.$router.push(url)
         },
         xuexi(url){
             this.$router.push("/modulethree/"+url)
@@ -145,13 +134,13 @@ export default {
         return{
             arra:[
                 {imgurl:"../../static/tu/user/zhanghu.gif",text:"账户",url:"../pages/home"},
-                {imgurl:"../../static/tu/user/dingdan.gif",text:"订单",url:"dingdan"},
+                {imgurl:"../../static/tu/user/dingdan.gif",text:"订单",url:"moduleone"},
             ],
             arrb:[
-                {imgurl:"../../static/tu/user/biji.gif",text:"笔记",url:"../pages/home"},
-                {imgurl:"../../static/tu/user/lishi.png",text:"历史",url:"lishi"},
-                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"xiazai"},
-                {imgurl:"../../static/tu/user/shoucang.gif",text:"收藏",url:"shoucang"},
+                {imgurl:"../../static/tu/user/biji.gif",text:"笔记",url:"home"},
+                {imgurl:"../../static/tu/user/lishi.png",text:"历史",url:"moduletwo"},
+                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"download"},
+                {imgurl:"../../static/tu/user/shoucang.gif",text:"收藏",url:"colloct"},
             ],
             arrc:[
                 {imgurl:"../../static/tu/user/shuju.png",text:"数据",url:"../pages/home"},

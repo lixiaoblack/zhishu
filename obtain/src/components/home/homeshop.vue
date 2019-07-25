@@ -26,6 +26,7 @@ export default {
     .homeshop img{
         width: .77rem;
         height: .77rem;
+        margin-top: .1rem
     }
     .homeshop span:nth-of-type(1){
         color: #333333;
@@ -39,6 +40,7 @@ export default {
         color: #ff6b00;
         font-size: 12px;
         width: .77rem;
+        padding-bottom: 8px;
     }
     .homeshop{
         float: left;

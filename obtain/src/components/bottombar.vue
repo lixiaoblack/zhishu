@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bottombar">
-            <span class="givefriend" @click="togivefriend()">赠送好友</span>
+            <span class="givefriend" @click="togivefriend(data)">赠送好友</span>
             <span class="verticalline">|</span>
             <span class="freelisten" @click="tofreelisten()">免费试听</span>
             <span class="buy" @click="todetails()">购买：19.90得到贝</span>
@@ -15,9 +15,10 @@ export default {
             
         }
     },
+    props:["data"],
     methods: {
-        togivefriend(){
-            this.$router.push("/givefriend");
+        togivefriend(val){
+            this.$router.push({path:"/givefriend",query:{id:val}});
         },
         tofreelisten(){
             this.$router.push("/freelisten");

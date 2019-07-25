@@ -7,40 +7,45 @@
             </li>
         </div>
         <img src="../../static/tu/r/a7/a1j.png" class="imgSearch">
-        <div class="history">
-            <div class="left">
-                <img src="../../static/tu/r/f/a9l.png"><span>我</span>
+        <div v-show="boll">
+            <div class="history">
+                <div class="left">
+                    <img src="../../static/tu/r/f/a9l.png"><span>我</span>
+                </div>
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
-            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
-        </div>
-        <div class="history">
-            <div class="left">
-                <img src="../../static/tu/r/f/a9l.png"><span>啥事</span>
+            <div class="history">
+                <div class="left">
+                    <img src="../../static/tu/r/f/a9l.png"><span>啥事</span>
+                </div>
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
-            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
-        </div>
-        <div class="history">
-            <div class="left">
-                <img src="../../static/tu/r/f/a9l.png"><span>我的</span>
+            <div class="history">
+                <div class="left">
+                    <img src="../../static/tu/r/f/a9l.png"><span>我的</span>
+                </div>
+                <img src="../../static/tu/r/f/a9k.png" class="guanbi" @click="delOne($event)">
             </div>
-            <img src="../../static/tu/r/f/a9k.png" class="guanbi">
+            <span class="end" @click="func($event)">清除搜索记录</span>
         </div>
-        <span class="end">清除搜索记录</span>
-        <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7">热门搜索</p>
-        <div class="hot">
+        <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7;padding-top:12px">热门搜索</p>
+        <div style="margin-left:.12rem">
+            <div class="hot">
             <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <div class="hot">
+                <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <div class="hot">
+                <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+            </div>
+            <span class="hotspan">阿斯顿撒旦撒大声</span>
+            <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
+            <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
+            <span class="hotspan">阿萨飒是大大大飒的</span>
+            <span class="hotspan">曹盛</span>
         </div>
-        <div class="hot">
-            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
-        </div>
-        <div class="hot">
-            <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
-        </div>
-        <span class="hotspan">阿斯顿撒旦撒大声</span>
-        <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
-        <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
-        <span class="hotspan">阿萨飒是大大大飒的</span>
-        <span class="hotspan">曹盛</span>
+        
     </div>
 </template>
 
@@ -66,7 +71,8 @@ export default {
                 {name:"暗示等暗示等暗示等阿萨啊"},
                 {name:"暗示等暗示等暗示等阿萨啊"}
 
-            ]
+            ],
+            boll:true,
         }
     },
     methods: {
@@ -77,11 +83,21 @@ export default {
             if(this.issue_content.length>0){
                 this.serch_result_issue = true;
             }else{
-                this.serch_result_issue = false
+                this.serch_result_issue = false;
+            }
+            this.boll=false
+            if(this.issue_content.length==0){
+                this.boll=true
             }
         },
         funb(){
             this.$router.push({path:"/searchitem"})
+        },
+        func(e){
+            e.target.parentElement.remove()
+        },
+        delOne(e){
+            e.target.parentElement.remove()
         }
     },
     computed: {
@@ -140,20 +156,25 @@ export default {
     }
     .hot{
         padding: 5px;
-        background: #dde1e7;
+        background: #ccc;
         display: flex;
-        width: 27%;
+        width: 26%;
         float: left;
-        border-radius: 3px;
+        border-radius: 8px;
         margin-right:8px;
         margin-left: 5px;
+        margin-top: .2rem;
+        font-size: 11px;
+        opacity: .8;
     }
     .hotspan{
-        margin-top: 5px;
-        background: #dde1e7;
+        margin-top: 12px;
+        background: #ccc;
         float: left;
-        padding: 5px;
-        border-radius: 3px;
+        padding: 6px;
+        border-radius: 8px;
+        font-size: 11px;
+        opacity: .8;
     }
     .history{
         display: flex;
@@ -179,5 +200,8 @@ export default {
         padding: .15rem 0 ;
         font-size: .14rem;
         color: #999999;
+    }
+    .serch_result{
+        text-indent:.2rem;
     }
 </style>

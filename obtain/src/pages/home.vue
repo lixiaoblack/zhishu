@@ -12,22 +12,35 @@
             </router-link>
         </div>
         <div v-for="(v, u) in audios" :key="u+111">
-            <Audio :theUrl="v.url" :theControlList="v.controlList"/>
+            <Audio :theUrl="v.url" :theControlList="v.controlList" style="border-radius:.1rem"/>
         </div>
-        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl"></Homelisten>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl"></Homebooks>
-        <div class="allTop">
+        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl" style="border-radius:.1rem"></Homelisten>
+        <Circulation style="margin-top:7.35rem;border-radius:.1rem"></Circulation>
+        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        <Homehot style="clear:both"></Homehot>
+        <div class="allTop" style="border-radius:.1rem .1rem 0 0">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>
         <div class="course">
-        <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice"></Homecourse>
+        <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
         </div>
-        <div class="allTop" style="marginTop:3.82rem">
+        <Circulation style="margin-top:4.05rem;border-radius:.1rem"></Circulation>
+        <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
             <p>实物商城</p><router-link to="/shop"><span>全部</span></router-link>
         </div>
         <div style="marginLeft:0.15rem">
-            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice" style="margin-bottom:.6rem"></Homeshop>
+            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice" style="border-radius:0 0 .1rem .1rem"></Homeshop>
         </div>
+        <Circulation style="margin-top:2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <div style="height:.6rem"></div>
         <Bot ona="发现" class="bot"></Bot>
     </div>
 </template>
@@ -38,10 +51,12 @@ import Banner from '../components/home/banner'
 import Imgspan from '../components/home/imgSpan'
 import Homelisten from '../components/home/homelisten'
 import Homebooks from '../components/home/homebooks'
+import Homehot from '../components/home/homehot'
 import Audio from '../components/home/audio'
 import Homecourse from '../components/home/homecourse'
 import Homeshop from '../components/home/homeshop'
 import Bot from '../components/bottom'
+import Circulation from '../components/home/circulation'
 export default {
     components:{
         Search,
@@ -52,7 +67,9 @@ export default {
         Audio,
         Homecourse,
         Homeshop,
-        Bot
+        Bot,
+        Circulation,
+        Homehot
     },
     data() {
         return {
@@ -81,7 +98,7 @@ export default {
             shopArr:[],
             audios: [
                 {
-                url: './static/falling-star.mp3',
+                url: './static/201907222141120244326370.mp3',
                 controlList: 'onlyOnePlaying'
                 }
             ],
@@ -164,7 +181,7 @@ export default {
         margin: 0 15px;
         padding: 0 10px;
         background: #fff;
-        margin-top: 8.22rem;
+        margin-top: 0.2rem;
     }
     .allTop p{
         float: left;
@@ -182,5 +199,6 @@ export default {
         position: fixed;
         bottom: 0;
         width: 100%;
+        z-index: 999
     }
 </style>

@@ -79,7 +79,7 @@
       </div>
     </div>
     <footer>
-      <p>
+      <p @click="buy(arr)">
         <span>购买</span>
         <span style="color:#f17327">{{arr.listenSprice}}得到贝</span>
       </p>
@@ -142,7 +142,10 @@ export default {
     },
     content_Show() {
       this.contentShow = !this.contentShow;
-    }
+    },
+     buy(val){
+         this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})
+       }
   }
 };
 </script>

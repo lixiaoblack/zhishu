@@ -1,6 +1,6 @@
 <template>
   <div class="addTitle">
-    <div class="addTitle_box" v-for="(v,i) in arr" @click="fun(v.title)" :key="i"  :class="{aa : aa == v.title}">
+    <div class="addTitle_box" v-for="(v,i) in arr" @click="fun(i)" :key="i"  :class="{aa : aa == i}">
       <router-link :to="v.url">
         <span class="spana">{{v.title}}</span>
       </router-link>
@@ -13,17 +13,17 @@
       data(){
         return {
           arr:[
-            {title:"综合 ▼",url:"/allproduct"},
+            {title:"综合 ▼",url:"/allproduct/newproduct"},
             {title:"最新 ▼",url:"/allproduct/newproduct"},
-            {title:"销量 ▼",url: "/allproduct/stores"},
+            {title:"销量 ▼",url: "/allproduct/newproduct"},
 
           ],
           aa:''
         }
       },
       methods:{
-        fun(title){
-          this.aa = title;
+        fun(i){
+          this.aa = i;
         }
       }
     }
