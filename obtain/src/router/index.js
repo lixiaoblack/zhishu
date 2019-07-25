@@ -180,6 +180,8 @@ import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
 import Read from '../pages/read'
+import Vidio from '../pages/vidio'
+
 Vue.use(Router)
 
 export default new Router({
@@ -607,6 +609,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/vidio',
+      name: 'Vidio',
+      component: Vidio
     },
     {
       path:'/*',
