@@ -18,8 +18,8 @@
           <Sort></Sort>
           <div class="rightbottom">
   <!--          子组件渲染-->
-            <router-view @click="i" v-for="(v,i) in brr" :key="i" :imgurl="v.image" :content="v.subtitle" :price="v.price" :author="v.author"></router-view>
-  <!--        <Productshow v-for="(v,i) in brr" :key="i" :imgurl="v.image" :content="v.subtitle" :price="v.price"></Productshow>-->
+            <router-view></router-view>
+
           </div>
         </div>
       </div>
@@ -51,13 +51,7 @@ export default {
   },
 
   created(){
-    this.axios({
-      url:"/link/data",
-      method:"get",
-    }).then((ok)=>{
-      this.brr=ok.data.books;
-      console.log(ok)
-    })
+
   },
   methods:{
     fun() {

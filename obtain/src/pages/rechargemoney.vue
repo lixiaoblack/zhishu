@@ -77,27 +77,20 @@ export default {
             this.$router.go(-1)
         },
         zhifu(){
-            alert("支付成功"),
-            this.$router.go(-3)
-            // alert(this.origincount)
-            // alert("充值成功"),
-            // this.$router.push({path:"/givefriend",query:{money:val}})
-
-        },
-    created(){
-        // 请求对应字段的数据
-           this.axios({
-                 //    接口
-                 url:'http://39.107.105.57:8084/Course/findByAbility',
-                //  对应字段   key唯一    val不定
+            let ls=localStorage
+            this.axios({
+                url:'http://39.107.105.57:8084/user/findUserMoneys',
                 params:{
-                    college:"科学学院"
+                    id:Number(ls.getItem("用户名")),
+                    money:this.origincount
                 },
-                method:'post'
+                  method:'post'
             }).then((ok)=>{
-                this.rechargemoney=ok.data.queryResult.list
+                console.log(ok)
             })
-    },
+            // this.$toast.success('充值成功');
+            // this.$router.go(-1)
+        },
         buysix(){
            this.boola=false
            this.boolb=true

@@ -69,11 +69,11 @@
                 </span>&nbsp;
                 <span class="balance">余额</span> &nbsp;
                 <span class="unit">
-                  <strong>0.00</strong>得到贝
+                  <strong>{{lastmoney}}</strong>得到贝
                 </span>&nbsp;
                 <span class="nomoney">(不足支付)</span>
               </div>
-              <div class="right" @click="torechargemoney()">
+              <div  class="right chongzhi" @click="torechargemoney()">
                 <span>充值</span>
               </div>
             </div>
@@ -155,8 +155,26 @@ export default {
       disabledCoupons: [coupon2],
       showList: false,
       totalmoney:this.$route.query.num,
+      lastmoney:Number
     };
   },
+    created(){
+        // 请求对应字段的数据
+        let ls=localStorage
+           this.axios({
+                 //    接口
+                 url:'http://39.107.105.57:8084/user/findUserMoney',
+                //  对应字段   key唯一    val不定
+                params:{
+                    id:Number(ls.getItem("用户名"))
+                },
+                method:'post'
+            }).then((ok)=>{
+              // console.log(ok.data.queryResult.adouble)
+              this.lastmoney=ok.data.queryResult.adouble
+
+            })
+    },
   components: {
     Loading
   },
@@ -167,7 +185,28 @@ export default {
       } else {
         this.bool = true;
       }
-    }
+    },
+    // 余额是否充足的判断
+     totalmoney(val){
+       if(val <this.lastmoney){
+           this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
+            this.$router.push("/rechargemoney");
+       }else{
+            let ls=localStorage
+            this.axios({
+                url:'http://39.107.105.57:8084/user/findUserJian',
+                params:{
+                    id:Number(ls.getItem("用户名")),
+                    money:this.totalmoney
+                },
+                  method:'post'
+               }).then((ok)=>{
+                // console.log(ok)
+             })
+          this.$toast.success('支付成功');
+          this.$router.go(-2);
+       }
+     }
   },
   // 导航守卫-组件内的守卫  进入组件前调动
   beforeRouteEnter(to, from, next) {
@@ -240,10 +279,21 @@ export default {
     torechargemoney() {
       this.$router.push("/rechargemoney");
     },
-    payfor() {
-      alert("支付成功");
-      this.$router.push("/total");
-    }
+    // payfor() {
+    //      let ls=localStorage
+    //         this.axios({
+    //             url:'http://39.107.105.57:8084/user/findUserJian',
+    //             params:{
+    //                 id:Number(ls.getItem("用户名")),
+    //                 money:this.totalmoney
+    //             },
+    //               method:'post'
+    //         }).then((ok)=>{
+    //             console.log(ok)
+    //         })
+    //    this.$toast.success('支付成功');
+    //   this.$router.go(-2);
+    // }
   }
 };
 </script>
@@ -318,8 +368,9 @@ export default {
   width: 1.021rem;
   height: 1.36rem;
 }
-.right {
+.right{
   padding-top: 0.11rem;
+   padding-bottom: 0.11rem;
 }
 .top {
   border-bottom: 1px solid #e7e7e7;

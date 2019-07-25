@@ -37,7 +37,7 @@
                 <div class="handle">
                     <div class="left">
                         <span class="balance">余额</span> &nbsp;
-                        <span class="unit"><strong>0.00</strong>得到贝</span>&nbsp;
+                        <span class="unit"><strong>{{lastmoney}}</strong>得到贝</span>&nbsp;
                         <span class="nomoney" style="color:#f36f27;font-size:.2rem">(不足支付)</span>
                     </div>
                     <div class="right"   @click="torechargemoney()">
@@ -101,9 +101,27 @@ export default {
             showList: false,
               data:{},
             bool:true,
+            lastmoney:Number
         }
     },
-        watch: {
+        created(){
+        // 请求对应字段的数据
+        let ls=localStorage
+           this.axios({
+                 //    接口
+                 url:'http://39.107.105.57:8084/user/findUserMoney',
+                //  对应字段   key唯一    val不定
+                params:{
+                    id:Number(ls.getItem("用户名"))
+                },
+                method:'post'
+            }).then((ok)=>{
+              // console.log(ok.data.queryResult.adouble)
+              this.lastmoney=ok.data.queryResult.adouble
+
+            })
+    },
+    watch: {
         data(val) {
         if (val != {}) {
             this.bool = false;
@@ -125,9 +143,20 @@ export default {
              this.$router.push("/youhuiquan")
         },
         payfor(){
-            alert("支付成功");
-            this.$router.go(-2)
-        },
+            let ls=localStorage
+            this.axios({
+                url:'http://39.107.105.57:8084/user/findUserJian',
+                params:{
+                    id:Number(ls.getItem("用户名")),
+                    money:data.courseSprice
+                },
+                method:'post'
+                }).then((ok)=>{
+                    // console.log(ok)
+                 })
+                alert("支付成功");
+                this.$router.go(-2);
+           },
         torechargemoney(){
              this.$router.push("/rechargemoney")
         },

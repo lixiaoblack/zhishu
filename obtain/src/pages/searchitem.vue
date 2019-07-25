@@ -1,5 +1,7 @@
 <template>
     <div>
+        <Search></Search>
+        <div style="height:.5/rem"></div>
         <div class="box">
             <p>课程</p>
             <Csss></Csss>
@@ -29,9 +31,11 @@
 
 <script>
 import Csss from './../components/home/cssss'
+import Search from '../components/home/search'
 export default {
     components:{
-        Csss
+        Csss,
+        Search
     }
 }
 </script>
@@ -44,7 +48,7 @@ export default {
 .box p{
     font-size: .14rem;
     line-height: .3rem;
-    width: 100%;
+    /* width: 100%; */
     margin-left: .15rem;
 }
 </style>

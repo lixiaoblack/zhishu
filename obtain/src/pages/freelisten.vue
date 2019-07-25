@@ -94,7 +94,7 @@ export default {
     font-weight: bolder;
     position: absolute;
     top:0;
-    left: .925rem;
+     left: 1.34rem;
 }
 .listen_title{
     width: 100%-0.22rem;
