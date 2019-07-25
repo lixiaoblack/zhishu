@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import TopIcon from "../componrnts/top"
+import TopIcon from "../componrnts/topDingdan"
 import ShopFooter from "../componrnts/shop/shopFooter"
 export default {
     data() {

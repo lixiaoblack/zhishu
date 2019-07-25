@@ -1,47 +1,40 @@
 <template>
     <div class="box">
-        <div class="close"> 
+        <div class="close">
             <div @click="fun()">×</div>
         </div>
-        <div v-if="loading"><img class="boximg" src="../../static/tu/user/loading.gif" alt=""></div>
-        <div v-else>
-            <div class="login">
-                <span class="spancs">用户名注册</span>
-                <div class="divcs">
-                    <div class="dscs top">
-                        <input id="phoneId" :class="dool ? 'usercss': 'usercss xiahuared'" type="text" name="username" placeholder="用户名为6-16位，以字母开头" v-model="loginname" @blur="fun2()">
-                    </div>
-                    <div class="dscs">
-                        <input class="usercss" type="password" name="password" placeholder="请输入密码" v-model="loginpwd">
-                    </div>
+        <div class="login">
+            <span class="spancs">找回密码</span>
+            <div class="divcs">
+                <span class="dscs top">
+                    <input id="phoneId" :class="dool ? 'usercss': 'usercss xiahuared'" type="text" name="username" placeholder="请输入用户名" v-model="loginname" @blur="fun2()">
+                    <span class="uscs">{{y}}</span>
+                </span>
+                <span class="dscs">
+                    <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
+                    <input class="inios" type="button" value="获取验证码" @click="fun3()">
+                </span>
 
-                    <span class="dscss top">
-                        <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
-                        <input class="inios" type="button" value="获取验证码" @click="fun3()">
-                    </span>
-
-                    <span class="dscss">
-                        <input class="usercs" type="number" placeholder="请输入验证码" v-model="logincode"> 
-                        <!-- <input class="ins" type="submit" value="点击注册"> -->
-                        <input type="submit" :disabled="btnbooll" :class="btnbooll ? 'inios inss' : 'inios'"  @click="onlogin()" value="请点击注册">
-                    </span>
-                </div>
-
-                <div class="main">
-                    <span @click="fun4()">
-                        <!-- <a href="#denglu"> -->
-                            账号登录
-                        <!-- </a> -->
-                    </span>
-                    <span @click="fun5()">忘记密码？</span>
-                </div>
+                <span class="dscs top">
+                    <input class="usercss" type="number" placeholder="请输入邮箱验证码" v-model="logincode">
+                </span>
+                <span class="dscs">
+                    <input class="usercs" type="password" name="password" placeholder="请输入您的新密码" v-model="loginpwd">
+                    <input type="submit" :disabled="btnbooll" :class="btnbooll ? 'inios inss' : 'inios'"  @click="onlogin()" value="修改密码">
+                </span>
             </div>
-            <div class="footer">
-                <p>点击按钮即表示您同意并愿意遵守知书</p>
-                <p>
-                    <a href="##">《使用协议》</a>和<a href="##">《隐私协议》</a>
-                </p>
+
+            <div class="main">
+                <span @click="fun4()">
+                    <!-- <a href="#denglu"> -->
+                        账号登录
+                    <!-- </a> -->
+                </span>
+                <span @click="fun5()">
+                    返回首页
+                </span>
             </div>
+            
         </div>
     </div>
 </template>
@@ -54,20 +47,14 @@ export default {
             loginemail:"",//邮箱
             logincode:"",//输入的验证码
             emailcode:"",//邮箱的验证码
-
+            
             dool:true,//判断是否符合用户名规则的真假
             btnbooll:true,//判断输入框内是否有值的真假
-            loading:true,
             y:''//异步判断注册的用户名是否已存在
         }
     },
-    created(){
-        let that=this
-        setTimeout(function(){
-            that.loading=false
-        },500)
-    },
-    methods: {
+    methods:{
+        
         fun(){//编程式跳转
             this.$router.push({
                 path: "/user",
@@ -75,15 +62,9 @@ export default {
         },
         fun2(){//判断用户名规则合法，，，同时异步检测用户名是否存在
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
-            if(a.test(this.loginname)==true){
+            if(a.test(this.loginname)==true&&this.loginname!=""){
                 this.namecode="1";
-                this.dool=true;   
-            }else{
-                this.namecode="0";
-                this.dool=false;
-            }
-            if(this.loginname!=""){
-                console.log(this.loginname)
+                this.dool=true;
                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",
                     method:"get",
@@ -91,19 +72,20 @@ export default {
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    console.log("123")
-                    console.log(ok);
-                    //     alert("账户已存在")
+                    // console.log(ok);
                 })
+            }else{
+                alert("该用户名尚未注册")
+                this.namecode="0";
+                this.dool=false;
             }
         },
         fun3(){
             this.axios({
-                url:"http://39.107.105.57:8084/user/registerUser",
+                url:"http://39.107.105.57:8084/user/findUserByName",
                 method:"post",
                 params:{
                     username:this.loginname,
-                    password:this.loginpwd,
                     useremail:this.loginemail
                 }
             }).then((ok)=>{
@@ -117,38 +99,31 @@ export default {
         },
         fun5(){
             this.$router.push({
-                path: "/forget",
+                path: "/home",
             });
         },
-        onlogin(){//用户注册
+        onlogin(){//修改密码
             this.axios({
-                url:"http://39.107.105.57:8084/user/checkCode",//post请求下地址为http:ip地址：端口号
+                url:"http://39.107.105.57:8084/user/uptPassWord",//post请求下地址为http:ip地址：端口号
                 method:"post",
                 params:{
-                    code:this.logincode
+                    code:this.logincode,
+                    username:this.loginname,
+                    password:this.loginpwd
                 } 
             }).then((ok)=>{
                 console.log(ok);
-                console.log(ok.data)
-                if(ok.data.message=="code查询到用户，修改status为1，注册成功"){
-                    alert("注册成功，请登录！");
-                    let ls = localStorage;
-                    ls.setItem("用户名",this.loginname)
+                if(ok.data.queryResult.anInt==0){
+                    alert("验证码输入错误");
+                }else{
+                    alert("恭喜您，密码修改成功！");
                     // location.href="#denglu";
                     this.$router.push("/register");
-                }else{
-                    alert("注册失败，请重新注册！");
-                    this.loginname = "";
-                    this.loginpwd = "";
-                    this.loginemail = "";
                 }
                 
-                
-            },(err)=>{
-                console.log(err)
             })
-        },
-    },  
+        }
+    },
     watch:{// 监听按钮
         loginname(){
             if(this.namecode=="1"&&this.loginname!=""&&this.loginpwd!=""&&this.loginemail!=""&&this.logincode!=""){
@@ -179,12 +154,11 @@ export default {
             }
         }
     },
-}    
+        
+
+}
 </script>
 <style scoped>
-.boximg{
-    width: 100%;
-}
 .box{
     /* overflow: auto; */
     margin: 2px;
@@ -221,22 +195,15 @@ export default {
 }
 .divcs .dscs{
     display: flex;
-    justify-content: space-around;
-    width: 100%; 
-    margin: 4px;
-}
-.divcs .dscss{
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
+    width: 90%;
     margin: 4px;
 }
 .divcs .top{
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
 }
 .usercs{
     display: flex;
-    width: 60%;
+    width: 100%;
     border:0px;
     outline:0;
     margin: 6px;
@@ -248,7 +215,7 @@ export default {
 }
 .usercss{
     display: flex;
-    width: 80%;
+    width: 65%;
     border:0px;
     outline:0;
     margin: 6px;
@@ -261,8 +228,8 @@ export default {
     text-shadow:gray 2px 2px 10px;
 }
 .inios{
-    width:40%;
     padding: 0.1rem;
+    width:30%;
     background-color:sandybrown;
     color: #fff;
     border-radius: 12px;
@@ -277,24 +244,12 @@ export default {
     display: flex;
     justify-content:space-around;
     width: 100%;
-    margin-top: 0.4rem;  
-    margin-bottom: 0.4rem; 
+    margin-top: 0.5rem;   
     font-size: 0.2rem;
 }
 /* .main span{ */
    /* text-shadow:gray 2px 4px 4px; */
 /* } */
-.footer{
-    background: #f7f7f8;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
-    text-align: center;
-    font-size: 0.15rem;
-}
-.footer p{
-    margin-bottom:10px;
-}
 .xiahua{
     border-bottom:3px solid green;
 }
@@ -302,4 +257,5 @@ export default {
     border-bottom: 3px solid red;
     /* background-color:#f7f7f8; */
 }
+
 </style>

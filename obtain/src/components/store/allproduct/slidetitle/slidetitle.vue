@@ -2,7 +2,7 @@
   <div class="item">
     <div class="addbox">
 <!--      方式一：遍历data属性取值数据-->
-      <div @indexs="indexs" class="box" v-for="(v,i) in arr" @click="fun(i)" :key="i"  :class="{active : active ==i}">
+      <div class="box" v-for="(v,i) in arr" @click="fun(i)" :key="i"  :class="{active : active ==i}">
                 <router-link :to="v.url">
                   <span>{{v.title}}</span>
                 </router-link>
@@ -23,16 +23,16 @@
         return {
 
           arr:[
-            {title:"新品上市",url:"/allproduct/newproduct"},
-            {title:"七夕送礼",url:"/allproduct/gift"},
-            {title:"得到文库",url:"/allproduct/stores"},
-            {title:"家庭藏书",url:"/allproduct/book"},
-            {title:"衍生品",url:"/allproduct/relations"},
-            {title:"商务出行",url:"/allproduct/business"},
-            {title:"办公好物",url:"/allproduct/office"},
-            {title:"商务茶礼",url:"/allproduct/tea"},
-            {title:"亲子读物",url:"/allproduct/reader"},
-            {title:"日本直采",url:"/allproduct/japan"}
+            {title:"全部",url:"/allproduct/newproduct"},
+            {title:"最近更新",url:"/allproduct/gift"},
+            {title:"商学院",url:"/allproduct/stores"},
+            {title:"人文社科",url:"/allproduct/book"},
+            {title:"能力学院",url:"/allproduct/relations"},
+            {title:"视野学院",url:"/allproduct/business"},
+            {title:"科学学院",url:"/allproduct/office"},
+            {title:"经济学院",url:"/allproduct/relations"},
+            {title:"自然学院",url:"/allproduct/business"},
+            {title:"社科学院",url:"/allproduct/office"}
           ],
           active:'',
         }
@@ -40,10 +40,11 @@
       methods:{
         fun(i){
           this.active = i;
+
         },
         //将子组件传递的参数赋值给active
-        indexs(num){
-          this.active=num;
+          indexs(num){
+            this.active=num;
         }
       }
     }
