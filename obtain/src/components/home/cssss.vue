@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="boxs">
         <img src="../../../static/tu/r/a/a9.jpg" alt="">
         <div class="css">
             <h3>我是标题，你好曹盛</h3>
@@ -15,13 +15,13 @@ export default {
 </script>
 
 <style scoped>
-.box{
+.boxs{
     display:flex;
     padding:.15rem .15rem .15rem 0;
     margin-left: .15rem;
     border-top: .5px solid #9999;
 }
-.box img{
+.boxs img{
     width:.32rem;
     height:.43rem;
     margin:.05rem;

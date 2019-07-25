@@ -24,8 +24,10 @@ export default {
     },
     created(){
         this.axios({
-            url:"/mock/data",
-            methods:"get",
+            // url:"http://10.12.156.34:8084/findByNameOrAuthor",
+            url:"http://39.107.105.57:8084/Course/findHomePage",
+            method:"get",
+            // params:{mh:"1"}
         }).then((ok)=>{
             console.log(ok)
             ok.data.subject.forEach((v,i)=>{

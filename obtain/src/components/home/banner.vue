@@ -4,7 +4,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(v,i) in imgArr" :key="i">
                     <router-link :to="{name:'Specialxq',params:{id:v.id}}">
-                    <img :src="v.imgUrl" class="imgs"/>
+                    <img :src="v.courseTitleImgurl" class="imgs"/>
                     </router-link>
                 </div>
             </div>
@@ -17,15 +17,8 @@
     import Swiper from 'swiper'
 export default {
     name:"banner",
-    data() {
-        return {
-            imgArr:[
-                {id:"1",imgUrl:"../../../static/image/lun_01.jpg"},
-                {id:"2",imgUrl:"../../../static/image/lun_02.jpg"},
-                {id:"3",imgUrl:"../../../static/image/lun_03.jpg"},
-                {id:"4",imgUrl:"../../../static/image/lun_04.jpg"},
-            ]
-        }
+    props:{
+        imgArr:Array
     },
     mounted(){
         new Swiper (this.$refs.slider, {

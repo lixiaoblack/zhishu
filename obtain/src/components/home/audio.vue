@@ -1,8 +1,8 @@
 <template>
     <div class="audio">
         <div class="audioTop">
-            <img src="../../../static/image/1.jpg"><span>罗辑思维</span><span class="audioAll" @click="music()">>播放全部</span>
-            <img :src="boll?'../../../static/tu/r/f/a0m.png':'../../../static/tu/r/f/a0l.png'"><p :class="boll?'pss':'ps'" style="float:left">踩刹车时踩刹车时踩刹车四川省</p>
+            <img :src="imgUrl"><span>{{title}}></span><span class="audioAll" @click="music()">>播放全部</span>
+            <img :src="boll?'../../../static/tu/r/f/a0m.png':'../../../static/tu/r/f/a0l.png'"><p :class="boll?'pss':'ps'" style="float:left">{{txt}}</p>
         </div>
         <div class="di main-wrap" v-loading="audio.waiting" v-if="boll">
             <!-- 这里设置了ref属性后，在vue组件中，就可以用this.$refs.audio来访问该dom元素 -->
@@ -66,7 +66,11 @@ export default {
       theControlList: {
         type: String,
         default: ''
-      }
+      },
+      imgUrl:String,
+      title:String,
+      txt:String,
+      v:Object
     },
     data() {
         return {
@@ -105,101 +109,101 @@ export default {
             this.boll = true;
         },
         setControlList () {
-        let controlList = this.theControlList.split(' ')
-        controlList.forEach((item) => {
-          if(this.controlList[item] !== undefined){
-            this.controlList[item] = true
+          let controlList = this.theControlList.split(' ')
+          controlList.forEach((item) => {
+            if(this.controlList[item] !== undefined){
+              this.controlList[item] = true
+            }
+          })
+        },
+        xiangqing(){
+            this.$router.push({path:'/audioxq'})
+        },
+        changeSpeed() {
+          let index = this.speeds.indexOf(this.audio.speed) + 1
+          this.audio.speed = this.speeds[index % this.speeds.length]
+          this.$refs.audio.playbackRate = this.audio.speed
+        },
+        startMutedOrNot() {
+          this.$refs.audio.muted = !this.$refs.audio.muted
+          this.audio.muted = this.$refs.audio.muted
+        },
+        // 音量条toolTip
+        formatVolumeToolTip(index) {
+          return '音量条: ' + index
+        },
+        // 进度条toolTip
+        formatProcessToolTip(index = 0) {
+          index = parseInt(this.audio.maxTime / 100 * index)
+          return '进度条: ' + realFormatSecond(index)
+        },
+        // 音量改变
+        changeVolume(index = 0) {
+          this.$refs.audio.volume = index / 100
+          this.volume = index
+        },
+        // 播放跳转
+        changeCurrentTime(index) {
+          this.$refs.audio.currentTime = parseInt(index / 100 * this.audio.maxTime)
+        },
+        startPlayOrPause() {
+          return this.audio.playing ? this.pausePlay() : this.startPlay()
+        },
+        // 开始播放
+        startPlay() {
+          this.$refs.audio.play()
+        },
+        // 暂停
+        pausePlay() {
+          this.$refs.audio.pause()
+        },
+        // 当音频暂停
+        onPause () {
+          this.audio.playing = false
+        },
+        // 当发生错误, 就出现loading状态
+        onError () {
+          this.audio.waiting = true
+        },
+        // 当音频开始等待
+        onWaiting (res) {
+          console.log(res)
+        },
+        // 当音频开始播放
+        onPlay (res) {
+          console.log(res)
+          this.audio.playing = true
+          this.audio.loading = false
+          if(!this.controlList.onlyOnePlaying){
+            return 
           }
-        })
-      },
-      xiangqing(){
-        this.$router.push({path:"/audioxq"})
-      },
-      changeSpeed() {
-        let index = this.speeds.indexOf(this.audio.speed) + 1
-        this.audio.speed = this.speeds[index % this.speeds.length]
-        this.$refs.audio.playbackRate = this.audio.speed
-      },
-      startMutedOrNot() {
-        this.$refs.audio.muted = !this.$refs.audio.muted
-        this.audio.muted = this.$refs.audio.muted
-      },
-      // 音量条toolTip
-      formatVolumeToolTip(index) {
-        return '音量条: ' + index
-      },
-      // 进度条toolTip
-      formatProcessToolTip(index = 0) {
-        index = parseInt(this.audio.maxTime / 100 * index)
-        return '进度条: ' + realFormatSecond(index)
-      },
-      // 音量改变
-      changeVolume(index = 0) {
-        this.$refs.audio.volume = index / 100
-        this.volume = index
-      },
-      // 播放跳转
-      changeCurrentTime(index) {
-        this.$refs.audio.currentTime = parseInt(index / 100 * this.audio.maxTime)
-      },
-      startPlayOrPause() {
-        return this.audio.playing ? this.pausePlay() : this.startPlay()
-      },
-      // 开始播放
-      startPlay() {
-        this.$refs.audio.play()
-      },
-      // 暂停
-      pausePlay() {
-        this.$refs.audio.pause()
-      },
-      // 当音频暂停
-      onPause () {
-        this.audio.playing = false
-      },
-      // 当发生错误, 就出现loading状态
-      onError () {
-        this.audio.waiting = true
-      },
-      // 当音频开始等待
-      onWaiting (res) {
-        console.log(res)
-      },
-      // 当音频开始播放
-      onPlay (res) {
-        console.log(res)
-        this.audio.playing = true
-        this.audio.loading = false
-        if(!this.controlList.onlyOnePlaying){
-          return 
+          let target = res.target
+          let audios = document.getElementsByTagName('audio');
+          [...audios].forEach((item) => {
+            if(item !== target){
+              item.pause()
+            }
+          })
+        },
+        // 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
+        onTimeupdate(res) {
+          // console.log('timeupdate')
+          // console.log(res)
+          this.audio.currentTime = res.target.currentTime
+          this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+        },
+        // 当加载语音流元数据完成后，会触发该事件的回调函数
+        // 语音元数据主要是语音的长度之类的数据
+        onLoadedmetadata(res) {
+          // console.log('loadedmetadata')
+          // console.log(res)
+          this.audio.waiting = false
+          this.audio.maxTime = parseInt(res.target.duration)
+        },
+        guanbi(){
+            this.boll=false
         }
-        let target = res.target
-        let audios = document.getElementsByTagName('audio');
-        [...audios].forEach((item) => {
-          if(item !== target){
-            item.pause()
-          }
-        })
       },
-      // 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
-      onTimeupdate(res) {
-        // console.log('timeupdate')
-        // console.log(res)
-        this.audio.currentTime = res.target.currentTime
-        this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
-      },
-      // 当加载语音流元数据完成后，会触发该事件的回调函数
-      // 语音元数据主要是语音的长度之类的数据
-      onLoadedmetadata(res) {
-        // console.log('loadedmetadata')
-        // console.log(res)
-        this.audio.waiting = false
-        this.audio.maxTime = parseInt(res.target.duration)
-      },
-      guanbi(){
-          this.boll=false
-      }
-    },
     filters: {
       formatSecond(second = 0) {
         return realFormatSecond(second)
@@ -236,6 +240,7 @@ export default {
         border-radius: 50%;
         float: left;
         margin-right: 0.1rem;
+        margin-top: .1rem;
     }
     .audioTop img:nth-of-type(2){
         width: .24rem;
@@ -247,6 +252,7 @@ export default {
     .audioTop span{
         float: left;
         font-size: .16rem;
+        line-height: .5rem;
     }
     .audioTop .audioAll{
         float: right;
@@ -258,6 +264,7 @@ export default {
         font-size: .11rem;
         text-align: center;
         line-height: .24rem;
+        margin-top: .1rem;
     }
     .audioTop .ps{
       font-size: 12px;
