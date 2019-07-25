@@ -66,7 +66,7 @@ export default {
         return {
             value1: true,
             value2: true,
-            text:''
+            text:'全部'
         }
     },
     methods:{
@@ -109,11 +109,11 @@ header{
     margin-right: .9rem;
 }
 .topback .total{
-    color: #676767;
+    color: #050505;
     font-weight: bolder;
     position: absolute;
     top:0;
-    left: 1.8rem;
+    left: 1.6rem;
     
 }
 .firstnav{
@@ -126,7 +126,7 @@ header{
     font-size: .14rem;
 }
 .secondnav{
-    display: flex;
+      display: flex;
       font-size: .14rem;
       flex-wrap: wrap;
       flex-shrink: 0;

@@ -69,6 +69,7 @@ export default {
             boold:true,
             boole:true,
             boolf:true,
+            rechargemoney:Number
         }
     },
     methods: {
@@ -77,8 +78,26 @@ export default {
         },
         zhifu(){
             alert("支付成功"),
-            this.$router.push("/home")
+            this.$router.go(-3)
+            // alert(this.origincount)
+            // alert("充值成功"),
+            // this.$router.push({path:"/givefriend",query:{money:val}})
+
         },
+    created(){
+        // 请求对应字段的数据
+           this.axios({
+                 //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"科学学院"
+                },
+                method:'post'
+            }).then((ok)=>{
+                this.rechargemoney=ok.data.queryResult.list
+            })
+    },
         buysix(){
            this.boola=false
            this.boolb=true
@@ -174,7 +193,7 @@ export default {
      padding: 0 .16rem;
     height:.5rem; ;
      line-height: .5rem;
-    font-size: .2rem;
+    font-size: .14rem;
     position: relative;
 
 }
@@ -184,7 +203,7 @@ export default {
     left: .16rem;
 }
 .topback .total{
-    color: #676767;
+    color: ##050505;
     font-weight: bolder;
     text-align: center;
 }

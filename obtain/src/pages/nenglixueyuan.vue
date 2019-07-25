@@ -4,6 +4,7 @@
             <img src="../../static/img/nengli.jpg">
         </div>
         <Course v-for="(v,i) in nenglixueyuan " :key="i" :data="v"></Course>
+        <!-- {{nenglixueyuan}} -->
     </div>
 </template>
 <script>
@@ -13,17 +14,29 @@ export default {
          Course
     },
      data(){
-        return {
+        return{
             nenglixueyuan:[]
         }
     },
     created(){
         // 请求对应字段的数据
-           this.axios({
-                url:'/link/data',
-                method:'get'
+        //    this.axios({
+        //         url:'/link/data',
+        //         method:'get'
+        //     }).then((ok)=>{
+        //         this.nenglixueyuan=ok.data.nenglixueyuan
+        //     })
+             this.axios({
+                    //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"能力学院"
+                },
+                method:'post'
             }).then((ok)=>{
-                this.nenglixueyuan=ok.data.nenglixueyuan
+                this.nenglixueyuan=ok.data.queryResult.list
+                // console.log(ok.data.queryResult.list)
             })
     },
 }

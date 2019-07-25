@@ -7,66 +7,139 @@
         </div>
         <div class="top">
             <div class="left">
-                <img src="../../static/img/payfor.jpg">
+                <img :src="data.courseImgurl">
             </div>
             <div class="right">
-                <h2 class="booksname">刘晗讲辛普森案</h2>
-                <span class="price"><strong class="num">19.90</strong>得到贝/份</span>
+                <h2 class="booksname">{{data.courseSubtitle}}</h2>
+                <span class="price"><strong class="num">{{data.courseSprice}}</strong>得到贝/份</span>
             </div>
         </div>
-        <div class="card" @click="toyouhuiquan()">
-            <span style="color:#050505;font-size: .22rem;">优惠券</span>
-            <span style="color:#f36f27;font-size: .22rem;" class="minusnum">{{num}} <strong style="color:#999999;" class="el-icon-arrow-right"></strong> </span>
+        <div class="card">
+             <van-coupon-cell
+              :coupons="coupons"
+              :chosen-coupon="chosenCoupon"
+              @click="showList = true"
+            />
+            <van-popup v-model="showList" position="bottom">
+              <van-coupon-list
+                :coupons="coupons"
+                :chosen-coupon="chosenCoupon"
+                :disabled-coupons="disabledCoupons"
+                @change="onChange"
+                @exchange="onExchange"
+              />
+            </van-popup>
         </div>
         <div class="payformethod">
             <span style="color:#050505;font-size: .22rem;">支付方式 <strong>:</strong></span>
         </div>
           <div class="alipay">
-                    <div class="handle">
-                        <div class="left">
-                            <span class="balance">余额</span> &nbsp;
-                            <span class="unit"><strong>0.00</strong>得到贝</span>&nbsp;
-                            <span class="nomoney" style="color:#f36f27;font-size:.2rem">(不足支付)</span>
-                        </div>
-                        <div class="right"   @click="torechargemoney()">
-                            <span style="font-size:.2rem">充值</span>
-                        </div>
+                <div class="handle">
+                    <div class="left">
+                        <span class="balance">余额</span> &nbsp;
+                        <span class="unit"><strong>0.00</strong>得到贝</span>&nbsp;
+                        <span class="nomoney" style="color:#f36f27;font-size:.2rem">(不足支付)</span>
                     </div>
+                    <div class="right"   @click="torechargemoney()">
+                        <span style="font-size:.2rem">充值</span>
+                    </div>
+                </div>
             </div>
-               <div class="attention">
-                    <ul>
-                        <li><strong>▪</strong>购买后可在365天内赠送给任意好友，过期商品将无法再被领取</li>
-                        <li><strong>▪</strong>你即将购买的商品为虚拟服务,购买后不支持退订、转让、退还、请酌情确认。</li>
-                    </ul>
-                </div>
-                <div class="bottombar" @click="payfor()">
-                        <span style="font-size:.2rem;color:#ffffd4;">9.90</span><span style=" font-size: .17rem;color:#ffffd4;">得到贝</span><span style="font-size:.2rem;color:#ffffd4;margin:0 .1rem">/</span><span style="font-size:.2rem;color:#ffffd4;">确认支付</span>
-                </div>
+            <div class="attention">
+                <ul>
+                    <li><strong>▪</strong>购买后可在365天内赠送给任意好友，过期商品将无法再被领取</li>
+                    <li><strong>▪</strong>你即将购买的商品为虚拟服务,购买后不支持退订、转让、退还、请酌情确认。</li>
+                </ul>
+             </div>
+            <div class="bottombar" @click="payfor()">
+                 <span style="font-size:.2rem;color:#ffffd4;">{{data.courseSprice}}</span><span style=" font-size: .17rem;color:#ffffd4;">得到贝</span><span style="font-size:.2rem;color:#ffffd4;margin:0 .1rem">/</span><span style="font-size:.2rem;color:#ffffd4;">确认支付</span>
+            </div>
     </div>
 </template>
 <script>
+const coupon = {
+  available: 1,
+  condition: "无使用门槛\n最多优惠18元",
+  reason: "",
+  value: 600,
+  name: "弥晓浩倾情放送",
+  startAt: 1489104000,
+  endAt: 1514592000,
+  valueDesc: "6",
+  unitDesc: "元"
+};
+const coupon1 = {
+  available: 1,
+  condition: "无使用门槛\n最多优惠15元",
+  reason: "",
+  value: 800,
+  name: "彭满仓倾情放送",
+  startAt: 1489104000,
+  endAt: 1514592000,
+  valueDesc: "8",
+  unitDesc: "元"
+};
+const coupon2 = {
+  available: 1,
+  condition: "无使用门槛\n最多优惠20元",
+  reason: "",
+  value: 900,
+  name: "孔旭阳倾情放送",
+  startAt: 1489104000,
+  endAt: 1514592000,
+  valueDesc: "9",
+  unitDesc: "元"
+};
 export default {
     data() {
         return {
-            num:-5
+             num:-5,
+            //  data:this.$route.query.id,
+            chosenCoupon: -1,
+            coupons: [coupon,coupon1,coupon2],
+            disabledCoupons: [coupon2],
+            showList: false,
+              data:{},
+            bool:true,
         }
     },
+        watch: {
+        data(val) {
+        if (val != {}) {
+            this.bool = false;
+        } else {
+            this.bool = true;
+        }
+     }
+  },
+      beforeRouteEnter(to, from, next) {
+    next(d => {
+      d.data = JSON.parse(to.query.id);
+    });
+  },
     methods: {
         todetails(){
-            this.$router.push("/details")
+            this.$router.go(-1)
         },
         toyouhuiquan(){
              this.$router.push("/youhuiquan")
         },
         payfor(){
             alert("支付成功");
-            this.$router.push("/home")
+            this.$router.go(-2)
         },
         torechargemoney(){
              this.$router.push("/rechargemoney")
-        }
-
+        },
+          onChange(index) {
+            this.showList = false;
+            this.chosenCoupon = index;
     },
+        onExchange(code) {
+            this.coupons.push(this.coupons[code]);
+        },
+    },
+  
 }
 </script>
 <style scoped>
@@ -74,7 +147,7 @@ export default {
      padding: 0 .16rem;
     height:.5rem; ;
      line-height: .5rem;
-    font-size: .2rem;
+    font-size: .17rem;
     position: relative;
 }
 .topback .arrow{

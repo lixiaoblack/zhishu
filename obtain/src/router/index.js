@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Classify from '../pages/classify';
 
 
+
 //登录注册
 import User from '../pages/user'
 import Login from '../pages/login'
@@ -154,6 +155,7 @@ import Youhuiquan from '../pages/youhuiquan'
 import Payfor from '../pages/payfor'
 import Zengsongyouhuiquan from '../pages/zengsongyouhuiquan'
 import Rechargemoney from '../pages/rechargemoney'
+import Lookoutline from '../pages/lookoutline'
 
 
 
@@ -189,7 +191,6 @@ export default new Router({
       path: '/classify',
       name: 'Classify',
       component: Classify,
-
       children:[
         // 心理学
         {
@@ -613,6 +614,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path:'/lookoutline',
+      name:'Lookoutline',
+      component:Lookoutline
     },
     {
       path:'/*',

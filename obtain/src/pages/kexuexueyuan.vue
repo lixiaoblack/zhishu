@@ -21,10 +21,15 @@ export default {
     created(){
         // 请求对应字段的数据
            this.axios({
-                url:'/link/data',
-                method:'get'
+                 //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"科学学院"
+                },
+                method:'post'
             }).then((ok)=>{
-                this.kexuexueyuandata=ok.data.kexuexueyuan
+                this.kexuexueyuandata=ok.data.queryResult.list
             })
     },
 }

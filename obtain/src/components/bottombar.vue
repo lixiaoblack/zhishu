@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="bottombar">
-            <span class="givefriend" @click="togivefriend(data)">赠送好友</span>
+            <span class="givefriend" @click="togivefriend(data,singlemoney)">赠送好友</span>
             <span class="verticalline">|</span>
-            <span class="freelisten" @click="tofreelisten()">免费试听</span>
-            <span class="buy" @click="todetails()">购买：19.90得到贝</span>
+            <span class="freelisten" @click="tofreelisten(data)">免费试听</span>
+            <span class="buy" @click="todetails(data)">购买：19.90得到贝</span>
         </div>
     </div>
 </template>
@@ -15,16 +15,16 @@ export default {
             
         }
     },
-    props:["data"],
+    props:["data","singlemoney"],
     methods: {
-        togivefriend(val){
-            this.$router.push({path:"/givefriend",query:{id:val}});
+        togivefriend(val,money){
+            this.$router.push({path:"/givefriend",query:{id:JSON.stringify(val),num:money}})
         },
-        tofreelisten(){
-            this.$router.push("/freelisten");
+        tofreelisten(val){
+            this.$router.push({path:"/freelisten",query:{id:JSON.stringify(val)}})
         },
-        todetails(){
-             this.$router.push("/payfor");
+        todetails(val){
+             this.$router.push({path:"/payfor",query:{id:JSON.stringify(val)}})
         }
     },
 }
