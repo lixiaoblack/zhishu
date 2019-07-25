@@ -76,6 +76,7 @@ export default {
             });
         },
         onregister(){//用户名登录
+            let ls = localStorage;
             console.log(this.username)
             console.log(this.userpwd)
             this.axios({
@@ -88,7 +89,9 @@ export default {
             }).then((ok)=>{
                 console.log(ok);
                 if(ok.data.message == "操作成功！"){
+                    console.log(ok.data.queryResult.user.id);
                     alert("登录成功！");
+                    ls.setItem("用户名",ok.data.queryResult.user.id)
                     this.$router.push("/home");
                 }else{
                     alert("登录失败！");

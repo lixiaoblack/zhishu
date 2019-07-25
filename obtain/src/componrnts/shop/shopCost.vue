@@ -30,13 +30,8 @@
                     </div>
                 </div>
                 <div class="bottomMidd">
-                    <p class="smallP">颜色</p>
-                    <el-button plain>夜空蓝</el-button>
-                    <el-button plain>招财红</el-button>
-                </div>
-                <div class="bottomNum">
-                    <p class="smallP">数量</p>
-                    <el-input-number v-model="num1" @change="handleChange" :min="1" label="描述文字"></el-input-number>
+                    <p class="smallP">作者</p>
+                    <p>laowang</p>
                 </div>
                 <div class="bottomTotal">
                     <p>共计：￥ 0</p>
@@ -55,7 +50,6 @@ export default {
     data() {
       return {
         show: false,
-        num1: 1
       };
     },
     methods: {

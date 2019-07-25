@@ -12,8 +12,8 @@
                 <input class="el-input" type="text" placeholder="输入关键字搜索商品" >
             </div>
             <div class="shopItems">
-                <div @click="go(v)" v-for="(v,i) in newArr" :key="i">
-                    <Items class="items" :imgSrc="v.shopImgurl" :goodsTitle="v.shoptitle" :goodsIntro="v.shopSummary" :integer="v.saleSprice" :bigPrice="v.shopSprice" :time="v.discount"></Items>
+                <div @click="go(v)" v-for="(v,i) in arr" :key="i">
+                    <Items class="items" :imgSrc="v.courseImgurl" :goodsTitle="v.courseSubtitle" :goodsIntro="v.courseSummary" :integer="v.courseSprice"></Items>
                 </div>
             </div>
         </div>
@@ -30,7 +30,8 @@ import SwiperBanner from "../componrnts/banner/swiperBanner"
 export default {
     data() {
         return {
-            newArr:[]
+            newArr:[],
+            arr:[]
         }
     },
     components:{
@@ -54,6 +55,13 @@ export default {
             method:"get",
         }).then((ok)=>{
             this.newArr = ok.data.shop;
+        }),
+        this.axios({
+            url:"http://39.107.105.57:8084/Course/loadAll",
+            method:"get",
+        }).then((ok)=>{
+            this.arr = ok.data.queryResult.list;
+            console.log(ok.data.queryResult.list)
         })
     },
     

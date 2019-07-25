@@ -330,8 +330,6 @@ export default new Router({
         {path:"shiyexueyuan",name:"Shiyexueyuan",component:Shiyexueyuan},
         {path:"renwensheke",name:"Renwensheke",component:Renwensheke},
         {path:"zhengzaigengxin",name:"Zhengzaigengxin",component:Zhengzaigengxin},
-        {path:"morestudy",name:"Morestudy",component:Morestudy},
-        {path:"latestnew",name:"Latestnew",component:Latestnew},
       ]
     },
     {
