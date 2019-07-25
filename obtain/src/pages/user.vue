@@ -2,8 +2,8 @@
     <div class="box">
         <nav id="navcs"  :class="dool ? 'navcs navcss' : 'navcs'" class="navcs">
             <div class="pw">
-                <img :src="dool?'../../static/tu/r/f/aet.png':'../../static/tu/r/f/aeu.png'">
-                <span :style="dool?'color:#666666':'color:white'">扫一扫</span>
+                <img @click="fun()" :src="dool?'../../static/tu/r/f/aet.png':'../../static/tu/r/f/aeu.png'">
+                <span @click="fun()" :style="dool?'color:#666666':'color:white'">扫一扫</span>
             </div>
             <img :src="dool?'../../static/tu/r/f/aev.png':'../../static/tu/r/f/aew.png'" class="set" @click="set()">
         </nav>
@@ -111,6 +111,9 @@ export default {
             console.log(scrollTop)
             scrollTop > offsetTop ? this.dool = true : this.dool =false
         },
+        fun(){
+            this.$router.push({path:"/vidio"})
+        }
     }, 
     mounted () {
         window.addEventListener('scroll', this.handleScroll)
