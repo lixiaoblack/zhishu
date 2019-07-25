@@ -12,6 +12,10 @@ import Set from '../pages/set'
 import Mone from '../pages/moduleone'
 import Mtwo from '../pages/moduletwo'
 import Mthree from '../pages/modulethree'
+import Down from '../pages/download'
+import Downs from'../components/user/downloads'
+import Downi from '../components/user/downloaditem'
+import Forget from '../pages/forget'
 
 //商城
 import Allproduct from '../pages/allproduct'
@@ -133,7 +137,6 @@ import Yishushi from '../pages/art/yishushi.vue'
 import Special from '../pages/special'
 import Specialxq from '../pages/specialxq'
 import Knowledge from '../pages/knowledge'
-import Home from '../pages/home'
 // 课程
 import Course from '../pages/course'
 import Total from '../pages/total'
@@ -368,6 +371,20 @@ export default new Router({
       component:Mthree
     },
     {
+      path:'/forget',
+      name:'Forget',
+      component:Forget
+    },
+    {
+      path:'/download',
+      name:'Down',
+      component:Down,
+      children:[
+        {path:"downloads",name:"Downs",compont:Downs},
+        {path:"downloaditem",name:"Downi",component:Downi}
+      ]
+    },
+    {
       path: '/default',
       name: 'Default',
       component: Default
@@ -381,11 +398,6 @@ export default new Router({
       path: '/note',
       name: 'Note',
       component: Note
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home
     },
     {
       path: '/details',

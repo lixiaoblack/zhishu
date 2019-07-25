@@ -22,7 +22,7 @@
                 <span class="spancs">我的账户</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)" @touchstart="anxia()" @touchend="tanqi()">
+                <div class="flexcs" v-for="(v,i) in arra" :key="i" @click="zhanghu(v.url)">
                     <User  :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <span class="spancs">我的内容</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)" @touchstart="anxia()" @touchend="tanqi()">
+                <div class="flexcs" v-for="(v,i) in arrb" :key="i" @click="neirong(v.url)">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <span class="spancs">学习成就</span>
             </div>
             <div class="flex">
-                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)" @touchstart="anxia()" @touchend="tanqi()">
+                <div class="flexcs" v-for="(v,i) in arrc" :key="i" @click="xuexi(v.url)">
                     <User :imgurl="v.imgurl" :text="v.text" :url="v.url"></User>
                 </div>
             </div>
@@ -142,7 +142,7 @@ export default {
             arrb:[
                 {imgurl:"../../static/tu/user/biji.gif",text:"笔记",url:"../pages/home"},
                 {imgurl:"../../static/tu/user/lishi.png",text:"历史",url:"lishi"},
-                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"xiazai"},
+                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"download"},
                 {imgurl:"../../static/tu/user/shoucang.gif",text:"收藏",url:"shoucang"},
             ],
             arrc:[
