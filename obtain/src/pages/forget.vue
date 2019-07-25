@@ -8,7 +8,7 @@
             <div class="divcs">
                 <span class="dscs top">
                     <input id="phoneId" :class="dool ? 'usercss': 'usercss xiahuared'" type="text" name="username" placeholder="请输入用户名" v-model="loginname" @blur="fun2()">
-                    <!-- <span class="uscs">{{y}}</span> -->
+                    <span class="uscs">{{y}}</span>
                 </span>
                 <span class="dscs">
                     <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">

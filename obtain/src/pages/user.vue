@@ -7,8 +7,12 @@
             </div>
             <img :src="dool?'../../static/tu/r/f/aev.png':'../../static/tu/r/f/aew.png'" class="set" @click="set()">
         </nav>
-        <div class="diva maincs" >
+        <div v-if="userbool" class="diva maincs" >
             <span @click="login()">注册/登录</span>
+        </div>
+        <div v-else class="diva maincs" >
+            <img class="boximg" src="../../static/tu/user/name.png" alt="">
+            <span>{{username}}</span>
         </div>
         <div class="divb maincs" id="divb">
             <span>我关注的人</span>
@@ -116,28 +120,35 @@ export default {
     },
     created() {
         let ls = localStorage;
-        let username = ls.getItem("用户名")
-        this.axios({
-            url:"",
-            method:"get",
-            data:{
-                userName:username
-            }
-        }).then((ok)=>{
-            this.user = ok.data
-        })
+        if(ls.getItem("用户名")){
+            this.userbool=false;
+                this.axios({
+                url:"http://39.107.105.57:8084/user/loginUser",
+                method:"post",
+                params:{
+                    username:ls.getItem("用户名")
+                }
+            }).then((ok)=>{
+                this.user = ok.data
+                console.log(ok.data)
+                
+            })
+        }else{
+            this.userbool=true
+        }
+        
     },
     data(){
         return{
             arra:[
                 {imgurl:"../../static/tu/user/zhanghu.gif",text:"账户",url:"../pages/home"},
-                {imgurl:"../../static/tu/user/dingdan.gif",text:"订单",url:"moduleone"},
+                {imgurl:"../../static/tu/user/dingdan.gif",text:"订单",url:"/moduleone"},
             ],
             arrb:[
-                {imgurl:"../../static/tu/user/biji.gif",text:"笔记",url:"home"},
-                {imgurl:"../../static/tu/user/lishi.png",text:"历史",url:"moduletwo"},
-                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"download"},
-                {imgurl:"../../static/tu/user/shoucang.gif",text:"收藏",url:"colloct"},
+                {imgurl:"../../static/tu/user/biji.gif",text:"笔记",url:"/home"},
+                {imgurl:"../../static/tu/user/lishi.png",text:"历史",url:"/moduletwo"},
+                {imgurl:"../../static/tu/user/xiazai.gif",text:"下载",url:"/download/downloads"},
+                {imgurl:"../../static/tu/user/shoucang.gif",text:"收藏",url:"/colloct"},
             ],
             arrc:[
                 {imgurl:"../../static/tu/user/shuju.png",text:"数据",url:"../pages/home"},
@@ -151,13 +162,20 @@ export default {
             lishi:[],
             shuju:[],
             xunzhang:[],
-            zhengshu:[]
+            zhengshu:[],
+            userbool:true,
+            username:""
         }
     }
 }
 </script>
 
 <style scoped>
+.boximg{
+    margin: auto 0.13rem;
+    width: 0.6rem;
+    height: 0.6rem;
+}
 .fixed{
     position: fixed;
     bottom: 0;

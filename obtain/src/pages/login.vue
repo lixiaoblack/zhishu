@@ -3,7 +3,7 @@
         <div class="close"> 
             <div @click="fun()">×</div>
         </div>
-        <div v-if="loading"><img src="../../static/tu/user/loading.gif" alt=""></div>
+        <div v-if="loading"><img class="boximg" src="../../static/tu/user/loading.gif" alt=""></div>
         <div v-else>
             <div class="login">
                 <span class="spancs">用户名注册</span>
@@ -75,9 +75,15 @@ export default {
         },
         fun2(){//判断用户名规则合法，，，同时异步检测用户名是否存在
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
-            if(a.test(this.loginname)==true&&this.loginname!=""){
+            if(a.test(this.loginname)==true){
                 this.namecode="1";
-                this.dool=true;
+                this.dool=true;   
+            }else{
+                this.namecode="0";
+                this.dool=false;
+            }
+            if(this.loginname!=""){
+                console.log(this.loginname)
                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",
                     method:"get",
@@ -85,19 +91,10 @@ export default {
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    // console.log(ok);
-                    if(username==loginname){
-                        console.log("此用户已存在，请重新输入")
-                        alert("账户已存在")
-                        // this.y="×"
-                    }else{
-                        console.log("此账户可用")
-                        // this.y="√"
-                    }
+                    console.log("123")
+                    console.log(ok);
+                    //     alert("账户已存在")
                 })
-            }else{
-                this.namecode="0";
-                this.dool=false;
             }
         },
         fun3(){
@@ -185,7 +182,9 @@ export default {
 }    
 </script>
 <style scoped>
-
+.boximg{
+    width: 100%;
+}
 .box{
     /* overflow: auto; */
     margin: 2px;
