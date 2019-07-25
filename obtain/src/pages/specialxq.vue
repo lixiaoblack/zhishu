@@ -42,7 +42,6 @@ export default {
                         setTimeout(() => {
                             this.bool=true
                         }, 500);
-                    
                     }else{
                         this.bool=false
                     }
