@@ -114,6 +114,8 @@ export default {
                 }).then((ok)=>{
                 console.log(ok);
                 if(ok.data.message == "操作成功！"){
+                    let ls = localStorage;
+                    ls.setItem("用户名",ok.data.queryResult.user.id)
                     alert("登录成功！");
                     this.$router.push("/home");
                 }else{
