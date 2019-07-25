@@ -32,11 +32,11 @@ export default {
         url: "http://39.107.105.57:8084/findType",
         method: "post",
         params: {
-          books: "限时特价"
+          books: "新书上架"
         }
       }).then(ok => {
         this.arr = ok.data.queryResult.list;
-       
+       console.log(ok.data.queryResult.list)
       });
     
   },

@@ -10,8 +10,8 @@
           <img :src="arr.listenImgUrl" />
           <div class="right">
             <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">
-              <span>{{arr.listenSubtitle}}</span> |
-              <span>{{arr.listenAuthor}}解读</span>
+              <span>{{arr.listenSubtitle}}</span>
+              
             </p>
             <!-- 音频简介 -->
             <div>
@@ -64,7 +64,7 @@
             </p>
           </div>
           <div v-else>
-            <p style="font-size:0.13rem;color:#8d8d8d;padding:0 .12rem">{{arr.listenContent}}</p>
+            <p style="font-size:0.13rem;color:#8d8d8d;padding:0 .12rem">{{arr.listenAudioIntro}}</p>
             <p @click="content_Show()" class="open">
               收起
               <i class="el-icon-caret-top"></i>
@@ -82,7 +82,7 @@
     <footer>
       <p @click="buy(arr)">
         <span>购买</span>
-        <span style="color:#f17327">{{arr.listenSprice}}得到贝</span>
+        <span style="color:#f17327">{{arr.listenPrice}}得到贝</span>
       </p>
       <p>加入VIP免费听</p>
     </footer>
@@ -109,11 +109,11 @@ export default {
     });
   },
   created() {
-    this.axios.get("/listen").then(ok => {
-      let val = ok.data.listen;
+    this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
+      let val = ok.data.queryResult.list;
       //console.log(val)
       this.likes = val.filter(item => {
-        return item.listenType == "猜你喜欢";
+        return item.listenType =="猜你喜欢";
       });
       val.map(item => {
         if (item.listenId == this.id) {
@@ -134,7 +134,7 @@ export default {
       return nernew.slice(0, 3);
     },
     subContent() {
-      return this.arr.listenContent && this.arr.listenContent.substr(0, 50);
+      return this.arr.listenContent && this.arr.listenContent.substr(0, 30);
     }
   },
   methods: {

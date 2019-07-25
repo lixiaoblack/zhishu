@@ -41,14 +41,14 @@ export default {
   props: ["data"],
   methods: {
     skip(val) {
-         
-         this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
+        
+         this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
     
     }
   },
   created(){
-      this.axios.get("/listen").then(ok=>{
-        let val=ok.data.listen;
+      this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok=>{
+        let val=ok.data.queryResult.list;
         this.arr= val.filter(item=>{
           return item.listenAuthor==this.data;
         })

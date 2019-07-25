@@ -69,8 +69,8 @@ export default {
     });
   },
   created() {
-    this.axios.get("/jsondata/abc").then(ok => {
-      let val = ok.data.EBook;
+    this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
+      let val = ok.data.queryResult.list;
       val.map(item => {
         if (item.bookId == this.id) {
           this.arr = item;

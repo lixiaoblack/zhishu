@@ -44,7 +44,7 @@
     <div class="edit1">
       <p class="cation">
         <span>目录</span>
-        <span @click="SkipPages()">查看全部 ></span>
+        <span @click="SkipPages(obj.bookSubtitle)">查看全部 ></span>
       </p>
     </div>
     <div class="edit1">
@@ -55,7 +55,7 @@
       <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
       <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
     </div>
-    <div class="like">
+    <div>
       <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
       <ALLBOOK v-for="(v,i) in likes" :key="i" :data="v"></ALLBOOK>
     </div>
@@ -85,8 +85,8 @@ export default {
     open() {
       this.isShow = !this.isShow;
     },
-    SkipPages() {
-      this.$router.push({ path: "/catalogue" });
+    SkipPages(v) {
+      this.$router.push({ path: "/catalogue" ,query:{id:JSON.stringify(v)}});
     },
     tofreelisten() {
       this.$router.push({ path: "/read" });
@@ -116,8 +116,8 @@ export default {
     }
   },
   created() {
-    this.axios.get("/jsondata/abc").then(ok => {
-      let val = ok.data.EBook;
+    this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
+      let val = ok.data.queryResult.list;
 
       val.map(v => {
         if (v.bookType == "猜你喜欢") {
@@ -129,17 +129,16 @@ export default {
       });
     });
   },
-  beforeRouteEnter(to, from, next) {
-    next(d => {
-      d.id = JSON.parse(to.query.id);
-    });
-  }
+    beforeRouteEnter(to, from, next) {
+      next(d => {
+        d.id = JSON.parse(to.query.id);
+
+      });
+    }
 };
 </script>
 <style scoped>
-.box {
-  padding: 0 0.16rem;
-}
+ 
 .content {
   margin: 0.5rem 0 0 0;
   padding: 0.12rem;

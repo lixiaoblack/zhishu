@@ -11,7 +11,7 @@
           <span>{{arr.listenSubtitle}}</span>|
           <span>{{arr.listenAuthor}}解读</span>
         </p>
-        <p v-if="isShow" style="color:#ed742f">{{arr.listenSprice}}得到贝</p>
+        <p v-if="isShow" style="color:#ed742f">{{arr.listenPrice}}得到贝</p>
         <p v-else style="color:#ffc794">会员有效期内免费听</p>
       </div>
     </div>
@@ -69,8 +69,8 @@ export default {
     });
   },
   created() {
-    this.axios.get("/listen").then(ok => {
-      let val = ok.data.listen;
+    this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
+      let val = ok.data.queryResult.list;
       val.map(item => {
         if (item.listenId == this.id) {
           this.arr = item;

@@ -6,10 +6,10 @@
       <p class="title">{{val.title}}</p>
     </div>
     <section>
-      <Author data="kangdun"></Author>
-      <Author data="小白"></Author>
-       <Author data="小黑"></Author>
-
+      <Author data="良舟工作室"></Author>
+      <Author data="曲飞工作室"></Author>
+       <Author data="小云"></Author>
+     <Author data="徐玲"></Author>
     </section>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      arr: [{}],
+     
       val: {},
       type: ""
     };
@@ -29,14 +29,10 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(d => {
       d.val = JSON.parse(to.query.val);
-      d.type = to.query.type;
+     
     });
   },
-  created() {
-    this.axios.get("/listen").then(ok => {
-      this.arr = ok.data.listen;
-    });
-  },
+ 
   methods: {
     skipPrev(){
       this.$router.go(-1)

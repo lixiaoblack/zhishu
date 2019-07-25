@@ -5,10 +5,10 @@
                   <img :src="data.listenImgUrl" />
                 <div class="right">
                     <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.listenSubtitle}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioIntro}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAuthorValidity}}</p>
                     <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioTime}}</p>
                     <div class="buy">
-                      <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenSprice}}得到贝</p>
+                      <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenPrice}}得到贝</p>
                       <p class="read" @click.stop="buy(data)">购买</p>
                      
                     </div>
@@ -47,8 +47,8 @@ export default {
   display: flex;
 }
 .content img {
-  width: 80px;
-  height: 105px;
+  width: .8rem;
+  height: 1rem;
   margin-right: 0.12rem;
 }
 h4 {
@@ -64,7 +64,7 @@ h4 {
 }
 .buy{
   display: flex;
- margin-left: 1.2rem;
+ margin-left: 1.5rem;
 line-height: .3rem;
 
 }
