@@ -196,7 +196,7 @@ export default {
     left: .16rem;
 }
 .topback .total{
-    color: ##050505;
+    color: #050505;
     font-weight: bolder;
     text-align: center;
 }

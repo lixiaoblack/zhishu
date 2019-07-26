@@ -172,7 +172,6 @@ export default {
             }).then((ok)=>{
               // console.log(ok.data.queryResult.adouble)
               this.lastmoney=ok.data.queryResult.adouble
-
             })
     },
   components: {
@@ -203,8 +202,8 @@ export default {
                }).then((ok)=>{
                 // console.log(ok)
              })
-          this.$toast.success('支付成功');
-          this.$router.go(-2);
+          // this.$toast.success('支付成功');
+          // this.$router.go(-2);
        }
      }
   },

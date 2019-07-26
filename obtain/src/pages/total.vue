@@ -1,7 +1,6 @@
 <template>
     <div>
         <Course v-for="(v,i) in totaldata " :key="i" :data="v"></Course>
-
     </div>
 </template>
 <script>
@@ -12,7 +11,8 @@ export default {
     },
      data(){
         return {
-            totaldata:[]
+            totaldata:[],
+            linkTitle:this.$route.query.title
         }
     },
     created(){
@@ -23,6 +23,11 @@ export default {
             }).then((ok)=>{
                 this.totaldata=ok.data.queryResult.list
             })
+    },
+    watch: {
+        linkTitle(val){
+            console.log(val)
+        }
     },
 }
 </script>

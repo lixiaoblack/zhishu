@@ -19,16 +19,11 @@
                     <div class="check">
                         <el-checkbox @click="checkBtn(i)" v-model="v.checked"></el-checkbox>
                     </div>
-                    <img width="25%" :src="v.shopImgurl" alt="">
+                    <img class="checkImg" :src="v.courseImgurl" alt="">
                     <div class="itemRight">
-                        <p>{{v.shoptitle}}</p>
+                        <p>{{v.courseSubtitle}}</p>
                         <div class="itemEnd">
-                            <span>￥ {{v.price}}</span>
-                            <div class="shopBtn">
-                                <button @click="minus(i)" class="jian">-</button>
-                                <p class="num">{{v.num}}</p>
-                                <button @click="addNum(i)" class="add">+</button>
-                            </div>
+                            <span>￥ {{v.courseSprice}}</span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +35,7 @@
                     <el-checkbox @click="allChecked()" v-model="checked">全选</el-checkbox>
                 </div>
                 <div class="money">
-                    <span v-show="bool">合计：￥{{total}}.00</span>
+                    <span v-show="bool">合计：￥{{total}}</span>
                 </div>
                 <div @click="order()" v-if="bool" class="goTo">
                     去支付
@@ -55,7 +50,7 @@
 </template>
 
 <script>
-import TopIcon from "../componrnts/top"
+import TopIcon from "../componrnts/topDingdan"
 import ShopFooter from "../componrnts/shop/shopFooter"
 export default {
     data() {
@@ -64,20 +59,13 @@ export default {
             checked: true,
             tatal:0,
             bool:true,
-            divBool:true
+            divBool:true,
+            arrDel:[]
         }
     },
     methods: {
         checkBtn(index){
             this.arr[index].checked = !this.arr[index].checked
-        },
-        addNum(index){
-            this.arr[index].num = this.arr[index].num + 1
-        },
-        minus(index){
-            if(this.arr[index].num>1){
-                this.arr[index].num = this.arr[index].num - 1
-            }
         },
         allChecked(){
             this.checked = !this.checked;
@@ -89,13 +77,32 @@ export default {
         del(){
             for(let i =0;i<this.arr.length;i++){
                 if(this.arr[i].checked == true){
+                    this.arrDel.push(this.arr[i].courseId);
                     this.arr.splice(i,1);
                     i = i-1;
                 }
-            }
+            };
+            console.log(this.arrDel)
+            fetch("http://39.107.105.57:8084/deletShoppingCarAll",{
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body:"list[]="+this.arrDel
+            }).then(res=>{
+                res.json().then(data=>{
+                    console.log(data)
+                })
+            })
         },
         order(){
-            this.$router.push("/order")
+            this.arrDel = [];
+            for(let i =0;i<this.arr.length;i++){
+                if(this.arr[i].checked == true){
+                    this.arrDel.push(this.arr[i]);
+                }
+            };
+            this.$router.push({path:'/order',query:{content:this.arrDel}});
         }
     },
     computed: {
@@ -103,7 +110,7 @@ export default {
             this.tatal = 0;
             for(let i = 0;i<this.arr.length;i++){
                 if(this.arr[i].checked === true){
-                    this.tatal += this.arr[i].price*this.arr[i].num;
+                    this.tatal += Number(this.arr[i].courseSprice) ;
                 }
             }
             return this.tatal
@@ -130,15 +137,22 @@ export default {
         }
     },
     created() {
-        this.axios({
-            url:"user/shopcart",
-            method:"get",
-            data:{
-                username:"nihao"
-            }
-        }).then((ok)=>{
-            this.arr = ok.data.shopcat
-        })
+        let ls = localStorage;
+        let id = ls.getItem("用户名")
+        console.log(id)
+ 
+        fetch("http://39.107.105.57:8084/findAllShoppingCar",{
+            method:"POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:"id="+id
+       }).then(res=>{
+           res.json().then(data=>{
+               console.log(data)
+               this.arr = data.queryResult.list
+           })
+       })
     },
     components:{
         ShopFooter,
@@ -149,6 +163,10 @@ export default {
 
 
 <style scoped>
+    .checkImg{
+        width: 22%;
+        height: .8875rem;
+    }
     .content{
         height: 100%;
         background: #F5F5F5;
