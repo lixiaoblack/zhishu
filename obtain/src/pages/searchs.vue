@@ -198,12 +198,14 @@ export default {
         },
         course(val){
             this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
+
+
         },
         book(val){
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
         },
         listen(val){
-            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.listenId)}})
+            this.$router.push({path:"/listenDetail",query:{id:JSON.stringify(val.listenId)}})
         },
         one(){
             this.$router.push({path:"/details",query:{id:37}})
