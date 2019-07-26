@@ -235,7 +235,7 @@ export default {
     font-size: .14rem;
     line-height: .27rem;
     font-weight: 350;
-    padding: .1rem 10px .05rem 10px;
+    padding: .1rem 20px .05rem 20px;
 }
 .bottom p{
     font-size: .15rem;

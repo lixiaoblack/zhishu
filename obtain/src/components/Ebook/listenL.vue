@@ -9,7 +9,7 @@
 
       <div v-if="data.listen_class_id==1">
         <p style=" text-align: center; color: #636363;">24小时内</p>
-        <p style=" text-align: center;color:#ed742f;">{{data.listenSprice}}得到贝</p>
+        <p style=" text-align: center;color:#ed742f;">{{data.listenPrice}}得到贝</p>
       </div>
     </li>
   </div>

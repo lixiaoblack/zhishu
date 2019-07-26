@@ -1,20 +1,30 @@
 <template>
     <div class="cir">
-        <div class="left">
-            <p>挖洞挖到撒大大暗示等暗示等暗示等阿萨 啊实打实大师的我的娃</p>
-            <p>ad撒大声道萨达萨达萨达暗示等啊实打实萨达撒</p>
-            <p style="display:flex">
-                <span style="margin-right:8px">4.99得到贝</span>
-                <span>时长:25分46秒</span>
+        <div class="left" @click="fun(v)">
+            <p>{{title}}</p>
+            <p>{{conment}}</p>
+            <p style="display:flex;margin-top:8px">
+                <span style="margin-right:8px">{{price}}得到贝</span>
             </p>
         </div>
-        <img src="../../../static/image/lun_01.jpg">
+        <img :src="imgUrl">
     </div>
 </template>
 
 <script>
 export default {
-    
+    props:{
+        title:String,
+        conment:String,
+        price:Number,
+        imgUrl:String,
+        v:Object
+    },
+    methods: {
+        fun(val){
+            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
+        }
+    },
 }
 </script>
 
@@ -32,6 +42,7 @@ export default {
     }
     .left p{
         line-height: .25rem;
+        text-indent: 12px;
     }
     .left p:nth-child(1){
         width: 2rem;

@@ -11,9 +11,10 @@ export default {
 <style scoped>
   .father{
     position: relative;
+    padding-left: 16%;
   }
 img{
-    width: 100%;
+    /* width: 100%; */
     height: 2.8rem;
 }
 </style>

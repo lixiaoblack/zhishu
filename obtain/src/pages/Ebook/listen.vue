@@ -1,6 +1,9 @@
 <template>
   <div class="body">
-    <header>每天听本书</header>
+    <header>
+      <span style="margin-right:.8rem;color:#cccccc; font-size:.15rem; font-weight:100" @click="skipPrev">返回</span>
+      每天听本书
+      </header>
     <div class="vip">
       <div class="left">
         <p class="left_logo">
@@ -30,13 +33,13 @@
       <OPEN v-for="(v,i) in nav" :key="i" :data="v"></OPEN>
     </nav>
     <!-- 列表部分 -->
-     <div class="bookType">
-      <p class="cation">
-        <span>主编力荐</span>
-        <span>查看全部 ></span>
+     <div>
+      <p>
+        <span style="font-size:.18rem;font-weight:600">主编力荐</span>
+       
       </p>
       <ul >
-        <listenM :data="arr[0]"></listenM>
+        <listenM :data= "arr[0]"></listenM>
       </ul>
     </div>
     <div class="bookType">
@@ -67,9 +70,9 @@
         <Nav></Nav>
       </ul>
     </div>
-    <div class="bookType">
-      <p class="cation">
-        <span>猜你喜欢</span>
+    <div >
+      <p>
+        <span style="font-size:.18rem;font-weight:600; padding:.12rem">猜你喜欢</span>
         
       </p>
       <ul class="list">
@@ -96,8 +99,8 @@ export default {
     return {
       arr: [{}],
       nav: [
-        { title: "新书上架", icon: "el-icon-notebook-2",path:"/goodlisten" },
-        { title: "精选书单", icon: "el-icon-reading",path:"/goodlisten" },
+        { title: "新书上架", icon: "el-icon-notebook-2",path:"/goodListen"},
+        { title: "精选书单", icon: "el-icon-reading",path:"/listenG" },
         { title: "品牌解读人", icon: "el-icon-notebook-1",path:"/author" },
         { title: "分类", icon: "el-icon-document",path:"/classify/psychology" }
       ]
@@ -115,6 +118,9 @@ export default {
         path: v.path,
         query: { val: JSON.stringify(v) }
       });
+    },
+    skipPrev(){
+      this.$router.go(-1)
     }
   },
   mounted() {
@@ -127,15 +133,16 @@ export default {
     });
   },
   created() {
-    this.axios.get("/listen").then(ok => {
-      this.arr = ok.data.listen;
+    this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
+      this.arr = ok.data.queryResult.list;
+     
     });
   },
   computed: {
     newBook() {
       let gb = [];
       this.arr.map(v => {
-        if (v.listenClassId == 1) {
+        if (v.listenType =="新书上架") {
           gb.push(v);
         }
       });
@@ -145,7 +152,7 @@ export default {
     likeBook() {
       let gb = [];
       this.arr.map(v => {
-        if (v.listenClassId == 2) {
+        if (v.listenType == "猜你喜欢") {
           gb.push(v);
         }
       });
@@ -157,13 +164,18 @@ export default {
 <style scoped>
 .body {
   font-size: 0.14rem;
-  padding: 0 0.16rem;
+  /* padding: 0 0.16rem; */
 }
 header {
   font-size: 0.18rem;
   font-weight: 600;
-  text-align: center;
-  padding: 0.2rem;
+  position: fixed;
+  top:0;
+  padding: 0.16rem;
+  display: flex;
+  background: white;
+  width: 100%;
+  z-index: 999;
 }
 .left {
   display: flex;
@@ -178,8 +190,10 @@ header {
 .vip {
   display: flex;
   justify-content: space-between;
-  padding: 0.24rem 0;
+  padding: 0.24rem .16rem;
   align-items: center;
+  margin-top:.3rem;
+ background: white;
 }
 .swiper-container {
   width: 100%;
@@ -226,5 +240,8 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: .3rem 0.12rem 0.3rem;
+}
+.bookType{
+  padding: .12rem;
 }
 </style>
