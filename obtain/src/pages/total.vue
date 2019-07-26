@@ -39,7 +39,6 @@ export default {
     },
     watch: {
         linkTitle(val){
-            console.log(val)
         }
     },
     

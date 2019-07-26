@@ -27,7 +27,6 @@ export default {
             url:'/user/data',
             method: 'get'
         }).then((ok)=>{
-            console.log(ok.data)
             this.dingdan = ok.data.user[1].dingdan
 
         })

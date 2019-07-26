@@ -132,7 +132,6 @@ export default {
                 body:"id="+ls.getItem("用户名")
             }).then(res=>{
                 res.json().then(data=>{
-                    console.log(data)
                     this.username = data.queryResult.user.username;
                 })
             })

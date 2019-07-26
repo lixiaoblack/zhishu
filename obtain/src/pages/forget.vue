@@ -73,32 +73,40 @@ export default {
                  this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",
                     method:"get",
-                    data:{
+                    params:{
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    console.log(ok);
-                    // if(username=this.loginname){
-                    //     this.$toast.success("该用户名已注册")
-                    // }else{
-                    //     this.$toast.success("该用户名尚未注册")
-                    // }
+                    if(ok.data.message=="用户名可注册"){
+                        let red=document.querySelector("#phoneId")
+                        red.style.borderBottom="3px solid red"
+                        this.$toast.fail("该用户名尚未注册")
+                    }else{
+                        let red=document.querySelector("#phoneId")
+                        red.style.borderBottom=""
+                    }
                 })
             }else{
 
             }
         },
         fun3(){
-            this.axios({
-                url:"http://39.107.105.57:8084/user/findUserByName",
-                method:"post",
-                params:{
-                    username:this.loginname,
-                    useremail:this.loginemail
-                }
-            }).then((ok)=>{
-                console.log(ok)
-            })
+            var b=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
+            if(this.loginemail==""){
+                this.$toast.fail("请输入邮箱");
+            }else if(!b.test(this.loginemail)){
+                this.$toast.fail("请正确输入");
+            }else{
+                this.axios({
+                    url:"http://39.107.105.57:8084/user/findUserByName",
+                    method:"post",
+                    params:{
+                        username:this.loginname,
+                        useremail:this.loginemail
+                    }
+                }).then((ok)=>{
+                })
+            }
         },
         fun4(){
             this.$router.push({
@@ -120,7 +128,6 @@ export default {
                     password:this.loginpwd
                 } 
             }).then((ok)=>{
-                console.log(ok);
                 if(ok.data.queryResult.anInt==0){
                     this.$toast.success("验证码输入错误");
                 }else{

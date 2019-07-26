@@ -50,7 +50,6 @@ export default {
         body:"subject=历史",
         }).then(res=>{
         res.json().then(data=>{
-            console.log(data) 
             // for(let i=0;i<data.length;i++){
             //     for(let j=0;j<data[i].queryResult.list.length;j++){
             //         this.arr.push(data[i].queryResult.list[j])

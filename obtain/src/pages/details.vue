@@ -127,7 +127,6 @@ export default {
                 method:'post'
             }).then((ok)=>{
                 // 遍历数据
-                // console.log(ok.data)
                 ok.data.queryResult.list.map(v=>{
                     if(v.courseClassId==this.id){
                              this.details=v

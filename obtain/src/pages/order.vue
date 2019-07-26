@@ -118,7 +118,6 @@ export default {
             for(let i = 0;i<this.arr.length;i++){
                 idArr.push(this.arr[i].courseId);
             }
-            console.log(idArr)
             this.submitBool = true;
             fetch("http://39.107.105.57:8084/deletShoppingCarAll",{
                 method:"POST",

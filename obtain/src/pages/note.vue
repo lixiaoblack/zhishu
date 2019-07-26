@@ -107,7 +107,6 @@ export default {
             url:"/mock/data",
             methods:"get"
         }).then((ok)=>{
-            console.log(ok.data.knowledge)
             ok.data.knowledge.forEach((v,i)=>{
                 if(this.$route.query.num==v.id){
                     this.arr=v;

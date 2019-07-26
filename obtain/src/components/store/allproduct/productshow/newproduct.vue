@@ -37,7 +37,6 @@
       methods: {
         go(title) {
           this.$router.push({name: 'CommodityDetails', query: {content: title}});
-          // console.log(title)
         }
       }
     }

@@ -32,7 +32,6 @@
         }).then((ok) => {
           this.brr = ok.data.queryResult.list;
           this.bool = false;
-          console.log(ok)
         });
       },
       methods: {

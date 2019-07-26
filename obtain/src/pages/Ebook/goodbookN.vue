@@ -36,7 +36,6 @@ export default {
         }
       }).then(ok => {
         this.arr = ok.data.queryResult.list;
-       console.log(ok.data.queryResult.list)
       });
     
   },
