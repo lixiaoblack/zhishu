@@ -9,8 +9,6 @@
             <router-link to="/classify/art/yishushi" class="rig">艺术史</router-link>
           </div> 
         <router-view></router-view>
-
-      <Allclassify></Allclassify>
     </div>
 </template>
 

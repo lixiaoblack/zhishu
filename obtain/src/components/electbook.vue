@@ -1,9 +1,9 @@
 <template>
     <div class="all">
         <div>
-            <h2 style="">{{courseTitle}}</h2>
-            <h3 style="">{{courseTeacherIntro}}</h3>
-            <h5 style="">{{courseId}}讲/￥{{courseSprice}}</h5>
+            <h2>{{bookSubtitle}}</h2>
+            <h3>{{booKeditRecomend}}</h3>
+            <h5>{{bookAuthor}}</h5>
         </div>
         <div class="smallBox">
             <div class="imgBox">
@@ -16,10 +16,9 @@
 <script>
 export default {
     props:{
-        courseTitle:String,
-        courseTeacherIntro:String,
-        courseId:Number,
-        courseSprice:Number,
+        bookSubtitle:String,
+        booKeditRecomend:String,
+        bookAuthor:String,
         url:String,
         classify:String
     }
@@ -30,6 +29,7 @@ export default {
     .all{
         display: flex;
         align-items: center;
+        justify-content: space-between;
         height: 1.3rem;
         margin:0px 15px ;
         border-bottom: 1px solid #e5e5e5; 
@@ -73,6 +73,6 @@ export default {
      margin-top:20px;
      margin-top:10px;
      font-weight:500;
-     color:red
+     color: darkseagreen;
  }
-</style>
+    </style>

@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         courses(val){
-            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseId)}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
             console.log("sss")
         },
         books(val){

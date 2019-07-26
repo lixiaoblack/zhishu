@@ -67,6 +67,7 @@ export default {
         good(){
             setTimeout(() => {
                 this.$toast.success('支付成功');
+                this.$router.push("/havebuy/reservation");
             }, 2000);
         }
     },

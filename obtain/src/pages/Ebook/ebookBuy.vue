@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+    <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div v-else>
     <header>
       <p class="el-icon-close" style="font-size:.18rem;color:#909090;" @click="skipPrev()"></p>
       <p style="text-align:center; font-size:.18rem; margin-left:1.26rem">结算台</p>
@@ -43,14 +47,18 @@
    <footer>
      {{arr.bookSprice}}得到贝/确认支付
    </footer>
+   </div>
   </div>
 </template>
 <script>
 // import { Checklist } from "mint-ui";
 // Vue.component(Checklist.name, Checklist);
+import Loading from "../../components/loading"
 export default {
    
-         
+       components:{
+          Loading 
+       }, 
      
   data() {
      
@@ -60,7 +68,8 @@ export default {
       isShow: true,
       arr: {},
       check: false,
-     lastmoney:Number
+     lastmoney:Number,
+     bool:true
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -77,6 +86,11 @@ export default {
         }
         return this.arr;
       })
+      if(val){
+        this.bool=false
+      }else{
+        this.bool=true
+      }
     
     });
       let ls=localStorage

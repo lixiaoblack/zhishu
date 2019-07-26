@@ -65,6 +65,8 @@ export default {
         margin-top: .22rem;
         background: #ffffff;
         padding: 0 10px;
+        width: 91.6%;
+        box-sizing: border-box;
     }
     .allTop{
         clear: both;
