@@ -1,5 +1,7 @@
 <template>
     <div>
+        <Load v-if='boll'></Load>
+        <div v-else>
             <div class="howmuch">
                 共{{length}}个内容
             </div>
@@ -14,6 +16,7 @@
                     <Lisbook :listenSubtitle="v.listenSubtitle" :listenContent="v.listenContent" :listenAudioTime="v.listenAudioTime" :url="v.listenImgUrl" classify="听书" @click.native="func(v)"></Lisbook>
                 </div>     
             </div>
+        </div>
         
     </div>
 </template>
@@ -23,13 +26,14 @@
 import Allclassify from '../../components/allclassify'
 import Electbook from '../../components/electbook'
 import Lisbook from '../../components/lisbook'
-
+import Load from '../../components/store/allproduct/slidetitle/loading'
 
 export default {
     components:{
         Allclassify,
         Electbook,
         Lisbook,
+        Load
     },
     data(){
         return{
@@ -37,7 +41,7 @@ export default {
             ElectBook:[],
             AllClassIfy:[],
             LisBook:[],
-            length:Number,
+            length:'',
             boll:true
         }
     },
@@ -72,7 +76,12 @@ export default {
 
              this.length=this.arr.length
             })
+            if(this.arr.length>0){
+                this.boll = false;
+            }
         })   
+        
+        
         })
      },
       methods:{
