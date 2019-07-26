@@ -39,17 +39,17 @@
             <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7;padding-top:12px">热门搜索</p>
             <div style="margin-left:.12rem">
                 <div class="hot">
-                <img src="../../static/tu/r/f/a9m.png" @click="two()"><span>30天认知训</span>
+                <img src="../../static/tu/r/f/a9m.png" @click="one()"><span>30天认知训</span>
                 </div>
                 <div class="hot">
-                    <img src="../../static/tu/r/f/a9m.png" @click="three()"><span>焦虑情绪管</span>
+                    <img src="../../static/tu/r/f/a9m.png" @click="two()"><span>焦虑情绪管</span>
                 </div>
                 <div class="hot">
                     <img src="../../static/tu/r/f/a9m.png" @click="one()"><span>心理学30讲</span>
                 </div>
                 <span class="hotspan" @click="four()">自我发展心理学</span>
                 <span class="hotspan" @click="five()">现代艺术</span>
-                <span class="hotspan" @click="four()">宋词三百首</span>
+                <span class="hotspan" @click="six()">宋词三百首</span>
                 <span class="hotspan" @click="seven()">全球创新</span>
                 <span class="hotspan" @click="eight()">科凡读书俱乐部</span>
             </div>
@@ -197,7 +197,7 @@ export default {
             })
         },
         course(val){
-            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseId)}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
         },
         book(val){
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
@@ -206,16 +206,16 @@ export default {
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.listenId)}})
         },
         one(){
-            this.$router.push({path:"/details",query:{id:2}})
+            this.$router.push({path:"/details",query:{id:37}})
         },
         two(){
-            this.$router.push({path:"/details",query:{id:28}})
-        },
-        three(){
             this.$router.push({path:"/details",query:{id:1}})
         },
+        three(){
+            this.$router.push({path:"/details",query:{id:2}})
+        },
         four(){
-            this.$router.push({path:"/details",query:{id:3}})
+            this.$router.push({path:"/details",query:{id:4}})
         },
         five(){
             this.$router.push({path:"/EbookDetail",query:{id:18}})
@@ -224,10 +224,10 @@ export default {
             this.$router.push({path:"/EbookDetail",query:{id:21}})
         },
         seven(){
-            this.$router.push({path:"/details",query:{id:29}})
+            this.$router.push({path:"/details",query:{id:38}})
         },
         eight(){
-            this.$router.push({path:"/details",query:{id:27}})
+            this.$router.push({path:"/details",query:{id:36}})
         }
     },
     computed: {
