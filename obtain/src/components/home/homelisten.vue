@@ -7,18 +7,18 @@
             <img :src="imgUrl">    
             <div>
                 <p>{{subtitle}}</p>
-                <span>{{courseFeatureIntroI}}</span>
+                <span class="over">{{courseFeatureIntroI}}</span>
                 <span>{{time}}</span>
             </div>
             <span class="price">{{booksSprice}}得到贝</span>
         </div>
-        <div class="goodBook" @click="skip(data)">
+        <div class="goodBook" @click="skip(data)" v-for="(v,i) in listenArr" :key="i">
             <p class="goods">精选书单</p>
-            <img :src="imgUrl"> 
+            <img :src="v.listenImgUrl"> 
             <div>
-                <p>{{subtitle}}</p>
-                <span class="courseI">{{courseFeatureIntroI}}</span>
-                <div style="margin-right:8px">共3本</div><div>1.2万人看过</div>
+                <p>{{v.listenSubtitle}}</p>
+                <span class="courseI">{{v.listenPublisherIntro}}</span>
+                <div style="margin-right:8px">共{{v.listenClassId}}本</div><div>1.2万人看过</div>
             </div>
         </div>
         
@@ -35,10 +35,23 @@ export default {
         imgUrl:String,
         data:Object
     },
+    data() {
+        return {
+            listenArr:[]
+        }
+    },
     methods: {
          skip(val){
            this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
        },
+    },
+    created() {
+        this.axios({
+            url:"http://39.107.105.57:8084/listen/laodAll",
+            method:"get"
+        }).then((ok)=>{
+            this.listenArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
+        })
     },
 }
 </script>
@@ -52,6 +65,8 @@ export default {
         margin-top: .22rem;
         background: #ffffff;
         padding: 0 10px;
+        width: 91.6%;
+        box-sizing: border-box;
     }
     .allTop{
         clear: both;
@@ -131,5 +146,9 @@ export default {
     }
     .goodBook{
         padding-bottom: .36rem;
+    }
+    .flot .over{
+        height: .42rem;
+        overflow: hidden;
     }
 </style>

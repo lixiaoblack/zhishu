@@ -1,20 +1,28 @@
 <template>
     <div>
-        <div class="topimg">
-            <img src="../../static/img/renwensheke.jpg">
+         <div v-if="bool">
+             <Loading></Loading>
         </div>
-         <Course v-for="(v,i) in renwenshekedata" :key="i" :data="v"></Course>
+        <div v-else>
+             <div class="topimg">
+                <img src="../../static/img/renwensheke.jpg">
+            </div>
+            <Course v-for="(v,i) in renwenshekedata" :key="i" :data="v"></Course>
+        </div>
     </div>
 </template>
 <script>
 import Course from '../components/course'
+import Loading from "../components/loading";
 export default {
     components:{
-         Course
+         Course,
+         Loading
     },
      data(){
         return {
             renwenshekedata:[],
+            bool:true
         }
     },
     created(){
@@ -29,6 +37,11 @@ export default {
                 method:'post'
             }).then((ok)=>{
                 this.renwenshekedata=ok.data.queryResult.list
+                if(this.renwenshekedata!=[]){
+                    this.bool=false
+                }else{
+                    this.bool=true
+                }
             })
     },
 }

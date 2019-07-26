@@ -1,23 +1,29 @@
 <template>
   <div class="aa">
-  <div class="showbox" @click="fun(v)" v-for="(v,i) in brr" :key="i">
-    <img :src="v.shopImgurl"/>
-    <div class="name">{{v.shoptitle}}</div>
-    <div class="notice">{{v.shopSummary}}</div>
-    <div class="priceAdd">
-      <div class="price">¥{{v.saleSprice}}</div>
-      <span class="shopSprice">¥{{v.shopSprice}}</span>
-    </div>
-    <div class="sale"></div>
-  </div>
+
+      <Load v-if="bool"></Load>
+      <div v-else class="showbox" @click="go(v)" v-for="(v,i) in brr" :key="i">
+        <img v-lazy="v.courseImgurl"/>
+        <div class="name">{{v.courseSubtitle}}</div>
+        <div class="notice">{{v.courseSummary}}</div>
+        <div class="priceAdd">
+          <div class="price">¥{{v.courseSprice}}</div>
+<!--          <span class="shopSprice">¥{{v.shopSprice}}</span>-->
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+  import Load from '../slidetitle/loading'
     export default {
+      components: {
+        Load
+      },
       data() {
         return {
-          brr:''
+          brr: '',
+          bool: "true",
         }
       },
       methods: {
@@ -27,11 +33,21 @@
       },
       created() {
         this.axios({
-          url:"user/shop",
-          method:"get",
-        }).then((ok)=>{
-          this.brr=ok.data.shop;
+          url: "http://39.107.105.57:8084/Course/findByAbility",
+          method: "post",
+          params:{
+            college:"正在更新"
+          }
+        }).then((ok) => {
+          this.brr = ok.data.queryResult.list;
+          this.bool = false;
+          console.log(ok)
         });
+      },
+      methods: {
+        go(title) {
+          this.$router.push({name: 'CommodityDetails', query: {content: title}});
+        }
       }
     }
 </script>
@@ -39,7 +55,7 @@
 <style scoped>
   .showbox{
     width: 1.29rem;
-    height:2.5rem;
+    height:2.3rem;
     background-color: white;
     border-radius: 6px;
     margin-top: .1rem;
@@ -53,6 +69,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: 2.5rem;
+
   }
   .aa:nth-child(2n){
     margin-left: 10px;
@@ -68,10 +86,10 @@
     color: #333;
   }
   .notice{
-    height: 18px;
+    height: .18rem;
     margin: 2px 5px;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: .14rem;
+    line-height: .18rem;
     overflow: hidden;
     color: #999;
     text-overflow: ellipsis;
@@ -84,10 +102,6 @@
     width: 20px;
     color: #ff6800;
     line-height: .25rem;
-  }
-  .sale{
-    height: 0.25rem;
-    margin: 0 5px;
   }
   .shopSprice{
     font-size: .13rem;

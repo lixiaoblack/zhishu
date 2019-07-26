@@ -1,31 +1,32 @@
 <template>
     <div>
-        <div class="topimg">
-            <img src="../../static/img/nengli.jpg">
+         <div v-if="bool">
+             <Loading></Loading>
         </div>
-        <Course v-for="(v,i) in nenglixueyuan " :key="i" :data="v"></Course>
-        <!-- {{nenglixueyuan}} -->
+        <div v-else>
+            <div class="topimg">
+                <img src="../../static/img/nengli.jpg">
+            </div>
+            <Course v-for="(v,i) in nenglixueyuan " :key="i" :data="v"></Course>
+        </div>
     </div>
 </template>
 <script>
 import Course from '../components/course'
+import Loading from "../components/loading";
 export default {
         components:{
-         Course
+         Course,
+         Loading
     },
      data(){
         return{
-            nenglixueyuan:[]
+            nenglixueyuan:[],
+            bool:true
         }
     },
     created(){
         // 请求对应字段的数据
-        //    this.axios({
-        //         url:'/link/data',
-        //         method:'get'
-        //     }).then((ok)=>{
-        //         this.nenglixueyuan=ok.data.nenglixueyuan
-        //     })
              this.axios({
                     //    接口
                  url:'http://39.107.105.57:8084/Course/findByAbility',
@@ -36,7 +37,11 @@ export default {
                 method:'post'
             }).then((ok)=>{
                 this.nenglixueyuan=ok.data.queryResult.list
-                // console.log(ok.data.queryResult.list)
+                if(this.nenglixueyuan!=[]){
+                    this.bool=false
+                }else{
+                    this.bool=true
+                }
             })
     },
 }

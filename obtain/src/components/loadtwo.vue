@@ -1,6 +1,6 @@
 <template>
     <div>
-        搜索
+        <img src="../../static/timg.gif" alt="">
     </div>
 </template>
 
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped>
-
+img{
+    width:100%;
+}
 </style>

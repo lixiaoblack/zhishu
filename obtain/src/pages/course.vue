@@ -104,6 +104,7 @@ export default {
             this.bool3 = false;
             this.title = "101";
             this.$router.push({name:this.linkName,query:{title:this.title}})
+            this.$router.push("/course/total")
         },
         fun2(){
             this.bool1 = false;
@@ -121,8 +122,6 @@ export default {
         },
     },
 }
-
-
 </script>
 <style scoped>
 a{
@@ -157,7 +156,6 @@ header{
     position: absolute;
     top:0;
     left: 1.6rem;
-    
 }
 .firstnav{
     display: flex;
@@ -196,7 +194,6 @@ header{
 .big{
     padding: .16rem;
 }
-
 .router-link-active{
      color:#ff6b00;
 }

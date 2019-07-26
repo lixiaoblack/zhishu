@@ -38,7 +38,7 @@
                     <div class="left">
                         <span class="balance">余额</span> &nbsp;
                         <span class="unit"><strong>{{lastmoney}}</strong>得到贝</span>&nbsp;
-                        <span class="nomoney" style="color:#f36f27;font-size:.2rem">(不足支付)</span>
+                        <span class="nomoney" style="color:#f36f27;font-size:.2rem">{{payForMoney}}</span>
                     </div>
                     <div class="right"   @click="torechargemoney()">
                         <span style="font-size:.2rem">充值</span>
@@ -101,11 +101,13 @@ export default {
             showList: false,
               data:{},
             bool:true,
-            lastmoney:Number
+            lastmoney:Number,
+            payForBool :true,
+            payForMoney:"",
         }
     },
         created(){
-        // 请求对应字段的数据
+        // 请求对应字段的数据   获取当前用户账户的余额
         let ls=localStorage
            this.axios({
                  //    接口
@@ -118,7 +120,6 @@ export default {
             }).then((ok)=>{
               // console.log(ok.data.queryResult.adouble)
               this.lastmoney=ok.data.queryResult.adouble
-
             })
     },
     watch: {
@@ -128,6 +129,18 @@ export default {
         } else {
             this.bool = true;
         }
+     },
+    //  当前账户余额不足判断
+         lastmoney(val){
+       if(this.lastmoney < this.data.courseSprice){
+            // this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
+            this.payForBool = false;
+            this.payForMoney = "余额不足"
+            // this.$router.push("/rechargemoney")
+       }else{
+            this.payForBool = true;
+            this.payForMoney = "余额充足"
+       }
      }
   },
       beforeRouteEnter(to, from, next) {
@@ -142,13 +155,23 @@ export default {
         toyouhuiquan(){
              this.$router.push("/youhuiquan")
         },
+        // 下边的支付  钱不够也得判断
         payfor(){
-            let ls=localStorage
+            // payforbool用来判断余额是否充足
+             if(this.payForBool === false){
+                this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
+                 this.$router.push("/rechargemoney")
+            }else{
+                // 从localstorage获取登录用户信息
+             let ls=localStorage
+            //  向后台发送请求   获取当前用户账户信息   发送id money 两个字段  当前要花费的金额    从数据库减掉
             this.axios({
                 url:'http://39.107.105.57:8084/user/findUserJian',
                 params:{
+                    // 当前用户
                     id:Number(ls.getItem("用户名")),
-                    money:data.courseSprice
+                    // 当前用户要花费的钱
+                    money:this.data.courseSprice
                 },
                 method:'post'
                 }).then((ok)=>{
@@ -156,6 +179,8 @@ export default {
                  })
                 alert("支付成功");
                 this.$router.go(-2);
+            }
+        
            },
         torechargemoney(){
              this.$router.push("/rechargemoney")
