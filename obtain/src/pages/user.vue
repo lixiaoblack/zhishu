@@ -108,7 +108,6 @@ export default {
         handleScroll () {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
             let offsetTop = document.querySelector('#divb').offsetTop
-            console.log(scrollTop)
             scrollTop > offsetTop ? this.dool = true : this.dool =false
         },
         fun(){

@@ -171,7 +171,7 @@ export default {
                     // 当前用户
                     id:Number(ls.getItem("用户名")),
                     // 当前用户要花费的钱
-                    money:data.courseSprice
+                    money:this.data.courseSprice
                 },
                 method:'post'
                 }).then((ok)=>{

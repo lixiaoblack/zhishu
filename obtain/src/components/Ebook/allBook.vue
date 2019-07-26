@@ -1,18 +1,15 @@
 <template>
   <div>
-    
-     <li class="content" @click="skip(data)">
-                  <img :src="data.bookImgUrl" />
-                <div class="right">
-                    <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.bookSubtitle}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.booKeditRecomend}}</p>
-                    <p style="float:right">
-                        <span class="read" @click.stop="tryBook()">试读</span>
-                    </p>
-                </div>
-     </li>
-            
-        
+    <li class="content" @click="skip(data)">
+      <img :src="data.bookImgUrl" />
+      <div class="right">
+        <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.bookSubtitle}}</p>
+        <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.booKeditRecomend}}</p>
+        <p style="float:right">
+          <span class="read" @click.stop="tryBook()">试读</span>
+        </p>
+      </div>
+    </li>
   </div>
 </template>
 <script>
@@ -21,25 +18,25 @@ export default {
   components: {
     TryRead
   },
-   props: ["data"],
-   methods: {
-       skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
-       },
-        tryBook(){
-      this.$router.push({path:"/read"})
-   }
-   },
-  
+  props: ["data"],
+  methods: {
+    skip(val) {
+      this.$router.push({
+        name: "BOOKDEL",
+        query: { id: JSON.stringify(val.bookId) }
+      });
+    },
+    tryBook() {
+      this.$router.push({ path: "/read" });
+    }
+  }
 };
 </script>
 <style scoped>
-
 .content {
   margin: 0.1rem 0 0 0;
   padding: 0.12rem;
   display: flex;
-  
 }
 .content img {
   width: 80px;
@@ -51,17 +48,17 @@ h4 {
   font-weight: 600;
   line-height: 0.4rem;
 }
- .read{
-        width: 0.75rem;
-        line-height: .3rem;
-        background: #f4f3f1;
-        color:#e1793c;
-        border-radius: 0.15rem ;
-        font-size: .13rem;
-        text-align: center;
-        font-weight: 600; 
-    }
-    .right{
-      width: 100%;
-    }
+.read {
+  width: 0.75rem;
+  line-height: 0.3rem;
+  background: #f4f3f1;
+  color: #e1793c;
+  border-radius: 0.15rem;
+  font-size: 0.13rem;
+  text-align: center;
+  font-weight: 600;
+}
+.right {
+  width: 100%;
+}
 </style>

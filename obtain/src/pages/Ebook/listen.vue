@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+     <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div v-else>
     <header>
       <span style="margin-right:.8rem;color:#cccccc; font-size:.15rem; font-weight:100" @click="skipPrev">返回</span>
       每天听本书
@@ -79,6 +83,7 @@
         <listenM v-for="(v,i) in likeBook" :key="i" :data="v"></listenM>
       </ul>
     </div>
+    </div>
   </div>
 </template>
 <script>
@@ -88,16 +93,20 @@ import OPEN from "../../components/Ebook/open";
 import ListenL from "../../components/Ebook/listenL";
 import listenM from "../../components/Ebook/listen_like";
 import Nav from "../../components/Ebook/nav1";
+import Loading from "../../components/loading"
 export default {
   components: {
     OPEN,
     ListenL,
     listenM,
-    Nav
+    Nav,
+    Loading,
+   
   },
   data() {
     return {
       arr: [{}],
+       bool:true,
       nav: [
         { title: "新书上架", icon: "el-icon-notebook-2",path:"/goodListen"},
         { title: "精选书单", icon: "el-icon-reading",path:"/listenG" },
@@ -120,7 +129,7 @@ export default {
       });
     },
     skipPrev(){
-      this.$router.go(-1)
+      this.$router.push("home")
     }
   },
   mounted() {
@@ -135,7 +144,11 @@ export default {
   created() {
     this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
       this.arr = ok.data.queryResult.list;
-     
+        if(ok.data.queryResult.list){
+          this.bool=false
+        }else{
+          this.bool=true
+        }
     });
   },
   computed: {

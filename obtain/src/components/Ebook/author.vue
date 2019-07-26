@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="box"> 
+     <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div class="box"  v-else> 
       
         <div class="header">
             <img :src="arr[0].listenAuthorPhoto" alt="" style="border-radius:50%; height:.45rem;width:.45rem;margin-right:.15rem">
@@ -26,11 +29,16 @@
   </div>
 </template>
 <script>
+import Loading from "../../components/loading"
 export default {
+   components: {
+    
+    Loading
+  },
     data(){
         return{
             arr:[{}],
-           
+           bool:true
         }
     },
     computed: {
@@ -52,6 +60,11 @@ export default {
         this.arr= val.filter(item=>{
           return item.listenAuthor==this.data;
         })
+          if (ok.data.queryResult.list) {
+          this.bool = false;
+        } else {
+          this.bool = true;
+        }
       })
   }
 };

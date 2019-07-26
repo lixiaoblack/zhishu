@@ -1,6 +1,10 @@
 <template>
   <div>
-    <header>
+    <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div v-else>
+       <header>
       <span @click="skipPrev()">返回</span>
       <span>电子书</span>
       <p @click="skipTryread(recently)" style="display:flex;margin-right:.15rem">
@@ -86,6 +90,7 @@
         <ALLBOOK v-for="(v,i) in arr" :key="i" :data="v"></ALLBOOK>
       </ul>
     </div>
+    </div>
   </div>
 </template>
 <script>
@@ -95,6 +100,7 @@ import Nav from "../../components/Ebook/nav1";
 import ALLBOOK from "../../components/Ebook/allBook";
 import OPEN from "../../components/Ebook/open";
 import Search from "../../components/home/search";
+import Loading from "../../components/loading"
 export default {
   components: {
     TryRead,
@@ -102,11 +108,13 @@ export default {
     Nav,
     ALLBOOK,
     OPEN,
-    Search
+    Search,
+    Loading
   },
   data() {
     return {
       arr: [{}],
+      bool:true,
       nav: [
         { title: "限时特价", icon: "el-icon-notebook-2", path: "/goodbook" },
         { title: "精选好书", icon: "el-icon-reading", path: "/goodbookG" },
@@ -136,7 +144,7 @@ export default {
       this.$router.push({ path: "/searchs" });
     },
     skipPrev() {
-      this.$router.go(-1);
+      this.$router.push("/home");
     }
   },
   computed: {
@@ -173,7 +181,7 @@ export default {
     recent() {
       let gb = [];
       this.arr.map(v => {
-        if (v.bookType == "猜你喜欢") {
+        if (v.bookType == "新书上架") {
           gb.push(v);
         }
       });
@@ -195,7 +203,11 @@ export default {
   created() {
     this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
       this.arr = ok.data.queryResult.list;
-      
+      if(ok.data.queryResult.list!=[]){
+        this.bool=false
+      }else{
+        this.bool=true;
+      }
     });
   }
 };

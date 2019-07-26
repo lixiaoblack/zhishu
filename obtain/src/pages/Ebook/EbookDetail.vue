@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+    <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div v-else>
     <header>
       <p @click="skipPrev()">返回</p>
       <p>{{obj.bookSubtitle}}</p>
@@ -67,20 +71,24 @@
       <span class="freelisten" @click="todetails(obj)">购买：{{obj.bookSprice}}得到贝</span>
       <span class="buy" @click="tofreelisten()">免费试读</span>
     </div>
+    </div>
   </div>
 </template>
 <script>
 import ALLBOOK from "../../components/Ebook/allBook";
+import Loading from "../../components/loading"
 export default {
   components: {
-    ALLBOOK
+    ALLBOOK,
+    Loading 
   },
   data() {
     return {
       obj: {},
       isShow: true,
       like: [],
-      id: ""
+      id: "",
+      bool:true
     };
   },
   methods: {
@@ -109,7 +117,7 @@ export default {
       });
     },
     skipPrev() {
-      this.$router.go(-1);
+      this.$router.push("/eBook");
     }
   },
   computed: {
@@ -132,6 +140,11 @@ export default {
         }
         return this.obj;
       });
+      if(val!=[]){
+        this.bool=false
+      }else{
+        this.bool=true
+      }
     });
   },
   beforeRouteEnter(to, from, next) {
