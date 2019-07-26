@@ -17,7 +17,8 @@
 
                     <span class="dscss top">
                         <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
-                        <input class="inios" type="button" value="获取验证码" @click="fun3()">
+                        <input v-if="panduan" class="inios" type="button" value="获取验证码" @click="fun3()">
+                        <div v-else class="panduan">{{num}}s</div>
                     </span>
 
                     <span class="dscss">
@@ -58,7 +59,9 @@ export default {
             dool:true,//判断是否符合用户名规则的真假
             btnbooll:true,//判断输入框内是否有值的真假
             loading:true,
-            y:''//异步判断注册的用户名是否已存在
+            y:'',//异步判断注册的用户名是否已存在
+            panduan:true,
+            num:60
         }
     },
     created(){
@@ -108,6 +111,7 @@ export default {
                 this.$toast.fail("请输入邮箱");
             }else if(!b.test(this.loginemail)){
                 this.$toast.fail("请正确输入");
+
             }else{
             this.axios({
                 url:"http://39.107.105.57:8084/user/registerUser",
@@ -118,7 +122,19 @@ export default {
                     useremail:this.loginemail
                 }
             }).then((ok)=>{
+                this.panduan=false
+            if(this.panduan==false){
+                let time=setInterval(()=>{
+                    this.num--
+                    if(this.num==-1){
+                        this.panduan=true
+                        clearInterval(time)
+                        this.num=60
+                    }
+                },1000)
+            }
             })
+            
             }
         },
         fun4(){
@@ -190,6 +206,17 @@ export default {
 }    
 </script>
 <style scoped>
+.panduan{
+    width:33%;
+    padding: 0.11rem .1rem;
+    background-color:#ccc;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 0.17rem;
+    outline:none;
+    border:0px;
+    text-align: center;
+}
 .boximg{
     width: 100%;
 }
