@@ -108,7 +108,6 @@ export default {
         handleScroll () {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
             let offsetTop = document.querySelector('#divb').offsetTop
-            console.log(scrollTop)
             scrollTop > offsetTop ? this.dool = true : this.dool =false
         },
         fun(){
@@ -133,8 +132,6 @@ export default {
                     username:ls.getItem("用户名")
                 }
             }).then((ok)=>{
-                console.log(123)
-                console.log(ok)
                 this.username= ok.config.params.username
                 // this.username=ls.getItem("用户名")
             })

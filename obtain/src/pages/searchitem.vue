@@ -42,7 +42,7 @@ export default {
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
         },
         listens(val){
-            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.listenId)}})
+            this.$router.push({path:"/listenDetail",query:{id:JSON.stringify(val.listenId)}})
         }
     },
     created() {

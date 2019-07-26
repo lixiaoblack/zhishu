@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     tohome() {
-      this.$router.go(-1);
+      this.$router.push('/course/total');
     },
     lookoutline(){
       this.$router.push("/lookoutline")

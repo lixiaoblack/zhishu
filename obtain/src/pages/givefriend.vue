@@ -71,7 +71,7 @@
                 <span class="unit">
                   <strong>{{lastmoney}}</strong>得到贝
                 </span>&nbsp;
-                <span class="nomoney">(不足支付)</span>
+                <span class="nomoney">{{payForMoney}}</span>
               </div>
               <div  class="right chongzhi" @click="torechargemoney()">
                 <span>充值</span>
@@ -144,8 +144,6 @@ export default {
   data() {
     return {
       num: 1,
-      // price: 19.9,
-      // singleprice: 19.9,
       minusprice:this.$route.query.numprice,  
       numprice:this.$route.query.numprice,
       data:{},
@@ -154,31 +152,44 @@ export default {
       coupons: [coupon,coupon1,coupon2],
       disabledCoupons: [coupon2],
       showList: false,
+      // 选购商品的总共金额
       totalmoney:this.$route.query.num,
-      lastmoney:Number
+      // lastmoney当前账户余额
+      lastmoney:Number,
+      payForMoney:"",
+      payForBool:true,
     };
   },
     created(){
         // 请求对应字段的数据
+        // 获取本地存储
         let ls=localStorage
-        this.axios({
-              //    接口
-              url:'http://39.107.105.57:8084/user/findUserMoney',
-            //  对应字段   key唯一    val不定
-            params:{
-                id:Number(ls.getItem("用户名"))
-            },
-            method:'post'
-        }).then((ok)=>{
-          // console.log(ok.data.queryResult.adouble)
-          this.lastmoney=ok.data.queryResult.adouble
-        })
+           this.axios({
+                 //接口
+                 url:'http://39.107.105.57:8084/user/findUserMoney',
+                //  对应字段   key唯一    val不定
+                params:{
+                    id:Number(ls.getItem("用户名"))
+                },
+                method:'post'
+            }).then((ok)=>{
+              // 进入givefirend页面  就判断账户余额是否充足
+              this.lastmoney=ok.data.queryResult.adouble
+              if(this.lastmoney>this.totalmoney){
+                this.payForMoney = "可购买";
+                this.payForBool = true;
+              }else{
+                this.payForMoney = "余额不足";
+                this.payForBool = false;
+              }
+            })
     },
     
   components: {
     Loading
   },
   watch: {
+    // 监听异步的数据是否请求进来
     data(val) {
       if (val != {}) {
         this.bool = false;
@@ -188,23 +199,14 @@ export default {
     },
     // 余额是否充足的判断
      totalmoney(val){
-       if(val <this.lastmoney){
-           this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
-            this.$router.push("/rechargemoney");
+       if(val > this.lastmoney){
+            this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
+            this.payForBool = false;
+            this.payForMoney = "余额不足"
+            // this.$router.push("/rechargemoney")
        }else{
-            let ls=localStorage
-            this.axios({
-                url:'http://39.107.105.57:8084/user/findUserJian',
-                params:{
-                    id:Number(ls.getItem("用户名")),
-                    money:this.totalmoney
-                },
-                  method:'post'
-               }).then((ok)=>{
-                // console.log(ok)
-             })
-          // this.$toast.success('支付成功');
-          // this.$router.go(-2);
+            this.payForBool = true;
+            this.payForMoney = "余额充足"
        }
      }
   },
@@ -279,21 +281,28 @@ export default {
     torechargemoney() {
       this.$router.push("/rechargemoney");
     },
-    // payfor() {
-    //      let ls=localStorage
-    //         this.axios({
-    //             url:'http://39.107.105.57:8084/user/findUserJian',
-    //             params:{
-    //                 id:Number(ls.getItem("用户名")),
-    //                 money:this.totalmoney
-    //             },
-    //               method:'post'
-    //         }).then((ok)=>{
-    //             console.log(ok)
-    //         })
-    //    this.$toast.success('支付成功');
-    //   this.$router.go(-2);
-    // }
+    // 下边的支付  钱不够也得判断
+    payfor() {
+      if(this.payForBool === false){
+        this.$toast.success('亲,您的余额支撑不起你的野心,请先去多多充钱,再来挥霍');
+        this.$router.push("/rechargemoney")
+      }else{
+        let ls=localStorage
+            this.axios({
+                url:'http://39.107.105.57:8084/user/findUserJian',
+                params:{
+                    id:Number(ls.getItem("用户名")),
+                    money:this.totalmoney
+                },
+                  method:'post'
+            }).then((ok)=>{
+                // console.log(ok)
+            })
+            this.$toast.success('支付成功');
+            this.$router.go(-1);
+      }
+         
+    }
   }
 };
 </script>

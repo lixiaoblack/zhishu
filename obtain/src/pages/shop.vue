@@ -64,7 +64,6 @@ export default {
         }).then((ok)=>{
             this.arr = ok.data.queryResult.list;
             this.bool = false;
-            console.log(ok.data.queryResult.list)
         })
     },
     beforeRouteEnter(to, from, next) {

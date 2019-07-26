@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         todetails(val){
-            this.$router.push({path:"/details",query:{id:JSON.stringify(val)}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
         }
     },
 }

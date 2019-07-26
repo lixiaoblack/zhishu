@@ -88,7 +88,6 @@ export default {
                     i = i-1;
                 }
             };
-            console.log(this.arrDel)
             fetch("http://39.107.105.57:8084/deletShoppingCar",{
                 method:"POST",
                 headers: {
@@ -97,7 +96,7 @@ export default {
                 body:"list[]="+this.arrDel+"&id="+ls.getItem("用户名")
             }).then(res=>{
                 res.json().then(data=>{
-                    console.log(data)
+
                 })
             })
         },
@@ -145,7 +144,6 @@ export default {
     created() {
         let ls = localStorage;
         let id = ls.getItem("用户名")
-        console.log(id)
  
         fetch("http://39.107.105.57:8084/findAllShoppingCar",{
             method:"POST",
@@ -155,7 +153,6 @@ export default {
             body:"id="+id
        }).then(res=>{
            res.json().then(data=>{
-               console.log(data)
                this.arr = data.queryResult.list
            })
        })
