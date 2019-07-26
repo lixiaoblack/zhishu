@@ -83,12 +83,6 @@ export default {
       id: ""
     };
   },
-  watch: {
-    id(newval, oldval) {
-   newval=oldval
-      console.log(newval + "========" + oldval);
-    }
-  },
   methods: {
     open() {
       this.isShow = !this.isShow;
