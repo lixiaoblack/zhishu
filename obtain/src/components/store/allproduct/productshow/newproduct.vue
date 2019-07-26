@@ -9,7 +9,6 @@
           <div class="price">¥{{v.courseSprice}}</div>
 <!--          <span class="shopSprice">¥{{v.shopSprice}}</span>-->
         </div>
-        <div class="sale"></div>
       </div>
   </div>
 </template>
@@ -33,12 +32,13 @@
         }).then((ok) => {
           this.brr = ok.data.queryResult.list;
           this.bool = false;
-          console.log(ok)
+          console.log(ok.data.queryResult.list)
         });
       },
       methods: {
         go(title) {
           this.$router.push({name: 'CommodityDetails', query: {content: title}});
+          // console.log(title)
         }
       }
     }
@@ -47,7 +47,7 @@
 <style scoped>
   .showbox{
     width: 1.29rem;
-    height:2.5rem;
+    height:2.3rem;
     background-color: white;
     border-radius: 6px;
     margin-top: .1rem;
@@ -77,10 +77,10 @@
     color: #333;
   }
   .notice{
-    height: 18px;
+    height: .18rem;
     margin: 2px 5px;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: .14rem;
+    line-height: .18rem;
     overflow: hidden;
     color: #999;
     text-overflow: ellipsis;
@@ -93,10 +93,6 @@
     width: 20px;
     color: #ff6800;
     line-height: .25rem;
-  }
-  .sale{
-    height: 0.25rem;
-    margin: 0 5px;
   }
   .shopSprice{
     font-size: .13rem;
