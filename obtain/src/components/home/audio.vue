@@ -167,11 +167,9 @@ export default {
         },
         // 当音频开始等待
         onWaiting (res) {
-          console.log(res)
         },
         // 当音频开始播放
         onPlay (res) {
-          console.log(res)
           this.audio.playing = true
           this.audio.loading = false
           if(!this.controlList.onlyOnePlaying){
@@ -187,16 +185,12 @@ export default {
         },
         // 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
         onTimeupdate(res) {
-          // console.log('timeupdate')
-          // console.log(res)
           this.audio.currentTime = res.target.currentTime
           this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
         },
         // 当加载语音流元数据完成后，会触发该事件的回调函数
         // 语音元数据主要是语音的长度之类的数据
         onLoadedmetadata(res) {
-          // console.log('loadedmetadata')
-          // console.log(res)
           this.audio.waiting = false
           this.audio.maxTime = parseInt(res.target.duration)
         },

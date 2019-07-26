@@ -1,18 +1,21 @@
 <template>
     <div>
-        <div class="howmuch">
-            共{{length}}个内容
-        </div>
-        <div>
-            <div class="zujian"  v-for="(v,i) in ElectBook" :key="i">        
-                 <Electbook :bookSubtitle="v.bookSubtitle" :booKeditRecomend="v.booKeditRecomend" :bookAuthor="v.bookAuthor" :url="v.bookImgUrl" classify="电子书" @click.native="funa(v)"></Electbook>
+        <Load v-if="boll"></Load>
+        <div v-else>
+            <div class="howmuch">
+                共{{length}}个内容
             </div>
-            <div class="zujian"  v-for="(v,i) in AllClassIfy" :key="i+11111">
-                <Allclassify :courseTitle="v.courseTitle" :courseTeacherIntro="v.courseTeacherIntro" :bookAuthor="v.bookAuthor" :courseId="v.courseId" :courseSprice="v.courseSprice" :url="v.courseImgurl" classify="课堂" @click.native="funb(v)"></Allclassify>
+            <div>
+                <div class="zujian"  v-for="(v,i) in ElectBook" :key="i">        
+                    <Electbook :bookSubtitle="v.bookSubtitle" :booKeditRecomend="v.booKeditRecomend" :bookAuthor="v.bookAuthor" :url="v.bookImgUrl" classify="电子书" @click.native="funa(v)"></Electbook>
+                </div>
+                <div class="zujian"  v-for="(v,i) in AllClassIfy" :key="i+11111">
+                    <Allclassify :courseTitle="v.courseTitle" :courseTeacherIntro="v.courseTeacherIntro" :bookAuthor="v.bookAuthor" :courseId="v.courseId" :courseSprice="v.courseSprice" :url="v.courseImgurl" classify="课堂" @click.native="funb(v)"></Allclassify>
+                </div>
+                <div class="zujian" v-for="(v,i) in LisBook" :key="i+22222">
+                    <Lisbook :listenSubtitle="v.listenSubtitle" :listenContent="v.listenContent" :listenAudioTime="v.listenAudioTime" :url="v.listenImgUrl" classify="听书" @click.native="func(v)"></Lisbook>
+                </div>     
             </div>
-            <div class="zujian" v-for="(v,i) in LisBook" :key="i+22222">
-                <Lisbook :listenSubtitle="v.listenSubtitle" :listenContent="v.listenContent" :listenAudioTime="v.listenAudioTime" :url="v.listenImgUrl" classify="听书" @click.native="func(v)"></Lisbook>
-            </div>     
         </div>
         
     </div>
@@ -20,6 +23,7 @@
 
 
 <script>
+import Load from '../../components/store/allproduct/slidetitle/loading'
 import Allclassify from '../../components/allclassify'
 import Electbook from '../../components/electbook'
 import Lisbook from '../../components/lisbook'
@@ -29,7 +33,8 @@ export default {
     components:{
         Allclassify,
         Electbook,
-        Lisbook
+        Lisbook,
+        Load
     },
     data(){
         return{
@@ -38,6 +43,7 @@ export default {
             AllClassIfy:[],
             LisBook:[],
             length:Number,
+            boll:true
         }
     },
      created(){
@@ -50,7 +56,6 @@ export default {
         body:"subject=艺术",
         }).then(res=>{
         res.json().then(data=>{
-            console.log(data) 
             // for(let i=0;i<data.length;i++){
             //     for(let j=0;j<data[i].queryResult.list.length;j++){
             //         this.arr.push(data[i].queryResult.list[j])
@@ -72,7 +77,10 @@ export default {
 
              this.length=this.arr.length
             })
-        })    
+        })   
+        if(typeof(this.length)==Number){
+            this.boll=false
+        }
 })
      },
       methods:{

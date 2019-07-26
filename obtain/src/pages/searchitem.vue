@@ -36,7 +36,6 @@ export default {
     methods: {
         courses(val){
             this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
-            console.log("sss")
         },
         books(val){
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
@@ -47,7 +46,6 @@ export default {
     },
     created() {
         this.arr=this.$route.query.id
-        console.log(this.arr)
         this.arrCourse.push(this.arr[1].queryResult.list)
         if(this.arrCourse.length>3){
             for(var i=0; i<3; i++){
@@ -67,9 +65,6 @@ export default {
             }
         }
         
-        console.log(this.arrCourse)
-        console.log(this.arrBook)
-        console.log(this.arrListen)
     },
     
 }

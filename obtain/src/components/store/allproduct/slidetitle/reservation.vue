@@ -40,7 +40,6 @@
                 body:"id="+ls.getItem("用户名")
             }).then(res=>{
                 res.json().then(data=>{
-                  console.log(data.queryResult.list)
                   this.arr = data.queryResult.list
                   this.arrBool = false;
                 })

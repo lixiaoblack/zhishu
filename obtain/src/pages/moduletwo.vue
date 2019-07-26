@@ -23,7 +23,6 @@ export default {
             url:'/user/data',
             method: 'get'
         }).then((ok)=>{
-            console.log(ok.data)
             this.lishi = ok.data.neirong[0].lishi
 
         })

@@ -84,7 +84,6 @@ export default {
                 this.dool=false;
             }
             if(this.loginname!=""){
-                // console.log(this.loginname)
                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",//检测用户名是否存在接口
                     method:"get",
@@ -92,8 +91,6 @@ export default {
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    console.log("123")
-                    console.log(ok);
                     if(ok.data.queryResult.anInt=="1"){
                         let red=document.querySelector("#phoneId")
                         red.style.borderBottom="3px solid red"
@@ -120,7 +117,6 @@ export default {
                     useremail:this.loginemail
                 }
             }).then((ok)=>{
-                console.log(ok)
             })
             }
         },
@@ -142,8 +138,6 @@ export default {
                     code:this.logincode
                 } 
             }).then((ok)=>{
-                console.log(ok);
-                console.log(ok.data)
                 if(ok.data.message=="code查询到用户，修改status为1，注册成功"){
                     this.$toast.success("注册成功，请登录！");
                     let ls = localStorage;
@@ -159,7 +153,6 @@ export default {
                 
                 
             },(err)=>{
-                console.log(err)
             })
         },
     },  

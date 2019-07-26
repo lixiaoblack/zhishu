@@ -77,7 +77,6 @@ export default {
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    console.log(ok);
                     // if(username=this.loginname){
                     //     this.$toast.success("该用户名已注册")
                     // }else{
@@ -97,7 +96,6 @@ export default {
                     useremail:this.loginemail
                 }
             }).then((ok)=>{
-                console.log(ok)
             })
         },
         fun4(){
@@ -120,7 +118,6 @@ export default {
                     password:this.loginpwd
                 } 
             }).then((ok)=>{
-                console.log(ok);
                 if(ok.data.queryResult.anInt==0){
                     this.$toast.success("验证码输入错误");
                 }else{

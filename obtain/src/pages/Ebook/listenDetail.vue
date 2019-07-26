@@ -126,7 +126,6 @@ export default {
   created() {
     this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
       let val = ok.data.queryResult.list;
-      //console.log(val)
       this.likes = val.filter(item => {
         return item.listenType =="猜你喜欢";
       });

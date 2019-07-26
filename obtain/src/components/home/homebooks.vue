@@ -47,7 +47,6 @@ export default {
             url:"http://39.107.105.57:8084/findAll",
             method:"get"
         }).then((ok)=>{
-            // console.log(ok)
             for(var i=0; i<3; i++){
                 this.bookDArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
             }

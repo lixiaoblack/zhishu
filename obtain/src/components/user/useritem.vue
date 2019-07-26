@@ -16,12 +16,10 @@ export default {
     // methods:{
         // anxia(){
         //     let userarr=document.querySelectorAll(".flexcs")
-        //     console.log(userarr)
         //     userarr.style.border="6px solid red"
         // },
         // tanqi(){
         //     let userarr=document.querySelectorAll(".flexcs")
-        //     console.log(userarr)
         //     userarr.style.background=""
         // }
     // }
