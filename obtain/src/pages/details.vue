@@ -72,14 +72,15 @@ export default {
     return {
       details:{},
       bool: true,
-      id:'',
+      // id:'',
+      id:JSON.parse(this.$route.query.id)
     };
   },
-  beforeRouteEnter(to, from, next) {
-    next(d => {
-      d.id = JSON.parse(to.query.id);
-    });
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   next(d => {
+  //     d.id = JSON.parse(to.query.id);
+  //   });
+  // },
   components: {
     Bottombar,
     Loading
