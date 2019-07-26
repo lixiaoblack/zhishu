@@ -98,7 +98,7 @@ export default {
                     ls.setItem("用户名",ok.data.queryResult.user.username)
                     this.$router.push("/home");
                 }else{
-                    this.$toast.success("登录失败！");
+                    this.$toast.fail("登录失败！");
                 }
 
             })
@@ -118,7 +118,7 @@ export default {
                     this.$toast.success("登录成功！");
                     this.$router.push("/home");
                 }else{
-                    this.$toast.success("登录失败！");
+                    this.$toast.fail("登录失败！");
                 }
 
                 })
@@ -223,7 +223,7 @@ export default {
     background-color:sandybrown;
     color: rgb(255, 249, 249);
     border-radius: 12px;
-    font-size: .08rem;
+    font-size: .15rem;
     border: 0px;
 }
 .inss{

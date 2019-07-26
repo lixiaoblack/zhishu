@@ -59,7 +59,14 @@
 </div>
 </template>
 <script>
+import{ NavBar, Icon}from "vant";
+import { Dialog } from 'vant';
 export default {
+    compoents:{
+        [NavBar.name]:NavBar,
+        [Icon.name]:Icon,
+        [Dialog.Component.name]:Dialog.Component
+    },
     data(){
         return{
             userbool:true,
@@ -71,14 +78,22 @@ export default {
             this.$router.go(-1);
         },
         esc(){
-            if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向home
-                localStorage.removeItem("用户名")
-                this.$toast.success("用户已退出！");
-                this.$router.push("/home");
-			}else{
-                
-			}
+            // if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向home
+            //     localStorage.removeItem("用户名")
+            //     this.$toast.success("用户已退出！");
+            //     this.$router.push("/home");
+			// }else{  
+			// }
             // localStorage.
+            Dialog.confirm({
+                title: '您确定要退出吗？'
+            }).then(() => {
+                // on confirm
+                localStorage.removeItem("用户名")
+                this.$router.push("/user");
+            }).catch(() => {
+                // on cancel
+            });
         }
     },
     created() {
@@ -89,6 +104,7 @@ export default {
             this.userbool = true;
         }
     },
+    
 }
 </script>
 <style scoped>
