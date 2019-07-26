@@ -1,38 +1,50 @@
 <template>
     <div class="box">
-        <Xqnav :title="arr.title"></Xqnav>
-        <div class="ss">
-            <img :src="topImage">
-            <img :src="authorImage">
-            <p>{{arr.txt}}</p>
+        <Xqnav :title="arr.courseSubtitle"></Xqnav>
+        <div class="ss" v-if="bool">
+            <img :src="arr.topImage">
+            <img :src="arr.bottomImage" style="margin-top: -1px;">
+            <p>{{arr.courseFeatureIntroI}}</p>
+            <p>{{arr.courseFeatureIntroII}}</p>
+            <p>{{arr.courseTeacherIntro}}</p>
+            <p>{{arr.coursePurchaseAttention}}</p>
+        </div>
+        <div v-else class="load">
+            <Load></Load>
         </div>
     </div>
 </template>
 
 <script>
 import Xqnav from './../components/specialxq/xqnav'
+import Load from './../components/load'
 export default {
     components:{
-        Xqnav
+        Xqnav,
+        Load
     },
     data() {
         return {
             arr:{},
-            topImage:{},
-            authorImage:{}
+            bool:false
         }
     },
     created(){
         this.axios({
-            url:"/mock/data",
-            methods:"get",
+            url:"http://39.107.105.57:8084/Course/findHomePage",
+            method:"post",
         }).then((ok)=>{
-            console.log(ok)
-            ok.data.subject.forEach((v,i)=>{
-                if(v.id==this.$route.params.id){
+            console.log(ok.data.queryResult.list)
+            ok.data.queryResult.list.forEach((v,i)=>{
+                if(v.courseClassId==this.$route.params.id){
                     this.arr=v;
-                    this.topImage=v.img[1].topImage;
-                    this.authorImage=v.img[2].authorImage
+                    if(this.arr!={}){
+                        setTimeout(() => {
+                            this.bool=true
+                        }, 500);
+                    }else{
+                        this.bool=false
+                    }
                 }
             })
         })
@@ -41,9 +53,14 @@ export default {
 </script>
 
 <style scoped>
+.load{
+    height:100%;
+    width:100%;
+    background:#00AEEF;
+}
     .box{
         height:100%;
-        background:#f8f9fa;
+        background:#E4E4E4;
         display: flex;
         flex-direction: column;
 
@@ -56,7 +73,6 @@ export default {
     }
     img{
         width:100%;
-        height:3.9rem;
     }
     p{
         font-size:.16rem;

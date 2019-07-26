@@ -73,6 +73,7 @@ export default {
         esc(){
             if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向home
                 localStorage.removeItem("用户名")
+                this.$toast.success("用户已退出！");
                 this.$router.push("/home");
 			}else{
                 

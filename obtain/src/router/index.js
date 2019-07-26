@@ -5,6 +5,7 @@ import Classify from '../pages/classify';
 import Home from '../pages/home';
 
 
+
 //登录注册
 import User from '../pages/user'
 import Login from '../pages/login'
@@ -161,6 +162,7 @@ import Youhuiquan from '../pages/youhuiquan'
 import Payfor from '../pages/payfor'
 import Zengsongyouhuiquan from '../pages/zengsongyouhuiquan'
 import Rechargemoney from '../pages/rechargemoney'
+import Lookoutline from '../pages/lookoutline'
 
 
 
@@ -188,6 +190,8 @@ import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
 import Read from '../pages/read'
+import Vidio from '../pages/vidio'
+
 Vue.use(Router)
 
 export default new Router({
@@ -196,7 +200,6 @@ export default new Router({
       path: '/classify',
       name: 'Classify',
       component: Classify,
-
       children:[
         // 心理学
         {
@@ -337,8 +340,6 @@ export default new Router({
         {path:"shiyexueyuan",name:"Shiyexueyuan",component:Shiyexueyuan},
         {path:"renwensheke",name:"Renwensheke",component:Renwensheke},
         {path:"zhengzaigengxin",name:"Zhengzaigengxin",component:Zhengzaigengxin},
-        {path:"morestudy",name:"Morestudy",component:Morestudy},
-        {path:"latestnew",name:"Latestnew",component:Latestnew},
       ]
     },
     {
@@ -639,6 +640,16 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path:'/lookoutline',
+      name:'Lookoutline',
+      component:Lookoutline
+    },
+    {
+      path: '/vidio',
+      name: 'Vidio',
+      component: Vidio
     },
     {
       path:'/*',

@@ -4,7 +4,7 @@
             <div class="box">
                 <img :src="img">
                 <h3>{{title}}</h3>
-                <p>{{time}}</p>
+                <p>{{time|timea}}</p>
             </div>
         </router-link>
     </div>
@@ -16,8 +16,13 @@ export default {
         img:String,
         title:String,
         time:String,
-        num:String
-    }
+        num:Number
+    },
+    filters:{
+        timea(val){
+            return val.substring(0,val.length-18)
+        }
+    },
 }
 </script>
 

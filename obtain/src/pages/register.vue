@@ -83,6 +83,7 @@ export default {
             });
         },
         onregister(){//用户名登录
+            let ls = localStorage;
             var a=/@/
             console.log(this.username)
             console.log(this.userpwd)
@@ -98,6 +99,9 @@ export default {
                 console.log(ok);
                 if(ok.data.message == "操作成功！"){
                     this.$toast.success("登录成功！");
+                    console.log(666)
+                    console.log(ok.data.queryResult.user.id);
+                    ls.setItem("用户名",ok.data.queryResult.user.id)
                     this.$router.push("/home");
                 }else{
                     this.$toast.success("登录失败！");

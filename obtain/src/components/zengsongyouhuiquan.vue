@@ -29,7 +29,8 @@ export default {
     props:["data"],
     methods: {
         topayfor(){
-             this.$router.push("/givefriend")
+            //  this.$router.push("/givefriend")
+            this.$router.go(-1)
         }
     },
     computed: {
