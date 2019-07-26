@@ -104,6 +104,7 @@ export default {
             this.bool3 = false;
             this.title = "101";
             this.$router.push({name:this.linkName,query:{title:this.title}})
+            this.$router.push("/course/total")
         },
         fun2(){
             this.bool1 = false;
