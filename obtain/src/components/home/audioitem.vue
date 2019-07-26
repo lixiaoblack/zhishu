@@ -242,7 +242,7 @@
     font-size: .11rem;
     position: fixed;
     top: 3.31rem;
-    right: 1.16rem;
+    right: 1.8rem;
   }
 
   .dn{

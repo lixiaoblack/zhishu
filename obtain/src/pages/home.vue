@@ -3,7 +3,8 @@
         <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         </van-pull-refresh> -->
         <Search></Search>
-        <Banner></Banner>
+        <LoadTwo v-if="bool4"></LoadTwo>
+        <Banner :imgArr="imgArr" v-else></Banner>
         <Imgspan :newarr="classArr"></Imgspan>
         <div v-for="(v,i) in navArr" :key="i" class="nav"> 
             <router-link :to="v.link">
@@ -11,35 +12,37 @@
                 <span>{{v.title}}</span>
             </router-link>
         </div>
-        <div v-for="(v, u) in audios" :key="u+111">
-            <Audio :theUrl="v.url" :theControlList="v.controlList" style="border-radius:.1rem"/>
+        <Load v-if="bool5"></Load>
+        <div v-else>
+            <Audio :v="audios[1]" :theUrl="audios[0].url" :theControlList="audios[0].controlList" style="border-radius:.1rem" :imgUrl="audios[1].courseImgurl" :title="audios[1].courseSubtitle" :txt="audios[1].courseSummary"/>
         </div>
-        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl" style="border-radius:.1rem"></Homelisten>
-        <Circulation style="margin-top:7.35rem;border-radius:.1rem"></Circulation>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        <Load v-if="bool1"></Load>
+        <Homelisten v-else v-for="(v,i) in listenArr" :key="i+4444" :data="v" :subtitle="v.listenSubtitle" :courseFeatureIntroI="v.listenPublisherIntro" :booksSprice="v.listenPrice" :time="v.listenAudioTime" :imgUrl="v.listenImgUrl" style="border-radius:.1rem"></Homelisten>
+        <Load v-if="bool2"></Load>
+        <div v-else>
+            <Circulation style="margin-top:7.35rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+555" :title="v[39].bookSubtitle" :conment="v[39].bookAuthor" :imgUrl="v[39].bookImgUrl" :price="v[39].bookSprice"></Circulation>
+            <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="v" :subtitle="v.bookSubtitle" :courseFeatureIntroI="v.bookPublisherIntro" :booksSprice="v.bookSprice" :imgUrl="v.bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        </div>
+       
         <Homehot style="clear:both"></Homehot>
         <div class="allTop" style="border-radius:.1rem .1rem 0 0">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>
-        <div class="course">
-        <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="courseArr[0].books_details.author_img" :title="courseArr[0].books_details.banner_title" :txtOne="courseArr[0].books_details.course_feature_intro_II" :txtTwo="courseArr[0].books_details.teacher_info" :people="courseArr[0].books_details.now_listening[0].listen_peoples" :num="courseArr[0].interface.class_num" :price="courseArr[0].interface.books_sprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
+        <Load v-if="bool3"></Load>
+        <div v-else>
+            <div class="course">
+            <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="v.courseOtherImgurl" :title="v.courseSubtitle" :txtOne="v.courseTitle" :txtTwo="v.courseCollege" :people="v.courseStudyPeoples" :num="v.courseClassNum" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
+            </div>
+            <Circulation style="margin-top:4.05rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+666" :title="v[38].bookSubtitle" :conment="v[38].bookAuthor" :imgUrl="v[38].bookImgUrl" :price="v[38].bookSprice"></Circulation>
+            <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
+                <p>课程之家</p><router-link to="/shop"><span>全部</span></router-link>
+            </div>
+            <div style="marginLeft:0.15rem">
+                <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="v.courseOtherImgurl" :title="v.courseSubtitle" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homeshop>
+            </div>
         </div>
-        <Circulation style="margin-top:4.05rem;border-radius:.1rem"></Circulation>
-        <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
-            <p>实物商城</p><router-link to="/shop"><span>全部</span></router-link>
-        </div>
-        <div style="marginLeft:0.15rem">
-            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="shopArr[0].shopImgurl" :title="shopArr[0].shoptitle" :price="shopArr[0].saleSprice" style="border-radius:0 0 .1rem .1rem"></Homeshop>
-        </div>
-        <Circulation style="margin-top:2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem"></Circulation>
+        <Circulation style="margin-top:2rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+444" :title="v[36].bookSubtitle" :conment="v[36].bookAuthor" :imgUrl="v[36].bookImgUrl" :price="v[36].bookSprice"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem" v-for="(v,i) in circulationArr[0]" :v="v" :key="i+111111" :title="v.bookSubtitle" :conment="v.bookAuthor" :imgUrl="v.bookImgUrl" :price="v.bookSprice"></Circulation>
         <div style="height:.6rem"></div>
         <Bot ona="发现" class="bot"></Bot>
     </div>
@@ -57,6 +60,8 @@ import Homecourse from '../components/home/homecourse'
 import Homeshop from '../components/home/homeshop'
 import Bot from '../components/bottom'
 import Circulation from '../components/home/circulation'
+import Load from "../components/store/allproduct/slidetitle/loading"
+import LoadTwo from "../components/loadtwo"
 export default {
     components:{
         Search,
@@ -69,7 +74,9 @@ export default {
         Homeshop,
         Bot,
         Circulation,
-        Homehot
+        Homehot,
+        Load,
+        LoadTwo
     },
     data() {
         return {
@@ -102,53 +109,55 @@ export default {
                 controlList: 'onlyOnePlaying'
                 }
             ],
-            // count: 0,
-            // isLoading: false
+            imgArr:[],
+            circulationArr:[],
+            bool1:true,
+            bool2:true,
+            bool3:true,
+            bool4:true,
+            bool5:true,
         }
     },
     created() {
         this.axios({
-            url:"/listen",
-            methods:"get"
+            url:"http://39.107.105.57:8084/listen/laodAll",
+            method:"get"
         }).then((ok)=>{
-            for(var i=0; i<1; i++){
-                this.listenArr.push(ok.data.listen[i]) 
-            }
+            this.listenArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            this.bool1 = false; 
         })
         this.axios({
-            url:"/jsondata/abc",
-            methods:"get"
+            url:"http://39.107.105.57:8084/findAll",
+            method:"get"
         }).then((ok)=>{
-            for(var i=0; i<1; i++){
-                this.bookArr.push(ok.data.EBook[i]) 
-            }
+            this.bookArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            this.circulationArr.push(ok.data.queryResult.list)
+            this.bool2 = false; 
         })
         this.axios({
-            url:"/link/data",
-            methods:"get"
+            url:"http://39.107.105.57:8084/Course/loadAll",
+            method:"get"
+        }).then((ok)=>{
+            this.audios.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            this.bool5 = false;
+            for(var i=0; i<4; i++){
+                this.courseArr.push(ok.data.queryResult.list[parseInt(Math.random()*5+15)]) 
+            }
+            for(var i=0; i<3; i++){
+                this.shopArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
+            }
+            this.bool3 = false;
+        })
+        this.axios({
+            url:"http://39.107.105.57:8084/Course/findHomePage",
+            method:"post"
         }).then((ok)=>{
             for(var i=0; i<4; i++){
-                this.courseArr.push(ok.data.total[i]) 
+                this.imgArr.push(ok.data.queryResult.list[i])
             }
-        })
-        this.axios({
-            url:"user/shop",
-            methods:"get"
-        }).then((ok)=>{
-            for(var i=0; i<3; i++){
-                this.shopArr.push(ok.data.shop[i]) 
-            }
+            this.bool4 = false; 
         })
     },
-    // methods:{
-    //     onRefresh() {
-    //         setTimeout(() => {
-    //             this.$toast('刷新成功');
-    //             this.isLoading = false;
-    //             this.count++;
-    //         }, 500);
-    //     }
-    // }
 }
 </script>
 

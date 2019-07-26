@@ -2,29 +2,8 @@
     <div class="audioxq">
         <Xqnav style="margin-bottom:12px"></Xqnav>
         <p>第770期|怎么应对复杂性挑战</p>
-        <img src="../../static/image/lun_01.jpg">
+        <img src="../../static/ebookImg/ebook-2.jpg">
         <div>
-            <div class="icon iconOne">
-                <img src="../../static/tu/r/a7/v2.png" @click="funtime()">
-                <span>定时关闭</span>
-                <!-- <ul style="text-align:left" v-if="bolltime">
-                    <li>10秒</li>
-                    <li>30秒</li>
-                    <li>1分钟</li>
-                    <li>5分钟</li>
-                    <li>10分钟</li>
-                </ul> -->
-            </div>
-            <div class="icon iconTwo"> 
-                <img src="../../static/tu/r/a7/v1.png" @click="funspeed()"> 
-                <span>倍速播放</span>
-                <!-- <ul style="text-align:left" v-if="bollspeed">
-                    <li>1倍</li>
-                    <li>2倍</li>
-                    <li>3倍</li>
-                    <li>4倍</li>
-                </ul> -->
-            </div>
             <div class="icon iconTwo">
                 <img :src="boll?'../../static/tu/r/f/uh.png':'../../static/tu/r/f/ui.png'">
             </div>
@@ -32,10 +11,6 @@
         <div v-for="(v, i) in audios" :key="i" class="audioitem">
             <Audioitem :theUrl="v.url" :theControlList="v.controlList" @sonpao="fufun"></Audioitem>
         </div>
-        <!-- <img src="../../static/tu/r/a7/afq.png" style="clear:both">
-        <img src="../../static/tu/r/a7/aft.png"> -->
-        <!-- <img :src="playBoll?'../../static/tu/r/a7/ahi.png':'../../static/tu/r/a7/ah0.png'" class="play" @audio="funcc"> -->
-        <!-- <img src="../../static/tu/r/a7/v0.png"> -->
         
     </div>
 </template>
@@ -56,10 +31,7 @@ export default {
                 controlList: 'onlyOnePlaying'
                 }
             ],
-            boll:true,
-            playBoll:true,
-            bolltime:false,
-            bollspeed:false
+            boll:true
         }
     },
     methods: {
@@ -120,7 +92,7 @@ export default {
     .icon img{
         width: .25rem;
         height: .25rem;
-        margin-left: 9px;
+        margin-left: 1.73rem;
     }
     .icon span{
         color:#999999;
