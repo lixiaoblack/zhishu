@@ -19,14 +19,22 @@ export default {
             this.$router.push({
                 path: "/user",
             });
-        },
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        let ls = localStorage;
+        if(ls.getItem("用户名")){
+            next()
+        }else{
+            next("/register")
+        }
     }
 }
 </script>
 <style scoped>
 .divcs{
     display: flex;
-    font-size: .2rem;
+    font-size: .24rem;
 }
 .left{
     width:10%;
@@ -36,7 +44,7 @@ export default {
     margin-left: 0.7rem;
 }
 .right span{
-    margin-left: 0.6rem;
+    margin-left: 0.5rem;
 }
 .divss img{
     width: 100%;

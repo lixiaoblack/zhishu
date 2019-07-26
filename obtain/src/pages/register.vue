@@ -48,7 +48,9 @@ export default {
     },
     methods:{
         fun(){
-            this.$router.go(-1);
+            this.$router.push({
+                path: "/user",
+            });
         },
         fun2(){//判断用户名规则合法
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
@@ -96,12 +98,13 @@ export default {
             }).then((ok)=>{
                 console.log(ok);
                 if(ok.data.message == "操作成功！"){
+                    this.$toast.success("登录成功！");
+                    console.log(666)
                     console.log(ok.data.queryResult.user.id);
-                    alert("登录成功！");
                     ls.setItem("用户名",ok.data.queryResult.user.id)
                     this.$router.push("/home");
                 }else{
-                    alert("登录失败！");
+                    this.$toast.success("登录失败！");
                 }
 
             })
@@ -119,10 +122,10 @@ export default {
                 if(ok.data.message == "操作成功！"){
                     let ls = localStorage;
                     ls.setItem("用户名",ok.data.queryResult.user.id)
-                    alert("登录成功！");
+                    this.$toast.success("登录成功！");
                     this.$router.push("/home");
                 }else{
-                    alert("登录失败！");
+                    this.$toast.success("登录失败！");
                 }
 
                 })

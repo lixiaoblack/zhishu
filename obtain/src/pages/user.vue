@@ -12,10 +12,10 @@
         </div>
         <div v-else class="diva maincs" >
             <img class="boximg" src="../../static/tu/user/name.png" alt="">
-            <span>{{username}}</span>
+            <span>您好，{{username}}</span>
         </div>
         <div class="divb maincs" id="divb">
-            <span>我关注的人</span>
+            <span>我关注的人</span>|
             <span>关注我的人</span>
         </div>
         <div class="divc maincs" >
@@ -129,22 +129,23 @@ export default {
                 url:"http://39.107.105.57:8084/user/loginUser",
                 method:"post",
                 params:{
+                    // username:this.username
                     username:ls.getItem("用户名")
                 }
             }).then((ok)=>{
-                this.user = ok.data
-                console.log(ok.data)
-                
+                console.log(123)
+                console.log(ok)
+                this.username= ok.config.params.username
+                // this.username=ls.getItem("用户名")
             })
         }else{
             this.userbool=true
         }
-        
     },
     data(){
         return{
             arra:[
-                {imgurl:"../../static/tu/user/zhanghu.gif",text:"账户",url:"../pages/home"},
+                {imgurl:"../../static/tu/user/zhanghu.gif",text:"账户",url:"/rechargemoney"},
                 {imgurl:"../../static/tu/user/dingdan.gif",text:"订单",url:"/moduleone"},
             ],
             arrb:[
@@ -169,7 +170,7 @@ export default {
             userbool:true,
             username:""
         }
-    }
+    },
 }
 </script>
 
@@ -248,14 +249,10 @@ export default {
 }
 .divb{
     color: #fff;
-    border-top:1px solid #ccc;
     font-size: 14px;
     height: 0.6rem;
     line-height: 0.6rem;
     background-color:rgba(255, 102, 0, 0.856);
-}
-.divb span:first-child{
-    border-right: 1px solid #ccc ;
 }
 .divc{
     font-size: 16px;

@@ -62,22 +62,30 @@ export default {
         },
         fun2(){//判断用户名规则合法，，，同时异步检测用户名是否存在
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
-            if(a.test(this.loginname)==true&&this.loginname!=""){
+            if(a.test(this.loginname)==true){
                 this.namecode="1";
                 this.dool=true;
-                this.axios({
+            }else{
+                this.namecode="0";
+                this.dool=false;
+            }
+            if(this.loginname!=""){
+                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",
                     method:"get",
                     data:{
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    // console.log(ok);
+                    console.log(ok);
+                    // if(username=this.loginname){
+                    //     this.$toast.success("该用户名已注册")
+                    // }else{
+                    //     this.$toast.success("该用户名尚未注册")
+                    // }
                 })
             }else{
-                alert("该用户名尚未注册")
-                this.namecode="0";
-                this.dool=false;
+
             }
         },
         fun3(){
@@ -114,9 +122,9 @@ export default {
             }).then((ok)=>{
                 console.log(ok);
                 if(ok.data.queryResult.anInt==0){
-                    alert("验证码输入错误");
+                    this.$toast.success("验证码输入错误");
                 }else{
-                    alert("恭喜您，密码修改成功！");
+                    this.$toast.success("恭喜您，密码修改成功！");
                     // location.href="#denglu";
                     this.$router.push("/register");
                 }
