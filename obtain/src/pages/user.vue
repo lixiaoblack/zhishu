@@ -108,7 +108,6 @@ export default {
         handleScroll () {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
             let offsetTop = document.querySelector('#divb').offsetTop
-            console.log(scrollTop)
             scrollTop > offsetTop ? this.dool = true : this.dool =false
         },
         fun(){
@@ -125,18 +124,17 @@ export default {
         let ls = localStorage;
         if(ls.getItem("用户名")){
             this.userbool=false;
-                this.axios({
-                url:"http://39.107.105.57:8084/user/loginUser",
-                method:"post",
-                params:{
-                    // username:this.username
-                    username:ls.getItem("用户名")
-                }
-            }).then((ok)=>{
-                console.log(123)
-                console.log(ok)
-                this.username= ok.config.params.username
-                // this.username=ls.getItem("用户名")
+            fetch("http://39.107.105.57:8084/user/ChaUser",{
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body:"id="+ls.getItem("用户名")
+            }).then(res=>{
+                res.json().then(data=>{
+                    console.log(data)
+                    this.username = data.queryResult.user.username;
+                })
             })
         }else{
             this.userbool=true

@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <input @compositionstart="flag=false" @compositionend="flag=true" v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funb(allArr)" style="display:inline-block">搜索</span><span @click="cancel()" style="display:inline-block">取消</span>
+        <input v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funb(allArr)" style="display:inline-block">搜索</span><span @click="cancel()" style="display:inline-block">取消</span>
         <div class="serch_result" v-show="serch_result_issue">
             <Load v-if="bool1"></Load>
             <div v-else>
@@ -67,9 +67,54 @@ export default {
         return {
             issue_content:"",//输入框中的内容
             serch_result_issue:false,//控制搜索的问题显示隐藏
-            serch_result:[],
-            serch_resultBook:[],
-            serch_resultListen:[],
+            serch_result:[
+                // {name:"我是谁?"},
+                // {name:"我是谁事实上"},
+                // {name:"我是谁阿大声大声大声"},
+                // {name:"萨达是大肆宣传 恤"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},  
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"}
+            ],
+            serch_resultBook:[
+                // {name:"我是谁?"},
+                // {name:"我是谁事实上"},
+                // {name:"我是谁阿大声大声大声"},
+                // {name:"萨达是大肆宣传 恤"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},  
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"}
+            ],
+            serch_resultListen:[
+                // {name:"我是谁?"},
+                // {name:"我是谁事实上"},
+                // {name:"我是谁阿大声大声大声"},
+                // {name:"萨达是大肆宣传 恤"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},  
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"},
+                // {name:"暗示等暗示等暗示等阿萨啊"}
+            ],
             allArr:[],
             boll:true,
             historyArr:[],
@@ -80,7 +125,7 @@ export default {
     },
     methods: {
         cancel(){
-            this.$router.push({path:'/home'})
+            this.$router.push({path:'/shop'})
         },
         funa(){
             if(this.issue_content!=""){
@@ -135,8 +180,6 @@ export default {
         },
         course(val){
             this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
-
-
         },
         book(val){
             this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})

@@ -170,10 +170,10 @@ import Lookoutline from '../pages/lookoutline'
 import Nav from "../pages/nav"
 import Searchs from "../pages/searchs"
 import Shop from '../pages/shop'
-import ShopSearch from '../pages/shopSearch'
 import CommodityDetails from '../pages/commodityDetails'
 import ShopCart from '../pages/shopcart'
 import Order from '../pages/order'
+import ShopSearchs from '../pages/shopSearchs'
 //电子书，听书
 import EBOOK from "../pages/Ebook/eBook";
 import BOOKDEL from "../pages/Ebook/EbookDetail";
@@ -476,6 +476,11 @@ export default new Router({
       component: Nav
     },
     {
+      path: '/shopSearchs',
+      name: 'ShopSearchs',
+      component: ShopSearchs
+    },
+    {
       path: '/searchs',
       name: 'Searchs',
       component: Searchs
@@ -484,11 +489,6 @@ export default new Router({
       path: '/shop',
       name: 'Shop',
       component: Shop
-    },
-    {
-      path: '/shopSearch',
-      name: 'ShopSearch',
-      component: ShopSearch
     },
     {
       path: '/commodityDetails',
