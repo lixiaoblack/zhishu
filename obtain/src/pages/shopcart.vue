@@ -23,7 +23,7 @@
                     <div class="itemRight">
                         <p>{{v.courseSubtitle}}</p>
                         <div class="itemEnd">
-                            <span>￥ {{v.courseSprice}}</span>
+                            <span>￥ {{v.courseSprice|floatNum}}</span>
                         </div>
                     </div>
                 </div>
@@ -63,6 +63,11 @@ export default {
             arrDel:[]
         }
     },
+    filters:{
+        floatNum(val){
+            return Math.round(val*100)/100;
+        }
+    },
     methods: {
         checkBtn(index){
             this.arr[index].checked = !this.arr[index].checked
@@ -75,6 +80,7 @@ export default {
             this.checked = !this.checked;
         },
         del(){
+            let ls = localStorage;
             for(let i =0;i<this.arr.length;i++){
                 if(this.arr[i].checked == true){
                     this.arrDel.push(this.arr[i].courseId);
@@ -83,12 +89,12 @@ export default {
                 }
             };
             console.log(this.arrDel)
-            fetch("http://39.107.105.57:8084/deletShoppingCarAll",{
+            fetch("http://39.107.105.57:8084/deletShoppingCar",{
                 method:"POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body:"list[]="+this.arrDel
+                body:"list[]="+this.arrDel+"&id="+ls.getItem("用户名")
             }).then(res=>{
                 res.json().then(data=>{
                     console.log(data)

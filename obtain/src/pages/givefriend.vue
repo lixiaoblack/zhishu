@@ -161,19 +161,20 @@ export default {
     created(){
         // 请求对应字段的数据
         let ls=localStorage
-           this.axios({
-                 //    接口
-                 url:'http://39.107.105.57:8084/user/findUserMoney',
-                //  对应字段   key唯一    val不定
-                params:{
-                    id:Number(ls.getItem("用户名"))
-                },
-                method:'post'
-            }).then((ok)=>{
-              // console.log(ok.data.queryResult.adouble)
-              this.lastmoney=ok.data.queryResult.adouble
-            })
+        this.axios({
+              //    接口
+              url:'http://39.107.105.57:8084/user/findUserMoney',
+            //  对应字段   key唯一    val不定
+            params:{
+                id:Number(ls.getItem("用户名"))
+            },
+            method:'post'
+        }).then((ok)=>{
+          // console.log(ok.data.queryResult.adouble)
+          this.lastmoney=ok.data.queryResult.adouble
+        })
     },
+    
   components: {
     Loading
   },

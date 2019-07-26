@@ -7,7 +7,21 @@
 
 <script>
     export default {
-        name: "residition"
+        name: "residition",
+        created() {
+          let ls = localStorage;
+          fetch("http://39.107.105.57:8084//chaShoppingCarAll",{
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body:"id="+ls.getItem("用户名")
+            }).then(res=>{
+                res.json().then(data=>{
+                  console.log(data)
+                })
+            })
+        },
     }
 </script>
 

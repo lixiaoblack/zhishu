@@ -113,6 +113,7 @@ export default {
 
         },
         onSubmit(){
+            let ls = localStorage
             let idArr = []
             for(let i = 0;i<this.arr.length;i++){
                 idArr.push(this.arr[i].courseId);
@@ -124,11 +125,11 @@ export default {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body:"list[]="+idArr
+                body:"list[]="+idArr+"&id="+ls.getItem("用户名")
             }).then(res=>{
-                res.json().then(data=>{
-                    console.log(data)
-                })
+                // res.json().then(data=>{
+
+                // })
             })
         },
         fun(val){
