@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         skip(){
-            this.$router.push("/shopSearch");
+            this.$router.push("/shopSearchs");
         },
         go(title){
             this.$router.push({name:'CommodityDetails',query:{content:title}});
