@@ -99,17 +99,18 @@ export default {
                         red.style.borderBottom="3px solid red"
                         this.$toast.fail("账户已存在")
                     }else{
-
+                        let red=document.querySelector("#phoneId")
+                        red.style.borderBottom=""
                     }
                 })
             }
         },
         fun3(){
-            var b=/^([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]@([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]\.[a-zA-Z]{2,3}$/
+            var b=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
             if(this.loginemail==""){
                 this.$toast.fail("请输入邮箱");
             }else if(!b.test(this.loginemail)){
-                this.$toast.fail("请确认邮箱是否正确");
+                this.$toast.fail("请正确输入");
             }else{
             this.axios({
                 url:"http://39.107.105.57:8084/user/registerUser",

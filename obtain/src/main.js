@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+
 //懒加载
 import VueLazyload from 'vue-lazyload'
 //未加载前图片显示
