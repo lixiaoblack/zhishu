@@ -1,13 +1,11 @@
 <template>
     <div class="itemsBox">
-        <img :src="imgSrc" alt="" width="100%">
+        <img :src="imgSrc" alt="" >
         <p class="goods-title">{{goodsTitle}}</p>
         <span class="goods_intro">{{goodsIntro}}</span>
         <div class="price">
             <span class="integer">￥{{integer}}</span>
-            <span class="delete-line-price">￥{{bigPrice}}</span>
         </div>
-        <span class="time">限时特价</span>
     </div>
 </template>
 
@@ -17,7 +15,7 @@ export default {
         imgSrc:String,
         goodsTitle:String,
         goodsIntro:String,
-        integer:String,
+        integer:Number,
         bigPrice:String,
         time:String
     }
@@ -72,5 +70,9 @@ export default {
         width: 28%;
         text-align: center;
         margin-left: 8px;
+    }
+    .itemsBox img{
+        width: 100%;
+        height: 2.25rem;
     }
 </style>

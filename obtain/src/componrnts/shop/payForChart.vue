@@ -46,7 +46,7 @@
 <script>
 export default {
     props:{
-        price:Number
+        price:Number,
     },
     filters:{
         divide(val){
@@ -68,7 +68,6 @@ export default {
             setTimeout(() => {
                 this.$toast.success('支付成功');
             }, 2000);
-            
         }
     },
 }

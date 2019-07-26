@@ -1,57 +1,67 @@
 <template>
   <div class="content1">
     <div v-if="bool">
-      <Loading></Loading>
+         <Loading></Loading>
     </div>
     <div v-else >
       <div class="topback">
-        <span class="arrow" @click="tohome()">
-          <i class="el-icon-arrow-left"></i>返回
-        </span>
+          <span class="arrow" @click="tohome()">
+               <i class="el-icon-arrow-left"></i>返回
+          </span>
       </div>
       <div class="end">
-        <div class="top">
-          <img :src="details.books_details.author_img" />
-          <div class="position">
-            <h2 class="banner-title">{{details.books_details.banner_title}}</h2>
-            <p class="banner-summary">{{details.books_details.banner_summary}}</p>
+          <div class="top">
+              <img :src="details.courseOtherImgurl" />
+              <div class="position">
+                  <h2 class="banner-title">{{details.courseSubtitle}}</h2>
+                  <p class="banner-summary">{{details.courseTitle}}</p>
+            </div>
           </div>
-        </div>
-        <div class="classabout">
-          <div class="left">
-            <span class="spanleft">{{details.interface.class_num}}讲</span>
-            <p class="smalltitle">总讲数</p>
+          <div class="classabout">
+              <div class="left">
+                  <span class="spanleft">{{details.courseClassNum}}<span style="display:inline;font-size:.12rem;">讲</span></span>
+                  <p class="smalltitle">总讲数</p>
+              </div>
+              <div class="right">
+                  <span class="spanright">{{details.courseStudyPeoples}}<span style="display:inline;font-size:.12rem;">人</span></span>
+                  <p class="smalltitle">加入学习</p>
+              </div>
           </div>
-          <div class="right">
-            <span class="spanright">{{details.interface.study_peoples}}人</span>
-            <p class="smalltitle">加入学习</p>
+          <div class="content">
+              <p class="section_one">
+                  <span class="teacher_intro">老师简介</span>
+                  <span class="teacher_info">{{details.courseTeacherIntro}}</span>
+              </p>
+              <p class="section_two">
+                  <span class="course_feature">课程亮点</span>
+                  <span class="course_feature_intro_I">1.{{details.courseFeatureIntroI}}</span>
+                  <span class="course_feature_intro_II">2.{{details.courseFeatureIntroII}}</span>
+            </p>
           </div>
-        </div>
-        <div class="content">
-          <p class="section_one">
-            <span class="teacher_intro">{{details.books_details.teacher_intro}}</span>
-            <span class="teacher_info">{{details.books_details.teacher_info}}</span>
-          </p>
-          <p class="section_two">
-            <span class="course_feature">{{details.books_details.course_feature}}</span>
-            <span class="course_feature_intro_I">{{details.books_details.course_feature_intro_I}}</span>
-            <span class="course_feature_intro_II">{{details.books_details.course_feature_intro_II}}</span>
-          </p>
-        </div>
-        <div class="course_outline">
-          <h2 class="course_outline_title">{{details.books_details.course_outline}}</h2>
-          <div class="nowlisten"></div>
-        </div>
-        <div class="purchaseattention">
-          <h2 class="purchase_attention">{{details.books_details.purchase_attention}}</h2>
-          <ol style="margin-bottom:.6rem;">
-            <li v-for="(v,i) in details.books_details.purchase_attention_item" :key="i">{{v}}</li>
-          </ol>
-        </div>
+          <div class="course_outline">
+              <h2 class="course_outline_title">课程大纲</h2>
+              <div class="lookoutline" style="margin:0 auto;font-size:.15rem;color:#f46d11;width:1.7rem;height:.4rem;border-radius:.15rem;font-weight:600;background:#eeeeee;line-height:.4rem;text-align:center;">
+                   <h3 @click="lookoutline()"> 查看课程表</h3>
+              </div>
+          </div>
+          <div class="purchaseattention">
+              <h2 class="purchase_attention">购买须知</h2>
+              <!-- <ol style="margin-bottom:.6rem;">
+                 <li v-for="(v,i) in details.coursePurchaseAttention" :key="i">{{v}}</li>
+              </ol> -->
+              <p style="margin-bottom:.2rem; font-size: 0.15rem;letter-spacing: 3px;font-weight: bolder;color: #353535;" >
+                  {{details.coursePurchaseAttention}}
+              </p>
+                 <p style="margin-bottom:.2rem; font-size: 0.15rem;letter-spacing: 3px;font-weight: bolder;color: #353535;" >
+                  {{details.coursePurchaseAttentionTwo}}
+              </p>
+               <p style="margin-bottom:.7rem; font-size: 0.15rem;letter-spacing: 3px;font-weight: bolder;color: #353535;" >
+                  {{details.coursePurchaseAttentionThree}}
+              </p>
+          </div>
       </div>
-        <Bottombar :data="details"></Bottombar>
-    </div>
-  
+        <Bottombar :data="details" :singlemoney="details.courseSprice"></Bottombar>
+  </div>
   </div>
 </template>
 <script>
@@ -60,7 +70,7 @@ import Loading from "../components/loading";
 export default {
   data() {
     return {
-      details: {},
+      details:{},
       bool: true,
       id:'',
     };
@@ -77,6 +87,9 @@ export default {
   methods: {
     tohome() {
       this.$router.go(-1);
+    },
+    lookoutline(){
+      this.$router.push("/lookoutline")
     }
   },
   watch: {
@@ -89,52 +102,114 @@ export default {
     }
 
   },
-  created() {
-          // 请求对应字段的数据
+    created() {
+             // 请求课程全部数据应字段的数据
            this.axios({
-                url:'/link/data',
+                url:'http://39.107.105.57:8084/Course/loadAll',
                 method:'get'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
+                             this.details=v
+                    }
+                    return this.details
+                })
+            }),
+          // 请求能力学院对应字段的数据
+           this.axios({
+                     //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"能力学院"
+                },
+                method:'post'
             }).then((ok)=>{
                 // 遍历数据
                 // console.log(ok.data)
-                ok.data.total.map(v=>{
-                    if( v.interface.courseId==this.id){
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
-                }),
-                  ok.data.nenglixueyuan.map(v=>{
-                    if( v.interface.courseId==this.id){
+                })
+            }),
+             // 请求商学院对应字段的数据
+           this.axios({
+               url:'http://39.107.105.57:8084/Course/findByAbility',
+                params:{
+                    college:"商学院"
+                },
+                method:'post'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
-                }),
-                    ok.data.shangxueyuan.map(v=>{
-                    if( v.interface.courseId==this.id){
+                })
+            }),
+              // 请求科学学院对应字段的数据
+           this.axios({
+                  url:'http://39.107.105.57:8084/Course/findByAbility',
+                params:{
+                    college:"科学学院"
+                },
+                method:'post'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
-                }),
-                    ok.data.kexuexueyuan.map(v=>{
-                    if( v.interface.courseId==this.id){
+                })
+            }),
+                 // 请求视野学院对应字段的数据
+           this.axios({
+                    //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"视野学院"
+                },
+                method:'post'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
-                }),
-                    ok.data.shiyexueyuan.map(v=>{
-                    if( v.interface.courseId==this.id){
+                })
+            }),
+              // 请求人文社科对应字段的数据
+           this.axios({
+                    //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"人文社科"
+                },
+                method:'post'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
-                }),
-                    ok.data.renwensheke.map(v=>{
-                    if( v.interface.courseId==this.id){
-                             this.details=v
-                    }
-                    return this.details
-                }),
-                    ok.data.zhengzaigengxin.map(v=>{
-                    if( v.interface.courseId==this.id){
+                })
+            }),
+               // 请求人文社科对应字段的数据
+           this.axios({
+                    //    接口
+                 url:'http://39.107.105.57:8084/Course/findByAbility',
+                //  对应字段   key唯一    val不定
+                params:{
+                    college:"正在更新"
+                },
+                method:'post'
+            }).then((ok)=>{
+                ok.data.queryResult.list.map(v=>{
+                    if(v.courseClassId==this.id){
                              this.details=v
                     }
                     return this.details
@@ -156,12 +231,13 @@ a {
   padding: 0 0.16rem;
   height: 0.5rem;
   line-height: 0.5rem;
-  font-size: 0.2rem;
-      position: fixed;
-    top: 0;
-    width: 100%;
-    background: #fff;
-    z-index: 999;
+  font-size: .14rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+   
 }
 .end {
   flex: 1;
@@ -173,7 +249,7 @@ a {
   position: absolute;
   left: 0.16rem;
 }
-.top {
+.top{
   width: 100%-0.205rem;
   height: 2.115rem;
   position: relative;
@@ -227,8 +303,9 @@ a {
 }
 .teacher_info {
   font-size: 0.15rem;
-  color: #373737;
+  color: #343434;
   line-height: 0.22rem;
+  font-weight: 600;
 }
 .course_feature {
   font-size: 0.17rem;
@@ -240,11 +317,13 @@ a {
   font-size: 0.15rem;
   color: #373737;
   margin-bottom: 0.285rem;
+    font-weight: 600;
 }
 .course_feature_intro_II {
   font-size: 0.15rem;
   color: #373737;
   margin-bottom: 0.285rem;
+    font-weight: 600;
 }
 .section_one {
   margin-bottom: 0.25rem;
@@ -283,11 +362,11 @@ a {
   color: #363636;
   line-height: 0.6rem;
 }
-ol li {
+/* ol li {
   font-size: 0.15rem;
   color: #616161;
   letter-spacing: 3px;
-  /* margin-bottom:  */
-}
+  float: left;
+} */
 </style>
 

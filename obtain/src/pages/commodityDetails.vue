@@ -4,20 +4,16 @@
             <div class="block">
                 <div class="swiper-container" ref="slider">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(v,i) in arr.shopColorImgurl" :key="i">
+                        <div class="swiper-slide" v-for="(v,i) in arrImg" :key="i">
                             <img :src="v"/>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="middle">
-                <p class="price">￥{{arr.saleSprice}}.00</p>
-                <h4>{{arr.shoptitle}}</h4>
-                <p class="hint">{{arr.shopSummary}}</p>
-                <div class="sofar">
-                    <span>{{arr.express}}</span>
-                    <span>发货地：{{arr.location}}</span>
-                </div>
+                <p class="price">￥{{arr.courseSprice}}</p>
+                <h4>{{arr.courseSubtitle}}</h4>
+                <p class="hint">{{arr.courseSummary}}</p>
             </div>
             <router-link to="/shop">
                 <div class="back">
@@ -37,7 +33,7 @@
                     <p>本实物商品只能使用微信或者支付宝购买，无法用得到App“账户余额”支付购买</p>
                 </div>
                 <div class="img">
-                    <img width="100%" v-for="(v,i) in arr.showpicture" :key="i" :src="v" alt="">
+                    <img width="100%" v-for="(v,i) in arrImg" :key="i" :src="v" alt="">
                 </div>
                 <div id="problem">
                     <img width="100%" src="../../static/images/problem.jpg" alt="">
@@ -67,30 +63,26 @@
         </div>
         <div class="right">
             <p class="car" @click="show = true">加入购物车</p>
-            <p class="buy">立即购买</p>
+            <p @click="shopcart()" class="buy">立即购买</p>
         </div>
         <transition name="slide-fade">
             <div class="bottomP" v-if="show">
                 <i class="el-icon-circle-close" @click="show = false"></i>
                 <div class="bottomTop">
-                    <img width="18%" src="../../static/images/img1.jpg" alt="">
+                    <img width="18%" :src="arr.courseImgurl" alt="">
                     <div class="bottomTopRight">
-                        <p>{{arr.shoptitle}}</p>
-                        <span>￥{{colorPrice}}.00</span>
+                        <p>{{arr.courseSubtitle}}</p>
+                        <span>￥{{arr.courseSprice}}</span>
                     </div>
                 </div>
                 <div class="bottomMidd">
-                    <p class="smallP">颜色</p>
-                    <el-button @click="count(i)" plain v-for="(v,i) in arr.color" :key="i">{{v.text}}</el-button>
-                </div>
-                <div class="bottomNum">
-                    <p class="smallP">数量</p>
-                    <el-input-number v-model="num1" :min="1" label="描述文字"></el-input-number>
+                    <p class="smallP">作者</p>
+                    <p>{{arr.courseAuthor}}</p>
                 </div>
                 <div class="bottomTotal">
-                    <p>共计：￥ {{total}}</p>
+                    <p>共计：￥ {{arr.courseSubtitle}}</p>
                 </div>
-                <div class="bottomEnd">
+                <div @click="git()" class="bottomEnd">
                     加入购物车
                 </div>
             </div> 
@@ -117,20 +109,47 @@ export default {
                 {id:1,img_url:'../../static/images/banner1.png'},
                 {id:2,img_url:'../../static/images/banner2.png'}
             ],
+            arrImg:[
+                this.$route.query.content.courseImgurl,
+                this.$route.query.content.courseOtherImgurl,
+                this.$route.query.content.courseTitleImgurl
+            ],
             arr:this.$route.query.content,
             show: false,
             num1: 1,
-            colorPrice:this.$route.query.content.color[0].price
         }
     },
     computed: {
-        total(){
-            return this.colorPrice*this.num1;
-        }
+        // total(){
+        //     return this.colorPrice*this.num1;
+        // }
     },
     methods: {
         count(num){
             this.colorPrice = this.$route.query.content.color[num].price
+        },
+        shopcart(){
+            this.$router.push("/shopcart")
+        },
+        git(){
+            let ls = localStorage;
+            let username = ls.getItem("用户名")
+            console.log(this.arr.courseId)
+            console.log(username)
+            this.axios({
+                url:"http://39.107.105.57:8084/shop/findShopById",
+                method:"post",
+                params:{
+                    id:username,
+                    courseId:Number(this.arr.courseId)
+                }
+            }).then((ok)=>{
+                console.log(ok)
+                if(ok){
+                    this.$toast.success('加入购物车成功');
+                    this.show = false;
+                }
+            })
         }
     },
     mounted(){
@@ -308,11 +327,14 @@ export default {
         background: white;
         z-index: 2;
         box-sizing: border-box;
+        width: 100%;
     }
     .bottomMidd{
         border-top: 1px solid #F3F3F3;
         border-bottom: 1px solid #F3F3F3;
         padding: .15rem 0px;
+        display: flex;
+        justify-content: space-between;
     }
     .bottomNum{
         padding: .15rem 0px;
@@ -350,6 +372,12 @@ export default {
         background: #FFA125;
         height: .5rem;
         line-height: .5rem;
+    }
+    .bottomTopRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left:.1rem; 
     }
     .bottomTopRight span{
         color: #FFA125;

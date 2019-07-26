@@ -29,7 +29,7 @@
     <div class="pay">
       <p style="line-height:.5rem;">
         <span>余额</span>
-        <span style="color:#ed742f">0.00得到贝</span>
+        <span style="color:#ed742f">{{lastmoney}}得到贝</span>
         <span style="color:#ed742f">(不足支付)</span>
       </p>
       <p style="width:.65rem; height:.3rem; border-radios:5px; color:white; background:#ed742f;line-height:.3rem; text-align: center" @click="pay()">
@@ -60,7 +60,7 @@ export default {
       isShow: true,
       arr: {},
       check: false,
-     
+     lastmoney:Number
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -76,8 +76,19 @@ export default {
           this.arr = item;
         }
         return this.arr;
-      });
+      })
+    
     });
+      let ls=localStorage
+      this.axios({
+        url:"http://39.107.105.57:8084/user/findUserMoney",
+        method:"post",
+        params:{
+          id:Number(ls.getItem("用户名"))
+        }
+      }).then(ok=>{
+        this.lastmoney=ok.data.queryResult.adouble
+      })
   },
   methods: {
     skipPrev() {

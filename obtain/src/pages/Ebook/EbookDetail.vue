@@ -45,13 +45,13 @@
       <div class="edit1">
         <p class="cation">
           <span>目录</span>
-          <span @click="SkipPages(obj.bookSubtitle)">查看全部 ></span>
+          <span @click="SkipPages(obj.bookSubtitle)">查看全部</span>
         </p>
       </div>
       <div class="edit1">
         <p class="cation">
           <span>出版方</span>
-          <span>查看全部 ></span>
+          <span>查看全部 </span>
         </p>
         <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
         <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>

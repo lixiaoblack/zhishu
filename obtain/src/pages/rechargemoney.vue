@@ -69,6 +69,7 @@ export default {
             boold:true,
             boole:true,
             boolf:true,
+            rechargemoney:Number
         }
     },
     methods: {
@@ -76,8 +77,19 @@ export default {
             this.$router.go(-1)
         },
         zhifu(){
-            alert("支付成功"),
-            this.$router.push("/home")
+            let ls=localStorage
+            this.axios({
+                url:'http://39.107.105.57:8084/user/findUserMoneys',
+                params:{
+                    id:Number(ls.getItem("用户名")),
+                    money:this.origincount
+                },
+                  method:'post'
+            }).then((ok)=>{
+                console.log(ok)
+            })
+            // this.$toast.success('充值成功');
+            // this.$router.go(-1)
         },
         buysix(){
            this.boola=false
@@ -174,7 +186,7 @@ export default {
      padding: 0 .16rem;
     height:.5rem; ;
      line-height: .5rem;
-    font-size: .2rem;
+    font-size: .14rem;
     position: relative;
 
 }
@@ -184,7 +196,7 @@ export default {
     left: .16rem;
 }
 .topback .total{
-    color: #676767;
+    color: #050505;
     font-weight: bolder;
     text-align: center;
 }
