@@ -1,25 +1,29 @@
 <template>
     <div class="search">
-        <input v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funb()" style="display:inline-block">搜索</span><span @click="cancel()" style="display:inline-block">取消</span>
+        <input v-model="issue_content" type="search" placeholder="如何用手机拍出高赞大片" class="intSearch" @input="funa()"><span @click="funb(allArr)" style="display:inline-block">搜索</span><span @click="cancel()" style="display:inline-block">取消</span>
         <div class="serch_result" v-show="serch_result_issue">
-            <div v-if="bollCourse">
-                <span style="text-indent:.1rem">课程</span>
-                <li v-for="item in searchData" :key="item.length">
-                {{ item.courseSubtitle }}
+            <Load v-if="bool1"></Load>
+            <div v-else>
+                 <div v-if="bollCourse">
+                    <span style="text-indent:.1rem">课程</span>
+                    <li v-for="item in searchData" :key="item.length" @click="course(item)">
+                    {{ item.courseSubtitle }}
+                    </li>
+                </div>
+                <div v-if="bollBook">
+                    <span>电子书</span>
+                    <li v-for="item in searchDataBook" :key="item.length" @click="book(item)">
+                    {{ item.bookSubtitle }}
                 </li>
+                </div>
+                <div v-if="bollListen">
+                    <span style="text-indent:.1rem">听书</span>
+                    <li v-for="item in searchDataListen" :key="item.length" @click="listen(item)">
+                    {{ item.listenSubtitle }}
+                    </li>
+                </div>
             </div>
-            <div v-if="bollBook">
-                <span>电子书</span>
-                <li v-for="item in searchDataBook" :key="item.length">
-                {{ item.bookSubtitle }}
-            </li>
-            </div>
-            <div v-if="bollListen">
-                <span style="text-indent:.1rem">听书</span>
-                <li v-for="item in searchDataListen" :key="item.length">
-                {{ item.listenSubtitle }}
-                </li>
-            </div>
+           
         </div>
         <img src="../../static/tu/r/a7/a1j.png" class="imgSearch">
         <div v-if="boll">
@@ -35,26 +39,30 @@
             <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7;padding-top:12px">热门搜索</p>
             <div style="margin-left:.12rem">
                 <div class="hot">
-                <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+                <img src="../../static/tu/r/f/a9m.png" @click="two()"><span>30天认知训</span>
                 </div>
                 <div class="hot">
-                    <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+                    <img src="../../static/tu/r/f/a9m.png" @click="three()"><span>焦虑情绪管</span>
                 </div>
                 <div class="hot">
-                    <img src="../../static/tu/r/f/a9m.png"><span>三大打算sad</span>
+                    <img src="../../static/tu/r/f/a9m.png" @click="one()"><span>心理学30讲</span>
                 </div>
-                <span class="hotspan">阿斯顿撒旦撒大声</span>
-                <span class="hotspan">阿萨飒撒大大大大声道暗示等啥事飒的</span>
-                <span class="hotspan">阿萨飒啊实打实大大声飒的</span>
-                <span class="hotspan">阿萨飒是大大大飒的</span>
-                <span class="hotspan">曹盛</span>
+                <span class="hotspan" @click="four()">自我发展心理学</span>
+                <span class="hotspan" @click="five()">现代艺术</span>
+                <span class="hotspan" @click="four()">宋词三百首</span>
+                <span class="hotspan" @click="seven()">全球创新</span>
+                <span class="hotspan" @click="eight()">科凡读书俱乐部</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Load from "../components/store/allproduct/slidetitle/loading"
 export default {
+    components:{
+        Load
+    },
     data() {
         return {
             issue_content:"",//输入框中的内容
@@ -107,13 +115,15 @@ export default {
                 // {name:"暗示等暗示等暗示等阿萨啊"},
                 // {name:"暗示等暗示等暗示等阿萨啊"}
             ],
+            allArr:[],
             boll:true,
             historyArr:[],
             bollHot:true,
             bollDel:true,
             bollCourse:true,
             bollBook:true,
-            bollListen:true
+            bollListen:true,
+            bool1:true,
         }
     },
     methods: {
@@ -121,20 +131,7 @@ export default {
             this.$router.push({path:'/home'})
         },
         funa(){
-            this.axios({
-            url:"http://39.107.105.57:8084/findByNameOrAuthor",
-            method:"post",
-            params:{mh:this.issue_content}
-            }).then((ok)=>{
-                console.log(ok)
-                this.serch_result=ok.data[1].queryResult.list
-                console.log(this.serch_result)
-                this.serch_resultBook=ok.data[0].queryResult.list
-                console.log(this.serch_resultBook)
-                this.serch_resultListen=ok.data[2].queryResult.list
-                console.log(this.serch_resultListen)
-            })
-            if(this.issue_content.length>0){
+            if(this.issue_content!=""){
                 this.serch_result_issue = true;
             }else{
                 this.serch_result_issue = false;
@@ -162,22 +159,22 @@ export default {
             }
             
         },
-        funb(){
-            this.$router.push({path:"/searchitem"})
+        funb(val){
             this.axios({
                 url:"http://39.107.105.57:8084/addHistory",
                 method:"post",
-                params:{add:this.issue_content,add2:''}
+                params:{add:this.issue_content,add2:this.issue_content}
             }).then((ok)=>{
                 console.log(ok)
             })
             this.axios({
             url:"http://39.107.105.57:8084/findByNameOrAuthor",
-            method:"get",
+            method:"post",
             params:{mh:this.issue_content}
             }).then((ok)=>{
 
             })
+            this.$router.push({path:"/searchitem",query:{id:val}})
         },
         func(e){
             e.target.parentElement.remove()
@@ -198,6 +195,39 @@ export default {
             }).then((ok)=>{
                 console.log(ok)
             })
+        },
+        course(val){
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseId)}})
+        },
+        book(val){
+            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
+        },
+        listen(val){
+            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.listenId)}})
+        },
+        one(){
+            this.$router.push({path:"/details",query:{id:2}})
+        },
+        two(){
+            this.$router.push({path:"/details",query:{id:28}})
+        },
+        three(){
+            this.$router.push({path:"/details",query:{id:1}})
+        },
+        four(){
+            this.$router.push({path:"/details",query:{id:3}})
+        },
+        five(){
+            this.$router.push({path:"/EbookDetail",query:{id:18}})
+        },
+        six(){
+            this.$router.push({path:"/EbookDetail",query:{id:21}})
+        },
+        seven(){
+            this.$router.push({path:"/details",query:{id:29}})
+        },
+        eight(){
+            this.$router.push({path:"/details",query:{id:27}})
         }
     },
     computed: {
@@ -250,6 +280,25 @@ export default {
             }
         })
         
+    },
+    watch: {
+        issue_content(val){
+            this.axios({
+            url:"http://39.107.105.57:8084/findByNameOrAuthor",
+            method:"post",
+            params:{mh:this.issue_content}
+            }).then((ok)=>{
+                // console.log(ok)
+                this.serch_result=ok.data[1].queryResult.list
+                this.serch_resultBook=ok.data[0].queryResult.list
+                this.serch_resultListen=ok.data[2].queryResult.list
+                this.allArr=ok.data
+                if(this.serch_result.length>0||this.serch_resultBook.length>0||this.serch_resultListen.length>0){
+                    this.bool1=false
+                }
+                console.log(this.allArr)
+            })
+        }
     },
 }
 </script>

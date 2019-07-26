@@ -1,6 +1,6 @@
 <template>
     <div class="cir">
-        <div class="left">
+        <div class="left" @click="fun(v)">
             <p>{{title}}</p>
             <p>{{conment}}</p>
             <p style="display:flex;margin-top:8px">
@@ -17,8 +17,14 @@ export default {
         title:String,
         conment:String,
         price:Number,
-        imgUrl:String
-    }
+        imgUrl:String,
+        v:Object
+    },
+    methods: {
+        fun(val){
+            this.$router.push({path:"/EbookDetail",query:{id:JSON.stringify(val.bookId)}})
+        }
+    },
 }
 </script>
 

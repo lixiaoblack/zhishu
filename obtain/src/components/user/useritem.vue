@@ -1,5 +1,5 @@
 <template>
-    <div class="divcs flexcs" @touchstart="anxia()" @touchend="tanqi()">
+    <div class="divcs flexcs">
         <router-link :to="url">
             <img class="imgcs" :src="imgurl">
             <p class="pcs">{{text}}</p>
@@ -13,18 +13,18 @@ export default {
         url:String,
         text:String
     },
-    methods:{
-        anxia(){
-            let userarr=document.querySelectorAll(".flexcs")
-            console.log(userarr)
-            userarr.style.border="6px solid red"
-        },
-        tanqi(){
-            let userarr=document.querySelectorAll(".flexcs")
-            console.log(userarr)
-            userarr.style.background=""
-        }
-    }
+    // methods:{
+        // anxia(){
+        //     let userarr=document.querySelectorAll(".flexcs")
+        //     console.log(userarr)
+        //     userarr.style.border="6px solid red"
+        // },
+        // tanqi(){
+        //     let userarr=document.querySelectorAll(".flexcs")
+        //     console.log(userarr)
+        //     userarr.style.background=""
+        // }
+    // }
 }
 </script>
 <style scoped>

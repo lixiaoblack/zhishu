@@ -1,16 +1,20 @@
 <template>
     <div class="boxs">
-        <img src="../../../static/tu/r/a/a9.jpg" alt="">
+        <img :src="imgUrl">
         <div class="css">
-            <h3>我是标题，你好曹盛</h3>
-            <p>曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛曹盛</p>
+            <h3>{{title}}</h3>
+            <p>{{txt}}</p>
         </div>        
     </div>
 </template>
 
 <script>
 export default {
-    
+    props:{
+        title:String,
+        txt:String,
+        imgUrl:String,
+    },
 }
 </script>
 

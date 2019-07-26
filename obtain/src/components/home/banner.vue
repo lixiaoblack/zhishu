@@ -3,8 +3,8 @@
         <div class="swiper-container" ref="slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(v,i) in imgArr" :key="i">
-                    <router-link :to="{name:'Specialxq',params:{id:v.id}}">
-                    <img :src="v.courseTitleImgurl" class="imgs"/>
+                    <router-link :to="{name:'Specialxq',params:{id:v.courseClassId}}">
+                        <img :src="v.courseTitleImgurl" class="imgs"/>
                     </router-link>
                 </div>
             </div>

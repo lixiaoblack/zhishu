@@ -51,13 +51,7 @@ export default {
   },
 
   created(){
-    // this.axios({
-    //   url:"/link/data",
-    //   method:"get",
-    // }).then((ok)=>{
-    //   this.brr=ok.data.books;
-    //   console.log(ok)
-    // })
+
   },
   methods:{
     fun() {

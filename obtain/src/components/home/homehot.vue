@@ -3,9 +3,9 @@
         <div class="swiper-container" ref="slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(v,i) in imgArr" :key="i">
-                    <!-- <router-link :to="{name:'Specialxq',params:{id:v.id}}"> -->
+                    <router-link :to="v.link">
                     <img :src="v.imgUrl" class="imgs"/>
-                    <!-- </router-link> -->
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -20,9 +20,9 @@ export default {
     data() {
         return {
             imgArr:[
-                {id:"1",imgUrl:"../../../static/image/hot_01.png"},
-                {id:"2",imgUrl:"../../../static/image/hot_02.png"},
-                {id:"3",imgUrl:"../../../static/image/hot_03.png"},
+                {id:"1",imgUrl:"../../../static/image/hot_01.png",link:'/course/morestudy'},
+                {id:"2",imgUrl:"../../../static/image/hot_02.png",link:'/listen'},
+                {id:"3",imgUrl:"../../../static/image/hot_03.png",link:'/eBook'},
             ]
         }
     },

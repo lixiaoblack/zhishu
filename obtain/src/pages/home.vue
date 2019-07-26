@@ -3,7 +3,8 @@
         <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         </van-pull-refresh> -->
         <Search></Search>
-        <Banner :imgArr="imgArr"></Banner>
+        <LoadTwo v-if="bool4"></LoadTwo>
+        <Banner :imgArr="imgArr" v-else></Banner>
         <Imgspan :newarr="classArr"></Imgspan>
         <div v-for="(v,i) in navArr" :key="i" class="nav"> 
             <router-link :to="v.link">
@@ -11,28 +12,37 @@
                 <span>{{v.title}}</span>
             </router-link>
         </div>
-        <div>
+        <Load v-if="bool5"></Load>
+        <div v-else>
             <Audio :v="audios[1]" :theUrl="audios[0].url" :theControlList="audios[0].controlList" style="border-radius:.1rem" :imgUrl="audios[1].courseImgurl" :title="audios[1].courseSubtitle" :txt="audios[1].courseSummary"/>
         </div>
-        <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="v" :subtitle="v.listenSubtitle" :courseFeatureIntroI="v.listenPublisherIntro" :booksSprice="v.listenSprice" :time="v.listenAudioTime" :imgUrl="v.listenImgUrl" style="border-radius:.1rem"></Homelisten>
-        <Circulation style="margin-top:7.35rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+555" :title="v[39].bookSubtitle" :conment="v[39].bookAuthor" :imgUrl="v[39].bookImgUrl" :price="v[39].bookSprice"></Circulation>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="v" :subtitle="v.bookSubtitle" :courseFeatureIntroI="v.bookPublisherIntro" :booksSprice="v.bookSprice" :imgUrl="v.bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        <Load v-if="bool1"></Load>
+        <Homelisten v-else v-for="(v,i) in listenArr" :key="i+4444" :data="v" :subtitle="v.listenSubtitle" :courseFeatureIntroI="v.listenPublisherIntro" :booksSprice="v.listenPrice" :time="v.listenAudioTime" :imgUrl="v.listenImgUrl" style="border-radius:.1rem"></Homelisten>
+        <Load v-if="bool2"></Load>
+        <div v-else>
+            <Circulation style="margin-top:7.35rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+555" :title="v[39].bookSubtitle" :conment="v[39].bookAuthor" :imgUrl="v[39].bookImgUrl" :price="v[39].bookSprice"></Circulation>
+            <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="v" :subtitle="v.bookSubtitle" :courseFeatureIntroI="v.bookPublisherIntro" :booksSprice="v.bookSprice" :imgUrl="v.bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        </div>
+       
         <Homehot style="clear:both"></Homehot>
         <div class="allTop" style="border-radius:.1rem .1rem 0 0">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>
-        <div class="course">
-        <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="v.courseOtherImgurl" :title="v.courseSubtitle" :txtOne="v.courseTitle" :txtTwo="v.courseCollege" :people="v.courseStudyPeoples" :num="v.courseClassNum" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
-        </div>
-        <Circulation style="margin-top:4.05rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+666" :title="v[38].bookSubtitle" :conment="v[38].bookAuthor" :imgUrl="v[38].bookImgUrl" :price="v[38].bookSprice"></Circulation>
-        <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
-            <p>课程之家</p><router-link to="/shop"><span>全部</span></router-link>
-        </div>
-        <div style="marginLeft:0.15rem">
-            <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="v.courseImgurl" :title="v.courseSubtitle" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homeshop>
+        <Load v-if="bool3"></Load>
+        <div v-else>
+            <div class="course">
+            <Homecourse  :data="v" v-for="(v,i) in courseArr" :key="i+1111" :imgUrl="v.courseOtherImgurl" :title="v.courseSubtitle" :txtOne="v.courseTitle" :txtTwo="v.courseCollege" :people="v.courseStudyPeoples" :num="v.courseClassNum" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homecourse>
+            </div>
+            <Circulation style="margin-top:4.05rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+666" :title="v[38].bookSubtitle" :conment="v[38].bookAuthor" :imgUrl="v[38].bookImgUrl" :price="v[38].bookSprice"></Circulation>
+            <div class="allTop" style="marginTop:0.2rem;border-radius:.1rem .1rem 0 0">
+                <p>课程之家</p><router-link to="/shop"><span>全部</span></router-link>
+            </div>
+            <div style="marginLeft:0.15rem">
+                <Homeshop v-for="(v,i) in shopArr" :key="i+22222" :v="v" :imgUrl="v.courseOtherImgurl" :title="v.courseSubtitle" :price="v.courseSprice" style="border-radius:0 0 .1rem .1rem"></Homeshop>
+            </div>
         </div>
         <Circulation style="margin-top:2rem;border-radius:.1rem" v-for="(v,i) in circulationArr" :key="i+444" :title="v[36].bookSubtitle" :conment="v[36].bookAuthor" :imgUrl="v[36].bookImgUrl" :price="v[36].bookSprice"></Circulation>
-        <Circulation style="margin-top:.2rem;border-radius:.1rem" v-for="(v,i) in circulationArr[0]" :key="i+111111" :title="v.bookSubtitle" :conment="v.bookAuthor" :imgUrl="v.bookImgUrl" :price="v.bookSprice"></Circulation>
+        <Circulation style="margin-top:.2rem;border-radius:.1rem" v-for="(v,i) in circulationArr[0]" :v="v" :key="i+111111" :title="v.bookSubtitle" :conment="v.bookAuthor" :imgUrl="v.bookImgUrl" :price="v.bookSprice"></Circulation>
         <div style="height:.6rem"></div>
         <Bot ona="发现" class="bot"></Bot>
     </div>
@@ -50,6 +60,8 @@ import Homecourse from '../components/home/homecourse'
 import Homeshop from '../components/home/homeshop'
 import Bot from '../components/bottom'
 import Circulation from '../components/home/circulation'
+import Load from "../components/store/allproduct/slidetitle/loading"
+import LoadTwo from "../components/loadtwo"
 export default {
     components:{
         Search,
@@ -62,7 +74,9 @@ export default {
         Homeshop,
         Bot,
         Circulation,
-        Homehot
+        Homehot,
+        Load,
+        LoadTwo
     },
     data() {
         return {
@@ -96,7 +110,12 @@ export default {
                 }
             ],
             imgArr:[],
-            circulationArr:[]
+            circulationArr:[],
+            bool1:true,
+            bool2:true,
+            bool3:true,
+            bool4:true,
+            bool5:true,
         }
     },
     created() {
@@ -104,7 +123,8 @@ export default {
             url:"http://39.107.105.57:8084/listen/laodAll",
             method:"get"
         }).then((ok)=>{
-            this.listenArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
+            this.listenArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            this.bool1 = false; 
         })
         this.axios({
             url:"http://39.107.105.57:8084/findAll",
@@ -112,19 +132,21 @@ export default {
         }).then((ok)=>{
             this.bookArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
             this.circulationArr.push(ok.data.queryResult.list)
+            this.bool2 = false; 
         })
         this.axios({
             url:"http://39.107.105.57:8084/Course/loadAll",
             method:"get"
         }).then((ok)=>{
             this.audios.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            this.bool5 = false;
             for(var i=0; i<4; i++){
                 this.courseArr.push(ok.data.queryResult.list[parseInt(Math.random()*5+15)]) 
             }
             for(var i=0; i<3; i++){
-                this.shopArr.push(ok.data.queryResult.list[parseInt(Math.random()*5+15)]) 
+                this.shopArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
             }
-            console.log(this.audios)
+            this.bool3 = false;
         })
         this.axios({
             url:"http://39.107.105.57:8084/Course/findHomePage",
@@ -133,6 +155,7 @@ export default {
             for(var i=0; i<4; i++){
                 this.imgArr.push(ok.data.queryResult.list[i])
             }
+            this.bool4 = false; 
         })
     },
 }
