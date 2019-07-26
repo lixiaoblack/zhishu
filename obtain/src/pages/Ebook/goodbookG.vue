@@ -32,7 +32,7 @@ export default {
         url: "http://39.107.105.57:8084/findType",
         method: "post",
         params: {
-          books: "限时特价"
+          books: "精选书单"
         }
       }).then(ok => {
         this.arr = ok.data.queryResult.list;

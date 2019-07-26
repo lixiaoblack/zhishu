@@ -83,9 +83,9 @@ export default {
                 this.dool=false;
             }
             if(this.loginname!=""){
-                console.log(this.loginname)
+                // console.log(this.loginname)
                 this.axios({
-                    url:"http://39.107.105.57:8084/user/findUser",
+                    url:"http://39.107.105.57:8084/user/findUser",//检测用户名是否存在接口
                     method:"get",
                     data:{
                         username:this.loginname
@@ -93,7 +93,7 @@ export default {
                 }).then((ok)=>{
                     console.log("123")
                     console.log(ok);
-                    //     alert("账户已存在")
+                    //     this.$toast.success("账户已存在")
                 })
             }
         },
@@ -131,13 +131,13 @@ export default {
                 console.log(ok);
                 console.log(ok.data)
                 if(ok.data.message=="code查询到用户，修改status为1，注册成功"){
-                    alert("注册成功，请登录！");
+                    this.$toast.success("注册成功，请登录！");
                     let ls = localStorage;
                     ls.setItem("用户名",this.loginname)
                     // location.href="#denglu";
                     this.$router.push("/register");
                 }else{
-                    alert("注册失败，请重新注册！");
+                    this.$toast.success("注册失败，请重新注册！");
                     this.loginname = "";
                     this.loginpwd = "";
                     this.loginemail = "";

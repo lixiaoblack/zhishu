@@ -43,6 +43,14 @@ export default {
                 path: "/user",
             });
         },
+    },
+    beforeRouteEnter (to, from, next) {
+        let ls = localStorage;
+        if(ls.getItem("用户名")){
+            next()
+        }else{
+            next("/register")
+        }
     }
 }
 </script>

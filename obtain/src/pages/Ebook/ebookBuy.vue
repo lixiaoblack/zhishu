@@ -5,13 +5,13 @@
       <p style="text-align:center; font-size:.18rem; margin-left:1.26rem">结算台</p>
     </header>
     <div class="title">
-      <img :src="arr.listenImgUrl" alt />
+      <img :src="arr.bookImgUrl" alt />
       <div>
         <p style="margin-bottom:.18rem; display:flex;font-weight:600">
-          <span>{{arr.listenSubtitle}}</span>|
-          <span>{{arr.listenAuthor}}解读</span>
+          <span>{{arr.bookSubtitle}}</span>|
+          <span>{{arr.bookAuthor}}解读</span>
         </p>
-        <p v-if="isShow" style="color:#ed742f">{{arr.listenPrice}}得到贝</p>
+        <p v-if="isShow" style="color:#ed742f">{{arr.bookSprice}}得到贝</p>
         <p v-else style="color:#ffc794">会员有效期内免费听</p>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="pay">
       <p style="line-height:.5rem;">
         <span>余额</span>
-        <span style="color:#ed742f">0.00得到贝</span>
+        <span style="color:#ed742f">{{lastmoney}}得到贝</span>
         <span style="color:#ed742f">(不足支付)</span>
       </p>
       <p style="width:.65rem; height:.3rem; border-radios:5px; color:white; background:#ed742f;line-height:.3rem; text-align: center" @click="pay()">
@@ -41,7 +41,7 @@
      <li>购买后可在已购区查看和使用</li>
    </ol>
    <footer>
-     {{arr.listenSprice}}得到贝/确认支付
+     {{arr.bookSprice}}得到贝/确认支付
    </footer>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
       isShow: true,
       arr: {},
       check: false,
-     
+     lastmoney:Number
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -69,15 +69,26 @@ export default {
     });
   },
   created() {
-    this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
+    this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
       let val = ok.data.queryResult.list;
       val.map(item => {
-        if (item.listenId == this.id) {
+        if (item.bookId == this.id) {
           this.arr = item;
         }
         return this.arr;
-      });
+      })
+    
     });
+      let ls=localStorage
+      this.axios({
+        url:"http://39.107.105.57:8084/user/findUserMoney",
+        method:"post",
+        params:{
+          id:Number(ls.getItem("用户名"))
+        }
+      }).then(ok=>{
+        this.lastmoney=ok.data.queryResult.adouble
+      })
   },
   methods: {
     skipPrev() {

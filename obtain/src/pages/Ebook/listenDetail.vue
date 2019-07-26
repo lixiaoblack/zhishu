@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <p class="header">
-      <span>返回</span>
+      <span @click="skipPrev">返回</span>
       <span class="el-icon-link"></span>
     </p>
     <div class="overflow">
@@ -10,8 +10,8 @@
           <img :src="arr.listenImgUrl" />
           <div class="right">
             <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">
-              <span>{{arr.listenSubtitle}}</span> |
-              <span>{{arr.listenAuthor}}解读</span>
+              <span>{{arr.listenSubtitle}}</span>
+              
             </p>
             <!-- 音频简介 -->
             <div>
@@ -64,7 +64,7 @@
             </p>
           </div>
           <div v-else>
-            <p style="font-size:0.13rem;color:#8d8d8d;padding:0 .12rem">{{arr.listenContent}}</p>
+            <p style="font-size:0.13rem;color:#8d8d8d;padding:0 .12rem">{{arr.listenAudioIntro}}</p>
             <p @click="content_Show()" class="open">
               收起
               <i class="el-icon-caret-top"></i>
@@ -78,12 +78,13 @@
         <ListenL v-for="(v,i) in listenLike" :key="i" :data="v"></ListenL>
       </div>
     </div>
+
     <footer>
       <p @click="buy(arr)">
         <span>购买</span>
-        <span style="color:#f17327">{{arr.listenSprice}}得到贝</span>
+        <span style="color:#f17327">{{arr.listenPrice}}得到贝</span>
       </p>
-      <p>加入VIP免费听</p>
+      <p @click="addVip()">加入VIP免费听</p>
     </footer>
   </div>
 </template>
@@ -95,7 +96,7 @@ export default {
   },
   data() {
     return {
-      id: null,
+      id: "",
       likes: [],
       arr: {},
       cut: true,
@@ -107,12 +108,19 @@ export default {
       d.id = JSON.parse(to.query.id);
     });
   },
+  watch: {
+    msg(newval, old) {
+     
+      this.arr
+       
+    }
+  },
   created() {
-    this.axios.get("/listen").then(ok => {
-      let val = ok.data.listen;
+    this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
+      let val = ok.data.queryResult.list;
       //console.log(val)
       this.likes = val.filter(item => {
-        return item.listenType == "猜你喜欢";
+        return item.listenType =="猜你喜欢";
       });
       val.map(item => {
         if (item.listenId == this.id) {
@@ -133,8 +141,9 @@ export default {
       return nernew.slice(0, 3);
     },
     subContent() {
-      return this.arr.listenContent && this.arr.listenContent.substr(0, 50);
-    }
+      return this.arr.listenContent && this.arr.listenContent.substr(0, 30);
+    },
+   
   },
   methods: {
     isShow() {
@@ -143,9 +152,19 @@ export default {
     content_Show() {
       this.contentShow = !this.contentShow;
     },
-     buy(val){
-         this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})
-       }
+    buy(val) {
+      this.$router.push({
+        name: "Buy",
+        query: { id: JSON.stringify(val.listenId) }
+      });
+    },
+    skipPrev() {
+      this.$router.go(-1);
+    },
+     addVip(){
+      this.$toast.success('已成功加入VIP');
+    }
+
   }
 };
 </script>
@@ -222,16 +241,14 @@ footer p:nth-child(1) {
 }
 footer p:nth-child(2) {
   background: #f17327;
-   text-align: center;
+  text-align: center;
   line-height: 50px;
   color: white;
 }
-.overflow{
- 
+.overflow {
   /* display: flex;
   flex-direction: column; */
   flex: 1;
   overflow-y: auto;
 }
-
 </style>

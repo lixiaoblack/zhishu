@@ -17,14 +17,12 @@ export default {
     },
     created(){
         // 请求对应字段的数据
-        this.axios({
-            url:'/link/data',
-            method:'get'
-        }).then((ok)=>{
-            this.totaldata=ok.data.total
-        })
-        var s1 = this.$route.query.title
-        console.log(s1);
+           this.axios({
+                url:'http://39.107.105.57:8084/Course/loadAll',
+                method:'get'
+            }).then((ok)=>{
+                this.totaldata=ok.data.queryResult.list
+            })
     },
     watch: {
         linkTitle(val){

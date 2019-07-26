@@ -37,7 +37,8 @@ export default {
     },
     methods: {
         togivefriend(){
-            this.$router.push("/givefriend")
+            // this.$router.push("/givefriend")
+            this.$router.go(-1)
         }
     },
 }
@@ -47,7 +48,7 @@ export default {
      padding: 0 .16rem;
     height:.5rem; ;
      line-height: .5rem;
-    font-size: .2rem;
+  font-size: .14rem;
     position: relative;
 }
 .nouse{
