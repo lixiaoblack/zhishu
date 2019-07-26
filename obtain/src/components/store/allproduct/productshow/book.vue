@@ -32,13 +32,11 @@
         }).then((ok) => {
           this.brr = ok.data.queryResult.list;
           this.bool = false;
-          console.log(ok)
         });
       },
       methods: {
         go(title) {
           this.$router.push({name: 'CommodityDetails', query: {content: title}});
-          // console.log(title)
         }
       }
     }

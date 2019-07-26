@@ -11,7 +11,7 @@
         <div v-for="(v, i) in audios" :key="i" class="audioitem">
             <Audioitem :theUrl="v.url" :theControlList="v.controlList" @sonpao="fufun"></Audioitem>
         </div>
-        
+        <img src="../../static/ebookImg/book.gif" class="imgs">
     </div>
 </template>
 
@@ -57,6 +57,7 @@ export default {
     .audioxq{
         text-align: center;
         font-size: 12px;
+        background: #fff
     }
     .audioxq p{
         font-size: .17rem;
@@ -98,7 +99,9 @@ export default {
         color:#999999;
         font-size: .11rem;
     }
-    /* .audioitem{
-        margin-top: 1.2rem;
-    } */
+    .imgs{
+        margin-left: .5rem;
+        width: 2.6rem;
+        height: 2.6rem;
+    }
 </style>

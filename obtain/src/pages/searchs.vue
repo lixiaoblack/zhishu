@@ -102,7 +102,6 @@ export default {
                 method:"post",
                 params:{add:this.issue_content,add2:this.issue_content}
             }).then((ok)=>{
-                console.log(ok)
             })
             this.axios({
             url:"http://39.107.105.57:8084/findByNameOrAuthor",
@@ -120,7 +119,6 @@ export default {
                 url:"http://39.107.105.57:8084/deleteAll",
                 method:"delete",
             }).then((ok)=>{
-                console.log(ok)
             })
         },
         delOne(e){
@@ -130,7 +128,6 @@ export default {
                 method:"delete",
                 params:{name:e.target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML}
             }).then((ok)=>{
-                console.log(ok)
             })
         },
         course(val){
@@ -211,7 +208,6 @@ export default {
             url:"http://39.107.105.57:8084/getHistory",
             method:"get",
         }).then((ok)=>{
-            console.log(ok)
             this.historyArr=ok.data.queryResult.list
             if(this.historyArr.length>0){
                 this.bollDel=true
@@ -228,7 +224,6 @@ export default {
             method:"post",
             params:{mh:this.issue_content}
             }).then((ok)=>{
-                // console.log(ok)
                 this.serch_result=ok.data[1].queryResult.list
                 this.serch_resultBook=ok.data[0].queryResult.list
                 this.serch_resultListen=ok.data[2].queryResult.list
@@ -236,7 +231,6 @@ export default {
                 if(this.serch_result.length>0||this.serch_resultBook.length>0||this.serch_resultListen.length>0){
                     this.bool1=false
                 }
-                console.log(this.allArr)
             })
         }
     },

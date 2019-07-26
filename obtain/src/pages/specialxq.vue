@@ -34,7 +34,6 @@ export default {
             url:"http://39.107.105.57:8084/Course/findHomePage",
             method:"post",
         }).then((ok)=>{
-            console.log(ok.data.queryResult.list)
             ok.data.queryResult.list.forEach((v,i)=>{
                 if(v.courseClassId==this.$route.params.id){
                     this.arr=v;

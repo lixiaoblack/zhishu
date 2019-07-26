@@ -32,7 +32,6 @@ export default {
             url:"/mock/data",
             methods:"get"
         }).then((ok)=>{
-            console.log(ok.data.knowledge)
             this.arr=ok.data.knowledge
         })
     },

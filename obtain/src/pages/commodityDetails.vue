@@ -134,8 +134,6 @@ export default {
         git(){
             let ls = localStorage;
             let username = ls.getItem("用户名")
-            console.log(this.arr.courseId)
-            console.log(username)
             this.axios({
                 url:"http://39.107.105.57:8084/shop/findShopById",
                 method:"post",
@@ -144,7 +142,6 @@ export default {
                     courseId:Number(this.arr.courseId)
                 }
             }).then((ok)=>{
-                console.log(ok)
                 if(ok){
                     this.$toast.success('加入购物车成功');
                     this.show = false;

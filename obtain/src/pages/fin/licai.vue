@@ -49,7 +49,6 @@ export default {
         body:"classification=理财投资方法",
         }).then(res=>{
         res.json().then(data=>{
-            console.log(data) 
             this.length=data.length
             data.forEach((v,i)=>{
                 if(v.queryResult.list[0].type==0){

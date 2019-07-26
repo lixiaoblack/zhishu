@@ -34,7 +34,6 @@ export default {
                 }
             })
             this.xunzhang=Xunzhang[0]
-            console.log(this.xunzhang)
         })
     },
     methods: {

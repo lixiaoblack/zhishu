@@ -17,7 +17,8 @@
 
                     <span class="dscss top">
                         <input class="usercs" type="email" placeholder="请输入邮箱账号" name="useremail" v-model="loginemail">
-                        <input class="inios" type="button" value="获取验证码" @click="fun3()">
+                        <input v-if="panduan" class="inios" type="button" value="获取验证码" @click="fun3()">
+                        <div v-else class="panduan">{{num}}s</div>
                     </span>
 
                     <span class="dscss">
@@ -58,7 +59,9 @@ export default {
             dool:true,//判断是否符合用户名规则的真假
             btnbooll:true,//判断输入框内是否有值的真假
             loading:true,
-            y:''//异步判断注册的用户名是否已存在
+            y:'',//异步判断注册的用户名是否已存在
+            panduan:true,
+            num:60
         }
     },
     created(){
@@ -84,7 +87,6 @@ export default {
                 this.dool=false;
             }
             if(this.loginname!=""){
-                // console.log(this.loginname)
                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",//检测用户名是否存在接口
                     method:"get",
@@ -92,24 +94,24 @@ export default {
                         username:this.loginname
                     }
                 }).then((ok)=>{
-                    console.log("123")
-                    console.log(ok);
                     if(ok.data.queryResult.anInt=="1"){
                         let red=document.querySelector("#phoneId")
                         red.style.borderBottom="3px solid red"
                         this.$toast.fail("账户已存在")
                     }else{
-
+                        let red=document.querySelector("#phoneId")
+                        red.style.borderBottom=""
                     }
                 })
             }
         },
         fun3(){
-            var b=/^([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]@([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]\.[a-zA-Z]{2,3}$/
+            var b=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
             if(this.loginemail==""){
                 this.$toast.fail("请输入邮箱");
             }else if(!b.test(this.loginemail)){
-                this.$toast.fail("请确认邮箱是否正确");
+                this.$toast.fail("请正确输入");
+
             }else{
             this.axios({
                 url:"http://39.107.105.57:8084/user/registerUser",
@@ -120,8 +122,19 @@ export default {
                     useremail:this.loginemail
                 }
             }).then((ok)=>{
-                console.log(ok)
+                this.panduan=false
+            if(this.panduan==false){
+                let time=setInterval(()=>{
+                    this.num--
+                    if(this.num==-1){
+                        this.panduan=true
+                        clearInterval(time)
+                        this.num=60
+                    }
+                },1000)
+            }
             })
+            
             }
         },
         fun4(){
@@ -142,8 +155,6 @@ export default {
                     code:this.logincode
                 } 
             }).then((ok)=>{
-                console.log(ok);
-                console.log(ok.data)
                 if(ok.data.message=="code查询到用户，修改status为1，注册成功"){
                     this.$toast.success("注册成功，请登录！");
                     let ls = localStorage;
@@ -159,7 +170,6 @@ export default {
                 
                 
             },(err)=>{
-                console.log(err)
             })
         },
     },  
@@ -196,6 +206,17 @@ export default {
 }    
 </script>
 <style scoped>
+.panduan{
+    width:33%;
+    padding: 0.11rem .1rem;
+    background-color:#ccc;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 0.17rem;
+    outline:none;
+    border:0px;
+    text-align: center;
+}
 .boximg{
     width: 100%;
 }
