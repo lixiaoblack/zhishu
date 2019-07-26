@@ -101,7 +101,7 @@ export default {
     }
     .imgs{
         margin-left: .5rem;
-        width: 2.6rem;
-        height: 2.6rem;
+        width: 2.3rem;
+        height: 2.3rem;
     }
 </style>

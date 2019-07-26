@@ -171,7 +171,7 @@ export default {
       });
     },
     skipPrev() {
-      this.$router.push("/lsiten");
+      this.$router.push("/listen");
     },
      addVip(){
       this.$toast.success('已成功加入VIP');

@@ -118,7 +118,7 @@ export default {
                     this.tatal += Number(this.arr[i].courseSprice) ;
                 }
             }
-            return this.tatal
+            return this.tatal.toFixed(2);
         },
     },
     watch: {

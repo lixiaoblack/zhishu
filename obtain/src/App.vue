@@ -56,4 +56,7 @@ span{
 	width: 15px;
     height: 3px;
 }
+.el-tag{
+  padding: 0px;
+}
 </style>

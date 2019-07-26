@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             imgArr:[
-                {id:"1",imgUrl:"../../../static/image/hot_01.png",link:'/course/morestudy'},
+                {id:"1",imgUrl:"../../../static/image/hot_01.png",link:'/course/total'},
                 {id:"2",imgUrl:"../../../static/image/hot_02.png",link:'/listen'},
                 {id:"3",imgUrl:"../../../static/image/hot_03.png",link:'/eBook'},
             ]
