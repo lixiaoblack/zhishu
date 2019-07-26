@@ -77,7 +77,7 @@ export default {
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
             if(a.test(this.loginname)==true){
                 this.namecode="1";
-                this.dool=true;   
+                this.dool=true;  
             }else{
                 this.namecode="0";
                 this.dool=false;
@@ -87,13 +87,20 @@ export default {
                 this.axios({
                     url:"http://39.107.105.57:8084/user/findUser",//检测用户名是否存在接口
                     method:"get",
-                    data:{
+                    params:{
                         username:this.loginname
                     }
                 }).then((ok)=>{
                     console.log("123")
                     console.log(ok);
-                    //     this.$toast.success("账户已存在")
+                    if(ok.data.queryResult.anInt=="1"){
+                        let red=document.querySelector("#phoneId")
+                        red.style.borderBottom="3px solid red"
+                        this.$toast.success("账户已存在")
+                    }else{
+                        let green=document.querySelector("#phoneId")
+                        green.style.borderBottom="3px solid green"
+                    }
                 })
             }
         },

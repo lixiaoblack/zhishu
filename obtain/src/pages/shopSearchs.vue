@@ -4,19 +4,19 @@
         <div class="serch_result" v-show="serch_result_issue">
             <Load v-if="bool1"></Load>
             <div v-else>
-                 <div v-if="bollCourse">
+                 <div>
                     <span style="text-indent:.1rem">课程</span>
                     <li v-for="item in searchData" :key="item.length" @click="course(item)">
                     {{ item.courseSubtitle }}
                     </li>
                 </div>
-                <div v-if="bollBook">
+                <div>
                     <span>电子书</span>
                     <li v-for="item in searchDataBook" :key="item.length" @click="book(item)">
                     {{ item.bookSubtitle }}
                 </li>
                 </div>
-                <div v-if="bollListen">
+                <div>
                     <span style="text-indent:.1rem">听书</span>
                     <li v-for="item in searchDataListen" :key="item.length" @click="listen(item)">
                     {{ item.listenSubtitle }}
@@ -120,9 +120,6 @@ export default {
             historyArr:[],
             bollHot:true,
             bollDel:true,
-            bollCourse:true,
-            bollBook:true,
-            bollListen:true,
             bool1:true,
         }
     },
@@ -141,21 +138,6 @@ export default {
             if(this.issue_content.length==0){
                 this.bollHot=true;
                 this.boll=true;
-            }
-            if(this.serch_result.length==0){
-                this.bollCourse=false
-            }else{
-                this.bollCourse=true
-            }
-            if(this.serch_resultBook.length==0){
-                this.bollBook=false
-            }else{
-                this.bollBook=true
-            }
-            if(this.serch_resultListen.length==0){
-                this.bollListen=false
-            }else{
-                this.bollListen=true
             }
             
         },
