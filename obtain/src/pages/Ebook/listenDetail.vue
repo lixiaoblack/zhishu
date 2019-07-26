@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+     <div v-if="bool">
+      <Loading></Loading>
+    </div>
+    <div v-else>
     <p class="header">
       <span @click="skipPrev">返回</span>
       <span class="el-icon-link"></span>
@@ -54,7 +58,7 @@
 
       <div>
         <div class="edit1">
-          <p style="font-size:.2rem;font-weight:600;border-left:7px solid #f17327;">音频简介</p>
+          <p style="font-size:.2rem;font-weight:600;border-left:7px solid #f17327;padding: 0 .12rem">音频简介</p>
 
           <div v-if="contentShow">
             <p style="font-size:0.13rem;color:#8d8d8d;padding:0 .12rem">{{subContent}}</p>
@@ -74,7 +78,7 @@
       </div>
       <!-- 猜你喜欢 -->
       <div class="like">
-        <p style="font-size:.2rem;font-weight:600;border-left:7px solid #f17327;">猜你喜欢</p>
+        <p style="font-size:.2rem;font-weight:600;border-left:7px solid #f17327;padding:0 .12rem">猜你喜欢</p>
         <ListenL v-for="(v,i) in listenLike" :key="i" :data="v"></ListenL>
       </div>
     </div>
@@ -86,13 +90,16 @@
       </p>
       <p @click="addVip()">加入VIP免费听</p>
     </footer>
+    </div>
   </div>
 </template>
 <script>
 import ListenL from "../../components/Ebook/listen_like";
+import Loading from "../../components/loading"
 export default {
   components: {
-    ListenL
+    ListenL,
+    Loading
   },
   data() {
     return {
@@ -100,7 +107,8 @@ export default {
       likes: [],
       arr: {},
       cut: true,
-      contentShow: true
+      contentShow: true,
+      bool:true
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -109,9 +117,9 @@ export default {
     });
   },
   watch: {
-    msg(newval, old) {
+    id(newval,oldval) {
      
-      this.arr
+      
        
     }
   },
@@ -128,6 +136,11 @@ export default {
         }
         return this.arr;
       });
+       if (ok.data.queryResult.list) {
+          this.bool = false;
+        } else {
+          this.bool = true;
+        }
     });
   },
   computed: {
@@ -159,7 +172,7 @@ export default {
       });
     },
     skipPrev() {
-      this.$router.go(-1);
+      this.$router.push("/lsiten");
     },
      addVip(){
       this.$toast.success('已成功加入VIP');
