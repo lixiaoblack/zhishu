@@ -15,12 +15,6 @@
 
 <script>
     export default {
-      // props:{
-      //   imgurl:String,
-      //   content:String,
-      //   price:String,
-      //   shopSummary:String
-      // },
       data() {
         return {
           brr:''
@@ -33,8 +27,6 @@
         }).then((ok)=>{
           this.brr=ok.data.shop;
         });
-        //往父组件传参
-        this.$emit("indexs",1)
       }
     }
 </script>

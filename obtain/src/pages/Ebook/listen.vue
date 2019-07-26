@@ -72,7 +72,7 @@
     </div>
     <div >
       <p>
-        <span style="font-size:.18rem;font-weight:600">猜你喜欢</span>
+        <span style="font-size:.18rem;font-weight:600; padding:.12rem">猜你喜欢</span>
         
       </p>
       <ul class="list">

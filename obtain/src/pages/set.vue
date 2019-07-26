@@ -42,24 +42,52 @@
                     <i>></i>
                 </p>
             </div>
+            <p v-if="userbool"></p>
+            <div v-else class="divitem" @click="esc()">
+                <p>
+                    <span>退出登录</span>
+                    <i>></i>
+                </p>
+            </div>
             <div class="footer">
             <span>服务使用协议   隐私协议</span>
             </div>
-
         </div>
 
     </div>
 </template>
 <script>
 export default {
+    data(){
+        return{
+            userbool:true,
+            username:""
+        }
+    },
     methods:{
         fun(){
             this.$router.push({
                 path: "/user",
             });
         },
-
-    }
+        esc(){
+            if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向thcjp.cnblogs.com
+                localStorage.removeItem("用户名")
+                this.$router.push("/home");
+			}else{
+                
+			}
+            // localStorage.
+        }
+    },
+    created() {
+        let ls = localStorage;
+        if(ls.getItem("用户名")){
+            this.userbool = false;
+        }else{
+            this.userbool = true;
+        }
+    },
 }
 </script>
 <style scoped>

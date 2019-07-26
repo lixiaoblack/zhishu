@@ -84,7 +84,7 @@
         <span>购买</span>
         <span style="color:#f17327">{{arr.listenPrice}}得到贝</span>
       </p>
-      <p>加入VIP免费听</p>
+      <p @click="addVip()">加入VIP免费听</p>
     </footer>
   </div>
 </template>
@@ -107,6 +107,13 @@ export default {
     next(d => {
       d.id = JSON.parse(to.query.id);
     });
+  },
+  watch: {
+    msg(newval, old) {
+     
+      this.arr
+       
+    }
   },
   created() {
     this.axios.get("http://39.107.105.57:8084/listen/laodAll").then(ok => {
@@ -135,7 +142,8 @@ export default {
     },
     subContent() {
       return this.arr.listenContent && this.arr.listenContent.substr(0, 30);
-    }
+    },
+   
   },
   methods: {
     isShow() {
@@ -152,7 +160,11 @@ export default {
     },
     skipPrev() {
       this.$router.go(-1);
+    },
+     addVip(){
+      this.$toast.success('已成功加入VIP');
     }
+
   }
 };
 </script>

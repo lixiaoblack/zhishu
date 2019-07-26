@@ -4,61 +4,63 @@
       <p @click="skipPrev()">返回</p>
       <p>{{obj.bookSubtitle}}</p>
     </header>
-    <div class="content">
-      <img :src="obj.bookImgUrl" />
-      <div class="right">
-        <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.bookSubtitle}}</p>
+    <section>
+      <div class="content">
+        <img :src="obj.bookImgUrl" />
+        <div class="right">
+          <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.bookSubtitle}}</p>
 
-        <p class="author">
-          <span>作者</span>
-          <span>{{obj.bookAuthor}}</span>
-        </p>
-        <p style="font-size:12px; color: #ccc;margin-top:0.2rem" class="date">
-          <span>{{obj.bookTime}}</span> |
-          <span>{{obj.bookTts}}</span>
-        </p>
+          <p class="author">
+            <span>作者</span>
+            <span>{{obj.bookAuthor}}</span>
+          </p>
+          <p style="font-size:12px; color: #ccc;margin-top:0.2rem" class="date">
+            <span>{{obj.bookTime}}</span> |
+            <span>{{obj.bookTts}}</span>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="edit">
-      <p>主编推荐语</p>
-      <p>{{obj.booKeditRecomend}}</p>
-    </div>
-    <div class="edit1">
-      <p class="edit2">内容简介</p>
+      <div class="edit">
+        <p>主编推荐语</p>
+        <p>{{obj.booKeditRecomend}}</p>
+      </div>
+      <div class="edit1">
+        <p class="edit2">内容简介</p>
 
-      <div v-if="isShow">
-        <p style="font-size:0.13rem;color:#8d8d8d">{{sub}}</p>
-        <p class="open" @click="open()">
-          查看详情
-          <i class="el-icon-caret-bottom"></i>
+        <div v-if="isShow">
+          <p style="font-size:0.13rem;color:#8d8d8d">{{sub}}</p>
+          <p class="open" @click="open()">
+            查看详情
+            <i class="el-icon-caret-bottom"></i>
+          </p>
+        </div>
+        <div v-else>
+          <p style="font-size:0.13rem;color:#">{{obj.bookContent}}</p>
+          <p @click="open()" class="open">
+            收起
+            <i class="el-icon-caret-top"></i>
+          </p>
+        </div>
+      </div>
+      <div class="edit1">
+        <p class="cation">
+          <span>目录</span>
+          <span @click="SkipPages(obj.bookSubtitle)">查看全部 ></span>
         </p>
       </div>
-      <div v-else>
-        <p style="font-size:0.13rem;color:#">{{obj.bookContent}}</p>
-        <p @click="open()" class="open">
-          收起
-          <i class="el-icon-caret-top"></i>
+      <div class="edit1">
+        <p class="cation">
+          <span>出版方</span>
+          <span>查看全部 ></span>
         </p>
+        <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
+        <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
       </div>
-    </div>
-    <div class="edit1">
-      <p class="cation">
-        <span>目录</span>
-        <span @click="SkipPages(obj.bookSubtitle)">查看全部 ></span>
-      </p>
-    </div>
-    <div class="edit1">
-      <p class="cation">
-        <span>出版方</span>
-        <span>查看全部 ></span>
-      </p>
-      <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
-      <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
-    </div>
-    <div>
-      <p style="font-size:.2rem;font-weight:600;">猜你喜欢</p>
-      <ALLBOOK v-for="(v,i) in likes" :key="i" :data="v"></ALLBOOK>
-    </div>
+      <div>
+        <p style="font-size:.2rem;font-weight:600; padding:0 .12rem">猜你喜欢</p>
+        <ALLBOOK v-for="(v,i) in likes" :key="i" :data="v"></ALLBOOK>
+      </div>
+    </section>
     <div class="bottombar">
       <span class="givefriend" @click="togivefriend(obj)">赠送好友</span>
       <span class="verticalline">|</span>
@@ -81,12 +83,21 @@ export default {
       id: ""
     };
   },
+  watch: {
+    id(newval, oldval) {
+   newval=oldval
+      console.log(newval + "========" + oldval);
+    }
+  },
   methods: {
     open() {
       this.isShow = !this.isShow;
     },
     SkipPages(v) {
-      this.$router.push({ path: "/catalogue" ,query:{id:JSON.stringify(v)}});
+      this.$router.push({
+        path: "/catalogue",
+        query: { id: JSON.stringify(v) }
+      });
     },
     tofreelisten() {
       this.$router.push({ path: "/read" });
@@ -129,16 +140,17 @@ export default {
       });
     });
   },
-    beforeRouteEnter(to, from, next) {
-      next(d => {
-        d.id = JSON.parse(to.query.id);
-
-      });
-    }
+  beforeRouteEnter(to, from, next) {
+    next(d => {
+      d.id = JSON.parse(to.query.id);
+    });
+  }
 };
 </script>
 <style scoped>
- 
+.box {
+  padding: 0 0.16rem;
+}
 .content {
   margin: 0.5rem 0 0 0;
   padding: 0.12rem;
@@ -196,8 +208,7 @@ h4 {
 }
 
 .body {
-  
-  font-size: .12rem;
+  font-size: 0.12rem;
 }
 
 .contain {
@@ -233,12 +244,13 @@ h4 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid #e7e7e7;
-  width: 3.75rem;
+
+  width: 100%;
   height: 0.58rem;
   position: fixed;
   bottom: 0;
   background: #ffffff;
+  z-index: 99;
 }
 
 .givefriend {
@@ -268,17 +280,22 @@ header {
   display: flex;
   padding: 0.16rem;
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 999;
   background: white;
   width: 100%;
 }
 header p:first-child {
   font-size: 0.15rem;
- margin-right: .5rem;
 }
 header p:last-child {
   font-size: 0.15rem;
   font-weight: 600;
+  margin: 0 auto;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 </style>

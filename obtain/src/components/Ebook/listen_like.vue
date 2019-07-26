@@ -42,7 +42,7 @@ export default {
 }
 .content {
   margin: 0.1rem 0 0 0;
-  /* padding: 0.12rem; */
+  padding: 0.12rem;
  
   display: flex;
 }
@@ -64,7 +64,7 @@ h4 {
 }
 .buy{
   display: flex;
- margin-left: 1.5rem;
+ margin-left: 1.2rem;
 line-height: .3rem;
 
 }
@@ -78,5 +78,7 @@ line-height: .3rem;
         text-align: center;
         font-weight: 600; 
     }
-    
+  .right{
+    width: 100%;
+  }  
 </style>

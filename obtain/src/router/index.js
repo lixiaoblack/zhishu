@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Classify from '../pages/classify';
+import Home from '../pages/home';
 
 
 //登录注册
@@ -12,6 +13,13 @@ import Set from '../pages/set'
 import Mone from '../pages/moduleone'
 import Mtwo from '../pages/moduletwo'
 import Mthree from '../pages/modulethree'
+import Down from '../pages/download'
+import Downs from'../components/user/downloads'
+import Downi from '../components/user/downloaditem'
+import Forget from '../pages/forget'
+import Colloct from '../pages/colloct'
+
+
 
 //商城
 import Allproduct from '../pages/allproduct'
@@ -133,7 +141,6 @@ import Yishushi from '../pages/art/yishushi.vue'
 import Special from '../pages/special'
 import Specialxq from '../pages/specialxq'
 import Knowledge from '../pages/knowledge'
-import Home from '../pages/home'
 // 课程
 import Course from '../pages/course'
 import Total from '../pages/total'
@@ -188,6 +195,8 @@ import Searchitem from "../pages/searchitem";
 import Note from '../pages/note'
 import Catalogue from '../pages/catalogue'
 import Read from '../pages/read'
+import Vidio from '../pages/vidio'
+
 Vue.use(Router)
 
 export default new Router({
@@ -372,9 +381,38 @@ export default new Router({
       component: Mtwo
     },
     {
+      path:'/moduleone',
+      name:'Mone',
+      component:Mone
+    },
+    {
+      path:'/moduletwo',
+      name:'Mtwo',
+      component:Mtwo
+    },
+    {
       path: '/modulethree/:id',
       name: 'Mthree',
       component: Mthree
+    },
+    {
+      path:'/forget',
+      name:'Forget',
+      component:Forget
+    },
+    {
+      path:'/colloct',
+      name:'Colloct',
+      component:Colloct
+    },
+    {
+      path:'/download',
+      name:'Down',
+      component:Down,
+      children:[
+        {path:"downloads",name:"Downs",component:Downs},
+        {path:"downloaditem",name:"Downi",component:Downi}
+      ]
     },
     {
       path: '/default',
@@ -647,8 +685,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/*',
-      redirect: '/home',
+      
+      path: '/vidio',
+      name: 'Vidio',
+      component: Vidio
+    },
+    {
+      path:'/*',
+      redirect:'/home',
     },
 
   ]

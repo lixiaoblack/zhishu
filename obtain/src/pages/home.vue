@@ -16,8 +16,8 @@
         </div>
         <Homelisten v-for="(v,i) in listenArr" :key="i+4444" :data="listenArr[0]" :subtitle="listenArr[0].listenSubtitle" :courseFeatureIntroI="listenArr[0].listenPublisherIntro" :booksSprice="listenArr[0].listenSprice" :time="listenArr[0].listenAudioTime" :imgUrl="listenArr[0].listenImgUrl" style="border-radius:.1rem"></Homelisten>
         <Circulation style="margin-top:7.35rem;border-radius:.1rem"></Circulation>
-        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl" style="border-radius:.1rem"></Homebooks>
-        <Circulation style="margin-top:4.3rem;border-radius:.1rem"></Circulation>
+        <Homebooks v-for="(v,i) in bookArr" :key="i+3333" :sss="bookArr[0]" :subtitle="bookArr[0].bookSubtitle" :courseFeatureIntroI="bookArr[0].bookPublisherIntro" :booksSprice="bookArr[0].bookSprice" :imgUrl="bookArr[0].bookImgUrl" style="border-radius:.1rem;margin-bottom:.2rem"></Homebooks>
+        <Homehot style="clear:both"></Homehot>
         <div class="allTop" style="border-radius:.1rem .1rem 0 0">
             <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
         </div>
@@ -51,6 +51,7 @@ import Banner from '../components/home/banner'
 import Imgspan from '../components/home/imgSpan'
 import Homelisten from '../components/home/homelisten'
 import Homebooks from '../components/home/homebooks'
+import Homehot from '../components/home/homehot'
 import Audio from '../components/home/audio'
 import Homecourse from '../components/home/homecourse'
 import Homeshop from '../components/home/homeshop'
@@ -67,7 +68,8 @@ export default {
         Homecourse,
         Homeshop,
         Bot,
-        Circulation
+        Circulation,
+        Homehot
     },
     data() {
         return {
@@ -96,7 +98,7 @@ export default {
             shopArr:[],
             audios: [
                 {
-                url: './static/falling-star.mp3',
+                url: './static/201907222141120244326370.mp3',
                 controlList: 'onlyOnePlaying'
                 }
             ],
@@ -197,5 +199,6 @@ export default {
         position: fixed;
         bottom: 0;
         width: 100%;
+        z-index: 999
     }
 </style>

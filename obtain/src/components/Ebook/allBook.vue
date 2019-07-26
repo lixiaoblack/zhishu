@@ -34,13 +34,12 @@ export default {
 };
 </script>
 <style scoped>
-.box {
-  padding: 0 0.16rem;
-}
+
 .content {
   margin: 0.1rem 0 0 0;
   padding: 0.12rem;
   display: flex;
+  
 }
 .content img {
   width: 80px;
@@ -61,5 +60,8 @@ h4 {
         font-size: .13rem;
         text-align: center;
         font-weight: 600; 
+    }
+    .right{
+      width: 100%;
     }
 </style>
