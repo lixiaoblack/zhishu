@@ -38,14 +38,14 @@
         <div v-if="bollHot">
             <p style="margin-top:4px;font-size:16px;padding-left:0.15rem;border-top: 6px solid #dde1e7;padding-top:12px">热门搜索</p>
             <div style="margin-left:.12rem">
-                <div class="hot">
-                <img src="../../static/tu/r/f/a9m.png" @click="one()"><span>30天认知训</span>
+                <div class="hot" @click="one()">
+                <img src="../../static/tu/r/f/a9m.png"><span>30天认知训</span>
                 </div>
-                <div class="hot">
-                    <img src="../../static/tu/r/f/a9m.png" @click="two()"><span>焦虑情绪管</span>
+                <div class="hot" @click="two()">
+                    <img src="../../static/tu/r/f/a9m.png"><span>焦虑情绪管</span>
                 </div>
-                <div class="hot">
-                    <img src="../../static/tu/r/f/a9m.png" @click="one()"><span>心理学30讲</span>
+                <div class="hot" @click="three()">
+                    <img src="../../static/tu/r/f/a9m.png"><span>心理学30讲</span>
                 </div>
                 <span class="hotspan" @click="four()">自我发展心理学</span>
                 <span class="hotspan" @click="five()">现代艺术</span>

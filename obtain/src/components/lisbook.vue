@@ -1,9 +1,9 @@
 <template>
     <div class="all">
-        <div>
-            <h2 style="">{{courseTitle}}</h2>
-            <h3 style="">{{courseTeacherIntro}}</h3>
-            <h5 style="">{{courseId}}讲/￥{{courseSprice}}</h5>
+        <div class="zuobian">
+            <h2>{{listenSubtitle}}</h2>
+            <h3>{{listenContent}}</h3>
+            <h5>时长：{{listenAudioTime}}</h5>
         </div>
         <div class="smallBox">
             <div class="imgBox">
@@ -16,10 +16,9 @@
 <script>
 export default {
     props:{
-        courseTitle:String,
-        courseTeacherIntro:String,
-        courseId:Number,
-        courseSprice:Number,
+        listenSubtitle:String,
+        listenContent:String,
+        listenAudioTime:String,
         url:String,
         classify:String
     }
@@ -46,14 +45,19 @@ export default {
     }
     .floatBox{
         position: absolute;
-        right: 2px;
-        bottom: 2px;
+        right: 4px;
+        bottom:4px;
         font-size: .12rem;
         background: grey;
         color: white;
         border-radius: 2px;
     }
-    h2{ height:.24rem;
+
+ .zuobian{
+     width: 100%;
+ }
+    h2{
+         height:.24rem;
          overflow: hidden;
          font-size:16px;
          font-weight:600;
@@ -73,6 +77,6 @@ export default {
      margin-top:20px;
      margin-top:10px;
      font-weight:500;
-     color:red
+     color: forestgreen;
  }
-</style>
+    </style>
