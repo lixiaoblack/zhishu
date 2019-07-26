@@ -12,12 +12,12 @@
             <p>店铺名称：商城</p>
             <div class="item" v-for="(v,i) in arr" :key="i">
                 <div class="itemTop">
-                    <img width="25%" :src="v.shopImgurl" alt="">
+                    <img width="25%" :src="v.courseOtherImgurl" alt="">
                     <div class="itemRight">
-                        <p>{{v.shoptitle}}</p>
+                        <p>{{v.courseSubtitle}}</p>
                         <div class="itemEnd">
-                            <span>￥ {{v.price}}</span>
-                            <span>x{{v.num}}</span>
+                            <span>￥ {{v.courseSprice}}</span>
+                            <span>x1</span>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="bill" @click="fun()">
             <span>发票类型:</span>
-            <span>{{total}}  ></span>
+            <span>{{total}}></span>
         </div>
         <div class="footer">
             <van-submit-bar
@@ -60,7 +60,8 @@ import PayFor from "../componrnts/shop/payForChart"
 export default {
     components:{
         PayFor,
-        TopIcon
+        TopIcon,
+        arr:[]
     },
     data() {
         return {
@@ -91,15 +92,7 @@ export default {
         }
     },
     created() {
-        this.axios({
-            url:"user/shopcart",
-            method:"get",
-            data:{
-                username:"nihao"
-            }
-        }).then((ok)=>{
-            this.arr = ok.data.shopcat
-        })
+        this.arr = this.$route.query.content;
     },
     methods: {
         onSelect(item) {
@@ -120,7 +113,23 @@ export default {
 
         },
         onSubmit(){
+            let idArr = []
+            for(let i = 0;i<this.arr.length;i++){
+                idArr.push(this.arr[i].courseId);
+            }
+            console.log(idArr)
             this.submitBool = true;
+            fetch("http://39.107.105.57:8084/deletShoppingCarAll",{
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body:"list[]="+idArr
+            }).then(res=>{
+                res.json().then(data=>{
+                    console.log(data)
+                })
+            })
         },
         fun(val){
             this.submitBool = val;
@@ -130,7 +139,7 @@ export default {
         totalPrice(){
             let num = 0;
             for(let i = 0;i<this.arr.length;i++){
-                num += this.arr[i].num * this.arr[i].price*100
+                num += this.arr[i].courseSprice*100
             }
             return num;
         }

@@ -6,16 +6,20 @@
         </div>
         <div class="middle">
             <SwiperBanner></SwiperBanner>
-            <img class="bookLogo" src="../../static/images/book1.png" alt="">
-            <div class="search" @click="skip()">
-                <i class="el-icon-search"></i>
-                <input class="el-input" type="text" placeholder="输入关键字搜索商品" >
-            </div>
-            <div class="shopItems">
-                <div @click="go(v)" v-for="(v,i) in newArr" :key="i">
-                    <Items class="items" :imgSrc="v.shopImgurl" :goodsTitle="v.shoptitle" :goodsIntro="v.shopSummary" :integer="v.saleSprice" :bigPrice="v.shopSprice" :time="v.discount"></Items>
+            <Load v-if="bool"></Load>
+            <div v-else>
+                <img class="bookLogo" src="../../static/images/book1.png" alt="">
+                <div class="search" @click="skip()">
+                    <i class="el-icon-search"></i>
+                    <input class="el-input" type="text" placeholder="输入关键字搜索商品" >
+                </div>
+                <div class="shopItems">
+                    <div @click="go(v)" v-for="(v,i) in arr" :key="i">
+                        <Items class="items" :imgSrc="v.courseImgurl" :goodsTitle="v.courseSubtitle" :goodsIntro="v.courseSummary" :integer="v.courseSprice"></Items>
+                    </div>
                 </div>
             </div>
+            
         </div>
         <ShopFooter class="footer" title="商城"></ShopFooter>
     </div>
@@ -27,10 +31,14 @@ import Items from "../componrnts/shop/shopitems"
 import Banner from "../componrnts/banner/banner"
 import ShopFooter from "../componrnts/shop/shopFooter"
 import SwiperBanner from "../componrnts/banner/swiperBanner"
+import Load from '../components/store/allproduct/slidetitle/loading'
 export default {
     data() {
         return {
-            newArr:[]
+            newArr:[],
+            arr:[],
+            bool:true,
+            
         }
     },
     components:{
@@ -38,7 +46,8 @@ export default {
         Items,
         ShopFooter,
         SwiperBanner,
-        TopIcon
+        TopIcon,
+        Load
     },
     methods: {
         skip(){
@@ -50,13 +59,22 @@ export default {
     },
     created() {
         this.axios({
-            url:"user/shop",
+            url:"http://39.107.105.57:8084/Course/loadAll",
             method:"get",
         }).then((ok)=>{
-            this.newArr = ok.data.shop;
+            this.arr = ok.data.queryResult.list;
+            this.bool = false;
+            console.log(ok.data.queryResult.list)
         })
     },
-    
+    beforeRouteEnter(to, from, next) {
+        let ls = localStorage;
+        if(ls.getItem("用户名")){
+            next()
+        }else{
+            next("/register")
+        }
+    }
 }
 </script>
 

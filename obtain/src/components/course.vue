@@ -2,18 +2,27 @@
     <div>
         <div class="contentlist total" @click="todetails(data)">
             <div class="left">
-                <img :src="data.interface.books_imgurl ">
+                <img :src="data.courseImgurl ">
             </div>
-            <div class="right">
-                <p class="subtitle">{{data.interface.subtitle}}</p>
+            <!-- 父空间不足  不缩小  不换行  -->
+            <div class="right" style="display:felx;flex-wrap:nowrap;flex-shrink:0">
+                <!-- <p class="subtitle">{{data.interface.subtitle}}</p>
                 <p class="books_summary">{{ data.interface.books_summary}}</p>
                 <p class="author">{{data.interface.author}}</p>
                 <div class="right_bottom">
                     <span class="spanleft">{{data.interface.class_num}}讲/{{data.interface.books_sprice}}得到贝</span>
                     <span class="spanright">{{data.interface.study_peoples}}人加入学习</span>
+                </div> -->
+                <p class="subtitle">{{data.courseSubtitle}}</p>
+                <p class="books_summary">{{data.courseSummary}}</p>
+                <p class="author">{{data.courseAuthor}}</p>
+                <div class="right_bottom" >
+                    <span class="spanleft">{{data.courseClassNum}}讲/{{data.courseSprice}}得到贝</span>
+                    <span class="spanright">{{data.courseStudyPeoples}}人加入学习</span>
                 </div>
             </div>
         </div>
+      
     </div>
 </template>
 <script>
@@ -26,7 +35,7 @@ export default {
     props:["data"],
     methods: {
         todetails(val){
-            this.$router.push({path:"/details",query:{id:JSON.stringify(val.interface.courseId)}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
           
         }
     },

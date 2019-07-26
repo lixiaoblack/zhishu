@@ -1,26 +1,32 @@
 <template>
     <div class="content">
-        <div class="fiexd">
-          <div class="topback" >
-                    <span class="arrow" @click="tohome()">
-                    <i class="el-icon-arrow-left"></i>返回</span>
-                    <span class="total">试听《刘晗讲辛普森案》</span>
+           <div v-if="bool">
+                 <Loading></Loading>
             </div>
-            <div class="listen_title">
-                <span>你可以任选<span class="word">2</span>节课,免费体验学习（发刊词不占用免费试读名额）。</span>
+             <div v-else>
+                <div class="fiexd">
+                    <div class="topback" >
+                        <span class="arrow" @click="tohome()">
+                        <i class="el-icon-arrow-left"></i>返回</span>
+                        <span class="total">{{data.courseSubtitle}}</span>
+                     </div>
+                     <div class="listen_title">
+                        <span>你可以任选<span class="word">2</span>节课,免费体验学习（发刊词不占用免费试读名额）。</span>
+                    </div>
+                 </div>
+                <div class="end">
+                     <Freelisten v-for="(v,i) in arr" :key="i" :data="v"></Freelisten>
+                 </div>
             </div>
-        </div>
-        <div class="end">
-            <Freelisten v-for="(v,i) in arr" :key="i" :data="v"></Freelisten>
-        </div>
-        
     </div>
 </template>
 <script>
 import Freelisten from '../components/freelisten'
+import Loading from "../components/loading";
 export default {
     components:{
-        Freelisten
+        Freelisten,
+        Loading
     },
 
     data() {
@@ -37,14 +43,30 @@ export default {
                 {leftword:"08媒体的作用",middle:"：",rightword:"摄像机应该进法庭吗？"},
                 {leftword:"09法学家的批判",middle:"：",rightword:"这是不是一场公正的审判？"},
 
-            ]
+            ],
+            data:{},
+            bool:true,
         }
     },
     methods: {
           tohome(){
-            this.$router.push("/details")
+            this.$router.go(-1)
         },
     },
+    watch: {
+        data(val) {
+        if (val != {}) {
+            this.bool = false;
+        } else {
+            this.bool = true;
+        }
+     }
+  },
+    beforeRouteEnter(to, from, next) {
+    next(d => {
+      d.data = JSON.parse(to.query.id);
+    });
+  },
 }
 </script>
 <style scoped>
@@ -61,7 +83,7 @@ export default {
      padding: 0 .16rem;
     height:.5rem; ;
      line-height: .5rem;
-    font-size: .2rem;
+   font-size: .14rem;
 }
 .topback .arrow{
     color: #999999;
@@ -72,7 +94,7 @@ export default {
     font-weight: bolder;
     position: absolute;
     top:0;
-    left: .925rem;
+     left: 1.34rem;
 }
 .listen_title{
     width: 100%-0.22rem;

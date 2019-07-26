@@ -5,7 +5,7 @@
       <div class="section">
         <div class="left">
           <router-link to="/classify/psychology" class="look">心理学</router-link>
-          <router-link to="/classify/school/" class="look">学院</router-link>
+          <router-link to="/classify/school" class="look">学院</router-link>
           <router-link to="/classify/family" class="look">家庭亲子</router-link>
           <router-link to="/classify/sociology" class="look">社会学</router-link>
           <router-link to="/classify/history" class="look">历史</router-link>
