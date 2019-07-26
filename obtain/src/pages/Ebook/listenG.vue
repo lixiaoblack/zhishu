@@ -33,8 +33,8 @@ export default {
     created() {
      
          this.axios.get("http://39.107.105.57:8084/listen/selsctByListenType",
-         {params:{listentype:"新书上架"}}).then(ok=> {
-        
+         {params:{listentype:"精选书单"}}).then(ok=> {
+         console.log(ok.data.queryResult.list)
               this.arr=ok.data.queryResult.list
          
            })

@@ -121,8 +121,6 @@ export default {
         },
     },
 }
-
-
 </script>
 <style scoped>
 a{
@@ -157,7 +155,6 @@ header{
     position: absolute;
     top:0;
     left: 1.6rem;
-    
 }
 .firstnav{
     display: flex;
@@ -196,7 +193,6 @@ header{
 .big{
     padding: .16rem;
 }
-
 .router-link-active{
      color:#ff6b00;
 }

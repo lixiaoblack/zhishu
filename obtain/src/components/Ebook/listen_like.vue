@@ -5,11 +5,12 @@
                   <img :src="data.listenImgUrl" />
                 <div class="right">
                     <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{data.listenSubtitle}}</p>
-                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioIntro}}</p>
+                    <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAuthorValidity}}</p>
                     <p style="font-size:0.11rem; color:#828282; line-height:.18rem">{{data.listenAudioTime}}</p>
                     <div class="buy">
-                      <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenSprice}}得到贝</p>
+                      <p  style="font-size:0.11rem; color:#ed742f;">{{data.listenPrice}}得到贝</p>
                       <p class="read" @click.stop="buy(data)">购买</p>
+                     
                     </div>
                 </div>
      </li>
@@ -26,7 +27,7 @@ export default {
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.listenId)}})
+           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
        },
        buy(val){
          this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})
@@ -41,13 +42,13 @@ export default {
 }
 .content {
   margin: 0.1rem 0 0 0;
-  /* padding: 0.12rem; */
+  padding: 0.12rem;
  
   display: flex;
 }
 .content img {
-  width: 80px;
-  height: 105px;
+  width: .8rem;
+  height: 1rem;
   margin-right: 0.12rem;
 }
 h4 {
@@ -77,5 +78,7 @@ line-height: .3rem;
         text-align: center;
         font-weight: 600; 
     }
-    
+  .right{
+    width: 100%;
+  }  
 </style>

@@ -22,14 +22,14 @@ export default {
         title:String,
         txtOne:String,
         txtTwo:String,
-        people:String,
-        num:String,
-        price:String,
+        people:Number,
+        num:Number,
+        price:Number,
         data:Object
     },
     methods: {
         todetails(val){
-            this.$router.push({path:"/details",query:{id:JSON.stringify(val)}})
+            this.$router.push({path:"/details",query:{id:JSON.stringify(val.courseClassId)}})
         }
     },
 }

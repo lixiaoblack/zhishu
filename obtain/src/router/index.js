@@ -152,7 +152,7 @@ import Shiyexueyuan from '../pages/shiyexueyuan'
 import Renwensheke from '../pages/renwensheke'
 import Zhengzaigengxin from '../pages/zhengzaigengxin'
 import Default from '../pages/default'
-import Morestudy from  '../pages/morestudy'
+import Morestudy from '../pages/morestudy'
 import Latestnew from '../pages/latestnew'
 import Details from '../pages/details'
 import Bottombar from '../pages/bottombar'
@@ -184,6 +184,13 @@ import ListenDetail from "../pages/Ebook/listenDetail";
 import Goodlisten from "../pages/Ebook/goodlisten"
 import ReadBook from "../pages/Ebook/readbook";
 import Author from "../pages/Ebook/author";
+import EbookBuy from "../pages/Ebook/ebookBuy";
+import GivePartner from "../pages/Ebook/givePartner";
+import GoodBookG from "../pages/Ebook/goodbookG"
+import GoodBookN from "../pages/Ebook/goodbookN"
+
+import ListenG from "../pages/Ebook/listenG"
+
 ///
 import Audioxq from "../pages/audioxq";
 import Searchitem from "../pages/searchitem";
@@ -203,164 +210,176 @@ export default new Router({
       children:[
         // 心理学
         {
-          path: 'psychology',name: 'Psychology',component: Psychology,children:[
-            {path: 'quanbu',name: 'Quanbu',component: Quanbu},
-            {path: 'xinli',name: 'Xinli',component: Xinli},
-            {path: 'shehui',name: 'Shehui',component: Shehui},
-            {path: 'Xingwei',name: 'Xingwei',component: Xingwei},
-            {path: 'jiaolv',name: 'Jiaolv',component: Jiaolv},
+          path: 'psychology', name: 'Psychology', component: Psychology, children: [
+            { path: 'quanbu', name: 'Quanbu', component: Quanbu },
+            { path: 'xinli', name: 'Xinli', component: Xinli },
+            { path: 'shehui', name: 'Shehui', component: Shehui },
+            { path: 'Xingwei', name: 'Xingwei', component: Xingwei },
+            { path: 'jiaolv', name: 'Jiaolv', component: Jiaolv },
 
           ]
         },
         // 学院
         {
-          path: 'school',name: 'School',component: School,
+          path: 'school', name: 'School', component: School,
         },
         // 经济学
         {
-          path: 'economics',name: 'Economics',component: Economics,children:[
-            {path: 'quanbu',name: 'Quanbu1',component: Quanbu1},
-            {path: 'shichang',name: 'Shichang',component: Shichang},
-            {path: 'hongguan',name: 'Hongguan',component: Hongguan},
-            {path: 'jinrong',name: 'Jinrong',component: Jinrong},
-            {path: 'zhidu',name: 'Zhidu',component: Zhidu},
-            {path: 'zhengzhi',name: 'Zhengzhi',component: Zhengzhi},
+          path: 'economics', name: 'Economics', component: Economics, children: [
+            { path: 'quanbu', name: 'Quanbu1', component: Quanbu1 },
+            { path: 'shichang', name: 'Shichang', component: Shichang },
+            { path: 'hongguan', name: 'Hongguan', component: Hongguan },
+            { path: 'jinrong', name: 'Jinrong', component: Jinrong },
+            { path: 'zhidu', name: 'Zhidu', component: Zhidu },
+            { path: 'zhengzhi', name: 'Zhengzhi', component: Zhengzhi },
           ]
         },
         // 家庭亲子
         {
-          path: 'family',name: 'Family',component: Family,children:[
-            {path: 'quanbu',name: 'Quanbu2',component: Quanbu2},
-            {path: 'Qingzi',name: 'Qingzi',component: Qingzi},
-            {path: 'ertong',name: 'Ertong',component: Ertong},
-            {path: 'youer',name: 'Youer',component: Youer},
+          path: 'family', name: 'Family', component: Family, children: [
+            { path: 'quanbu', name: 'Quanbu2', component: Quanbu2 },
+            { path: 'Qingzi', name: 'Qingzi', component: Qingzi },
+            { path: 'ertong', name: 'Ertong', component: Ertong },
+            { path: 'youer', name: 'Youer', component: Youer },
           ]
         },
         // 社会学
         {
-          path: 'sociology',name: 'Sociology',component: Sociology,children:[
-            {path: 'quanbu',name: 'Quanbu3',component: Quanbu3},
-            {path: 'renlei',name: 'Renlei',component: Renlei},
-            {path: 'wenhua',name: 'Wenhua',component: Wenhua},
-            {path: 'shehuixinli',name: 'Shehuixinli',component: Shehuixinli},
-            {path: 'quanqiu',name: 'Quanqiu',component: Quanqiu},
-            {path: 'chengshi',name: 'Chengshi',component: Chengshi},
+          path: 'sociology', name: 'Sociology', component: Sociology, children: [
+            { path: 'quanbu', name: 'Quanbu3', component: Quanbu3 },
+            { path: 'renlei', name: 'Renlei', component: Renlei },
+            { path: 'wenhua', name: 'Wenhua', component: Wenhua },
+            { path: 'shehuixinli', name: 'Shehuixinli', component: Shehuixinli },
+            { path: 'quanqiu', name: 'Quanqiu', component: Quanqiu },
+            { path: 'chengshi', name: 'Chengshi', component: Chengshi },
           ]
         },
         // 职场
         {
-          path: 'workplace',name: 'Workplace',component: Workplace,children:[
-            {path: 'quanbu',name: 'Quanbu4',component: Quanbu4},
-            {path: 'shuohua',name: 'Shuohua',component: Shuohua},
-            {path: 'qingxu',name: 'Qingxu',component: Qingxu},
-            {path: 'mubiao',name: 'Mubiao',component: Mubiao},
-            {path: 'xuexi',name: 'Xuexi',component: Xuexi},
-            {path: 'shijian',name: 'Shijian',component: Shijian},
+          path: 'workplace', name: 'Workplace', component: Workplace, children: [
+            { path: 'quanbu', name: 'Quanbu4', component: Quanbu4 },
+            { path: 'shuohua', name: 'Shuohua', component: Shuohua },
+            { path: 'qingxu', name: 'Qingxu', component: Qingxu },
+            { path: 'mubiao', name: 'Mubiao', component: Mubiao },
+            { path: 'xuexi', name: 'Xuexi', component: Xuexi },
+            { path: 'shijian', name: 'Shijian', component: Shijian },
           ]
         },
         // 历史
         {
-          path: 'history',name: 'History',component:History,children:[
-            {path: 'quanbu',name: 'Quanbu5',component: Quanbu5},
-            {path: 'erzhang',name: 'Erzhang',component: Erzhang},
-            {path: 'shijie',name: 'Shijie',component: Shijie},
-            {path: 'renlei',name: 'Renlei',component: Renlei},
-            {path: 'wenming',name: 'Wenming',component: Wenming},
-            {path: 'yishu',name: 'Yishu',component: Yishu},
+          path: 'history', name: 'History', component: History, children: [
+            { path: 'quanbu', name: 'Quanbu5', component: Quanbu5 },
+            { path: 'erzhang', name: 'Erzhang', component: Erzhang },
+            { path: 'shijie', name: 'Shijie', component: Shijie },
+            { path: 'renlei', name: 'Renlei', component: Renlei },
+            { path: 'wenming', name: 'Wenming', component: Wenming },
+            { path: 'yishu', name: 'Yishu', component: Yishu },
           ]
         },
         // 中国历史
         {
-          path: 'chinahistory',name: 'Chinahistory',component: Chinahistory,children:[
-            {path: 'quanbu',name: 'Quanbu6',component: Quanbu6},
-            {path: 'xiashangzhou',name: 'Xiashangzhou',component: Xiashangzhou},
-            {path: 'wenjin',name: 'Wenjin',component: Wenjin},
-            {path: 'songdai',name: 'Songdai',component: Songdai},
-            {path: 'mingdai',name: 'Mingdai',component: Mingdai},
-            {path: 'tangdai',name: 'Tangdai',component:Tangdai},
+          path: 'chinahistory', name: 'Chinahistory', component: Chinahistory, children: [
+            { path: 'quanbu', name: 'Quanbu6', component: Quanbu6 },
+            { path: 'xiashangzhou', name: 'Xiashangzhou', component: Xiashangzhou },
+            { path: 'wenjin', name: 'Wenjin', component: Wenjin },
+            { path: 'songdai', name: 'Songdai', component: Songdai },
+            { path: 'mingdai', name: 'Mingdai', component: Mingdai },
+            { path: 'tangdai', name: 'Tangdai', component: Tangdai },
           ]
         },
         // 金融
         {
-          path: 'finance',name: 'Finance',component: Finance,children:[
-            {path: 'quanbu',name: 'Quanbu7',component: Quanbu7},
-            {path: 'licai',name: 'Licai',component: Licai},
-            {path: 'guoji',name: 'Guoji',component: Guoji},
-            {path: 'jinrongshi',name: 'Jinrongshi',component: Jinrongshi},
-            {path: 'jinrongyinhang',name: 'Jinrongyinhang',component: Jinrongyinhang},
-            {path: 'jinronggongju',name: 'Jinronggongjuhu',component: Jinronggongju},
+          path: 'finance', name: 'Finance', component: Finance, children: [
+            { path: 'quanbu', name: 'Quanbu7', component: Quanbu7 },
+            { path: 'licai', name: 'Licai', component: Licai },
+            { path: 'guoji', name: 'Guoji', component: Guoji },
+            { path: 'jinrongshi', name: 'Jinrongshi', component: Jinrongshi },
+            { path: 'jinrongyinhang', name: 'Jinrongyinhang', component: Jinrongyinhang },
+            { path: 'jinronggongju', name: 'Jinronggongjuhu', component: Jinronggongju },
           ]
         },
         // 医学与健康
         {
-          path: 'medicalhealth',name: 'Medicalhealth',component: Medicalhealth,children:[
-            {path: 'quanbu',name: 'Quanbu8',component: Quanbu8},
-            {path: 'aizheng',name: 'Aizheng',component: Aizheng},
-            {path: 'jiangkang',name: 'Jiangkang',component: Jiangkang},
-            {path: 'jiyin',name: 'Jiyin',component: Jiyin},
-            {path: 'yixue',name: 'Yixue',component: Yixue},
-            {path: 'shengming',name: 'Shengming',component: Shengming},
+          path: 'medicalhealth', name: 'Medicalhealth', component: Medicalhealth, children: [
+            { path: 'quanbu', name: 'Quanbu8', component: Quanbu8 },
+            { path: 'aizheng', name: 'Aizheng', component: Aizheng },
+            { path: 'jiangkang', name: 'Jiangkang', component: Jiangkang },
+            { path: 'jiyin', name: 'Jiyin', component: Jiyin },
+            { path: 'yixue', name: 'Yixue', component: Yixue },
+            { path: 'shengming', name: 'Shengming', component: Shengming },
           ]
         },
         // 管理学
         {
-          path: 'management',name: 'Management',component:Management,children:[
-            {path: 'quanbu',name: 'Quanbu9',component: Quanbu9},
-            {path: 'chuangye',name: 'Chuangye',component: Chuangye},
-            {path: 'lingdao',name: 'Lingdao',component: Lingdao},
-            {path: 'qiye',name: 'Qiye',component: Qiye},
-            {path: 'tuandui',name: 'Tuandui',component: Tuandui},
-            {path: 'zuzhi',name: 'Zuzhi',component: Zuzhi},
+          path: 'management', name: 'Management', component: Management, children: [
+            { path: 'quanbu', name: 'Quanbu9', component: Quanbu9 },
+            { path: 'chuangye', name: 'Chuangye', component: Chuangye },
+            { path: 'lingdao', name: 'Lingdao', component: Lingdao },
+            { path: 'qiye', name: 'Qiye', component: Qiye },
+            { path: 'tuandui', name: 'Tuandui', component: Tuandui },
+            { path: 'zuzhi', name: 'Zuzhi', component: Zuzhi },
           ]
         },
         // 艺术
         {
-          path: 'art',name: 'Art',component: Art,children:[
-            {path: 'quanbu',name: 'Quanbu10',component: Quanbu10},
-            {path: 'jianzhu',name: 'Jianzhu',component: Jianzhu},
-            {path: 'huihua',name: 'Huihua',component: Huihua},
-            {path: 'chuangji',name: 'Chuangji',component: Chuangji},
-            {path: 'sheji',name: 'Sheji',component: Sheji},
-            {path: 'yishushi',name: 'Yishushi',component: Yishushi},
+          path: 'art', name: 'Art', component: Art, children: [
+            { path: 'quanbu', name: 'Quanbu10', component: Quanbu10 },
+            { path: 'jianzhu', name: 'Jianzhu', component: Jianzhu },
+            { path: 'huihua', name: 'Huihua', component: Huihua },
+            { path: 'chuangji', name: 'Chuangji', component: Chuangji },
+            { path: 'sheji', name: 'Sheji', component: Sheji },
+            { path: 'yishushi', name: 'Yishushi', component: Yishushi },
           ]
         },
 
-      
+
       ]
     },
     {
       path: '/course',
       name: 'Course',
       component: Course,
-      children:[
-        {path:"total",name:"Total",component:Total},
-        {path:"nenglixueyuan",name:"Nenglixueyuan",component:Nenglixueyuan},
-        {path:"shangxueyuan",name:"Shangxueyuan",component:Shangxueyuan},
-        {path:"kexuexueyuan",name:"Kexuexueyuan",component:Kexuexueyuan},
-        {path:"shiyexueyuan",name:"Shiyexueyuan",component:Shiyexueyuan},
-        {path:"renwensheke",name:"Renwensheke",component:Renwensheke},
-        {path:"zhengzaigengxin",name:"Zhengzaigengxin",component:Zhengzaigengxin},
+      children: [
+        { path: "total", name: "Total", component: Total },
+        { path: "nenglixueyuan", name: "Nenglixueyuan", component: Nenglixueyuan },
+        { path: "shangxueyuan", name: "Shangxueyuan", component: Shangxueyuan },
+        { path: "kexuexueyuan", name: "Kexuexueyuan", component: Kexuexueyuan },
+        { path: "shiyexueyuan", name: "Shiyexueyuan", component: Shiyexueyuan },
+        { path: "renwensheke", name: "Renwensheke", component: Renwensheke },
+        { path: "zhengzaigengxin", name: "Zhengzaigengxin", component: Zhengzaigengxin },
+        { path: "morestudy", name: "Morestudy", component: Morestudy },
+        { path: "latestnew", name: "Latestnew", component: Latestnew },
       ]
     },
     {
-      path:'/user',
-      name:'User',
-      component:User
+      path: '/user',
+      name: 'User',
+      component: User
     },
     {
-      path:'/login',
-      name:'Login',
-      component:Login
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
-      path:'/register',
-      name:'Register',
-      component:Register
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
-      path:'/set',
-      name:'Set',
-      component:Set
+      path: '/set',
+      name: 'Set',
+      component: Set
+    },
+    {
+      path: '/moduleone/:id',
+      name: 'Mone',
+      component: Mone
+    },
+    {
+      path: '/moduletwo/:id',
+      name: 'Mtwo',
+      component: Mtwo
     },
     {
       path:'/moduleone',
@@ -373,9 +392,9 @@ export default new Router({
       component:Mtwo
     },
     {
-      path:'/modulethree/:id',
-      name:'Mthree',
-      component:Mthree
+      path: '/modulethree/:id',
+      name: 'Mthree',
+      component: Mthree
     },
     {
       path:'/forget',
@@ -419,7 +438,7 @@ export default new Router({
     {
       path: '/details',
       name: 'Details',
-      component: Details  
+      component: Details
     },
     {
       path: '/bottombar',
@@ -486,56 +505,81 @@ export default new Router({
       name: 'Order',
       component: Order
     },
-		   {
-      path:'/eBook',
-      name:'EBOOK',
-      component:EBOOK
+    {
+      path: '/eBook',
+      name: 'EBOOK',
+      component: EBOOK
     },
     {
-      path:'/EbookDetail',
-      name:'BOOKDEL',
-      component:BOOKDEL
-    },
-   
-    {
-      path:"/goodlisten",
-      name:"Goodlisten",
-      component:Goodlisten
+      path: '/EbookDetail',
+      name: 'BOOKDEL',
+      component: BOOKDEL
     },
     {
-      path:"/readbook",
-      name:"ReadBook",
-      component:ReadBook
+      path: '/goodbookN',
+      name: 'GoodBookN',
+      component: GoodBookN
     },
     {
-      path:'/goodbook',
-      name:'Good',
-      component:Good
+      path: '/goodbookG',
+      name: 'GoodBookG',
+      component: GoodBookG
     },
     {
-      path:'/listen',
-      name:'Listen',
-      component:Listen
+      path: '/listenG',
+      name: 'ListenG',
+      component: ListenG
+    },
+
+    {
+      path: "/goodlisten",
+      name: "Goodlisten",
+      component: Goodlisten
     },
     {
-      path:'/buy',
-      name:'Buy',
-      component:Buy
+      path: "/readbook",
+      name: "ReadBook",
+      component: ReadBook
     },
     {
-      path:'/listenDetail',
-      name:'ListenDetail',
-      component:ListenDetail
+      path: '/goodbook',
+      name: 'Good',
+      component: Good
     },
     {
-      path:'/author',
-      name:'Author',
-      component:Author
+      path: '/ebookBuy',
+      name: 'EbookBuy',
+      component: EbookBuy
     },
     {
-      path:'/audioxq',
-      name:'Audioxq',
-      component:Audioxq
+      path: '/listen',
+      name: 'Listen',
+      component: Listen
+    },
+    {
+      path: '/givePartner',
+      name: 'GivePartner',
+      component: GivePartner
+    },
+    {
+      path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },
+    {
+      path: '/listenDetail',
+      name: 'ListenDetail',
+      component: ListenDetail
+    },
+    {
+      path: '/author',
+      name: 'Author',
+      component: Author
+    },
+    {
+      path: '/audioxq',
+      name: 'Audioxq',
+      component: Audioxq
     },
     {
       path: '/searchitem',
@@ -550,17 +594,17 @@ export default new Router({
     {
       path: '/payfor',
       name: 'Payfor',
-      component:Payfor
+      component: Payfor
     },
     {
       path: '/zengsongyouhuiquan',
       name: 'Zengsongyouhuiquan',
-      component:Zengsongyouhuiquan
+      component: Zengsongyouhuiquan
     },
     {
       path: '/rechargemoney',
       name: 'Rechargemoney',
-      component:Rechargemoney
+      component: Rechargemoney
     },
     //订单路由
     {
@@ -568,7 +612,7 @@ export default new Router({
       name: 'Havebuy',
       component: Havebuy,
       //订单二级路由
-      children:[
+      children: [
 
         {
           path: '/havebuy/reservation',
@@ -583,7 +627,7 @@ export default new Router({
       name: 'Allproduct',
       component: Allproduct,
       //全部商品二级路由
-      children:[
+      children: [
         {
           path: '/allproduct/newproduct',
           name: 'Newproduct',

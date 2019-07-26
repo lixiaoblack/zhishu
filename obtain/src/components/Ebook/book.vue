@@ -6,15 +6,15 @@
       </p>
       <p class="title">{{data.bookSubtitle}}</p>
 
-      <p v-if="data.book_type=='新书上架'" style=" text-align: center; color: #636363;">24小时内</p>
-      <div v-else-if="data.book_type=='精选好书'">
+      <p v-if="data.bookType=='新书上架'" style=" text-align: center; color: #636363;">24小时内</p>
+      <div v-else-if="data.bookType=='精选好书'">
         <p style=" text-align: center;color:#636363;">{{data.bookSprice}}得到贝</p>
       </div>
-      <div v-else-if="data.book_type=='限时特价'">
+      <div v-else-if="data.bookType=='限时特价'">
         <p class="dis">{{data.bookSprice}}得到贝</p>
         <p class="dis1">{{data.bookSprice}}得到贝</p>
       </div>
-      <div v-else-if="data.book_type=='最近试读'">
+      <div v-else-if="data.bookType=='最近试读'">
         <p style="text-align: center; color: #636363;">{{data.bookTime}}</p>
         <p style="text-align: center; color: #636363;">已读{{data.bookSprice}}%</p>
       </div>

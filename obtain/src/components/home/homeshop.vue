@@ -11,7 +11,7 @@ export default {
     props:{
         imgUrl:String,
         title:String,
-        price:String,
+        price:Number,
         v:Object
     },
     methods: {

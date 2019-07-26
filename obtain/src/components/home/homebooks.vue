@@ -7,25 +7,17 @@
             <img :src="imgUrl">    
             <div>
                 <p>《{{subtitle}}》</p>
-                <span>{{courseFeatureIntroI}}</span>
+                <span class="over">{{courseFeatureIntroI}}</span>
                 <span>21分44秒</span>
             </div>
             <span class="price">{{booksSprice}}得到贝</span>
         </div>
         <div class="goodBook">
             <p class="goods">新书上架</p>
-            <div @click="skip(sss)">
-                <img :src="imgUrl"> 
-                <span class="titleS">{{subtitle}}</span>
-            </div>  
-            <div @click="skip(sss)">
-                <img :src="imgUrl"> 
-                <span class="titleS">{{subtitle}}</span>
-            </div>
-            <div @click="skip(sss)">
-                <img :src="imgUrl"> 
-                <span class="titleS">{{subtitle}}</span>
-            </div>  
+            <div @click="skip(sss)" v-for="(v,i) in bookDArr" :key="i">
+                <img :src="v.bookImgUrl"> 
+                <span class="titleS">{{v.bookSubtitle}}</span>
+            </div> 
         </div>
         
     </div>
@@ -36,14 +28,30 @@ export default {
     props:{
         subtitle:String,
         courseFeatureIntroI:String,
-        booksSprice:String,
+        booksSprice:Number,
         imgUrl:String,
         sss:Object
+    },
+    data() {
+        return {
+            bookDArr:[]
+        }
     },
     methods: {
         skip(val){
            this.$router.push({name:"BOOKDEL",query:{id:JSON.stringify(val.bookId)}})
        }
+    },
+    created() {
+        this.axios({
+            url:"http://39.107.105.57:8084/findAll",
+            method:"get"
+        }).then((ok)=>{
+            // console.log(ok)
+            for(var i=0; i<3; i++){
+                this.bookDArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
+            }
+        })
     },
 }
 </script>
@@ -124,5 +132,10 @@ export default {
         white-space: nowrap;
         text-overflow: ellipsis;
         margin: 8px 0;
+        text-indent: 8px;
+    }
+    .flot .over{
+        height: .42rem;
+        overflow: hidden;
     }
 </style>
