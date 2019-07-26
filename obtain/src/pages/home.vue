@@ -92,7 +92,7 @@ export default {
                 {imgUrl:"../../static/image/nav_02.png",title:"医学健康",link:"/classify/medicalhealth/quanbu"},
                 {imgUrl:"../../static/image/nav_03.png",title:"社会学",link:"/classify/sociology/quanbu"},
                 {imgUrl:"../../static/image/nav_04.png",title:"心理学",link:"/classify/psychology/quanbu"},
-                {imgUrl:"../../static/image/nav_05.png",title:"家庭亲自",link:"/classify/family/quanbu"},
+                {imgUrl:"../../static/image/nav_05.png",title:"家庭亲子",link:"/classify/family/quanbu"},
                 {imgUrl:"../../static/image/nav_06.png",title:"社会学",link:"/classify/sociology/quanbu"},
                 {imgUrl:"../../static/image/nav_07.png",title:"管理学",link:"/classify/management/quanbu"},
                 {imgUrl:"../../static/image/nav_08.png",title:"职场",link:"/classify/workplace/quanbu"},
