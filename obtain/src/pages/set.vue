@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="box">
         <div class="header">
             <i @click="fun()">×</i>
@@ -53,8 +54,9 @@
             <span>服务使用协议   隐私协议</span>
             </div>
         </div>
-
     </div>
+
+</div>
 </template>
 <script>
 export default {
@@ -66,12 +68,10 @@ export default {
     },
     methods:{
         fun(){
-            this.$router.push({
-                path: "/user",
-            });
+            this.$router.go(-1);
         },
         esc(){
-            if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向thcjp.cnblogs.com
+            if(confirm("确定要退出吗？")){//如果是true ，那么就把页面转向home
                 localStorage.removeItem("用户名")
                 this.$router.push("/home");
 			}else{
@@ -96,7 +96,8 @@ export default {
     background-color: #f7f7f8;
 }
 .header{
-    padding: 2px 10px;
+    display: flex;
+    text-align: left;
     background-color: #fff;
 }
 .header i{
@@ -104,6 +105,7 @@ export default {
 }
 .header span{
     margin-left: 40%;
+    text-align: left;
 }
 .divcs{
     margin-top: 20px;
