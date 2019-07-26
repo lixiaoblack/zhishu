@@ -74,6 +74,7 @@ export default {
             });
         },
         fun2(){//判断用户名规则合法，，，同时异步检测用户名是否存在
+            
             var a=/^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/
             if(a.test(this.loginname)==true){
                 this.namecode="1";
@@ -96,15 +97,20 @@ export default {
                     if(ok.data.queryResult.anInt=="1"){
                         let red=document.querySelector("#phoneId")
                         red.style.borderBottom="3px solid red"
-                        this.$toast.success("账户已存在")
+                        this.$toast.fail("账户已存在")
                     }else{
-                        let green=document.querySelector("#phoneId")
-                        green.style.borderBottom="3px solid green"
+
                     }
                 })
             }
         },
         fun3(){
+            var b=/^([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]@([a-zA-Z0-9][_|\_|\.]?)*[a-zA-Z0-9]\.[a-zA-Z]{2,3}$/
+            if(this.loginemail==""){
+                this.$toast.fail("请输入邮箱");
+            }else if(!b.test(this.loginemail)){
+                this.$toast.fail("请确认邮箱是否正确");
+            }else{
             this.axios({
                 url:"http://39.107.105.57:8084/user/registerUser",
                 method:"post",
@@ -116,6 +122,7 @@ export default {
             }).then((ok)=>{
                 console.log(ok)
             })
+            }
         },
         fun4(){
             this.$router.push({
