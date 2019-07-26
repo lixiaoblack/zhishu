@@ -45,7 +45,7 @@
         <li>您将购买的商品为虚拟内容服务，购买后不支持退订。转让请斟酌确认</li>
         <li>购买后可在已购区查看和使用</li>
       </ol>
-      <footer>{{arr.listenSprice}}得到贝/确认支付</footer>
+      <footer>{{arr.listenPrice}}得到贝/确认支付</footer>
     </div>
   </div>
 </template>

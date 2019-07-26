@@ -26,7 +26,7 @@
        
         <Homehot style="clear:both"></Homehot>
         <div class="allTop" style="border-radius:.1rem .1rem 0 0">
-            <p>每天听节课</p><router-link to="/course"><span>全部</span></router-link>
+            <p>每天听节课</p><router-link to="/course/total"><span>全部</span></router-link>
         </div>
         <Load v-if="bool3"></Load>
         <div v-else>
