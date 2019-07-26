@@ -141,7 +141,7 @@ export default {
             this.audios.push(ok.data.queryResult.list[parseInt(Math.random()*40)])
             this.bool5 = false;
             for(var i=0; i<4; i++){
-                this.courseArr.push(ok.data.queryResult.list[parseInt(Math.random()*5+15)]) 
+                this.courseArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
             }
             for(var i=0; i<3; i++){
                 this.shopArr.push(ok.data.queryResult.list[parseInt(Math.random()*40)]) 
