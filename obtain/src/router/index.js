@@ -165,8 +165,8 @@ import Rechargemoney from '../pages/rechargemoney'
 import Lookoutline from '../pages/lookoutline'
 
 
-
-
+import MidL from "../pages/Ebook/midL"
+import Mid from "../pages/Ebook/mid"
 import Nav from "../pages/nav"
 import Searchs from "../pages/searchs"
 import Shop from '../pages/shop'
@@ -694,6 +694,16 @@ export default new Router({
       path: '/vidio',
       name: 'Vidio',
       component: Vidio
+    },
+    {
+      path: '/mid',
+      name: 'Mid',
+      component: Mid
+    },
+    {
+      path: '/midL',
+      name: 'MidL',
+      component: MidL
     },
     {
       path:'/*',

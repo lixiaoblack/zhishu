@@ -117,10 +117,25 @@ export default {
     });
   },
   watch: {
-    id(newval,oldval) {
-     
-      
-       
+    id(newVal, oldVal) {
+      if (newVal) {
+        this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
+          let val = ok.data.queryResult.list;
+
+          val.map(v => {
+           
+            if (v.bookId ==newVal) {
+              this.obj = v;
+            }
+            return this.obj;
+          });
+          if (val) {
+            this.bool = false;
+          } else {
+            this.bool = true;
+          }
+        });
+      }
     }
   },
   created() {

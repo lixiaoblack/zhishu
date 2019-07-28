@@ -100,7 +100,7 @@ export default {
         font-size: .11rem;
     }
     .imgs{
-        margin-left: .5rem;
+        margin-left: .7rem;
         width: 2.3rem;
         height: 2.3rem;
     }

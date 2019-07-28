@@ -27,7 +27,7 @@ export default {
    props: ["data"],
    methods: {
        skip(val){
-           this.$router.push({name:"ListenDetail",query:{id:JSON.stringify(val.listenId)}})
+           this.$router.push({name:"MidL",query:{id:JSON.stringify(val.listenId)}})
        },
        buy(val){
          this.$router.push({name:"Buy",query:{id:JSON.stringify(val.listenId)}})

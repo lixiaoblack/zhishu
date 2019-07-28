@@ -22,7 +22,7 @@ export default {
   methods: {
     skip(val) {
       this.$router.push({
-        name: "BOOKDEL",
+        name: "Mid",
         query: { id: JSON.stringify(val.bookId) }
       });
     },

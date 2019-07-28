@@ -4,83 +4,83 @@
       <Loading></Loading>
     </div>
     <div v-else>
-    <header>
-      <p @click="skipPrev()">返回</p>
-      <p>{{obj.bookSubtitle}}</p>
-    </header>
-    <section>
-      <div class="content">
-        <img :src="obj.bookImgUrl" />
-        <div class="right">
-          <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.bookSubtitle}}</p>
+      <header>
+        <p @click="skipPrev()">返回</p>
+        <p>{{obj.bookSubtitle}}</p>
+      </header>
+      <section>
+        <div class="content">
+          <img :src="obj.bookImgUrl" />
+          <div class="right">
+            <p style="font-size:0.15rem;font-weight:600; margin-bottom:12px">{{obj.bookSubtitle}}</p>
 
-          <p class="author">
-            <span>作者</span>
-            <span>{{obj.bookAuthor}}</span>
-          </p>
-          <p style="font-size:12px; color: #ccc;margin-top:0.2rem" class="date">
-            <span>{{obj.bookTime}}</span> |
-            <span>{{obj.bookTts}}</span>
-          </p>
+            <p class="author">
+              <span>作者</span>
+              <span>{{obj.bookAuthor}}</span>
+            </p>
+            <p style="font-size:12px; color: #ccc;margin-top:0.2rem" class="date">
+              <span>{{obj.bookTime}}</span> |
+              <span>{{obj.bookTts}}</span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="edit">
-        <p>主编推荐语</p>
-        <p>{{obj.booKeditRecomend}}</p>
-      </div>
-      <div class="edit1">
-        <p class="edit2">内容简介</p>
+        <div class="edit">
+          <p>主编推荐语</p>
+          <p>{{obj.booKeditRecomend}}</p>
+        </div>
+        <div class="edit1">
+          <p class="edit2">内容简介</p>
 
-        <div v-if="isShow">
-          <p style="font-size:0.13rem;color:#8d8d8d">{{sub}}</p>
-          <p class="open" @click="open()">
-            查看详情
-            <i class="el-icon-caret-bottom"></i>
+          <div v-if="isShow">
+            <p style="font-size:0.13rem;color:#8d8d8d">{{sub}}</p>
+            <p class="open" @click="open()">
+              查看详情
+              <i class="el-icon-caret-bottom"></i>
+            </p>
+          </div>
+          <div v-else>
+            <p style="font-size:0.13rem;color:#">{{obj.bookContent}}</p>
+            <p @click="open()" class="open">
+              收起
+              <i class="el-icon-caret-top"></i>
+            </p>
+          </div>
+        </div>
+        <div class="edit1">
+          <p class="cation">
+            <span>目录</span>
+            <span @click="SkipPages(obj.bookSubtitle)">查看全部</span>
           </p>
         </div>
-        <div v-else>
-          <p style="font-size:0.13rem;color:#">{{obj.bookContent}}</p>
-          <p @click="open()" class="open">
-            收起
-            <i class="el-icon-caret-top"></i>
+        <div class="edit1">
+          <p class="cation">
+            <span>出版方</span>
+            <span>查看全部</span>
           </p>
+          <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
+          <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
         </div>
+        <div>
+          <p style="font-size:.2rem;font-weight:600; padding:0 .12rem">猜你喜欢</p>
+          <ALLBOOK v-for="(v,i) in likes" :key="i" :data="v"></ALLBOOK>
+        </div>
+      </section>
+      <div class="bottombar">
+        <span class="givefriend" @click="togivefriend(obj)">赠送好友</span>
+        <span class="verticalline">|</span>
+        <span class="freelisten" @click="todetails(obj)">购买：{{obj.bookSprice}}得到贝</span>
+        <span class="buy" @click="tofreelisten()">免费试读</span>
       </div>
-      <div class="edit1">
-        <p class="cation">
-          <span>目录</span>
-          <span @click="SkipPages(obj.bookSubtitle)">查看全部</span>
-        </p>
-      </div>
-      <div class="edit1">
-        <p class="cation">
-          <span>出版方</span>
-          <span>查看全部 </span>
-        </p>
-        <p style="font-size:.15rem; font-weight:600; line-height:.27rem">{{obj.bookPublisher}}</p>
-        <p style="font-size:.13rem; color:#8d8d8d; line-height:.27rem">{{obj.bookPublisherIntro}}</p>
-      </div>
-      <div>
-        <p style="font-size:.2rem;font-weight:600; padding:0 .12rem">猜你喜欢</p>
-        <ALLBOOK v-for="(v,i) in likes" :key="i" :data="v"></ALLBOOK>
-      </div>
-    </section>
-    <div class="bottombar">
-      <span class="givefriend" @click="togivefriend(obj)">赠送好友</span>
-      <span class="verticalline">|</span>
-      <span class="freelisten" @click="todetails(obj)">购买：{{obj.bookSprice}}得到贝</span>
-      <span class="buy" @click="tofreelisten()">免费试读</span>
-    </div>
     </div>
   </div>
 </template>
 <script>
 import ALLBOOK from "../../components/Ebook/allBook";
-import Loading from "../../components/loading"
+import Loading from "../../components/loading";
 export default {
   components: {
     ALLBOOK,
-    Loading 
+    Loading
   },
   data() {
     return {
@@ -88,8 +88,30 @@ export default {
       isShow: true,
       like: [],
       id: "",
-      bool:true
+      bool: true
     };
+  },
+  watch: {
+    id(newVal, oldVal) {
+      if (newVal) {
+        this.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
+          let val = ok.data.queryResult.list;
+
+          val.map(v => {
+           
+            if (v.bookId ==newVal) {
+              this.obj = v;
+            }
+            return this.obj;
+          });
+          if (val) {
+            this.bool = false;
+          } else {
+            this.bool = true;
+          }
+        });
+      }
+    }
   },
   methods: {
     open() {
@@ -140,16 +162,32 @@ export default {
         }
         return this.obj;
       });
-      if(val!=[]){
-        this.bool=false
-      }else{
-        this.bool=true
+      if (val != []) {
+        this.bool = false;
+      } else {
+        this.bool = true;
       }
     });
   },
   beforeRouteEnter(to, from, next) {
     next(d => {
       d.id = JSON.parse(to.query.id);
+      //    d.axios.get("http://39.107.105.57:8084/findAll").then(ok => {
+      //   let val = ok.data.queryResult.list;
+      //   val.map(v => {
+      //     if (v.bookType == "猜你喜欢") {
+      //       d.like.push(v);
+      //     } else if (v.bookId == d.id) {
+      //       d.obj = v;
+      //     }
+      //     return d.obj;
+      //   });
+      //   if(val){
+      //     d.bool=false
+      //   }else{
+      //     d.bool=true
+      //   }
+      // });
     });
   }
 };
